@@ -6,6 +6,8 @@
   - [Editors](#editors)
     - [<img alt="Neovim logo" height="12" src="https://upload.wikimedia.org/wikipedia/commons/0/07/Neovim-mark-flat.svg" /> Neovim](#-neovim)
     - [<img alt="Visual Studio Code logo" height="12" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" />  Visual Studio Code _(VSCode)_](#-visual-studio-code)
+- [Pinned repositories](#choose-pinned-repositories)
+- [Contribution activity](#js-contribution-activity)
 
 ---
 
