@@ -43,7 +43,7 @@ When I decided to focus on Open Source technologies only, I picked **[Debian]** 
 
 ###### <img alt="ArchLinux logo" height="12" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Archlinux-icon-crystal-64.svg" /> Arch Linux
 
-The deeper I dug into expanding my knowledge about Linux, I have found out about **[Arch Linux]**. I totally identified myself with its five principles: simplicity, modernity, pragmatism, user centrality, and versatility. **I am about to start using this distribution as my core for developing purposes**.
+The deeper I dug into expanding my knowledge about Linux, I have found out about **[Arch Linux]**. I totally identified myself with its five principles: simplicity, modernity, pragmatism, user centrality, and versatility. **I am about to start using this distribution as my main one**.
 
 #### <img alt="Windows logo" height="12" src="https://upload.wikimedia.org/wikipedia/commons/4/48/Windows_logo_-_2012_%28dark_blue%29.svg" /> Windows 10
 
@@ -70,20 +70,19 @@ On Windows 10 I use **[Windows Terminal]**. In my opinion is very user friendly,
 ### Shells
 
 #### Zsh
-
-**[Zsh]** _(TBA my thoughts)_
-
+As the main shell for everyday tasks or projects, I use **[Zsh]**. It's extending `Bash` with more features and there are lots of available Open Source tools or plugins to allow me being more productive, with my own configurations.
 
 #### Bash
 
-**[Bash]** _(TBA my thoughts)_
+From time to time I use **[Bash]** as this is usually the default shell available and being run when connecting to a server. For this reason, I do my own "Shell scripting" in Bash's syntax, as it can be used cross-shell. Another reason is that I can use [`ShellCheck`] for linting my own scripts to deal with errors or possible security issues.
 
 #### <img alt="PowerShell logo" height="12" src="https://raw.githubusercontent.com/PowerShell/PowerShell/master/assets/ps_black_64.svg" /> PowerShell
 
-**[PowerShell]** _(TBA my thoughts)_
+Once a while, I have to do some automation with file management on Windows or other tasks related to the usage of this operating system. I found **[PowerShell]** to be a perfect fit for this purpose. I use it as well for testing projects which are supposed to be cross-platform.
  
 [Zsh]: http://zsh.sourceforge.net/
 [Bash]: https://www.gnu.org/software/bash/
+[ShellCheck]: https://www.shellcheck.net/
 [PowerShell]: https://docs.microsoft.com/en-us/powershell/
 
 ---
