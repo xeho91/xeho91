@@ -1,5 +1,27 @@
 ## Technologies I use
 
+### Operating systems
+
+#### <img alt="Linux logo" height="15" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/TuxFlat.svg" /> Linux
+
+At the beginnings of my journey to become a developer, I was starting to learn more about the concept of **[Open-source model and open collaboration]**. By the time I grew, I started to love this movement and I am slowly migrating myself to **use only Open Source technologies**.
+
+Normally, I use "headless" Linux _(via terminal)_ and I am familiar with these distributions so far:
+- <img alt="Debian logo" height="10" src="https://www.debian.org/logos/openlogo-nd.svg" /> **[Debian]**
+- <img alt="Ubuntu logo" height="10" src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo-ubuntu_cof-orange-hex.svg" /> **[Ubuntu]**
+
+#### <img alt="Windows logo" height="15" src="https://upload.wikimedia.org/wikipedia/commons/4/48/Windows_logo_-_2012_%28dark_blue%29.svg" /> Windows 10
+
+From time to time, I'm in need to use Adobe tools, such as `Illustrator`, `XD`, `Photoshop`, etc. It is impossible for now to use Adobe products on Linux platforms, even with the replacements _(`GIMP`, `Inkscape`, etc)_. Sometimes, there is other GUI software which is available only on popular operating systems such as Windows or Mac, which gives me another reason to keep using it. Luckily, Microsoft had a "change of heart" in the past years with its own contribution and focus on open-source. They started to care more about the developers and they are providing a **[Windows Subsystem for Linux]** _(`WSL`)_ environment which I use.
+
+[Open-source model and open collaboration]: https://en.wikipedia.org/wiki/Open_source
+[Debian]: https://www.debian.org/
+[Ubuntu]: https://ubuntu.com/
+[Windows Subsystem for Linux]: https://docs.microsoft.com/en-us/windows/wsl/about
+
+
+---
+
 ### Editors
 
 #### <img alt="Neovim logo" height="15" src="https://upload.wikimedia.org/wikipedia/commons/0/07/Neovim-mark-flat.svg" /> Neovim
