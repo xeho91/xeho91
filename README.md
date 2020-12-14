@@ -1,10 +1,11 @@
-[Technologies I use](#technologies-i-use)
-- [Operating systems _(OS)_](#operating-systems)
-  - [<img alt="Linux logo" height="12" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/TuxFlat.svg" /> Linux](#-linux)
-  - [<img alt="Windows logo" height="12" src="https://upload.wikimedia.org/wikipedia/commons/4/48/Windows_logo_-_2012_%28dark_blue%29.svg" /> Windows 10](#-windows-10)
-- [Editors](#editors)
-  - [<img alt="Neovim logo" height="12" src="https://upload.wikimedia.org/wikipedia/commons/0/07/Neovim-mark-flat.svg" /> Neovim](#-neovim)
-  - [<img alt="Visual Studio Code logo" height="12" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" />  Visual Studio Code _(VSCode)_](#-visual-studio-code)
+## Table of Contents
+- [Technologies I use](#technologies-i-use)
+  - [Operating systems _(OS)_](#operating-systems)
+    - [<img alt="Linux logo" height="12" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/TuxFlat.svg" /> Linux](#-linux)
+    - [<img alt="Windows logo" height="12" src="https://upload.wikimedia.org/wikipedia/commons/4/48/Windows_logo_-_2012_%28dark_blue%29.svg" /> Windows 10](#-windows-10)
+  - [Editors](#editors)
+    - [<img alt="Neovim logo" height="12" src="https://upload.wikimedia.org/wikipedia/commons/0/07/Neovim-mark-flat.svg" /> Neovim](#-neovim)
+    - [<img alt="Visual Studio Code logo" height="12" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" />  Visual Studio Code _(VSCode)_](#-visual-studio-code)
 
 ---
 
