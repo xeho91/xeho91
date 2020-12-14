@@ -9,7 +9,7 @@ Although I have to warn you that the learning curve to learn how to use this edi
 
 #### <img alt="Visual Studio Code logo" height="15" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" /> Visual Studio Code
 
-For debugging purposes I use **[Visual Studio Code]**, because this editor is easier to use for this and is more advanced. I use it also when I need to code with a quick preview of the results. For example a `SVG` code, `HTML` & CSS, `Markdown`, etc. _(with the help of plugins)_. To keep the consistency _(with keybindings and mappings)_ in using both of these editors, I use **[VSCodeVim plugin]**.
+For debugging purposes, I use **[Visual Studio Code]** because this editor is easier to use for this and is more advanced. I use it also when I need to code with a quick preview of the results. For example an `SVG` code, `HTML` & CSS, `Markdown`, etc. _(with the help of plugins)_. To keep the consistency _(with keybindings and mappings)_ in using both of these editors, I use **[VSCodeVim plugin]**.
 
 [Neovim]: https://neovim.io/
 [Visual Studio Code]: https://code.visualstudio.com/
