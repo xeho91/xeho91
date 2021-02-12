@@ -1,0 +1,24 @@
+{
+  "name": "xeho91",
+  "version": "1.0.0",
+  "description": "My brand assets",
+  "scripts": {
+    "avatar:minify": "svgo --config \"config/svgo.json\" --input \"avatar/xeho91-avatar.svg\" --output \"avatar/xeho91-avatar.min.svg\"",
+    "avatar:export": "svgexport \"avatar/xeho91-avatar.svg\" \"avatar/xeho91-avatar.png\" 1024:1024"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xeho91/xeho91.git"
+  },
+  "keywords": [
+    "brand",
+    "assets"
+  ],
+  "author": "xeho91 <xeho91@pm.me>",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/xeho91/xeho91#readme",
+  "devDependencies": {
+    "svgexport": "^0.4.1",
+    "svgo": "^1.3.2"
+  }
+}
