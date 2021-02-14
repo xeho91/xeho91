@@ -1,0 +1,3 @@
+[submodule "avatar"]
+	path = avatar
+	url = https://github.com/xeho91/avatar
