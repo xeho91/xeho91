@@ -1,6 +1,8 @@
 # xeho91
 
-What I am willing to share with you…
+![xeho91's animated logo](https://raw.githubusercontent.com/xeho91/logo/main/xeho91-logo.animated.min.svg)
+
+What I am willing to share with you.
 
 ## Table of Contents
 
@@ -12,7 +14,11 @@ What I am willing to share with you…
 ## About me
 
 As my short biography says, I'm a **concerned Global Citizen** passionate about
-the life below the oceans and sustainable development.
+life below the oceans, because of this also about sustainable development.\
+Since a while,
+I have dug myself into the topic of digital privacy rights on the Internet.
+That includes protecting ourselves and the small businesses who are
+unconsciously at risk.
 
 Below I will share a little more about me in AMA style format _(Ask Me
 Anything)_.
@@ -45,7 +51,7 @@ I don't plan to stop discovering other cultures and their lifestyles anytime
 soon.
 Is quite astonishing to me,
 how little I knew,
-if I didn't start to discover and experience with my own eyes.
+if I didn't start to experience with my own eyes.
 
 </details>
 
@@ -58,14 +64,17 @@ if I didn't start to discover and experience with my own eyes.
 
 As a child,
 I used to watching nature and wilderness documentaries.
-On Sundays from BBC station with [David Attenborough] as a host or narrator.
+On Sundays from BBC station with [David Attenborough] as a presenter or
+narrator.
 Mostly from _"[The Blue Planet]"_ series.
 It was my sort of meditation watching the scenes of natural wilderness,
 especially with this calm voice, that kept my curiosity high and in awe.
 
 A few years later,
-influenced by [TEDx talk from Sylvia Earle], I was "punched" damn strong by how
-we have failed as humanity to take better care of the blue part of our world.
+influenced by TEDx talk from Sylvia Earle,
+it got into my head how we as humans have disappointed to take better care of
+our world's blue part.
+
 Since then,
 I decided to monitor the situation by following the news from the
 NGOs and other respected marine biologists.
@@ -73,10 +82,16 @@ From what I see, there has been some progress.
 However,
 I'm still left with lots of concerns that we are not making enough to improve
 it.
-It frustrates me that I'm not capable, to help more with this, yet.
+It frustrates me that I'm not capable, to help more with this case, yet.
 
-Hence why I am passionate about life below the oceans and sustainable
-development.
+With my digital marketing experience,
+I noticed an alarmingly increasing trend of breaking privacy rights
+on the Internet.
+Now more than ever, security is crucial for any organisation size.
+The awareness of this situation is slowly improving.
+However,
+I am not satisfied with the progress's speed because some damages may be
+irreversible.
 
 </details>
 
@@ -89,25 +104,33 @@ development.
 <details>
   <summary>Answer</summary>
 
+After having an academic and practical experience in digital marketing,
+I have taught myself how to become a software developer,
+focusing on full-stack.
+
+However, I didn't stick just to working in the IT industry.
 Having an academical experience in digital marketing,
 I have self-taught myself how to become a software developer,
 with a focus on the full-stack.
+
 However, I didn't stick just to working in the IT industry.
 On the contrary.
 I volunteered on many projects since I was a student and a long member of the
 international student organization - [AIESEC].
 I worked on farms, packhouses, warehouses.
-I did housekeeping in hospitality businesses and worked as a kitchen porter in
-the restaurant.
-I did help exchange quite often.
-Occasionally I helped remotely with graphic design errands as well as online
+I did housekeeping in hospitality businesses,
+and as a kitchen porter in the restaurant.
+I have participated in help exchange quite often, mostly through [HelpX].
+Occasionally I helped remotely with graphic design errands and online
 promotion campaigns or websites development.
-I did anything at the expense of allowing me to discover as much as possible in
-this world and what it has to offer.
+I did anything to allow myself to discover as much as possible in this
+world.
+And what it has to offer.
 
 </details>
 
-[aiesec]: https://aiesec.org/
+[AIESEC]: https://aiesec.org/
+[HelpX]: https://helpx.net/
 
 ### What type of adopter, I am?
 
