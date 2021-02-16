@@ -2,10 +2,10 @@
 
 ![xeho91's animated logo](https://raw.githubusercontent.com/xeho91/logo/main/xeho91-logo.animated.min.svg)
 
-## 🔗 Table of Contents
+## 🔗Table of Contents
 
-- [🧑‍💻 About me](#about-me)
-- [My technology stack](#my-technology-stack)
+- [🧑‍💻About me](#about-me)
+- [💻My technology stack](#my-technology-stack)
 
 ---
 
@@ -18,10 +18,10 @@ I have dug myself into the topic of **digital privacy rights on the Internet**.
 That includes protecting ourselves and the small businesses who are
 unconsciously at risk.
 
-Below I will share a little more about me in AMA style format _(Ask Me
-Anything)_.
+Below I will share a little more about me in
+<abbr title="Ask Me Anything">AMA</abbr> format.
 
-### 🔗 Quick navigation for about me
+### 🔗Quick navigation for about me
 
 - [Why a Global Citizen?](#why-a-global-citizen)
 - [What makes me concerned?](#what-makes-me-concerned)
@@ -147,7 +147,8 @@ Anything)_.
   I pay attention to privacy and security depending on the software purpose.
   
   I don't try to be an opinion leader, neither become an influencer.
-  I carefully select my "own circle" of them from the IT industry and the
+  I carefully select my _"own circle"_ of them from the
+  <abbr title="Information Technology">IT</abbr> industry and the
   marine world.
   In modern times,
   I am doing my best to not fall into the trap of being misinformed.
@@ -155,203 +156,211 @@ Anything)_.
 
 ---
 
-## My technology stack
+## 💻My technology stack
 
-Below you can find the technologies I am familiar by having any experience with
-them.
+At the beginnings of my journey to become a developer.
+I learned more about the concept and the purpose of [Open-source model and
+open collaboration].
+By the time I grew, I have identified myself with this movement's idea.
+**I started using Open Source technologies or tools, whenever possible**.
+
+Below you can find the technologies I am familiar with by having any experience.
 I also allowed myself to share some thoughts about them,
 mostly to remind myself why I pick these or why I use it.
 
-### Quick navigation for my technology stack
+[Open-Source model and open collaboration]: https://en.wikipedia.org/wiki/Open_source
+
+### 🔗Quick navigation for my technology stack
 
 - [Operating systems _(OS)_](#operating-systems)
-  - [<img alt="Linux logo" height="12"
-          src="https://upload.wikimedia.org/wikipedia/commons/3/3c/TuxFlat.svg"
-     /> Linux](#linux)
-    - [Distributions](#distributions)
-      - [<img alt="Ubuntu logo" height="12"
-              src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo-ubuntu_cof-orange-hex.svg"
-         /> Ubuntu](#ubuntu)
-      - [<img alt="Debian logo" height="12"
-              src="https://www.debian.org/logos/openlogo-nd.svg"
-         /> Debian](#debian)
-      - [<img alt="ArchLinux logo" height="12"
-               src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Archlinux-icon-crystal-64.svg"
-         /> Arch Linux (In progress…)](#arch-linux)
-  - [<img alt="Windows logo" height="12"
-          src="https://upload.wikimedia.org/wikipedia/commons/4/48/Windows_logo_-_2012_%28dark_blue%29.svg"
-      /> Windows 10](#windows-10)
-- [Terminals](#terminals)
-  - [<img alt="Windows Terminal logo" height="12"
-          src="https://github.com/microsoft/terminal/blob/main/res/terminal/Terminal.svg"
-     /> Windows Terminal](#windows-terminal)
 - [Shells](#shells)
-  - [<img alt="Zsh logo" height="12"
-          src="https://cdn.freebiesupply.com/logos/large/2x/terminal-1-logo-svg-vector.svg"
-     /> Zsh](#zsh)
-  - [<img alt="Bash logo" height="12"
-          src="https://github.com/odb/official-bash-logo/blob/master/assets/Logos/Icons/SVG/BASH_logo-transparent-bg-bw-02.svg"
-     /> Bash](#bash)
-  - [<img alt="PowerShell logo" height="12"
-          src="https://raw.githubusercontent.com/PowerShell/PowerShell/master/assets/ps_black_64.svg"
-     /> PowerShell](#powershell)
 - [Editors](#editors)
-  - [<img alt="Neovim logo" height="12"
-          src="https://upload.wikimedia.org/wikipedia/commons/0/07/Neovim-mark-flat.svg"
-     /> Neovim](#neovim)
-  - [<img alt="Visual Studio Code logo" height="12"
-          src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg"
-     /> Visual Studio Code _(VSCode)_](#visual-studio-code)
 
 ---
 
 ### Operating systems
 
+I have experience with two popular operating systems.
+[Linux] and [Windows].
+I wanted to be oriented in both systems,
+to be more flexible with what resources I have available,
+at any time.
+
+[Windows]: #windows
+[Linux]: #linux
+
+#### 🔗Quick navigation for Operating systems
+
+- [Linux](#linux)
+  - [Ubuntu](#ubuntu)
+  - [Debian](#debian)
+  - [Kali Linux](#kali-linux)
+  - [Arch Linux](#arch-linux)
+- [Windows](#windows)
+
 #### Linux
 
-<details>
-  <summary>
-    <img alt="Linux logo" height="12"
-         src="https://upload.wikimedia.org/wikipedia/commons/3/3c/TuxFlat.svg"
-    />
-    My thoughts on Linux
-  </summary>
-
-At the beginnings of my journey to become a developer.
-I learned more about the concept and the purpose of **[Open-source model and
-open collaboration]**.
-By the time I grew,
-I have identified myself with the idea of this movement.
-I started myself to **use only Open Source technologies or tools**,
-whenever possible.
-Besides that,
-this platform plays a crucial role in software development and servers
-administration.
-For my aspirations to become a full-stack developer,
-I mainly focus on this operating system.
-
-[open-source model and open collaboration]: https://en.wikipedia.org/wiki/Open_source
-
-##### Distributions
-
-Normally, I use "headless" Linux _(via terminal)_.
-I have worked with these following **distributions** so far:
-
-###### Ubuntu
-
-  <details>
-    <summary>
-      <img alt="Ubuntu logo" height="12"
-           src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo-ubuntu_cof-orange-hex.svg"
-      />
-      My thoughts on Ubuntu
-    </summary>
-
-At first, in my learning journey, I started with **[Ubuntu]**.
-I found it to be the most beginner-friendly one.
-Now,
-I am using this distribution mostly for the servers where I need to install or
-configure quickly.
-With the configurations made in advance, it can save some time.
-
-  </details>
-
-[ubuntu]: https://ubuntu.com/
-
-###### Debian
-
-  <details>
-    <summary>
-      <img alt="Debian logo" height="12"
-           src="https://www.debian.org/logos/openlogo-nd.svg"
-      />
-      My thoughts on Debian
-    </summary>
-
-When I decided to focus on Open Source technologies only,
-I picked **[Debian]** as my main distribution to use,
-because it's the most common one used by other developers.
-I found it easy to use with having a previous experience with `Ubuntu`.
-
-  </details>
-
-[debian]: https://www.debian.org/
-
-###### Arch Linux
-
-  <details>
-    <summary>
-      <img alt="ArchLinux logo" height="12"
-           src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Archlinux-icon-crystal-64.svg"
-      />
-      My thoughts on Arch Linux
-    </summary>
-
-The deeper I dug into expanding my knowledge about Linux,
-I have found out about **[Arch Linux]**.
-I totally identified myself with its five principles:
-simplicity, modernity, pragmatism, user centrality, and versatility.
-**I am about to start using this distribution as my main one**.
-
-  </details>
-
-[arch linux]: https://www.archlinux.org/
-
-</details>
-
-#### Windows 10
+<img alt="Linux logo"
+     height="50"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/linux.svg"
+/>
 
 <details>
-  <summary>
-    <img alt="Windows logo" height="12"
-         src="https://upload.wikimedia.org/wikipedia/commons/4/48/Windows_logo_-_2012_%28dark_blue%29.svg"
-    />
-    My thoughts on Windows 10
-  </summary>
+  <summary>My thoughts on Linux</summary>
 
-From time to time, when I'm in need to use Adobe tools, such as `Illustrator`,
-`XD`, `Photoshop`, etc.
-For now, it is impossible to use Adobe products on Linux platforms.
-The replacements _(`GIMP`, `Inkscape`, etc.)_ doesn't always fulfil the job.
-I had the moments when other GUI software was available only on the popular
-operating systems _(Windows or Mac)_,
-which gives me another reason to keep using it.
-Luckily,
-Microsoft had a "change of heart" in the past years with its own contributions
-and focus on Open Source.
-They started to care more about the developers,
-and they are providing a **[Windows Subsystem for Linux]** _(`WSL`)_
-environment which I use.
+  **This platform plays a crucial role in software development and servers
+  administration**.
+  For my aspirations to become a full-stack developer,
+  I mainly focus on this operating system.
+  Because this one is a [UNIX-like] system,
+  I don't leave myself utterly unprepared for working with macOS or some
+  electronic devices, including smartphones.
 
+  Usually, I use Linux `"headless"` _(via terminal)_.
+  I have worked with below-described **distributions** so far.
+
+  [UNIX-like]: https://en.wikipedia.org/wiki/Unix-like
 </details>
 
-[windows subsystem for linux]: https://docs.microsoft.com/en-us/windows/wsl/about
+##### Ubuntu
+
+<img alt="Ubuntu logo"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/ubuntu.svg"
+/>
+
+<details>
+  <summary>My thoughts on Ubuntu</summary>
+
+  At the beginning of my learning journey,
+  I started with [Ubuntu].
+  I found it to be the most beginner-friendly one.
+  Now,
+  **I am using this distribution mostly for the servers** where I need to
+  install or configure quickly.
+  With easy access to the available resources and provided tools in advance,
+  it can save time.
+
+  [Ubuntu]: https://ubuntu.com/
+</details>
+
+##### Debian
+
+<img alt="Debian logo"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/debian.svg"
+/>
+
+<details>
+  <summary>My thoughts on Debian</summary>
+
+  When I decided to focus more on Open Source technologies only,
+  I started to work with [Debian], especially on my Raspberry Pi.
+  Thanks to the previous experience with `Ubuntu`,
+  I was able to find myself in it.
+  And learn more about the history behind it,
+  because it helps to understand other Debian-like distributions.
+
+  [Debian]: https://www.debian.org/
+</details>
+
+##### Kali Linux
+
+<img alt="Kali Linux logo"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/kali-linux.svg"
+/>
+
+<details>
+  <summary>My thoughts on Kali Linux</summary>
+
+  Because I use <abbr title="Windows Subsystem for Linux">WSL</abbr> on Windows,
+  I decided to use this one distribution as the main one.
+  [Kali Linux] provides the configured and installed tools for advanced
+  penetration testing.
+  Experience from `Debian` helped to get started with this one.
+  It also offers `Win-Kex` tool,
+  which allows using Linux and Windows application, at the same time.\
+  This combination allows me to study better the differences between these
+  operating systems.
+  And of course,
+  do some coding or software researching,
+  without worrying about any tool working only on the specific operating system.
+  Performance is still an issue,
+  but I found it acceptable for not so _"resource-consuming"_ tasks.
+
+  [Kali Linux]: https://www.kali.org/docs/
+</details>
+
+##### Arch Linux
+
+<img alt="Arch Linux logo"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/arch-linux.svg"
+/>
+
+<details>
+  <summary>My thoughts on Arch Linux</summary>
+
+  The deeper I dug into expanding my knowledge about Linux,
+  I have found out about [Arch Linux].
+  I totally identified myself with its five principles:
+  simplicity,
+  modernity,
+  pragmatism,
+  user centrality,
+  and versatility.\
+  **I'm about to start using this distribution as my main one for the
+  development**.
+  I am still in the learning process.
+
+  [Arch Linux]: https://www.archlinux.org/
+</details>
+
+#### Windows
+
+<img alt="Windows logo"
+     height="50"
+     src="https://upload.wikimedia.org/wikipedia/commons/4/48/Windows_logo_-_2012_%28dark_blue%29.svg"
+/>
+
+<details>
+  <summary>My thoughts on Windows 10</summary>
+
+  Since Microsoft has changed its philosophy - _"to focus more on open-source"_,
+  they started to care more about the developers' experience.
+  By providing tools such as [Windows Terminal], [Windows Subsystem for Linux],
+  <abbr title="Visual Studio Code">VSCode</abbr> editor, etc.
+  With the power of Open source,
+  they managed to fix many faults,
+  making it a much more friendly system for the coders.
+
+  However,
+  **this system's default settings, bloatware,
+  manipulative marketing patterns and confusing approach to user's privacy
+  still leave many areas to improve and leaves me concerned and suspicious**.
+  No matter how comfortable using this system matures,
+  I will keep my alert and suspiciousness,
+  to any new features or tools.
+
+  For the reason that is the most commonly used operating system,
+  I use it to be more resourceful for the average user or any small company.
+  Another reason is that some existing professional
+  <abbr title="graphical user interface">GUI</abbr> software tools are
+  available for this system only,
+  such as Adobe tools.
+
+  [Windows Subsystem for Linux]: https://docs.microsoft.com/en-us/windows/wsl/about
+  [Windows Terminal]: https://docs.microsoft.com/en-us/windows/terminal/
+</details>
 
 ---
 
-### Terminals
+<!-- ### Shells
 
-#### Windows Terminal
-
-<details>
-  <summary>
-    <img alt="Windows Terminal logo" height="12"
-         src="https://github.com/microsoft/terminal/blob/main/res/terminal/Terminal.svg"
-    />
-    My thoughts on Windows Terminal
-  </summary>
-
-On Windows 10 I use **[Windows Terminal]**.
-In my opinion is the most user-friendly one, customizable,
-and easy to use with any shells available on my Windows or Linux _(via `WSL`)_.
-
-</details>
-
-[windows terminal]: https://docs.microsoft.com/en-us/windows/terminal/
-
----
-
-### Shells
+It also allowed me to understand the Command Line Interface (CLI) and shell
+scripting. Right now, I can't live without CLI tools, since they're my
+productivity boosters.
 
 #### Zsh
 
@@ -467,4 +476,4 @@ in using both of mentioned editors, I use **[VSCodeVim plugin]**.
 </details>
 
 [visual studio code]: https://code.visualstudio.com/
-[vscodevim plugin]: https://marketplace.visualstudio.com/items?itemName=vscodevim.vim
+[vscodevim plugin]: https://marketplace.visualstudio.com/items?itemName=vscodevim.vim -->
