@@ -21,14 +21,13 @@ unconsciously at risk.
 Below I will share a little more about me in
 <abbr title="Ask Me Anything">AMA</abbr> format.
 
-### 🔗Quick navigation for about me
+**🔗Quick navigation for about me:**
 
 - [Why a Global Citizen?](#why-a-global-citizen)
 - [What makes me concerned?](#what-makes-me-concerned)
 - [What is my work experience?](#what-is-my-work-experience)
 - [What type of adopter, I am?](#what-type-of-adopter-i-am)
 
----
 
 ### Why a Global Citizen?
 
@@ -189,7 +188,7 @@ at any time.
 [Windows]: #windows
 [Linux]: #linux
 
-#### 🔗Quick navigation for Operating systems
+**🔗Quick navigation for Operating systems:**
 
 - [Linux](#linux)
   - [Ubuntu](#ubuntu)
@@ -200,7 +199,7 @@ at any time.
 
 #### Linux
 
-<img alt="Linux logo"
+<img alt="Linux icon"
      height="50"
      src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/linux.svg"
 />
@@ -224,7 +223,7 @@ at any time.
 
 ##### Ubuntu
 
-<img alt="Ubuntu logo"
+<img alt="Ubuntu icon"
      height="25"
      src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/ubuntu.svg"
 />
@@ -246,7 +245,7 @@ at any time.
 
 ##### Debian
 
-<img alt="Debian logo"
+<img alt="Debian icon"
      height="25"
      src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/debian.svg"
 />
@@ -266,7 +265,7 @@ at any time.
 
 ##### Kali Linux
 
-<img alt="Kali Linux logo"
+<img alt="Kali Linux icon"
      height="25"
      src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/kali-linux.svg"
 />
@@ -294,7 +293,7 @@ at any time.
 
 ##### Arch Linux
 
-<img alt="Arch Linux logo"
+<img alt="Arch Linux icon"
      height="25"
      src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/arch-linux.svg"
 />
@@ -319,9 +318,9 @@ at any time.
 
 #### Windows
 
-<img alt="Windows logo"
+<img alt="Windows icon"
      height="50"
-     src="https://upload.wikimedia.org/wikipedia/commons/4/48/Windows_logo_-_2012_%28dark_blue%29.svg"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/windows10.svg"
 />
 
 <details>
@@ -356,82 +355,125 @@ at any time.
 
 ---
 
-<!-- ### Shells
+### Shells
 
-It also allowed me to understand the Command Line Interface (CLI) and shell
-scripting. Right now, I can't live without CLI tools, since they're my
-productivity boosters.
+I found it impossible to omit understanding how the shells work in depth.
+I believe this is where I should have started when I decided to down this road
+of learning software development.
+It wasn't easy to figure out and navigate through the differences between
+Linux and Windows shells.
+After continuous learning and many trails and trying to solve the errors,
+I can't live without them.
 
-#### Zsh
+It feels quite good and bizarre to be no longer dependant on
+<abbr title="Graphical User Interface">GUI</abbr> tools.
+Instead,
+I fell in love with <abbr title="Command Line Interface">CLI</abbr> tools and
+shell scripting to automate most of my tasks.
+**Experience from studying shells' s was a significant boost to my
+productivity, resourcefulness and knowledge about the software environments**.
 
-<details>
-  <summary>
-    <img alt="Zsh logo" height="12"
-         src="https://cdn.freebiesupply.com/logos/large/2x/terminal-1-logo-svg-vector.svg"
-    />
-    My thoughts on Zsh
-  </summary>
+**🔗Quick navigation for shells:**
 
-As the main shell for everyday tasks or projects, I use **[Zsh]**.
-It's extending `Bash` with more features,
-and there are lots of available Open Source tools or plugins to allow me being
-more productive, with my own configurations.
-
-</details>
-
-[zsh]: http://zsh.sourceforge.net/
+- [Bash](#bash)
+- [Zsh](#zsh)
+- [PowerShell](#powershell)
 
 #### Bash
 
+<img alt="Bash icon"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/bash.svg"
+/>
+
 <details>
-  <summary>
-    <img alt="Bash logo" height="12"
-         src="https://github.com/odb/official-bash-logo/blob/master/assets/Logos/Icons/SVG/BASH_logo-transparent-bg-bw-02.svg"
-    />
-    My thoughts on Bash
-  </summary>
+  <summary>My thoughts on Bash</summary>
 
-There are the moments when I use **[Bash]** as this is usually the default
-shell available and when connecting to a server with Linux.
-For this reason, I do my own "Shell scripting" in Bash's syntax,
-because I can use it cross-shell _(with `Zsh`)_.
-Another reason is that I can use [`ShellCheck`] for linting my own scripts to
-deal with errors or possible security issues.
+  [Bash] was the **most important** to get comfortable with during the study
+  process.
+  To my knowledge,
+  it comes as default one in UNIX-like operating systems.
+  For this reason,
+  I do my own _"shell scripting"_ in Bash's syntax,
+  for the tasks automation,
+  because I can use it cross-shell on Linux _(with `Zsh` for example).
+  Another definite plus for me was that I could use [ShellCheck] for linting my
+  scripts to deal with errors or possible security issues.
 
+  [Bash]: https://www.gnu.org/software/bash/
+  [ShellCheck]: https://www.shellcheck.net/
 </details>
 
-[bash]: https://www.gnu.org/software/bash/
-[shellcheck]: https://www.shellcheck.net/
+#### Zsh
+
+<img alt="Zsh icon"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/zsh-unofficial.svg"
+/>
+
+<details>
+  <summary>My thoughts on Zsh</summary>
+
+  For the development, as the main shell, I use [Zsh].
+  It's extending `Bash` with more features,
+  and **there are lots of available Open Source tools or plugins to enhance
+  productivity**.
+  There are some small differences in syntax,
+  and sadly, there's no linter for this shell scripts.
+  Luckily,
+  the experience from `Bash` didn't stop me from improving my shell experience
+  with my custom configuration.
+
+  [Zsh]: http://zsh.sourceforge.net/
+</details>
 
 #### PowerShell
 
+<img alt="PowerShell icon"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/powershell.svg"
+/>
+
 <details>
-  <summary>
-    <img alt="PowerShell logo" height="12"
-         src="https://raw.githubusercontent.com/PowerShell/PowerShell/master/assets/ps_black_64.svg"
-    />
-    My thoughts on PowerShell
-  </summary>
+  <summary>My thoughts on PowerShell</summary>
 
-Once a while,
-I do some automation with the files management on Windows.
-Or other tasks related to the usage of this operating system.
-I found **[PowerShell]** to be a perfect fit for this purpose.
-I use it as well for testing projects which are supposed to be cross-platform.
+  Since I use Windows,
+  sometimes I want to create some automation scripts for
+  this system environment, on the [PowerShell].
+  It has more verbose syntax,
+  which makes the purpose of the code more understandable.
+  It is quite extensive,
+  and it is possible to do almost everything in its operating system.
 
+  While there's a possibility to use
+  <abbr title="Windows Subsystem for Linux">WSL</abbr> _(with `Bash` or
+  `Zsh`)_ instead,
+  it didn't provide that much performance as PowerShell did _(for the
+  front-end development)_.
+  There are some _"gotchas"_ of using WSL, and it has limitations.
+  However,
+  with the experience from Linux,
+  the syntax difference it created a lot of confusion for me.
+  Another downside for me was that the configuration process wasn't an easy one.
+  Surprisingly,
+  my developing experience using this shell wasn't that irritating,
+  given that it doesn't have a vast community that supports it.
+  It was worth it for me to learn it because now I am more manageable with this
+  knowledge and experience.
+  It did speed up doing the tasks on Windows by simply using the terminal.
+
+  [PowerShell]: https://docs.microsoft.com/en-us/powershell/
 </details>
-
-[powershell]: https://docs.microsoft.com/en-us/powershell/
 
 ---
 
-### Editors
+<!-- ### Editors
 
 #### Neovim
 
 <details>
   <summary>
-    <img alt="Neovim logo" height="12"
+    <img alt="Neovim icon" height="12"
          src="https://upload.wikimedia.org/wikipedia/commons/0/07/Neovim-mark-flat.svg"
     />
     My thoughts on Neovim
@@ -457,7 +499,7 @@ and as well how to configure plugins on my own _(requires an understanding of
 
 <details>
   <summary>
-    <img alt="Visual Studio Code logo" height="12"
+    <img alt="Visual Studio Code icon" height="12"
          src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg"
     />
     My thoughts on Visual Studio Code
