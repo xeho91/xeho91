@@ -2,28 +2,26 @@
 
 ![xeho91's animated logo](https://raw.githubusercontent.com/xeho91/logo/main/xeho91-logo.animated.min.svg)
 
-What I am willing to share with you.
+## 🔗 Table of Contents
 
-## Table of Contents
-
-- [About me](#about-me)
+- [🧑‍💻 About me](#about-me)
 - [My technology stack](#my-technology-stack)
 
 ---
 
-## About me
+## 🧑‍💻About me
 
 As my short biography says, I'm a **concerned Global Citizen** passionate about
 life below the oceans, because of this also about sustainable development.\
 Since a while,
-I have dug myself into the topic of digital privacy rights on the Internet.
+I have dug myself into the topic of **digital privacy rights on the Internet**.
 That includes protecting ourselves and the small businesses who are
 unconsciously at risk.
 
 Below I will share a little more about me in AMA style format _(Ask Me
 Anything)_.
 
-### Quick navigation for about me
+### 🔗 Quick navigation for about me
 
 - [Why a Global Citizen?](#why-a-global-citizen)
 - [What makes me concerned?](#what-makes-me-concerned)
@@ -36,115 +34,123 @@ Anything)_.
 
 <details>
   <summary>Answer</summary>
+  Because I do explore the world as much as possible.
+  As [Thor Heyerdahl] once said:
 
-Because I do explore the world as much as possible.
-As [Thor Heyerdahl] once said:
+  > Borders? I have never seen one.\
+  > But I have heard they exist… in the minds of some people.
 
-> Borders? I have never seen one.\
-> But I have heard they exist… in the minds of some people.
+  Like him, **I don't see the borders**.
+  I was born in Poland, but my home is Earth,
+  and I care about the entire planet.
+  I treat every habitant equally without any discrimination.
+  I have been living in Poland, Brazil, New Zealand, Taiwan, and Ireland.
+  I don't plan to stop discovering other cultures and their lifestyles anytime
+  soon.
+  Is quite astonishing to me,
+  how little I knew,
+  if I didn't start to experience with my own eyes.
 
-Like him, I don't see the borders.
-I was born in Poland, but my home is Earth, and I care about the entire planet.
-I treat every habitant equally without any discrimination.
-I have been living in Poland, Brazil, New Zealand, Taiwan, and Ireland.
-I don't plan to stop discovering other cultures and their lifestyles anytime
-soon.
-Is quite astonishing to me,
-how little I knew,
-if I didn't start to experience with my own eyes.
-
+  [Thor Heyerdahl]: https://en.wikipedia.org/wiki/Thor_Heyerdahl
 </details>
-
-[thor heyerdahl]: https://en.wikipedia.org/wiki/Thor_Heyerdahl
 
 ### What makes me concerned?
 
 <details>
   <summary>Answer</summary>
 
-As a child,
-I used to watching nature and wilderness documentaries.
-On Sundays from BBC station with [David Attenborough] as a presenter or
-narrator.
-Mostly from _"[The Blue Planet]"_ series.
-It was my sort of meditation watching the scenes of natural wilderness,
-especially with this calm voice, that kept my curiosity high and in awe.
+  As a child,
+  I used to watching nature and wilderness documentaries.
+  On Sundays from BBC station with [David Attenborough] as a presenter or
+  narrator.
+  Mostly from _"[The Blue Planet]"_ series.
+  It was my sort of meditation watching the scenes of natural wilderness,
+  especially with this calm voice, that kept my curiosity high and in awe.
 
-A few years later,
-influenced by TEDx talk from Sylvia Earle,
-it got into my head how we as humans have disappointed to take better care of
-our world's blue part.
+  A few years later,
+  **influenced by a [TEDx talk from Sylvia Earle],
+  it got into my head how we as humans have disappointed to take better care of
+  our world's blue part**.
 
-Since then,
-I decided to monitor the situation by following the news from the
-NGOs and other respected marine biologists.
-From what I see, there has been some progress.
-However,
-I'm still left with lots of concerns that we are not making enough to improve
-it.
-It frustrates me that I'm not capable, to help more with this case, yet.
+  Since then,
+  I decided to monitor the situation by following the news from the
+  NGOs and other respected marine biologists.
+  From what I see, there has been some progress.
+  However,
+  I still have lots of concerns that we are not making enough to improve it.
+  It frustrates me that I'm not capable enough to help more with this case.
 
-With my digital marketing experience,
-I noticed an alarmingly increasing trend of breaking privacy rights
-on the Internet.
-Now more than ever, security is crucial for any organisation size.
-The awareness of this situation is slowly improving.
-However,
-I am not satisfied with the progress's speed because some damages may be
-irreversible.
+  I am also concerned that **I noticed an alarmingly increasing trend of
+  breaking privacy rights on the Internet** with my digital marketing
+  experience.
+  This matter is still relatively new to me,
+  and if I had to recommend where to start looking to expand this topic,
+  I could recommend this one [TEDx talk from Andy Yen].
+  It sparks the idea of current problems.
 
+  For me,
+  security and privacy are crucial for any organisation size now more than ever.
+  I can notice that the awareness of this situation is slowly improving.
+  However,
+  I am not satisfied with the progress's speed because some damages may be
+  irreversible.
+
+  [David Attenborough]: https://en.wikipedia.org/wiki/David_Attenborough
+  [The Blue Planet]: https://en.wikipedia.org/wiki/The_Blue_Planet
+  [TEDx talk from Sylvia Earle]: https://www.ted.com/talks/sylvia_earle_my_wish_protect_our_oceans
+  [TEDx talk from Andy Yen]: https://www.ted.com/talks/andy_yen_think_your_email_s_private_think_again
 </details>
-
-[david attenborough]: https://en.wikipedia.org/wiki/David_Attenborough
-[the blue planet]: https://en.wikipedia.org/wiki/The_Blue_Planet
-[tedx talk from sylvia earle]: https://www.ted.com/talks/sylvia_earle_my_wish_protect_our_oceans
 
 ### What is my work experience?
 
 <details>
   <summary>Answer</summary>
 
-After having an academic and practical experience in digital marketing,
-I have taught myself how to become a software developer,
-focusing on full-stack.
+  After having an academic and practical experience in digital marketing,
+  **I have been resiliently learning about software development, security,
+  and accessibility**.
+  I was mostly focusing on full-stack,
+  to help small businesses adopt the technologies to their needs in a secure
+  and private-oriented way.
 
-However, I didn't stick just to working in the IT industry.
-Having an academical experience in digital marketing,
-I have self-taught myself how to become a software developer,
-with a focus on the full-stack.
+  However, I didn't stick just to working in the IT industry.
+  On the contrary.
+  I volunteered on many projects since I was a student and a long member of the
+  international student organisation - [AIESEC].
+  I worked on farms, packhouses, warehouses.
+  I did housekeeping in hospitality businesses,
+  and as a kitchen porter in the restaurant.
+  I have participated in help exchange quite often, mostly through [HelpX].
 
-However, I didn't stick just to working in the IT industry.
-On the contrary.
-I volunteered on many projects since I was a student and a long member of the
-international student organization - [AIESEC].
-I worked on farms, packhouses, warehouses.
-I did housekeeping in hospitality businesses,
-and as a kitchen porter in the restaurant.
-I have participated in help exchange quite often, mostly through [HelpX].
-Occasionally I helped remotely with graphic design errands and online
-promotion campaigns or websites development.
-I did anything to allow myself to discover as much as possible in this
-world.
-And what it has to offer.
+  Occasionally I helped remotely with graphic design errands and online
+  promotion campaigns or websites development.
+  I did anything to allow myself to discover as much as possible in this
+  world.
+  And what it has to offer.
 
+  [AIESEC]: https://aiesec.org/
+  [HelpX]: https://helpx.net/
 </details>
-
-[AIESEC]: https://aiesec.org/
-[HelpX]: https://helpx.net/
 
 ### What type of adopter, I am?
 
 <details>
   <summary>Answer</summary>
 
-By common definitions, I am either **Innovator** or **Early Adopter**.
-I don't take pride in being the one first to test/use new technologies,
-or products.
-I do like to test them, try to find their potential and provide a feedback.
-Naturally, I pick them with caution and understanding.
-I don't try to be an opinion leader, neither become an influencer.
-I carefully select them from the IT industry.
-
+  By standard definitions, I am **Early Adopter**.
+  I don't take pride in being the first to use new technologies or products.
+  I like to research them,
+  try to find their potential and provide feedback.
+  Naturally, I pick them with caution and understanding.
+  It suits my interest in software researching.
+  While I do that,
+  I pay attention to privacy and security depending on the software purpose.
+  
+  I don't try to be an opinion leader, neither become an influencer.
+  I carefully select my "own circle" of them from the IT industry and the
+  marine world.
+  In modern times,
+  I am doing my best to not fall into the trap of being misinformed.
 </details>
 
 ---
