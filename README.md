@@ -23,10 +23,28 @@ Below I will share a little more about me in
 
 **🔗Quick navigation for about me:**
 
-- [Why a Global Citizen?](#why-a-global-citizen)
-- [What makes me concerned?](#what-makes-me-concerned)
-- [What is my work experience?](#what-is-my-work-experience)
-- [What type of adopter, I am?](#what-type-of-adopter-i-am)
+- [xeho91](#xeho91)
+  - [🔗Table of Contents](#table-of-contents)
+  - [🧑‍💻About me](#about-me)
+    - [Why a Global Citizen?](#why-a-global-citizen)
+    - [What makes me concerned?](#what-makes-me-concerned)
+    - [What is my work experience?](#what-is-my-work-experience)
+    - [What type of adopter, I am?](#what-type-of-adopter-i-am)
+  - [💻My technology stack](#my-technology-stack)
+    - [Operating systems](#operating-systems)
+      - [Linux](#linux)
+        - [Ubuntu](#ubuntu)
+        - [Debian](#debian)
+        - [Kali Linux](#kali-linux)
+        - [Arch Linux](#arch-linux)
+      - [Windows](#windows)
+    - [Shells](#shells)
+      - [Bash](#bash)
+      - [Zsh](#zsh)
+      - [PowerShell](#powershell)
+    - [Editors](#editors)
+      - [Neovim](#neovim)
+      - [Visual Studio Code](#visual-studio-code)
 
 
 ### Why a Global Citizen?
@@ -169,7 +187,7 @@ mostly to remind myself why I pick these or why I use it.
 
 [Open-Source model and open collaboration]: https://en.wikipedia.org/wiki/Open_source
 
-### 🔗Quick navigation for my technology stack
+**🔗Quick navigation for my technology stack:**
 
 - [Operating systems _(OS)_](#operating-systems)
 - [Shells](#shells)
@@ -188,7 +206,7 @@ at any time.
 [Windows]: #windows
 [Linux]: #linux
 
-**🔗Quick navigation for Operating systems:**
+**🔗Quick navigation for operating systems:**
 
 - [Linux](#linux)
   - [Ubuntu](#ubuntu)
@@ -382,7 +400,7 @@ productivity, resourcefulness and knowledge about the software environments**.
 #### Bash
 
 <img alt="Bash icon"
-     height="25"
+     height="50"
      src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/bash.svg"
 />
 
@@ -407,7 +425,7 @@ productivity, resourcefulness and knowledge about the software environments**.
 #### Zsh
 
 <img alt="Zsh icon"
-     height="25"
+     height="50"
      src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/zsh-unofficial.svg"
 />
 
@@ -430,7 +448,7 @@ productivity, resourcefulness and knowledge about the software environments**.
 #### PowerShell
 
 <img alt="PowerShell icon"
-     height="25"
+     height="50"
      src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/powershell.svg"
 />
 
@@ -467,55 +485,66 @@ productivity, resourcefulness and knowledge about the software environments**.
 
 ---
 
-<!-- ### Editors
+### Editors
+
+My favourite editors, I use, like my own swiss-army knife.
+
+**🔗Quick navigation for editors:**
+
+- [Neovim](#neovim)
+- [Visual Studio Code](#visual-studio-code)
 
 #### Neovim
 
+<img alt="Neovim icon"
+     height="50"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/neovim.svg"
+/>
+
 <details>
-  <summary>
-    <img alt="Neovim icon" height="12"
-         src="https://upload.wikimedia.org/wikipedia/commons/0/07/Neovim-mark-flat.svg"
-    />
-    My thoughts on Neovim
-  </summary>
+  <summary>My thoughts on Neovim</summary>
 
-On a daily basis, I use **[Neovim]**,
-because I can use it directly from the terminal and it's quite fast.
-With a proper configuration, it can have some IDE features.
-After a few months of training,
-it definitely made me more productive and less dependant on the GUI editors.
+  Daily, I use [Neovim].
+  Because I can use it directly from the terminal and it's very fast.
+  After a few months of training, it made me more productive.\
+  The curve in learning how to use this editor was steep for me.
+  It took me a while to understand this text editor,
+  and as well how to configure plugins on my own _(requires an understanding
+  of VimScript aka `VimL`)_.
 
-I have to warn you.
-The curve in learning how to use this editor was steep for me.
-It took me a while to understand this text editor,
-and as well how to configure plugins on my own _(requires an understanding of
-`VimScript` aka `VimL`)_. It was worth it for me!
+  When I connect _(for example via SSH)_ to any device via terminal,
+  which doesn't have any of my custom configurations,
+  all I need is to use `vi` or `vim` to edit the file quickly.
+  **This editor saved a great deal of my time, on Windows and Linux**.
 
+  [Neovim]: https://neovim.io/
 </details>
-
-[neovim]: https://neovim.io/
 
 #### Visual Studio Code
 
+<img alt="Visual Studio Code icon"
+     height="50"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/vscode.svg"
+/>
+
 <details>
-  <summary>
-    <img alt="Visual Studio Code icon" height="12"
-         src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg"
-    />
-    My thoughts on Visual Studio Code
-  </summary>
+  <summary>My thoughts on Visual Studio Code</summary>
 
-For debugging purposes, I use **[Visual Studio Code]**.
-Because this editor is easier to use and provides more advanced possibilities.
-Sadly, at the expense of performance.
-I use it also when I need to code with a quick preview of the results.
-For example, an `SVG` code, `HTML` & CSS, `Markdown`, etc. _(with plugins, of
-course)_.
+  I use [Visual Studio Code] _(aka `VSCode`)_ mostly for debugging purposes
+  because this editor is easier to use and provides more advanced
+  possibilities.
+  Sadly,
+  at the expense of performance.
 
-To keep the consistency, with keybindings and mappings,
-in using both of mentioned editors, I use **[VSCodeVim plugin]**.
+  It is also great when I need to put all of the used tools and
+  configurations in one place,
+  to have a bigger picture of the project's entire environment.
+  A rich plugin system and active community allowed me to manage it from one
+  editor.
 
+  To keep the consistency, with keybindings and mappings, in using both of
+  mentioned editors, I use [VSCodeVim plugin].
+
+  [Visual Studio Code]: https://code.visualstudio.com/
+  [VSCodeVim plugin]: https://marketplace.visualstudio.com/items?itemName=vscodevim.vim
 </details>
-
-[visual studio code]: https://code.visualstudio.com/
-[vscodevim plugin]: https://marketplace.visualstudio.com/items?itemName=vscodevim.vim -->
