@@ -23,29 +23,10 @@ Below I will share a little more about me in
 
 **🔗Quick navigation for about me:**
 
-- [xeho91](#xeho91)
-  - [🔗Table of Contents](#table-of-contents)
-  - [🧑‍💻About me](#about-me)
-    - [Why a Global Citizen?](#why-a-global-citizen)
-    - [What makes me concerned?](#what-makes-me-concerned)
-    - [What is my work experience?](#what-is-my-work-experience)
-    - [What type of adopter, I am?](#what-type-of-adopter-i-am)
-  - [💻My technology stack](#my-technology-stack)
-    - [Operating systems](#operating-systems)
-      - [Linux](#linux)
-        - [Ubuntu](#ubuntu)
-        - [Debian](#debian)
-        - [Kali Linux](#kali-linux)
-        - [Arch Linux](#arch-linux)
-      - [Windows](#windows)
-    - [Shells](#shells)
-      - [Bash](#bash)
-      - [Zsh](#zsh)
-      - [PowerShell](#powershell)
-    - [Editors](#editors)
-      - [Neovim](#neovim)
-      - [Visual Studio Code](#visual-studio-code)
-
+- [Why a Global Citizen?](#why-a-global-citizen)
+- [What makes me concerned?](#what-makes-me-concerned)
+- [What is my work experience?](#what-is-my-work-experience)
+- [What type of adopter, I am?](#what-type-of-adopter-i-am)
 
 ### Why a Global Citizen?
 
@@ -192,6 +173,10 @@ mostly to remind myself why I pick these or why I use it.
 - [Operating systems _(OS)_](#operating-systems)
 - [Shells](#shells)
 - [Editors](#editors)
+- [Programming languages](#programming-languages)
+- [Front-end technologies](#front-end-technologies)
+- [Collaboration tools](#collaboration-tools)
+- [Miscellaneous](#miscellaneous)
 
 ---
 
@@ -548,3 +533,181 @@ My favourite editors, I use, like my own swiss-army knife.
   [Visual Studio Code]: https://code.visualstudio.com/
   [VSCodeVim plugin]: https://marketplace.visualstudio.com/items?itemName=vscodevim.vim
 </details>
+
+---
+
+### Programming languages
+
+**🔗Quick navigation for programming languages:**
+
+- [JavaScript](#javascript)
+  - [TypeScript](#typescript)
+  - [NodeJS](#nodejs)
+  - [Deno](#deno)
+- [Python](#python)
+- [Rust](#python)
+- [C++](#c++)
+
+#### JavaScript
+
+<img alt="JavaScript icon"
+     height="50"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/javascript.svg"
+/>
+
+##### TypeScript
+
+<img alt="TypeScript icon"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/typescript.svg"
+/>
+
+##### NodeJS
+
+<img alt="NodeJS icon"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/nodejs.svg"
+/>
+
+#### Deno
+
+<img alt="Deno icon"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/deno.svg"
+/>
+
+#### Python
+
+<img alt="Python icon"
+     height="50"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/python.svg"
+/>
+
+#### Rust
+
+<img alt="Rust icon"
+     height="50"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/rust.svg"
+/>
+
+#### C++
+
+<img alt="C++ icon"
+     height="50"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/c++.svg"
+/>
+
+---
+
+### Front-end technologies
+
+**🔗Quick navigation for front-end technologies:**
+
+- [HTML](#html)
+  - [PostHTML](#posthtml)
+  - [Pug](#pug)
+- [SVG](#svg)
+- [CSS](#css)
+  - [PostCSS](#postcss)
+  - [Sass](#sass)
+
+#### HTML
+
+<img alt="HTML icon"
+     height="50"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/html.svg"
+/>
+
+##### PostHTML
+
+<img alt="PostHTML icon"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/posthtml.svg"
+/>
+
+##### Pug
+
+<img alt="Pug icon"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/pug.svg"
+/>
+
+#### SVG
+
+<img alt="SVG icon"
+     height="50"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/svg.svg"
+/>
+
+#### CSS
+
+<img alt="CSS icon"
+     height="50"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/css.svg"
+/>
+
+##### PostCSS
+
+<img alt="PostCSS icon"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/postcss.svg"
+/>
+
+##### Sass
+
+<img alt="Sass icon"
+     height="25"
+     src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/sass.svg"
+/>
+
+---
+
+### Collaboration tools
+
+#### Nextcloud
+
+#### Joplin
+
+#### Jira
+
+#### Slack
+
+---
+
+### Graphic tools
+
+#### Vector graphic design
+
+##### Inkscape
+
+##### Adobe Illustrator
+
+#### Raster graphic design
+
+##### GIMP
+
+##### Adobe Photoshop
+
+#### User Interface design
+
+##### Adobe Xd
+
+##### InVision
+
+---
+
+### Miscellaneous
+
+#### Git
+
+#### Docker
+
+#### Bitwarden
+
+#### Signal
+
+#### ProtonMail & ProtonVPN
+
+---
+
+[LICENSE](.LICENSE)
