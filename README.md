@@ -555,6 +555,31 @@ My favourite editors, I use, like my own swiss-army knife.
      src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/javascript.svg"
 />
 
+<details>
+  <summary>My thoughts on JavaScript</summary>
+
+  [JavaScript] is the programming language, where I feel the most confident.
+  Because I was working on the website's projects in my digital marketing
+  experience, I couldn't skip understanding the basics. From a time
+  perspective, it's astounding how this most popular language has matured
+  over the years. While it may not be the most performant one, it is the most
+  flexible in building a website application.
+
+  While JavaScript still grows very dynamically,
+  **it was crucial to me to understand the _"vanilla"_ JavaScript, as the
+  frameworks and libraries are constantly changing over the years,
+  even months**.
+  It was pointless to pick one and stick to it,
+  without understanding how it works behind the scenes. \
+  I studied intensely to understand the JavaScript _"gotchas"_,
+  its limitations, and how it works differently compared to other languages.
+  Now,
+  I can pick a suitable toolset to adapt to the project(s) needs,
+  instead of blindly favouring one over another.
+
+  [JavaScript]: https://developer.mozilla.org/docs/Web/JavaScript
+</details>
+
 ##### TypeScript
 
 <img alt="TypeScript icon"
@@ -583,6 +608,36 @@ My favourite editors, I use, like my own swiss-army knife.
      src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/python.svg"
 />
 
+<details>
+  <summary>My thoughts on Python</summary>
+
+  When I engaged myself more in software research,
+  I needed knowledge on how other programming languages work.
+  I picked [Python] because it was very mature,
+  could be used with front-end.
+  Another reason was that it handles I/O (Input/Output) and multi-threading.
+  Frankly, those terms I kept reading or hearing and made me confused.
+  I barely fully understood what it meant.
+  Learning and understanding Python environment filled the gap for me.
+
+  It was easy for me to code in it,
+  but I sometimes felt trapped with different mental models from the
+  JavaScript experience.
+  **This language gave me an important lesson.
+  Writing the code more verbose and straightforward to understand is better
+  than just trying to be cool with tricks,
+  which may confuse the other developers proficient in a different
+  programming language.**
+  And with that in mind,
+  they know the different syntax.
+  This language is way more flexible than JavaScript.
+  It unlocks the capabilities to build stuff not limited to only the website
+  applications but also electronic devices _(like Raspberry Pi)_ or data
+  management.
+
+  [Python]: https://www.python.org/
+</details>
+
 #### Rust
 
 <img alt="Rust icon"
@@ -590,12 +645,61 @@ My favourite editors, I use, like my own swiss-army knife.
      src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/rust.svg"
 />
 
+<details>
+  <summary>My thoughts on Rust</summary>
+
+  **I aspire to learn [Rust]!**\
+  In software researching process,
+  learning tools I didn't miss the tools written in Rust language.
+  I couldn't help but notice how very performant they were!
+  And reliable too.
+
+  I love using CLI tools,
+  so I want to expand my skills by learning how to write in Rust,
+  then I can help by collaborating on existing open-source projects.
+  I am sure Rust environment can help improve the project(s)' performance by
+  fully utilizing its available resources.
+
+  Alright.
+  When I wrote these thoughts,
+  I motivated myself to start.
+  Now.
+  To understand the basics and get familiar with the syntax.
+  This part may change soon.
+
+  [Rust]: https://www.rust-lang.org
+</details>
+
+
 #### C++
 
 <img alt="C++ icon"
      height="50"
      src="https://raw.githubusercontent.com/xeho91/.dotfiles/main/Media/Icons/c++.svg"
 />
+
+<details>
+  <summary>My thoughts on C++</summary>
+
+  During my studies, I attended the courses on programming in [C++].
+  I may have passed the tests and got grades from it; I didn't understand it.
+  For what is worth,
+  the most important concepts I gained from it are the types, classes,
+  polymorphism, but I got lost in the abstractions.
+  I should have been more prepared with preliminary knowledge,
+  especially about the shells and operating systems.
+  Directly starting from this language, that was too overwhelming.
+  It ruined my interest in programming for a quite while.
+
+  However,
+  **the distant memory from learning this programming language still helps me
+  understand the algorithms' core parts and follow the logic while reading
+  the code**.
+  Without it,
+  I probably would struggle more to understand JavaScript more deeply.
+
+  [C++]: https://isocpp.org/std/the-standard
+</details>
 
 ---
 
