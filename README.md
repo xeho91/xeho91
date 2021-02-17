@@ -818,4 +818,9 @@ My favourite editors, I use, like my own swiss-army knife.
 
 ---
 
+**Are you looking at my Github activity statistics?**\
+Then I would like to help raise awareness about it.\
+[Here is why you should not be too quick at judging people by their GitHub activity stats](https://devdojo.com/bobbyiliev/here-is-why-you-should-not-be-too-quick-at-judging-people-by-their-github-activity-stats).
+
+
 ![](https://hit.yhype.me/github/profile?user_id=18627568)
