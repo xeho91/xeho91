@@ -5,3 +5,6 @@
 [submodule "logo"]
 	path = logo
 	url = https://github.com/xeho91/logo
+[submodule "colors"]
+	path = colors
+	url = https://github.com/xeho91/colors
