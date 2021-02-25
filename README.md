@@ -1,11 +1,12 @@
 # xeho91
 
-![xeho91's animated logo](https://raw.githubusercontent.com/xeho91/logo/main/xeho91-logo.animated.min.svg)
+![xeho91's animated logo](https://raw.githubusercontent.com/xeho91/logo/main/build/xeho91-logo.animated.min.svg)
 
 ## 🔗Table of Contents
 
 - [🧑‍💻About me](#about-me)
 - [💻My technology stack](#my-technology-stack)
+- [📜License](#license)
 
 ---
 
@@ -814,7 +815,9 @@ My favourite editors, I use, like my own swiss-army knife.
 
 ---
 
-[LICENSE](.LICENSE)
+## 📜License
+
+For more information, please see the [LICENSE](./LICENSE) file.
 
 ---
 
