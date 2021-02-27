@@ -1,6 +1,6 @@
 # xeho91
 
-![xeho91's animated logo](https://raw.githubusercontent.com/xeho91/logo/main/build/xeho91-logo.animated.min.svg)
+![xeho91's animated logo](https://raw.githubusercontent.com/xeho91/logo/main/build/xeho91-logo.animated.svg)
 
 ## 🔗Table of Contents
 
@@ -824,6 +824,5 @@ For more information, please see the [LICENSE](./LICENSE) file.
 **Are you looking at my Github activity statistics?**\
 Then I would like to help raise awareness about it.\
 [Here is why you should not be too quick at judging people by their GitHub activity stats](https://devdojo.com/bobbyiliev/here-is-why-you-should-not-be-too-quick-at-judging-people-by-their-github-activity-stats).
-
 
 ![](https://hit.yhype.me/github/profile?user_id=18627568)
