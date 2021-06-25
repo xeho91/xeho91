@@ -2,6 +2,56 @@
 
 ---
 
+## 💻 My technology stack
+
+### Operating systems
+
+- <img alt="Linux logomark" width="16" src="https://api.iconify.design/simple-icons:linux.svg" /> **Linux** (primary)
+
+  - <img alt="Arch Linux logomark" width="16" src="https://api.iconify.design/simple-icons:archlinux.svg" /> Arch Linux based distributions _(Manjaro mostly)_
+  - <img alt="Debian logomark" width="16" src="https://api.iconify.design/simple-icons:debian.svg" /> Debian based distributions
+
+- <img alt="Microsoft Windows logomark" width="16" src="https://api.iconify.design/simple-icons:windows.svg" /> Windows 10
+
+### Editors
+
+- <img alt="Neovim logomark" width="16" src="https://api.iconify.design/simple-icons:neovim.svg" /> Neovim
+- <img alt="Visual Studio Code logomark" width="16" src="https://api.iconify.design/simple-icons:visualstudiocode.svg" /> Visual Studio Code
+
+---
+
+## 🤖 I write code in
+
+- <img alt="Bash logomark" width="16" src="https://api.iconify.design/simple-icons:gnubash.svg" /> Bash, Zsh
+- <img alt="PowerShell logomark" width="16" src="https://api.iconify.design/simple-icons:powershell.svg" /> PowerShell
+
+- <img alt="JavaScript logomark" width="16" src="https://api.iconify.design/simple-icons:javascript.svg" /> JavaScript
+- <img alt="TypeScript logomark" width="16" src="https://api.iconify.design/simple-icons:typescript.svg" /> TypeScript
+  - <img alt="Node.JS logomark" width="16" src="https://api.iconify.design/simple-icons:nodejs.svg" /> Node.JS
+  - <img alt="Deno logomark" width="16" src="https://api.iconify.design/simple-icons:deno.svg" /> Deno
+  - <img alt="Svelte logomark" width="16" src="https://api.iconify.design/simple-icons:svelte.svg" /> Svelte
+
+- <img alt="CSS3 logomark" width="16" src="https://api.iconify.design/simple-icons:css3.svg" /> CSS3
+  - <img alt="PostCSS logomark" width="16" src="https://api.iconify.design/simple-icons:postcss.svg" /> PostCSS
+  - <img alt="Sass logomark" width="16" src="https://api.iconify.design/simple-icons:sass.svg" /> Sass
+
+- <img alt="HTML5 logomark" width="16" src="https://api.iconify.design/simple-icons:html5.svg" /> HTML5
+  - <img alt="SVG logomark" width="16" src="https://api.iconify.design/simple-icons:svg.svg" /> SVG
+
+### I am familiar with _(I write occasionally, or have used in the past)_
+
+  - <img alt="Lua logomark" width="16" src="https://api.iconify.design/simple-icons:lua.svg" /> Lua
+  - <img alt="Python logomark" width="16" src="https://api.iconify.design/simple-icons:python.svg" /> Python
+  - <img alt="Pug logomark" width="16" src="https://api.iconify.design/simple-icons:pug.svg" /> Pug _(very rarely)_
+  - <img alt="Vim logomark" width="16" src="https://api.iconify.design/simple-icons:vim.svg" /> VimScript _(rarely, prefer Lua)_
+  - <img alt="C++ logomark" width="16" src="https://api.iconify.design/file-icons:c.svg" /> C++ _(during studies)_
+
+### I want to learn
+
+  - <img alt="Rust logomark" width="16" src="https://api.iconify.design/simple-icons:rust.svg" /> Rust
+
+---
+
 ## 🧑 About me
 
 I'm a **concerned Global Citizen** passionate about life below the oceans,
@@ -153,7 +203,8 @@ Below I will share a little more about me in
 
 - [.dotfiles](https://github.com/xeho91/.dotfiles)
 
-**NOTE**: Use at your own risk. Better to copy some snippets,\
+**NOTE**: Use at your own risk.
+Better to copy some snippets,
 I don't guarantee that anything will work 100%.
 
 #### Linters
@@ -175,7 +226,7 @@ I don't guarantee that anything will work 100%.
 
 ---
 
-## Activity
+## 📊 Activity
 
 **Are you looking at my Github activity statistics?**\
 Then I would like to help raise awareness about it.\
