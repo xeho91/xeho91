@@ -1,7 +1,4 @@
-# xeho91
-
 ![xeho91's animated logo](./xeho91-logo.svg)
-
 
 ---
 
@@ -9,9 +6,9 @@
 
 I'm a **concerned Global Citizen** passionate about life below the oceans,
 because of this also about sustainable development.\
-Since a while,
+For a while,
 I have dug myself into the topic of **digital privacy rights on the Internet**.
-That includes protecting ourselves and the small businesses who are
+That includes protecting ourselves and the small businesses that are
 unconsciously at risk.
 
 Below I will share a little more about me in
@@ -22,7 +19,7 @@ Below I will share a little more about me in
 - [Why a Global Citizen?](#why-a-global-citizen)
 - [What makes me concerned?](#what-makes-me-concerned)
 - [What is my work experience?](#what-is-my-work-experience)
-- [What type of adopter, I am?](#what-type-of-adopter-i-am)
+- [What type of adopter am I?](#what-type-of-adopter-am-i)
 
 ### Why a Global Citizen?
 
@@ -126,7 +123,7 @@ Below I will share a little more about me in
   [HelpX]: https://helpx.net/
 </details>
 
-### What type of adopter, I am?
+### What type of adopter am I?
 
 <details>
   <summary>Answer</summary>
@@ -150,33 +147,29 @@ Below I will share a little more about me in
 
 ---
 
-## Shareable configurations
+## 📦 Shareable packages
 
-Below I provide quick packages to use my configurations for mostly the
-JavaScript projects.
+### ⚙️ Configurations
 
-### Linters
+- [.dotfiles](https://github.com/xeho91/.dotfiles)
+
+**NOTE**: Use at your own risk. Better to copy some snippets,\
+I don't guarantee that anything will work 100%.
+
+#### Linters
 
 - [ESLint](https://github.com/xeho91/eslint-config)
 - [Stylelint](https://github.com/xeho91/stylelint-config)
 
-### Formatters
+#### Formatters
 
 - [Prettier](https://github.com/xeho91/prettier-config)
 
-### Dotfiles
-
-- [.dotfiles](https://github.com/xeho91/.dotfiles)
-
-NOTE: Use at your own risk.
-
----
-
-## Shareable components & assets
+### 🎨 Assets
 
 - [assets](https://github.com/xeho91/assets) - my brand assets _(avatar, logo)_
-  written in ❤️[Svelte]❤️ ,
-- [colors](https://github.com/xeho91/colors) - colors _(in CSS or JSON)_ I use,
+  written in ❤️[Svelte]❤️, includes reusable components to use in projects
+- [colors](https://github.com/xeho91/colors) - my colors _(in CSS or JSON)_
 
 [Svelte]: https://svelte.dev/
 
