@@ -27,13 +27,28 @@
 
 - <img alt="JavaScript logomark" width="16" src="https://api.iconify.design/simple-icons:javascript.svg" /> JavaScript
 - <img alt="TypeScript logomark" width="16" src="https://api.iconify.design/simple-icons:typescript.svg" /> TypeScript
-  - <img alt="Node.JS logomark" width="16" src="https://api.iconify.design/simple-icons:nodejs.svg" /> Node.JS
-  - <img alt="Deno logomark" width="16" src="https://api.iconify.design/simple-icons:deno.svg" /> Deno
-  - <img alt="Svelte logomark" width="16" src="https://api.iconify.design/simple-icons:svelte.svg" /> Svelte
+
+	- Runtimes:
+
+		- <img alt="Node.JS logomark" width="16" src="https://api.iconify.design/simple-icons:nodejs.svg" /> Node.JS
+		- <img alt="Deno logomark" width="16" src="https://api.iconify.design/simple-icons:deno.svg" /> Deno
+
+	- Frameworks:
+
+		- <img alt="Svelte logomark" width="16" src="https://api.iconify.design/simple-icons:svelte.svg" /> Svelte
+		- <img alt="React logomark" width="16" src="https://api.iconify.design/simple-icons:react.svg" /> React
 
 - <img alt="CSS3 logomark" width="16" src="https://api.iconify.design/simple-icons:css3.svg" /> CSS3
-  - <img alt="PostCSS logomark" width="16" src="https://api.iconify.design/simple-icons:postcss.svg" /> PostCSS
-  - <img alt="Sass logomark" width="16" src="https://api.iconify.design/simple-icons:sass.svg" /> Sass
+
+	- Processors:
+
+		- <img alt="PostCSS logomark" width="16" src="https://api.iconify.design/simple-icons:postcss.svg" /> PostCSS
+		- <img alt="Sass logomark" width="16" src="https://api.iconify.design/simple-icons:sass.svg" /> Sass
+
+	- Frameworks:
+
+		- <img alt="Tailwind CSS logomark" width="16" src="https://api.iconify.design/simple-icons:tailwindcss.svg" /> Tailwind CSS
+
 
 - <img alt="HTML5 logomark" width="16" src="https://api.iconify.design/simple-icons:html5.svg" /> HTML5
   - <img alt="SVG logomark" width="16" src="https://api.iconify.design/simple-icons:svg.svg" /> SVG
@@ -186,7 +201,7 @@ Below I will share a little more about me in
   It suits my interest in software researching.
   While I do that,
   I pay attention to privacy and security depending on the software purpose.
-  
+
   I don't try to be an opinion leader, neither become an influencer.
   I carefully select my _"own circle"_ of them from the
   <abbr title="Information Technology">IT</abbr> industry and the
