@@ -24,33 +24,21 @@
 
 - <img alt="Bash logomark" width="16" src="https://api.iconify.design/simple-icons:gnubash.svg" /> Bash, Zsh
 - <img alt="PowerShell logomark" width="16" src="https://api.iconify.design/simple-icons:powershell.svg" /> PowerShell
-
-- <img alt="JavaScript logomark" width="16" src="https://api.iconify.design/simple-icons:javascript.svg" /> JavaScript
-- <img alt="TypeScript logomark" width="16" src="https://api.iconify.design/simple-icons:typescript.svg" /> TypeScript
-
+- <img alt="JavaScript logomark" width="16" src="https://api.iconify.design/simple-icons:javascript.svg" /> JavaScript:
+	- <img alt="TypeScript logomark" width="16" src="https://api.iconify.design/simple-icons:typescript.svg" /> TypeScript
 	- Runtimes:
-
 		- <img alt="Node.JS logomark" width="16" src="https://api.iconify.design/simple-icons:nodejs.svg" /> Node.JS
 		- <img alt="Deno logomark" width="16" src="https://api.iconify.design/simple-icons:deno.svg" /> Deno
-
 	- Frameworks:
-
 		- <img alt="Svelte logomark" width="16" src="https://api.iconify.design/simple-icons:svelte.svg" /> Svelte
 		- <img alt="React logomark" width="16" src="https://api.iconify.design/simple-icons:react.svg" /> React
-
-- <img alt="CSS3 logomark" width="16" src="https://api.iconify.design/simple-icons:css3.svg" /> CSS3
-
+- <img alt="CSS3 logomark" width="16" src="https://api.iconify.design/simple-icons:css3.svg" /> CSS3:
 	- Processors:
-
 		- <img alt="PostCSS logomark" width="16" src="https://api.iconify.design/simple-icons:postcss.svg" /> PostCSS
 		- <img alt="Sass logomark" width="16" src="https://api.iconify.design/simple-icons:sass.svg" /> Sass
-
 	- Frameworks:
-
 		- <img alt="Tailwind CSS logomark" width="16" src="https://api.iconify.design/simple-icons:tailwindcss.svg" /> Tailwind CSS
-
-
-- <img alt="HTML5 logomark" width="16" src="https://api.iconify.design/simple-icons:html5.svg" /> HTML5
+- <img alt="HTML5 logomark" width="16" src="https://api.iconify.design/simple-icons:html5.svg" /> HTML5:
   - <img alt="SVG logomark" width="16" src="https://api.iconify.design/simple-icons:svg.svg" /> SVG
 
 ### I am familiar with _(I write occasionally, or have used in the past)_
@@ -58,7 +46,7 @@
   - <img alt="Lua logomark" width="16" src="https://api.iconify.design/simple-icons:lua.svg" /> Lua
   - <img alt="Python logomark" width="16" src="https://api.iconify.design/simple-icons:python.svg" /> Python
   - <img alt="Pug logomark" width="16" src="https://api.iconify.design/simple-icons:pug.svg" /> Pug _(very rarely)_
-  - <img alt="Vim logomark" width="16" src="https://api.iconify.design/simple-icons:vim.svg" /> VimScript _(rarely, prefer Lua)_
+  - <img alt="Vim logomark" width="16" src="https://api.iconify.design/simple-icons:vim.svg" /> VimScript _(rarely, prefer Lua due to Neovim)_
   - <img alt="C++ logomark" width="16" src="https://api.iconify.design/file-icons:c.svg" /> C++ _(during studies)_
 
 ### I want to learn
@@ -79,7 +67,7 @@ unconsciously at risk.
 Below I will share a little more about me in
 <abbr title="Ask Me Anything">AMA</abbr> format.
 
-**🔗Quick navigation for about me:**
+**Questions:**
 
 - [Why a Global Citizen?](#why-a-global-citizen)
 - [What makes me concerned?](#what-makes-me-concerned)
