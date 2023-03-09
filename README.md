@@ -20,7 +20,7 @@
 
 ### Editors
 
-- <img alt="Neovim logomark" width="16" src="https://api.iconify.design/logos:neovim-icon.svg" /> Neovim
+- <img alt="Neovim logomark" width="16" src="https://api.iconify.design/skill-icons:neovim-light.svg" /> **Neovim** _(primary)_
 - <img alt="Visual Studio Code logomark" width="16" src="https://api.iconify.design/logos:visual-studio-code.svg" /> Visual Studio Code _(very rarely)_
 
 </details>
@@ -55,7 +55,7 @@
   - <img alt="Bash logomark" width="16" src="https://api.iconify.design/simple-icons:gnubash.svg" /> Bash, Zsh
   - <img alt="PowerShell logomark" width="16" src="https://api.iconify.design/skill-icons:powershell-light.svg" /> PowerShell
   - <img alt="Lua logomark" width="16" src="https://api.iconify.design/logos:lua.svg" /> Lua
-  - <img alt="Python logomark" width="16" src="https://api.iconify.design/logos:python.svg" /> Python
+  - <img alt="Python logomark" width="16" src="https://api.iconify.design/logos:python.svg" /> Python _(very rarely, when experimenting with my Raspberry Pi 4)_
   - <img alt="Pug logomark" width="16" src="https://api.iconify.design/logos:pug.svg" /> Pug _(very rarely)_
   - <img alt="Vim logomark" width="16" src="https://api.iconify.design/logos:vim.svg" /> VimScript _(rarely, prefer Lua due to Neovim)_
   - <img alt="C++ logomark" width="16" src="https://api.iconify.design/file-icons:c.svg" /> C++ _(during studies)_
