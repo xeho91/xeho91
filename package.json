@@ -25,7 +25,6 @@
 		"lint:js": "biome lint . --verbose",
 		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#apps\" \"#libs\" ",
 		"lint:typos": "typos --verbose",
-		"prepare": "lefthook install",
 		"serve:doc": "serve \"./docs\" ",
 		"test": "turbo run test"
 	},
