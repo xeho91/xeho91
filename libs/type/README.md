@@ -1,3 +1,3 @@
 # `@xeho91/lib-type`
 
-Reusable type aliases and helpers.
+Reusable type aliases, helpers and interfaces.
