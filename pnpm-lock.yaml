@@ -87,6 +87,9 @@ importers:
 
   libs/logger:
     dependencies:
+      '@xeho91/lib-type':
+        specifier: workspace:*
+        version: link:../type
       pino:
         specifier: 8.18.0
         version: 8.18.0
