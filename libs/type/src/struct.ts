@@ -80,9 +80,9 @@ export interface UnitStruct<Value extends Primitive = Primitive> {
 export type ValueOf<TStruct extends NewTypeStruct | KeyValueStruct | UnitStruct> = ReturnType<TStruct["valueOf"]>;
 
 if (import.meta.vitest) {
-	const { describe, expectTypeOf } = import.meta.vitest;
+	const { expectTypeOf, test } = import.meta.vitest;
 
-	describe("ValueOf", () => {
+	test("ValueOf", () => {
 		class Pi implements UnitStruct<(typeof Pi)["VALUE"]> {
 			private static readonly VALUE = 3.14 as const;
 

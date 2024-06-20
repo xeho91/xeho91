@@ -66,14 +66,12 @@ export type DisplayToUnion<TDisplay extends Display<string>[] = Display<string>[
 };
 
 if (import.meta.vitest) {
-	const { describe, expectTypeOf } = import.meta.vitest;
+	const { expectTypeOf, test } = import.meta.vitest;
 
-	describe("Display", () => {
+	test("Display", () => {
 		expectTypeOf<Display<"test">>().toEqualTypeOf<{
 			toString(): "test";
 		}>();
-	});
-	describe("Display", () => {
 		expectTypeOf<Display<"test">>().not.toEqualTypeOf<{
 			toString(): string;
 		}>();
@@ -81,7 +79,7 @@ if (import.meta.vitest) {
 }
 
 if (import.meta.vitest) {
-	const { describe, expectTypeOf } = import.meta.vitest;
+	const { expectTypeOf, test } = import.meta.vitest;
 
 	class Test1 implements Display<"test1"> {
 		public toString() {
@@ -95,7 +93,8 @@ if (import.meta.vitest) {
 	}
 
 	const stringified = `${new Test1().toString()}, ${new Test2().toString()}` as const;
-	describe("DisplayToUnion", () => {
+
+	test("DisplayToUnion", () => {
 		expectTypeOf<DisplayToUnion<[Test1, Test2]>>().toEqualTypeOf<["test1", "test2"]>();
 		expectTypeOf(stringified).toEqualTypeOf("test1, test2" as const);
 		expectTypeOf(stringified).not.toEqualTypeOf<string>();
@@ -127,7 +126,7 @@ if (import.meta.vitest) {
 export type ToString<TDisplay extends Display = Display> = ReturnType<TDisplay["toString"]>;
 
 if (import.meta.vitest) {
-	const { describe, expectTypeOf } = import.meta.vitest;
+	const { expectTypeOf, test } = import.meta.vitest;
 
 	class Test implements Display<"test"> {
 		public toString() {
@@ -135,7 +134,7 @@ if (import.meta.vitest) {
 		}
 	}
 
-	describe("ToString", () => {
+	test("ToString", () => {
 		expectTypeOf<ToString<Test>>().toEqualTypeOf<"test">();
 		expectTypeOf(new Test().toString()).toEqualTypeOf("test" as const);
 		expectTypeOf(new Test().toString()).not.toEqualTypeOf<string>();

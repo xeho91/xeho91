@@ -2,7 +2,7 @@
 	"$schema": "https://json.schemastore.org/package",
 	"private": true,
 	"type": "module",
-	"name": "@xeho91/lib-logger",
+	"name": "@xeho91/lib-monorepo",
 	"version": "0.1.0",
 	"engines": {
 		"node": ">=20"
@@ -12,7 +12,8 @@
 		"#*": "./src/*.ts"
 	},
 	"exports": {
-		".": "./src/mod.ts"
+		".": "./src/mod.ts",
+		"./*": "./src/*.ts"
 	},
 	"scripts": {
 		"clean": "pnpm run \"/^clean:.*/\" ",
@@ -22,7 +23,7 @@
 		"dev:doc": "pnpm run \"/^dev:doc:.*/\" ",
 		"dev:doc:watch": "typedoc --watch",
 		"dev:doc:serve": "pnpm serve \"./docs\"",
-		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-logger\" ",
+		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-monorepo\" ",
 		"fix": "pnpm run \"/^fix:.*/\" ",
 		"fix:format": "biome format . --verbose --write",
 		"fix:js": "biome lint . --verbose --apply-unsafe",
@@ -34,11 +35,15 @@
 		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" ",
 		"lint:ts": "tsc --noEmit",
 		"lint:typos": "typos --verbose",
-		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-logger\" "
+		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-monorepo\" ",
+		"prepare": "tsx \"./hooks/prepare.ts\" "
 	},
 	"dependencies": {
-		"@xeho91/lib-type": "workspace:*",
-		"pino": "8.18.0",
-		"pino-pretty": "10.3.1"
+		"@xeho91/lib-error": "workspace:*",
+		"@xeho91/lib-logger": "workspace:*",
+		"find-up": "7.0.0"
+	},
+	"devDependencies": {
+		"handlebars": "4.7.8"
 	}
 }

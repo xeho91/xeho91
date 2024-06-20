@@ -2,7 +2,7 @@ import type { SetKeys } from "@xeho91/lib-type/set";
 import pino from "pino";
 import pretty from "pino-pretty";
 
-/** Enum of available log levels for printing certain group of messages into terminal. */
+/** Set of available log levels for printing certain group of messages into terminal. */
 export const LOG_LEVELS = new Set([
 	// biome-ignore format: Easier to read & modify
 	"silent",
@@ -14,14 +14,33 @@ export const LOG_LEVELS = new Set([
 	"trace",
 ] as const);
 
-/** @see {@link LOG_LEVELS} */
+/**
+ * @see {@link LOG_LEVELS}
+ * @default {@link DEFAULT_LOG_LEVEL}
+ */
 export type LogLevel = SetKeys<typeof LOG_LEVELS>;
 
-export const DEFAULT_LOG_LEVEL: LogLevel = "info";
+export const DEFAULT_LOG_LEVEL = "info" satisfies LogLevel;
 
+/**
+ * A namespace which uses {@link pino} as logger, and wraps all of the set logging level methods.
+ *
+ * @example
+ * ```
+ * import { log } from "@xeho91/lib-logger";
+ *
+ * log.silent("This never gets printed.");
+ * log.fatal("This is for kind of messages which should print prior to process termination.");
+ * log.error("This is for kind of messages that causes an invalid operation, but the process can continue.");
+ * log.warn("For anything that should be considered as warning.");
+ * log.info("Informational, obviously");
+ * log.debug("For debugging purposes.");
+ * log.fatal("Don't overuse it.");
+ * ```
+ */
 export const log = pino(
 	{
-		level: (process.env.LOG || DEFAULT_LOG_LEVEL) as LogLevel,
+		level: (process.env.LOG_LEVEL ?? DEFAULT_LOG_LEVEL) as LogLevel,
 	},
 	pretty({
 		colorize: true,
