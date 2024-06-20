@@ -1,0 +1,72 @@
+name: CI & CD
+# NOTE: CI -> Continuous Integration
+# NOTE: CD -> Continuous Delivery
+
+on:
+    pull_request:
+        branches: [main]
+        types: [opened, ready_for_review, reopened, synchronize]
+    push:
+        branches: [main]
+    workflow_dispatch:
+        inputs:
+            reason:
+                description: Reason of re-running this workflow
+                required: false
+                type: string
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
+    cancel-in-progress: true
+
+defaults:
+    run:
+        shell: bash
+
+env:
+    CI: true
+
+permissions:
+    contents: write
+    id-token: write
+    pages: write
+    pull-requests: write
+
+jobs:
+    lint_biome:
+        name: Lint
+        uses: ./.github/workflows/biome.yml@main
+
+    lint_markdownlint:
+        name: Lint
+        uses: ./.github/workflows/markdownlint.yml@main
+
+    lint_typos:
+        name: Lint
+        uses: ./.github/workflows/typos.yml@main
+
+    test_vitest:
+        name: Test
+        uses: ./.github/workflows/vitest.yml
+        secrets: inherit
+
+    publish_typedoc:
+        name: Publish
+        uses: ./.github/workflows/typedoc.yml
+        with:
+            type: ${{ github.event_name == 'pull_request' && contains(fromJson('["opened", "reopened", "synchronize"]'), github.event.action) && 'pr-preview' || 'deploy' }}
+
+    release:
+        name: Release
+        uses: ./.github/workflows/changesets.yml
+        needs:
+            [
+                lint_biome,
+                lint_markdownlint,
+                lint_typos,
+                publish_typedoc,
+                test_vitest,
+            ]
+        if: |
+            github.event_name == 'push' &&
+            github.event.ref == 'refs/heads/main'
