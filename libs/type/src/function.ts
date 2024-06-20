@@ -13,9 +13,9 @@
 export type AnyFunction = (...args: any[]) => any;
 
 if (import.meta.vitest) {
-	const { describe, expectTypeOf } = import.meta.vitest;
+	const { expectTypeOf, test } = import.meta.vitest;
 
-	describe("AnyFunction", () => {
+	test("AnyFunction", () => {
 		expectTypeOf<AnyFunction>().not.toBeAny();
 		// biome-ignore lint/suspicious/noExplicitAny: Intentional
 		expectTypeOf<AnyFunction>().toEqualTypeOf<(...args: any[]) => any>();

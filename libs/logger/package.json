@@ -7,7 +7,7 @@
 	"engines": {
 		"node": ">=20"
 	},
-	"files": ["/dist"],
+	"files": ["/src"],
 	"imports": {
 		"#*": "./src/*.ts"
 	},
