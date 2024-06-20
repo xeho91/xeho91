@@ -8,9 +8,7 @@
 	"engines": {
 		"node": ">=20"
 	},
-	"files": [
-		"/src"
-	],
+	"files": ["/src"],
 	"imports": {
 		"#*": "./src/*.ts"
 	},
@@ -30,12 +28,12 @@
 		"fix": "pnpm run \"/^fix:.*/\" ",
 		"fix:format": "biome format . --verbose --write",
 		"fix:js": "biome lint . --verbose --apply-unsafe",
-		"fix:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" --fix",
+		"fix:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" --fix",
 		"fix:typos": "typos --verbose --write-changes",
 		"lint": "pnpm run \"/^lint:.*/\" ",
 		"lint:format": "biome format . --verbose",
 		"lint:js": "biome lint . --verbose",
-		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" ",
+		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
 		"lint:ts": "tsc --noEmit",
 		"lint:typos": "typos --verbose",
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-type\" "

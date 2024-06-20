@@ -44,5 +44,9 @@ jobs:
             - uses: DavidAnson/markdownlint-cli2-action@v16
               with:
                   globs: |
-                      *.md
-                      !.github/TECHSTACK.md
+                      ./**/*.md
+                      !./.github/TECHSTACK.md
+                      !./.github/LICENSE_*.md
+                      !./node_modules/**/*
+                      !**/node_modules/**/*
+                      !./libs/**/CHANGELOG.md

@@ -7,7 +7,6 @@
 		"useIgnoreFile": true
 	},
 	"files": {
-		"ignore": ["lib/", "src/paraglide/"],
 		"ignoreUnknown": true
 	},
 	"formatter": {
