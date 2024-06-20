@@ -35,15 +35,15 @@ permissions:
 jobs:
     lint_biome:
         name: Lint
-        uses: ./.github/workflows/biome.yml@main
+        uses: ./.github/workflows/biome.yml
 
     lint_markdownlint:
         name: Lint
-        uses: ./.github/workflows/markdownlint.yml@main
+        uses: ./.github/workflows/markdownlint.yml
 
     lint_typos:
         name: Lint
-        uses: ./.github/workflows/typos.yml@main
+        uses: ./.github/workflows/typos.yml
 
     test_vitest:
         name: Test
