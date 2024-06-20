@@ -1,6 +1,6 @@
-import type { SetKeys } from "@xeho91/lib-type/set";
 import pino from "pino";
 import pretty from "pino-pretty";
+import type { IterableElement } from "type-fest";
 
 /** Set of available log levels for printing certain group of messages into terminal. */
 export const LOG_LEVELS = new Set([
@@ -18,7 +18,7 @@ export const LOG_LEVELS = new Set([
  * @see {@link LOG_LEVELS}
  * @default {@link DEFAULT_LOG_LEVEL}
  */
-export type LogLevel = SetKeys<typeof LOG_LEVELS>;
+export type LogLevel = IterableElement<typeof LOG_LEVELS>;
 
 export const DEFAULT_LOG_LEVEL = "info" satisfies LogLevel;
 

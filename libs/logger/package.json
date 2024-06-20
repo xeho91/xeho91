@@ -37,7 +37,6 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-logger\" "
 	},
 	"dependencies": {
-		"@xeho91/lib-type": "workspace:*",
 		"pino": "8.18.0",
 		"pino-pretty": "10.3.1"
 	}
