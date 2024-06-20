@@ -14,6 +14,7 @@
 		"clean:test": "del \"./coverage\" ",
 		"dev": "pnpm run --recursive \"dev\" ",
 		"dev:test": "pnpm vitest watch --passWithNoTests --typecheck --ui",
+		"doc": "typedoc",
 		"fix": "pnpm run \"/^fix:.*/\" ",
 		"fix:format": "biome format . --verbose --write",
 		"fix:js": "biome lint . --verbose --apply-unsafe",
@@ -25,6 +26,7 @@
 		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#apps\" \"#libs\" ",
 		"lint:typos": "typos --verbose",
 		"prepare": "lefthook install",
+		"serve:doc": "serve \"./docs\" ",
 		"test": "turbo run test"
 	},
 	"devDependencies": {
