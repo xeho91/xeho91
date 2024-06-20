@@ -2,6 +2,8 @@
 	"$schema": "https://json.schemastore.org/package",
 	"type": "module",
 	"name": "@xeho91/lib-error",
+	"description": "Error related utilities and classes",
+	"keywords": ["error"],
 	"version": "0.1.0",
 	"license": "MIT",
 	"engines": {
@@ -37,6 +39,7 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-error\" "
 	},
 	"dependencies": {
-		"@xeho91/lib-type": "workspace:*"
+		"@xeho91/lib-type": "workspace:*",
+		"type-fest": "4.20.1"
 	}
 }

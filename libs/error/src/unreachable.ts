@@ -1,9 +1,20 @@
-import type { AnyFunction } from "@xeho91/lib-type/function";
-
 /**
  * Inspired by Rust's [`unreachable!`](https://doc.rust-lang.org/std/macro.unreachable.html)
  * Usually used to help TypeScript understand that the code path should never be reached.
+ * @module
+ *
+ * @example
+ * ```ts
+ * import { unreachable } from "@xeho91/lib-error/unreachable";
+ *
+ * if (!aConditionThatNeverHappens) {
+ *     throw unreachable("Should never happen at runtime.");
+ * }
+ * ```
  */
+
+import type { AnyFunction } from "@xeho91/lib-type/function";
+
 export class UnreachableError extends Error {
 	constructor(message: string, asserter: AnyFunction | undefined = undefined) {
 		super(message, {
@@ -13,7 +24,7 @@ export class UnreachableError extends Error {
 		Error.captureStackTrace?.(this, asserter || this.constructor);
 	}
 
-	public override toString() {
+	public override toString(): string {
 		return `[${this.cause}] ${this.message}`;
 	}
 }
@@ -22,21 +33,8 @@ export class UnreachableError extends Error {
  * @see {@link UnreachableError}
  *
  * @param message Optional message preferably describing a **reason** of the unreachability.
- *
- * @example
- * ```
- * import { unreachable } from "@xeho91/lib-error/unreachable";
- *
- * let toBeDefined;
- *
- * toBeDefined = true;
- *
- * if (!toBeDefined) {
- *     throw unreachable("Should never happen at runtime.");
- * }
- * ```
  */
-export function unreachable(message = "An unreachable case has occurred!") {
+export function unreachable(message = "An unreachable case has occurred!"): UnreachableError {
 	return new UnreachableError(message);
 }
 

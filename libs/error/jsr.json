@@ -1,0 +1,13 @@
+{
+	"$schema": "https://jsr.io/schema/config-file.v1.json",
+	"name": "@xeho91/lib-error",
+	"version": "0.1.0",
+	"exports": {
+		"./unreachable": "./src/unreachable.ts",
+		"./unrecognized": "./src/unrecognized.ts",
+		"./unimplemented": "./src/unimplemented.ts"
+	},
+	"publish": {
+		"include": ["src/", "README.md"]
+	}
+}

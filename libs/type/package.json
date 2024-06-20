@@ -1,8 +1,9 @@
 {
 	"$schema": "https://json.schemastore.org/package",
-	"private": true,
 	"type": "module",
 	"name": "@xeho91/lib-type",
+	"description": "Reusable type aliases, helpers and interfaces",
+	"keywords": ["types", "interfaces", "traits"],
 	"version": "0.1.0",
 	"license": "MIT",
 	"engines": {
@@ -39,6 +40,7 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-type\" "
 	},
 	"dependencies": {
-		"@total-typescript/ts-reset": "0.5.1"
+		"@total-typescript/ts-reset": "0.5.1",
+		"type-fest": "4.20.1"
 	}
 }

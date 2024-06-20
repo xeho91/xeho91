@@ -69,9 +69,6 @@ importers:
       turbo:
         specifier: 2.0.4
         version: 2.0.4
-      type-fest:
-        specifier: 4.20.1
-        version: 4.20.1
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -84,6 +81,9 @@ importers:
       '@xeho91/lib-type':
         specifier: workspace:*
         version: link:../type
+      type-fest:
+        specifier: 4.20.1
+        version: 4.20.1
 
   libs/logger:
     dependencies:
@@ -93,6 +93,9 @@ importers:
       pino-pretty:
         specifier: 10.3.1
         version: 10.3.1
+      type-fest:
+        specifier: 4.20.1
+        version: 4.20.1
 
   libs/monorepo:
     dependencies:
@@ -115,8 +118,9 @@ importers:
       '@total-typescript/ts-reset':
         specifier: 0.5.1
         version: 0.5.1
-
-  libs/util: {}
+      type-fest:
+        specifier: 4.20.1
+        version: 4.20.1
 
 packages:
 

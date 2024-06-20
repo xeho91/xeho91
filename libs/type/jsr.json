@@ -1,0 +1,13 @@
+{
+	"$schema": "https://jsr.io/schema/config-file.v1.json",
+	"name": "@xeho91/lib-type",
+	"version": "0.1.1",
+	"exports": {
+		"./trait/display": "./src/trait/display.ts",
+		"./reset": "./src/reset.ts",
+		"./struct": "./src/struct.ts"
+	},
+	"publish": {
+		"include": ["src/", "README.md"]
+	}
+}

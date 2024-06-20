@@ -1,29 +1,9 @@
-import type { AnyFunction } from "@xeho91/lib-type/function";
-
 /**
- * Inspired by Rust's [`unimplemented!`](https://doc.rust-lang.org/std/macro.unimplemented.html)
- */
-export class UnimplementedError extends Error {
-	constructor(message: string, asserter: AnyFunction | undefined = undefined) {
-		super(message, {
-			cause: "UNIMPLEMENTED",
-		});
-		this.name = "UnimplementedError";
-		Error.captureStackTrace?.(this, asserter || this.constructor);
-	}
-
-	public override toString() {
-		return `[${this.cause}] ${this.message}`;
-	}
-}
-
-/**
- * @see {@link UnimplementedError}
- *
- * @param message Optional. Preferably describing a hint of what can be done, if occurred at runtime.
+ * Inspired by Rust's [`unimplemented!`](https://doc.rust-lang.org/std/macro.unimplemented.html).
+ * @module
  *
  * @example
- * ```
+ * ```ts
  * import { unimplemented } from "@xeho91/lib-error/unimplemented";
  *
  * let featureIncomplete;
@@ -33,7 +13,29 @@ export class UnimplementedError extends Error {
  * }
  * ```
  */
-export function unimplemented(message = "Reached a case which was not yet implemented!") {
+
+import type { AnyFunction } from "@xeho91/lib-type/function";
+
+export class UnimplementedError extends Error {
+	constructor(message: string, asserter: AnyFunction | undefined = undefined) {
+		super(message, {
+			cause: "UNIMPLEMENTED",
+		});
+		this.name = "UnimplementedError";
+		Error.captureStackTrace?.(this, asserter || this.constructor);
+	}
+
+	public override toString(): string {
+		return `[${this.cause}] ${this.message}`;
+	}
+}
+
+/**
+ * @see {@link UnimplementedError}
+ *
+ * @param message Optional. Preferably describing a hint of what can be done, if occurred at runtime.
+ */
+export function unimplemented(message = "Reached a case which was not yet implemented!"): UnimplementedError {
 	return new UnimplementedError(message);
 }
 

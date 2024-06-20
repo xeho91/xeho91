@@ -1,14 +1,12 @@
-import type { Primitive } from "type-fest/source/primitive";
-
 /**
- * Types of custom instances.
- *
+ * Types for custom instances.
  * They should provide `valueOf()` method that returns the wrapped value of instance.
+ * @module
  *
  * @see {@link Object.prototype.valueOf()}
- *
- * @module struct
  */
+
+import type { Primitive } from "type-fest/source/primitive";
 
 /**
  * Inspired from Rust,
@@ -62,7 +60,7 @@ export interface UnitStruct<Value extends Primitive = Primitive> {
  * - {@link UnitStruct}
  *
  * @example
- * ```
+ * ```js
  * import type { ValueOf } from "@xeho91/lib-type/struct";
  *
  * class Pi implements UnitStruct<typeof Pi["VALUE"]> {

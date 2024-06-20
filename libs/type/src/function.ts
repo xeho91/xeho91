@@ -1,7 +1,6 @@
 /**
  * Reusable type aliases or helpers for {@link Function}
- *
- * @module function
+ * @module
  */
 
 /**

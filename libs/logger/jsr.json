@@ -1,0 +1,11 @@
+{
+	"$schema": "https://jsr.io/schema/config-file.v1.json",
+	"name": "@xeho91/lib-logger",
+	"version": "0.1.0",
+	"exports": {
+		"./mod": "./src/mod.ts"
+	},
+	"publish": {
+		"include": ["src/", "README.md"]
+	}
+}

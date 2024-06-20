@@ -1,16 +1,15 @@
 /**
- * Reusable type aliases or helpers for `Display` trait, which uses built-in `toString()` method on JavaScript instances.
- *
- * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString#overriding_tostring_for_custom_objects}
- *
- * @module display
+ * Reusable type aliases or helpers for `Display` trait.
+ * Uses built-in {@link Object.prototype.toString()} method on JavaScript instances.
+ * @module
  */
 
 /**
  * Enforce a custom instance to return a stringified _(strongly typed)_ representation.
  *
  * @example
- * ```
+ *
+ * ```ts
  * import type { Display } from "@xeho91/lib-type/trait/display";
  *
  * export class Token<TName extends string> implements Display<TName> {
@@ -39,10 +38,10 @@ export interface Display<TString extends string = string> {
 }
 
 /**
- * Return an union of stringified values from instances whichi implements {@link Display} trait.
+ * Return an union of stringified values from instances which implements {@link Display} trait _(interface)_.
  *
  * @example
- * ```
+ * ```ts
  * import type { Display, DisplayToUnion } from "@xeho91/lib-type/trait/display";
  *
  * class Chicken implements Display<"🐓"> {
@@ -102,11 +101,11 @@ if (import.meta.vitest) {
 }
 
 /**
- * A type utility to extract the stringified value from instance which has the {@link Display} trait _(implements a
- * `interface Display`)_.
+ * A type utility to extract the stringified value from instance
+ * which has the {@link Display} trait _(`implements Display`)_.
  *
  * @example
- * ```
+ * ```ts
  * import type { Display, ToString } from "@xeho91/lib-type/trait/display";
  *
  * class Test<T extends string> implements Display<T> {
