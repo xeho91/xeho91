@@ -28,8 +28,12 @@ jobs:
             - name: Setup Biome
               uses: biomejs/setup-biome@v2
 
+            - name: Run Biome
+              run: biome ci .
+
+            # TODO: Switch to this one
             # https://github.com/mongolyy/reviewdog-action-biome
-            - uses: mongolyy/reviewdog-action-biome@v1
-              with:
-                  github_token: ${{ secrets.github_token }}
-                  reporter: github-pr-check
+            # - uses: mongolyy/reviewdog-action-biome@v1
+            #   with:
+            #       github_token: ${{ secrets.github_token }}
+            #       reporter: github-pr-check

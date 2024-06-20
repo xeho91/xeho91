@@ -17,7 +17,9 @@ permissions:
 
 jobs:
     typos:
-        runs-on: macos-latest
+        # TODO: Switch once this gets merged: https://github.com/crate-ci/typos/pull/1040
+        # runs-on: macos-latest
+        runs-on: ubuntu-latest
         steps:
             # https://github.com/actions/checkout
             - name: Checkout to the repository
