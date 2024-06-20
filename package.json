@@ -1,0 +1,54 @@
+{
+	"name": "workspace",
+	"private": true,
+	"type": "module",
+	"engines": {
+		"node": ">=20"
+	},
+	"packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a",
+	"scripts": {
+		"changelog": "pnpm changeset add",
+		"clean": "pnpm run \"/^clean:.*/\"; del \"./**/node_modules\" ",
+		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
+		"clean:doc": "del \"./docs\" ",
+		"clean:test": "del \"./coverage\" ",
+		"dev": "pnpm run --recursive \"dev\" ",
+		"dev:test": "pnpm vitest watch --passWithNoTests --typecheck --ui",
+		"fix": "pnpm run \"/^fix:.*/\" ",
+		"fix:format": "biome format . --verbose --write",
+		"fix:js": "biome lint . --verbose --apply-unsafe",
+		"fix:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#apps\" \"#libs\" --fix",
+		"fix:typos": "typos --verbose --write-changes",
+		"lint": "pnpm run \"/^lint:.*/\" ",
+		"lint:format": "biome format . --verbose",
+		"lint:js": "biome lint . --verbose",
+		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#apps\" \"#libs\" ",
+		"lint:typos": "typos --verbose",
+		"prepare": "lefthook install",
+		"test": "turbo run test"
+	},
+	"devDependencies": {
+		"@total-typescript/tsconfig": "1.0.4",
+		"@types/node": "20.14.5",
+		"tslib": "2.6.3",
+		"tsx": "4.15.6",
+		"turbo": "2.0.4",
+		"type-fest": "4.20.1",
+		"typescript": "5.4.5",
+		"vite": "5.3.1"
+	},
+	"optionalDependencies": {
+		"@biomejs/biome": "1.8.1",
+		"@terminal-nerds/markdownlint-config": "0.14.0",
+		"@vitest/ui": "1.6.0",
+		"@xeho91/lib-monorepo": "workspace:*",
+		"del-cli": "5.1.0",
+		"lefthook": "1.6.16",
+		"markdownlint-cli2": "0.13.0",
+		"serve": "14.2.3",
+		"typedoc": "0.25.13",
+		"typedoc-plugin-coverage": "3.2.0",
+		"typedoc-plugin-mdn-links": "3.1.30",
+		"vitest": "1.6.0"
+	}
+}

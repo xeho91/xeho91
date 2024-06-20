@@ -1,0 +1,4 @@
+{
+	"$schema": "./node_modules/markdownlint-cli2/schema/markdownlint-config-schema.json",
+	"extends": "@terminal-nerds/markdownlint-config"
+}
