@@ -30,15 +30,14 @@
 	},
 	"devDependencies": {
 		"@total-typescript/tsconfig": "1.0.4",
-		"@types/node": "20.14.5",
+		"@types/node": "20.14.7",
 		"tslib": "2.6.3",
-		"tsx": "4.15.6",
+		"tsx": "4.15.7",
 		"turbo": "2.0.4",
-		"typescript": "5.4.5",
-		"vite": "5.3.1"
+		"typescript": "5.5.2"
 	},
 	"optionalDependencies": {
-		"@biomejs/biome": "1.8.1",
+		"@biomejs/biome": "1.8.2",
 		"@changesets/changelog-github": "0.5.0",
 		"@changesets/cli": "2.27.5",
 		"@terminal-nerds/markdownlint-config": "0.14.0",
@@ -46,12 +45,13 @@
 		"@vitest/ui": "1.6.0",
 		"@xeho91/lib-monorepo": "workspace:*",
 		"del-cli": "5.1.0",
-		"lefthook": "1.6.16",
+		"lefthook": "1.6.17",
 		"markdownlint-cli2": "0.13.0",
 		"serve": "14.2.3",
 		"typedoc": "0.25.13",
 		"typedoc-plugin-coverage": "3.2.0",
 		"typedoc-plugin-mdn-links": "3.1.30",
+		"vite": "5.3.1",
 		"vitest": "1.6.0"
 	}
 }
