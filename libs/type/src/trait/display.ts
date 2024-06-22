@@ -42,7 +42,7 @@ export interface Display<TString extends string = string> {
  *
  * @example
  * ```ts
- * import type { Display, DisplayToUnion } from "@xeho91/lib-type/trait/display";
+ * import type { Display, InferDisplays } from "@xeho91/lib-type/trait/display";
  *
  * class Chicken implements Display<"🐓"> {
  *     public toString() {
@@ -56,11 +56,11 @@ export interface Display<TString extends string = string> {
  *     }
  * }
  *
- * type Stringified = DisplayToUnion<[Chicken, Egg]>;
+ * type Stringified = InferDisplays<[Chicken, Egg]>;
  * //.  ^ ["🐓", "🥚"]
  * ```
  */
-export type DisplayToUnion<TDisplay extends Display<string>[] = Display<string>[]> = {
+export type InferDisplays<TDisplay extends Display<string>[] = Display<string>[]> = {
 	[TItem in keyof TDisplay]: ReturnType<TDisplay[TItem]["toString"]>;
 };
 
@@ -93,8 +93,8 @@ if (import.meta.vitest) {
 
 	const stringified = `${new Test1().toString()}, ${new Test2().toString()}` as const;
 
-	test("DisplayToUnion", () => {
-		expectTypeOf<DisplayToUnion<[Test1, Test2]>>().toEqualTypeOf<["test1", "test2"]>();
+	test("InferDisplays", () => {
+		expectTypeOf<InferDisplays<[Test1, Test2]>>().toEqualTypeOf<["test1", "test2"]>();
 		expectTypeOf(stringified).toEqualTypeOf("test1, test2" as const);
 		expectTypeOf(stringified).not.toEqualTypeOf<string>();
 	});
