@@ -3,15 +3,14 @@
  * @module
  */
 
-import { unrecognized } from "@xeho91/lib-error/unrecognized";
-
 /**
  * Print JSON data with an indentation for better readability.
  * @param data - a valid JSON-compatible data.
+ * @throws When invalid JSON syntax was used _(for example `undefined`)_
  */
 export function pretty_json(data: unknown): string {
 	if (data === undefined) {
-		throw unrecognized(undefined, "Data must be a valid JSON syntax.");
+		throw TypeError("Data must be a valid JSON syntax.");
 	}
 
 	return JSON.stringify(data, undefined, 2);
@@ -23,7 +22,7 @@ if (import.meta.vitest) {
 	describe(pretty_json.name, () => {
 		it("throws error on the invalid JSON syntaxes", ({ expect }) => {
 			expect(() => pretty_json(undefined)).toThrowErrorMatchingInlineSnapshot(
-				"[UnrecognizedError: Data must be a valid JSON syntax.]",
+				"[TypeError: Data must be a valid JSON syntax.]",
 			);
 		});
 

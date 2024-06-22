@@ -17,8 +17,8 @@ export function typed_object_entries<const TObject extends object>(object: TObje
  * Get the typed object keys.
  * @param object - object from whose you want to return it's keys as typed array.
  */
-export function typed_object_keys<const T extends object>(object: T) {
-	return Object.keys(object) as (keyof T)[];
+export function typed_object_keys<const TObject extends object>(object: TObject) {
+	return Object.keys(object) as (keyof TObject)[];
 }
 
 if (import.meta.vitest) {
@@ -37,12 +37,28 @@ if (import.meta.vitest) {
 	});
 }
 
-export function pick<const Object extends object, Keys extends keyof Object>(object: Object, keys: Keys[]) {
+/**
+ * Create a new object with only specified entries based selected keys.
+ * @param object target object
+ * @param keys array of object keys whose entries you want
+ * @example
+ * ```ts
+ * import { pick } from "@xeho91/lib-snippet/object";
+ *
+ * const object = { apple: "🍎", banana: "🍌", pear: "🍐" } as const;
+ * const results = pick(object, ["apple", "pear"]);
+ * //.   ^ { apple: "🍎", pear: "🍐" }
+ * ```
+ */
+export function pick<const TObject extends object, const Keys extends keyof TObject>(
+	object: TObject,
+	keys: Keys[],
+): Pick<TObject, Keys> {
 	const keysSet = new Set(keys);
-	const entries = Object.entries(object) as Array<[Keys, Object[Keys]]>;
+	const entries = Object.entries(object) as Array<[Keys, TObject[Keys]]>;
 	const filtered = entries.filter(([key]) => keysSet.has(key));
 
-	return Object.fromEntries(filtered) as Pick<Object, Keys>;
+	return Object.fromEntries(filtered) as Pick<TObject, Keys>;
 }
 
 if (import.meta.vitest) {
