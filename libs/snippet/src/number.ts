@@ -42,7 +42,7 @@ function get_safe_random_number(): number {
 
 if (import.meta.vitest) {
 	const { describe, it } = import.meta.vitest;
-	const { pretty_json } = await import("#json");
+	const { prettify_json: pretty_json } = await import("#json");
 
 	describe(get_random_integer.name, () => {
 		it("returns integer without options", ({ expect }) => {

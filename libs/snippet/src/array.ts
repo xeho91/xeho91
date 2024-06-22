@@ -61,28 +61,27 @@ if (import.meta.vitest) {
  * @see {@link https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types}
  * @example
  * ```ts
- * import { array_elements_to_stringified_union } from "@xeho91/lib-snippet/array";
+ * import { stringified_union_from_array } from "@xeho91/lib-snippet/array";
  *
  * const array = [100, "foo", false, 10n, null, undefined] as const;
- * const results = array_elements_to_stringified_union(array);
+ * const results = stringified_union_from_array(array);
  * //.   ^  '100 | "foo" | false | 10n | null | undefined'
  * ```
  */
-export function array_elements_to_stringified_union<
-	TElement extends JoinableItem,
-	const TArray extends readonly TElement[],
->(array: TArray) {
+export function stringified_union_from_array<TElement extends JoinableItem, const TArray extends readonly TElement[]>(
+	array: TArray,
+) {
 	const joinText = " | ";
 	return quoteify_array(array).join(joinText) as Join<QuoteifyArray<TArray>, typeof joinText>;
 }
 
 if (import.meta.vitest) {
 	const { describe, it } = import.meta.vitest;
-	describe(array_elements_to_stringified_union.name, () => {
+	describe(stringified_union_from_array.name, () => {
 		it("returns a stringified union from an array", ({ expect }) => {
 			const array = [1, "foo", false];
 
-			expect(array_elements_to_stringified_union(array)).toBe('1 | "foo" | false');
+			expect(stringified_union_from_array(array)).toBe('1 | "foo" | false');
 		});
 	});
 }
