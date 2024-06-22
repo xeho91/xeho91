@@ -18,34 +18,33 @@ export interface NewTypeStruct<Value extends Primitive = Primitive> {
 	 * Return the wrapped value type of this instance.
 	 * @see {@link Object.prototype.valueOf()}
 	 */
-	valueOf(): Value;
+	valueOf: () => Value;
 }
 
 /**
  * This instance is a wrapper for Key Value struct (2 items tuple).
  */
 export interface KeyValueStruct<
-	Key extends symbol | string | number = symbol | string | number,
-	Value extends Primitive = Primitive,
+	TKey extends symbol | string | number = symbol | string | number,
+	TValue extends Primitive = Primitive,
 > {
-	key: Key;
-	value: Value;
+	name: TKey;
 	/**
-	 * Return the wrapped value type of this instance (2 items tuple).
+	 * Return the wrapped value type of this instance.
 	 * @see {@link Object.prototype.valueOf()}
 	 */
-	valueOf(): [Key, Value];
+	valueOf: () => TValue;
 }
 
 /**
  * This instance should have a constant/fixed value.
  */
-export interface UnitStruct<Value extends Primitive = Primitive> {
+export interface UnitStruct<TValue extends Primitive = Primitive> {
 	/**
 	 * Return the constant/fixed value of this instance.
 	 * @see {@link Object.prototype.valueOf()}
 	 */
-	valueOf(): Value;
+	valueOf: () => TValue;
 }
 
 /**
@@ -60,7 +59,7 @@ export interface UnitStruct<Value extends Primitive = Primitive> {
  * - {@link UnitStruct}
  *
  * @example
- * ```js
+ * ```ts
  * import type { ValueOf } from "@xeho91/lib-type/struct";
  *
  * class Pi implements UnitStruct<typeof Pi["VALUE"]> {
