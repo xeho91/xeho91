@@ -1,7 +1,7 @@
 # `@xeho91/lib-monorepo`
 
 > [!CAUTION]
-> For internal usage only!
+> **Private package**. For internal workspace usage only!
 
 Contains snippets related to finding the absolute paths,
 which are used to locate files/directories in this project workspace.

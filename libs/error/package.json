@@ -2,10 +2,22 @@
 	"$schema": "https://json.schemastore.org/package",
 	"type": "module",
 	"name": "@xeho91/lib-error",
+	"version": "0.1.0",
 	"description": "Error related utilities and classes",
 	"keywords": ["error"],
-	"version": "0.1.0",
 	"license": "MIT",
+	"author": {
+		"name": "Mateusz Kadlubowski",
+		"email": "xeho91@pm.me",
+		"url": "https://github.com/xeho91"
+	},
+	"homepage": "https://github.com/xeho91/xeho91",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xeho91/xeho91.git",
+		"directory": "libs/error"
+	},
+	"bugs": "https://github.com/xeho91/xeho91/issues",
 	"engines": {
 		"node": ">=20"
 	},
@@ -27,7 +39,7 @@
 		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-error\" ",
 		"fix": "pnpm run \"/^fix:.*/\" ",
 		"fix:format": "biome format . --verbose --write",
-		"fix:js": "biome lint . --verbose --apply-unsafe",
+		"fix:js": "biome lint . --verbose --fix --unsafe",
 		"fix:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" --fix",
 		"fix:typos": "typos --verbose --write-changes",
 		"lint": "pnpm run \"/^lint:.*/\" ",

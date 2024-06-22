@@ -17,6 +17,7 @@ permissions:
 
 jobs:
     typos:
+        name: Typos
         runs-on: macos-latest
         steps:
             # https://github.com/actions/checkout

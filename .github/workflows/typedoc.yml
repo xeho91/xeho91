@@ -29,7 +29,7 @@ permissions:
 jobs:
     typedoc:
         name: TypeDoc
-        runs-on: macos-14
+        runs-on: macos-latest
         timeout-minutes: 2
         steps:
             # https://github.com/actions/checkout

@@ -17,7 +17,7 @@
 		"doc": "typedoc",
 		"fix": "pnpm run \"/^fix:.*/\" ",
 		"fix:format": "biome format . --verbose --write",
-		"fix:js": "biome lint . --verbose --apply-unsafe",
+		"fix:js": "biome lint . --verbose --fix --unsafe",
 		"fix:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./.github/LICENSE_CC-BY-SA-4.0.md\" \"#apps\" \"#libs\" --fix",
 		"fix:typos": "typos --verbose --write-changes",
 		"lint": "pnpm run \"/^lint:.*/\" ",
