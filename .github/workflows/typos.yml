@@ -17,9 +17,7 @@ permissions:
 
 jobs:
     typos:
-        # TODO: Switch once this gets merged: https://github.com/crate-ci/typos/pull/1040
-        # runs-on: macos-latest
-        runs-on: ubuntu-latest
+        runs-on: macos-latest
         steps:
             # https://github.com/actions/checkout
             - name: Checkout to the repository
@@ -27,4 +25,4 @@ jobs:
 
             # https://github.com/crate-ci/typos
             - name: Spell check with `typos`
-              uses: crate-ci/typos@v1.18.0
+              uses: crate-ci/typos@v1.22.8

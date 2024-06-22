@@ -1,4 +1,4 @@
-name: Test
+name: Vitest
 
 on:
     workflow_call:
@@ -16,8 +16,8 @@ permissions:
     pull-requests: write
 
 jobs:
-    test:
-        name: Test
+    vitest:
+        name: Vitest
         runs-on: macos-latest
         timeout-minutes: 2
         steps:
