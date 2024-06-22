@@ -122,7 +122,7 @@ if (import.meta.vitest) {
  * //.  ^ "xeho91"
  * ```
  */
-export type ToString<TDisplay extends Display = Display> = ReturnType<TDisplay["toString"]>;
+export type ToString<TDisplay extends Display = Display> = TDisplay extends Display<infer TString> ? TString : never;
 
 if (import.meta.vitest) {
 	const { expectTypeOf, test } = import.meta.vitest;

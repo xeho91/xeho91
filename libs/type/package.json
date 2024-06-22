@@ -2,9 +2,9 @@
 	"$schema": "https://json.schemastore.org/package",
 	"type": "module",
 	"name": "@xeho91/lib-type",
+	"version": "0.1.0",
 	"description": "Reusable type aliases, helpers and interfaces",
 	"keywords": ["types", "interfaces", "traits"],
-	"version": "0.1.0",
 	"license": "MIT",
 	"engines": {
 		"node": ">=20"
@@ -17,7 +17,6 @@
 		"./*": "./src/*.ts"
 	},
 	"scripts": {
-		"prebuild": "tsx \"./hooks/prebuild.ts\" ",
 		"clean": "pnpm run \"/^clean:.*/\" ",
 		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
 		"clean:test": "del \"./coverage\" ",
