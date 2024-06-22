@@ -49,4 +49,4 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                   title: "chore(Changesets): Versioning package(s)"
-                  version: pnpm changeset version && pnpm fix:format
+                  version: pnpm _version
