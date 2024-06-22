@@ -11,6 +11,6 @@ export const WORKSPACE_LIBS = [
 	"error",
 	"logger",
 	"monorepo",
+	"snippet",
 	"type",
-	"util",
 ] as const;

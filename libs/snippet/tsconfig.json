@@ -1,0 +1,9 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": ["@total-typescript/tsconfig/bundler/dom/library-monorepo"],
+	"compilerOptions": {
+		"target": "ESNext",
+		"lib": ["ESNext"],
+		"types": ["vitest/importMeta"]
+	}
+}
