@@ -1,8 +1,8 @@
 import * as v from "valibot";
 
+import { Ellipse } from "#two-dimension/ellipse";
 import { TwoDimensionalFigure } from "#two-dimension/mod";
 import { Square } from "#two-dimension/square";
-import { Ellipse } from "#two-dimension/ellipse";
 
 export class Circle<TRadius extends number = number> extends TwoDimensionalFigure {
 	public readonly radius: TRadius;

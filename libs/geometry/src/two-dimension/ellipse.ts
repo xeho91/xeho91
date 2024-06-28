@@ -3,8 +3,8 @@ import type { IsEqual } from "type-fest/source/is-equal";
 import type { IterableElement } from "type-fest/source/iterable-element";
 import * as v from "valibot";
 
-import { TwoDimensionalFigure } from "#two-dimension/mod";
 import { Circle } from "#two-dimension/circle";
+import { TwoDimensionalFigure } from "#two-dimension/mod";
 
 export type EllipseAxisName = IterableElement<typeof Ellipse.AXES>;
 

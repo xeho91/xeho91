@@ -1,8 +1,8 @@
 import * as v from "valibot";
 
+import { Circle } from "#two-dimension/circle";
 import { TwoDimensionalFigure } from "#two-dimension/mod";
 import { Rectangle } from "#two-dimension/rectangle";
-import { Circle } from "#two-dimension/circle";
 
 export class Square<TSide extends number = number> extends TwoDimensionalFigure {
 	public readonly side: TSide;
