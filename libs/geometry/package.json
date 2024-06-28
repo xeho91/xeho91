@@ -2,7 +2,7 @@
 	"$schema": "https://json.schemastore.org/package",
 	"type": "module",
 	"name": "@xeho91/lib-geometry",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Geometry related utilities.",
 	"keywords": ["geometry"],
 	"license": "MIT",
