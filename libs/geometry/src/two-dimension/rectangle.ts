@@ -161,13 +161,13 @@ if (import.meta.vitest) {
 
 		test("get perimeter", ({ expect }) => {
 			const { perimeter } = new Rectangle(3, 9);
-			expect(perimeter).toBe(40.09467833948016);
+			expect(perimeter).toBe(24);
 			expectTypeOf(perimeter).toEqualTypeOf<number>();
 		});
 
 		test("get area", ({ expect }) => {
 			const { area } = new Rectangle(3, 9);
-			expect(area).toBe(84.82300164692441);
+			expect(area).toBe(27);
 			expectTypeOf(area).toEqualTypeOf<number>();
 		});
 	});
