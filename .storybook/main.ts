@@ -21,7 +21,7 @@ const config: StorybookConfig = {
 	},
 	stories: [
 		{
-			directory: path.resolve(__dirname, "..", "libs", "logo", "src"),
+			directory: path.resolve(__dirname, "..", "libs", "brand", "src"),
 			files: "**/*.stories.svelte",
 		},
 	],
