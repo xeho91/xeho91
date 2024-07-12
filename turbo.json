@@ -4,8 +4,7 @@
 		"build": {
 			"cache": true,
 			"dependsOn": ["^build"],
-			"inputs": ["src/**"],
-			"outputs": ["storybook-static/**"]
+			"inputs": ["$TURBO_DEFAULT$", "!**/*.stories.{mdx,svelte}"]
 		},
 		"lint": {
 			"cache": true

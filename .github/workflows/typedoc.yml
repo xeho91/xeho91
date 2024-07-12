@@ -53,7 +53,7 @@ jobs:
                   --frozen-lockfile
 
             - name: Build documentation
-              run: pnpm run doc
+              run: pnpm run build:docs
 
             # https://github.com/rossjrw/pr-preview-action
             - name: Create PR preview on the GitHub Pages
