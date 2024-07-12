@@ -1,0 +1,48 @@
+{
+	"$schema": "https://json.schemastore.org/package",
+	"private": true,
+	"type": "module",
+	"name": "@xeho91/app-storybook",
+	"version": "0.0.0",
+	"engines": {
+		"node": ">=20"
+	},
+	"imports": {
+		"#*": "./src/*.ts"
+	},
+	"scripts": {
+		"build": "pnpm run \"/^build:.*/\" ",
+		"build:storybook": "storybook build --debug",
+		"clean": "pnpm run \"/^clean:.*/\" ",
+		"clean:build": "del \"./storybook-static\" ",
+		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
+		"clean:test": "del \"./coverage\" ",
+		"dev": "pnpm run \"/^dev:.*/\" ",
+		"dev:storybook": "storybook dev --debug --port 6006",
+		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/app-storybook\" ",
+		"fix": "pnpm run \"/^fix:.*/\" ",
+		"fix:format": "biome format . --verbose --write",
+		"fix:js": "biome lint . --verbose --fix --unsafe",
+		"fix:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" --fix",
+		"fix:typos": "typos --verbose --write-changes",
+		"lint": "pnpm run \"/^lint:.*/\" ",
+		"lint:format": "biome format . --verbose",
+		"lint:js": "biome lint . --verbose",
+		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
+		"lint:ts": "tsc --noEmit",
+		"lint:typos": "typos --verbose",
+		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/app-storybook\" "
+	},
+	"devDependencies": {
+		"@storybook/addon-essentials": "8.2.2",
+		"@storybook/addon-svelte-csf": "5.0.0--canary.181.168fccb.0",
+		"@storybook/addon-themes": "8.2.2",
+		"@storybook/docs-tools": "8.2.2",
+		"@storybook/node-logger": "8.2.2",
+		"@storybook/svelte": "8.2.2",
+		"@storybook/svelte-vite": "8.2.2",
+		"@sveltejs/vite-plugin-svelte": "3.1.1",
+		"storybook": "8.2.2",
+		"svelte": "5.0.0-next.181"
+	}
+}
