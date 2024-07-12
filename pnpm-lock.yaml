@@ -102,9 +102,6 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: 3.1.1
         version: 3.1.1(svelte@5.0.0-next.181)(vite@5.3.3(@types/node@20.14.10))
-      '@xeho91/lib-monorepo':
-        specifier: workspace:*
-        version: link:../../libs/monorepo
       storybook:
         specifier: 8.2.2
         version: 8.2.2(@babel/preset-env@7.24.7)
@@ -291,9 +288,6 @@ importers:
       '@xeho91/lib-snippet':
         specifier: workspace:*
         version: link:../snippet
-      '@xeho91/lib-storybook':
-        specifier: workspace:*
-        version: 'link:'
       '@xeho91/lib-struct':
         specifier: workspace:*
         version: link:../struct
