@@ -1,0 +1,62 @@
+{
+	"$schema": "https://json.schemastore.org/package",
+	"private": true,
+	"type": "module",
+	"name": "@xeho91/lib-storybook",
+	"version": "0.0.0",
+	"engines": {
+		"node": ">=20"
+	},
+	"files": ["/src", "/types"],
+	"imports": {
+		"#*": "./src/*.ts"
+	},
+	"exports": {
+		"./download-image": {
+			"types": "./types/component/download-image/DownloadImage.svelte.d.ts",
+			"svelte": "./src/component/download-image/DownloadImage.svelte"
+		},
+		"./*": "./src/*.ts"
+	},
+	"scripts": {
+		"build:types": "tsx \"./scripts/build-types.ts\" ",
+		"clean": "pnpm run \"/^clean:.*/\" ",
+		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
+		"clean:test": "del \"./coverage\" ",
+		"clean:types": "del \"./types\" ",
+		"dev": "pnpm run \"/^dev:.*/\" ",
+		"dev:doc": "pnpm run \"/^dev:doc:.*/\" ",
+		"dev:doc:watch": "typedoc --watch",
+		"dev:doc:serve": "pnpm serve \"./docs\"",
+		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-monorepo\" ",
+		"fix": "pnpm run \"/^fix:.*/\" ",
+		"fix:format": "biome format . --verbose --write",
+		"fix:js": "biome lint . --verbose --fix --unsafe",
+		"fix:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" --fix",
+		"fix:typos": "typos --verbose --write-changes",
+		"lint": "pnpm run \"/^lint:.*/\" ",
+		"lint:format": "biome format . --verbose",
+		"lint:js": "biome lint . --verbose",
+		"lint:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
+		"lint:ts": "tsc --noEmit",
+		"lint:typos": "typos --verbose",
+		"prepublish": "pnpm build:types",
+		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-monorepo\" "
+	},
+	"dependencies": {
+		"@storybook/types": "8.2.2",
+		"@xeho91/lib-error": "workspace:*",
+		"@xeho91/lib-geometry": "workspace:*",
+		"@xeho91/lib-logger": "workspace:*",
+		"@xeho91/lib-snippet": "workspace:*",
+		"@xeho91/lib-struct": "workspace:*",
+		"mime": "4.0.4",
+		"svelte": "5.0.0-next.181",
+		"type-fest": "4.20.1"
+	},
+	"devDependencies": {
+		"@sveltejs/package": "2.3.2",
+		"svelte2tsx": "0.7.13",
+		"typescript-svelte-plugin": "0.3.39"
+	}
+}
