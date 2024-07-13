@@ -1,18 +1,30 @@
+import type { Display } from "@xeho91/lib-type/trait/display";
 import * as v from "valibot";
 
 import { Circle } from "#two-dimension/circle";
 import { TwoDimensionalFigure } from "#two-dimension/mod";
 import { Rectangle } from "#two-dimension/rectangle";
 
-export class Square<TSide extends number = number> extends TwoDimensionalFigure {
-	public readonly side: TSide;
+export class Square<TSize extends number = number> extends TwoDimensionalFigure implements Display<Stringified<TSize>> {
+	#size: TSize;
 
-	constructor(side: TSide) {
+	constructor(size: TSize) {
 		super();
-
 		const schema = v.pipe(v.number(), v.minValue(0));
+		this.#size = v.parse(schema, size) as TSize;
+	}
 
-		this.side = v.parse(schema, side) as TSide;
+	public toString(): Stringified<TSize> {
+		const { size } = this;
+		return `Square (${size} x ${size})`;
+	}
+
+	public get size(): TSize {
+		return this.#size;
+	}
+
+	public set size(side: TSize) {
+		this.#size = side;
 	}
 
 	public override get aspect_ratio(): 1 {
@@ -20,27 +32,28 @@ export class Square<TSide extends number = number> extends TwoDimensionalFigure 
 	}
 
 	public override half(): number {
-		return this.side / 2;
+		return this.#size / 2;
 	}
 
 	public override get perimeter(): number {
-		return this.side * 4;
+		return this.#size * 4;
 	}
 
 	public override get area(): number {
-		return this.side ** 2;
+		return this.#size ** 2;
 	}
 
 	public to_circle(): Circle {
-		return new Circle(this.side / 2);
+		return new Circle(this.#size / 2);
 	}
 
-	public to_rectangle(): Rectangle<TSide, TSide> {
-		const { side } = this;
-
-		return new Rectangle(side, side);
+	public to_rectangle(): Rectangle<TSize, TSize> {
+		const { size } = this;
+		return new Rectangle(size, size);
 	}
 }
+
+type Stringified<TSize extends number> = `Square (${TSize} x ${TSize})`;
 
 if (import.meta.vitest) {
 	const { describe, expectTypeOf, test } = import.meta.vitest;

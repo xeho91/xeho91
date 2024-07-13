@@ -1,3 +1,4 @@
+import type { Display } from "@xeho91/lib-type/trait/display";
 import type { GreaterThanOrEqual } from "type-fest/source/greater-than-or-equal";
 import type { IsEqual } from "type-fest/source/is-equal";
 import type { IterableElement } from "type-fest/source/iterable-element";
@@ -8,7 +9,10 @@ import { TwoDimensionalFigure } from "#two-dimension/mod";
 
 export type EllipseAxisName = IterableElement<typeof Ellipse.AXES>;
 
-export class Ellipse<TAxisX extends number = number, TAxisY extends number = number> extends TwoDimensionalFigure {
+export class Ellipse<TAxisX extends number = number, TAxisY extends number = number>
+	extends TwoDimensionalFigure
+	implements Display<Stringified<TAxisX, TAxisY>>
+{
 	static readonly #AXES = ["x", "y"] as const;
 	public static readonly AXES = Object.freeze(new Set(Ellipse.#AXES));
 
@@ -20,32 +24,28 @@ export class Ellipse<TAxisX extends number = number, TAxisY extends number = num
 	 */
 	constructor(radius_x: TAxisX, radius_y: TAxisY) {
 		super();
-
 		const schema = v.pipe(v.number(), v.minValue(0));
-
 		this.axis_x = v.parse(schema, radius_x) as TAxisX;
 		this.axis_y = v.parse(schema, radius_y) as TAxisY;
 	}
 
+	public toString(): Stringified<TAxisX, TAxisY> {
+		return `Ellipse (x: ${this.axis_x}, y: ${this.axis_y})`;
+	}
+
 	public get aspect_ratio(): number {
 		const { axis_x, axis_y } = this;
-
 		return axis_x / axis_y;
 	}
 
 	public half<TAxis extends EllipseAxisName | undefined = undefined>(axis?: TAxis): HalfEllipse<TAxis> {
 		const { axis_x, axis_y } = this;
-
-		if (axis) {
-			return (this[`axis_${axis}`] / 2) as HalfEllipse<TAxis>;
-		}
-
+		if (axis) return (this[`axis_${axis}`] / 2) as HalfEllipse<TAxis>;
 		return [axis_x / 2, axis_y / 2] as HalfEllipse<TAxis>;
 	}
 
 	public get is_circle(): IsEqual<TAxisX, TAxisY> {
 		const { axis_x, axis_y } = this;
-
 		// @ts-ignore No overlap isn't a problem in this case.
 		return axis_x === axis_y;
 	}
@@ -55,23 +55,18 @@ export class Ellipse<TAxisX extends number = number, TAxisY extends number = num
 	 */
 	public to_circle(): ToCircle<TAxisX, TAxisY> {
 		const { is_circle, axis_x, axis_y } = this;
-
-		if (is_circle) {
-			return new Circle(axis_x) as ToCircle<TAxisX, TAxisY>;
-		}
-
+		// @ts-ignore FIXME: Need to figure out where there's instantiation loop
+		if (is_circle) return new Circle(axis_x) as ToCircle<TAxisX, TAxisY>;
 		throw new TypeError(`Ellipse's axis x (${axis_x}) and y (${axis_y}) are not same - cannot convert to circle`);
 	}
 
 	public get major_axis(): MajorAxis<TAxisX, TAxisY> {
 		const { axis_x, axis_y } = this;
-
 		return (axis_x > axis_y ? axis_x : axis_y) as MajorAxis<TAxisX, TAxisY>;
 	}
 
 	public get minor_axis(): MinorAxis<TAxisX, TAxisY> {
 		const { axis_x, axis_y } = this;
-
 		return (axis_x > axis_y ? axis_y : axis_x) as MinorAxis<TAxisX, TAxisY>;
 	}
 
@@ -84,16 +79,16 @@ export class Ellipse<TAxisX extends number = number, TAxisY extends number = num
 		const third_factor_numerator = 3 * h;
 		const third_factor_denominator = 10 + Math.sqrt(4 - 3 * h);
 		const third_factor = 1 + third_factor_numerator / third_factor_denominator;
-
 		return Math.PI * second_factor * third_factor;
 	}
 
 	public get area(): number {
 		const { major_axis, minor_axis } = this;
-
 		return Math.PI * major_axis * minor_axis;
 	}
 }
+
+type Stringified<TAxisX extends number, TAxisY extends number> = `Ellipse (x: ${TAxisX}, y: ${TAxisY})`;
 
 // biome-ignore lint/suspicious/noExplicitAny: Intentional.
 export type EllipseLike = Ellipse<any, any>;
