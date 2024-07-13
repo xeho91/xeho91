@@ -1,4 +1,5 @@
-# Build output
+# Build outputs
+.svelte-kit/
 storybook-static/
 
 # Cache

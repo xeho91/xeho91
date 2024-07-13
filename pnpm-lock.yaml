@@ -104,7 +104,7 @@ importers:
         version: 3.1.1(svelte@5.0.0-next.181)(vite@5.3.3(@types/node@20.14.10))
       storybook:
         specifier: 8.2.2
-        version: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+        version: 8.2.2(@babel/preset-env@7.24.7)
       svelte:
         specifier: 5.0.0-next.181
         version: 5.0.0-next.181
@@ -200,6 +200,46 @@ importers:
       typescript:
         specifier: 5.5.2
         version: 5.5.2
+
+  libs/storybook:
+    dependencies:
+      '@storybook/types':
+        specifier: 8.2.2
+        version: 8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7))
+      '@xeho91/lib-error':
+        specifier: workspace:*
+        version: link:../error
+      '@xeho91/lib-geometry':
+        specifier: workspace:*
+        version: link:../geometry
+      '@xeho91/lib-logger':
+        specifier: workspace:*
+        version: link:../logger
+      '@xeho91/lib-snippet':
+        specifier: workspace:*
+        version: link:../snippet
+      '@xeho91/lib-struct':
+        specifier: workspace:*
+        version: link:../struct
+      mime:
+        specifier: 4.0.4
+        version: 4.0.4
+      svelte:
+        specifier: 5.0.0-next.181
+        version: 5.0.0-next.181
+      type-fest:
+        specifier: 4.20.1
+        version: 4.20.1
+    devDependencies:
+      '@sveltejs/package':
+        specifier: 2.3.2
+        version: 2.3.2(svelte@5.0.0-next.181)(typescript@5.5.3)
+      svelte2tsx:
+        specifier: 0.7.13
+        version: 0.7.13(svelte@5.0.0-next.181)(typescript@5.5.3)
+      typescript-svelte-plugin:
+        specifier: 0.3.39
+        version: 0.3.39(svelte@5.0.0-next.181)(typescript@5.5.3)
 
   libs/struct:
     dependencies:
@@ -1412,6 +1452,18 @@ packages:
       storybook: ^8.2.2
       svelte: ^4.0.0 || ^5.0.0-next.65
 
+  '@storybook/types@8.2.2':
+    resolution: {integrity: sha512-SlwfeluJC/FgTPIda4ivjSeCyi7G8krWZDX/FzM3k6MtZdDsV9vdg1ttBObugn6AESy4Zh+unePo7SbD8/sSfQ==}
+    peerDependencies:
+      storybook: ^8.2.2
+
+  '@sveltejs/package@2.3.2':
+    resolution: {integrity: sha512-6M8/Te7iXRG7SiH92wugqfyoJpuepjn78L433LnXicUeMso9M/N4vdL9DPK3MfTkVVY4klhNRptVqme3p4oZWA==}
+    engines: {node: ^16.14 || >=18}
+    hasBin: true
+    peerDependencies:
+      svelte: ^3.44.0 || ^4.0.0 || ^5.0.0-next.1
+
   '@sveltejs/vite-plugin-svelte-inspector@2.1.0':
     resolution: {integrity: sha512-9QX28IymvBlSCqsCll5t0kQVxipsfhFFL+L2t3nTWfXnddYwxBuAEtTtlaVQpRz9c37BhJjltSeY4AJSC03SSg==}
     engines: {node: ^18.0.0 || >=20}
@@ -1970,6 +2022,9 @@ packages:
   decamelize@5.0.1:
     resolution: {integrity: sha512-VfxadyCECXgQlkoEAjeghAr5gY3Hf+IKjKb+X8tGVDtveCjN+USwprd2q3QXBR9T1+x2DG0XZF5/w+7HAtSaXA==}
     engines: {node: '>=10'}
+
+  dedent-js@1.0.1:
+    resolution: {integrity: sha512-OUepMozQULMLUmhxS95Vudo0jb0UchLimi3+pQ2plj61Fcy8axbP9hbiD4Sz6DPqn6XG3kfmziVfQ1rSys5AJQ==}
 
   dedent@1.5.3:
     resolution: {integrity: sha512-NHQtfOOW68WD8lgypbLA5oT+Bt0xXJhiYvoR6SmmNXZfpzOGXwdKWmcwG8N7PwVVWV3eF/68nmD9BaJSsTBhyQ==}
@@ -2881,6 +2936,9 @@ packages:
   loupe@3.1.1:
     resolution: {integrity: sha512-edNu/8D5MKVfGVFRhFf8aAxiTM6Wumfz5XsaatSxlD3w4R1d/WEKUTydCdPGbl9K7QG/Ca3GnDV2sIKIpXRQcw==}
 
+  lower-case@2.0.2:
+    resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
+
   lru-cache@10.4.2:
     resolution: {integrity: sha512-voV4dDrdVZVNz84n39LFKDaRzfwhdzJ7akpyXfTMxCgRUp07U3lcJUXRlhTKP17rgt09sUzLi5iCitpEAr+6ug==}
     engines: {node: 14 || 16 || 18 || 20 || >=22}
@@ -3012,6 +3070,11 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
+  mime@4.0.4:
+    resolution: {integrity: sha512-v8yqInVjhXyqP6+Kw4fV3ZzeMRqEW6FotRsKXjRS5VMTNIuXsdRoAvklpoRgSqXm6o9VNH4/C0mgedko9DdLsQ==}
+    engines: {node: '>=16'}
+    hasBin: true
+
   mimic-fn@2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
@@ -3097,6 +3160,9 @@ packages:
 
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+
+  no-case@3.0.4:
+    resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
 
   node-dir@0.1.17:
     resolution: {integrity: sha512-tmPX422rYgofd4epzrNoOXiE8XFZYOcCq1vD7MAXCDO+O+zndlA2ztdKKMa+EeuBG5tHETpr4ml4RGgpqDCCAg==}
@@ -3241,6 +3307,9 @@ packages:
   parseurl@1.3.3:
     resolution: {integrity: sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==}
     engines: {node: '>= 0.8'}
+
+  pascal-case@3.1.2:
+    resolution: {integrity: sha512-uWlGT3YSnK9x3BQJaOdcZwrnV6hPpd8jFH1/ucpiLRPh/2zCVJKS19E4GvYHvaCcACn3foXZ0cLB9Wrx1KGe5g==}
 
   path-exists@3.0.0:
     resolution: {integrity: sha512-bpC7GYwiDYQ4wYLe+FA8lhRjhQCMcQGuSgGGqDkg/QerRWw9CmGRT0iSOVRSZJ29NMLZgIzqaljJ63oaL4NIJQ==}
@@ -3575,6 +3644,10 @@ packages:
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
+  sade@1.8.1:
+    resolution: {integrity: sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==}
+    engines: {node: '>=6'}
+
   safe-buffer@5.1.2:
     resolution: {integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==}
 
@@ -3851,6 +3924,12 @@ packages:
       typescript:
         optional: true
 
+  svelte2tsx@0.7.13:
+    resolution: {integrity: sha512-aObZ93/kGAiLXA/I/kP+x9FriZM+GboB/ReOIGmLNbVGEd2xC+aTCppm3mk1cc9I/z60VQf7b2QDxC3jOXu3yw==}
+    peerDependencies:
+      svelte: ^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0
+      typescript: ^4.9.4 || ^5.0.0
+
   svelte@5.0.0-next.181:
     resolution: {integrity: sha512-F4vPUp0NKxku5ZXEiCZ1C8lhKlL0hXedbTRu2i5Cf49SCSS9lceSPhLP/Zn2Ds5MSlfEnjBF3a0jWDc51pbF2Q==}
     engines: {node: '>=18'}
@@ -4027,6 +4106,9 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x
+
+  typescript-svelte-plugin@0.3.39:
+    resolution: {integrity: sha512-7c6AAhoIIIGYmERtgeBfL40/nzG4ciPqbYXweRg+AvS8tG8q7kENLmaHK6BCnwmxATxxCTio02JTQZyZMP1XVg==}
 
   typescript@5.5.2:
     resolution: {integrity: sha512-NcRtPEOsPFFWjobJEtfihkLCZCXZt/os3zf8nTxjVH3RvTSxjrCamJpbExGvYOF+tFHc3pA65qpdwPbzjohhew==}
@@ -5604,21 +5686,21 @@ snapshots:
       '@types/uuid': 9.0.8
       dequal: 2.0.3
       polished: 4.3.1
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       uuid: 9.0.1
 
   '@storybook/addon-backgrounds@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
       '@storybook/global': 5.0.0
       memoizerific: 1.11.3
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       ts-dedent: 2.2.0
 
   '@storybook/addon-controls@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
       dequal: 2.0.3
       lodash: 4.17.21
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       ts-dedent: 2.2.0
 
   '@storybook/addon-docs@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
@@ -5635,7 +5717,7 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       rehype-external-links: 3.0.0
       rehype-slug: 6.0.0
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - supports-color
@@ -5651,7 +5733,7 @@ snapshots:
       '@storybook/addon-outline': 8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))
       '@storybook/addon-toolbars': 8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))
       '@storybook/addon-viewport': 8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - supports-color
@@ -5659,18 +5741,18 @@ snapshots:
   '@storybook/addon-highlight@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
       '@storybook/global': 5.0.0
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
 
   '@storybook/addon-measure@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
       '@storybook/global': 5.0.0
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       tiny-invariant: 1.3.3
 
   '@storybook/addon-outline@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
       '@storybook/global': 5.0.0
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       ts-dedent: 2.2.0
 
   '@storybook/addon-svelte-csf@5.0.0--canary.181.168fccb.0(@storybook/svelte@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))(svelte@5.0.0-next.181))(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.181)(vite@5.3.3(@types/node@20.14.10)))(svelte@5.0.0-next.181)(vite@5.3.3(@types/node@20.14.10))':
@@ -5689,17 +5771,17 @@ snapshots:
 
   '@storybook/addon-themes@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       ts-dedent: 2.2.0
 
   '@storybook/addon-toolbars@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
 
   '@storybook/addon-viewport@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
       memoizerific: 1.11.3
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
 
   '@storybook/blocks@8.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
@@ -5714,7 +5796,7 @@ snapshots:
       memoizerific: 1.11.3
       polished: 4.3.1
       react-colorful: 5.6.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       telejson: 7.2.0
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
@@ -5732,7 +5814,7 @@ snapshots:
       find-cache-dir: 3.3.2
       fs-extra: 11.2.0
       magic-string: 0.30.10
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       ts-dedent: 2.2.0
       vite: 5.3.3(@types/node@20.14.10)
     optionalDependencies:
@@ -5750,7 +5832,7 @@ snapshots:
       '@types/cross-spawn': 6.0.6
       cross-spawn: 7.0.3
       globby: 14.0.2
-      jscodeshift: 0.15.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      jscodeshift: 0.15.2(@babel/preset-env@7.24.7)
       lodash: 4.17.21
       prettier: 3.3.2
       recast: 0.23.9
@@ -5780,7 +5862,7 @@ snapshots:
 
   '@storybook/csf-plugin@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       unplugin: 1.11.0
 
   '@storybook/csf@0.1.11':
@@ -5789,7 +5871,7 @@ snapshots:
 
   '@storybook/docs-tools@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
 
   '@storybook/global@5.0.0': {}
 
@@ -5800,13 +5882,13 @@ snapshots:
 
   '@storybook/node-logger@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
 
   '@storybook/react-dom-shim@8.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
 
   '@storybook/svelte-vite@8.2.2(@babel/core@7.24.7)(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.181)(vite@5.3.3(@types/node@20.14.10)))(postcss@8.4.39)(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))(svelte@5.0.0-next.181)(typescript@5.5.3)(vite@5.3.3(@types/node@20.14.10))':
     dependencies:
@@ -5814,7 +5896,7 @@ snapshots:
       '@storybook/svelte': 8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))(svelte@5.0.0-next.181)
       '@sveltejs/vite-plugin-svelte': 3.1.1(svelte@5.0.0-next.181)(vite@5.3.3(@types/node@20.14.10))
       magic-string: 0.30.10
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       svelte: 5.0.0-next.181
       svelte-preprocess: 5.1.4(@babel/core@7.24.7)(postcss@8.4.39)(svelte@5.0.0-next.181)(typescript@5.5.3)
       sveltedoc-parser: 4.2.1
@@ -5838,13 +5920,28 @@ snapshots:
   '@storybook/svelte@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))(svelte@5.0.0-next.181)':
     dependencies:
       '@storybook/global': 5.0.0
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
       svelte: 5.0.0-next.181
       sveltedoc-parser: 4.2.1
       ts-dedent: 2.2.0
       type-fest: 2.19.0
     transitivePeerDependencies:
       - supports-color
+
+  '@storybook/types@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7))':
+    dependencies:
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
+
+  '@sveltejs/package@2.3.2(svelte@5.0.0-next.181)(typescript@5.5.3)':
+    dependencies:
+      chokidar: 3.6.0
+      kleur: 4.1.5
+      sade: 1.8.1
+      semver: 7.6.2
+      svelte: 5.0.0-next.181
+      svelte2tsx: 0.7.13(svelte@5.0.0-next.181)(typescript@5.5.3)
+    transitivePeerDependencies:
+      - typescript
 
   '@sveltejs/vite-plugin-svelte-inspector@2.1.0(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.181)(vite@5.3.3(@types/node@20.14.10)))(svelte@5.0.0-next.181)(vite@5.3.3(@types/node@20.14.10))':
     dependencies:
@@ -6498,6 +6595,8 @@ snapshots:
 
   decamelize@5.0.1:
     optional: true
+
+  dedent-js@1.0.1: {}
 
   dedent@1.5.3: {}
 
@@ -7355,7 +7454,7 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  jscodeshift@0.15.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)):
+  jscodeshift@0.15.2(@babel/preset-env@7.24.7):
     dependencies:
       '@babel/core': 7.24.7
       '@babel/parser': 7.24.7
@@ -7527,6 +7626,10 @@ snapshots:
       get-func-name: 2.0.2
     optional: true
 
+  lower-case@2.0.2:
+    dependencies:
+      tslib: 2.6.3
+
   lru-cache@10.4.2:
     optional: true
 
@@ -7679,6 +7782,8 @@ snapshots:
 
   mime@1.6.0: {}
 
+  mime@4.0.4: {}
+
   mimic-fn@2.1.0: {}
 
   mimic-fn@4.0.0: {}
@@ -7730,8 +7835,7 @@ snapshots:
       pkg-types: 1.1.3
       ufo: 1.5.3
 
-  mri@1.2.0:
-    optional: true
+  mri@1.2.0: {}
 
   mrmime@2.0.0:
     optional: true
@@ -7749,6 +7853,11 @@ snapshots:
   negotiator@0.6.3: {}
 
   neo-async@2.6.2: {}
+
+  no-case@3.0.4:
+    dependencies:
+      lower-case: 2.0.2
+      tslib: 2.6.3
 
   node-dir@0.1.17:
     dependencies:
@@ -7901,6 +8010,11 @@ snapshots:
     optional: true
 
   parseurl@1.3.3: {}
+
+  pascal-case@3.1.2:
+    dependencies:
+      no-case: 3.0.4
+      tslib: 2.6.3
 
   path-exists@3.0.0: {}
 
@@ -8283,6 +8397,10 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
+  sade@1.8.1:
+    dependencies:
+      mri: 1.2.0
+
   safe-buffer@5.1.2:
     optional: true
 
@@ -8492,7 +8610,7 @@ snapshots:
   std-env@3.7.0:
     optional: true
 
-  storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)):
+  storybook@8.2.2(@babel/preset-env@7.24.7):
     dependencies:
       '@babel/core': 7.24.7
       '@babel/types': 7.24.7
@@ -8512,7 +8630,7 @@ snapshots:
       fs-extra: 11.2.0
       giget: 1.2.3
       globby: 14.0.2
-      jscodeshift: 0.15.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
+      jscodeshift: 0.15.2(@babel/preset-env@7.24.7)
       leven: 3.1.0
       ora: 5.4.1
       prettier: 3.3.2
@@ -8606,6 +8724,13 @@ snapshots:
     optionalDependencies:
       '@babel/core': 7.24.7
       postcss: 8.4.39
+      typescript: 5.5.3
+
+  svelte2tsx@0.7.13(svelte@5.0.0-next.181)(typescript@5.5.3):
+    dependencies:
+      dedent-js: 1.0.1
+      pascal-case: 3.1.2
+      svelte: 5.0.0-next.181
       typescript: 5.5.3
 
   svelte@5.0.0-next.181:
@@ -8786,6 +8911,14 @@ snapshots:
       typescript: 5.5.3
       yaml: 2.4.5
     optional: true
+
+  typescript-svelte-plugin@0.3.39(svelte@5.0.0-next.181)(typescript@5.5.3):
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.0
+      svelte2tsx: 0.7.13(svelte@5.0.0-next.181)(typescript@5.5.3)
+    transitivePeerDependencies:
+      - svelte
+      - typescript
 
   typescript@5.5.2: {}
 

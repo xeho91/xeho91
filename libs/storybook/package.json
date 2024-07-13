@@ -7,13 +7,13 @@
 	"engines": {
 		"node": ">=20"
 	},
-	"files": ["/src"],
+	"files": ["/src", "/types"],
 	"imports": {
 		"#*": "./src/*.ts"
 	},
 	"exports": {
 		"./download-image": {
-			"types": "./src/component/download-image/DownloadImage.svelte.d.ts",
+			"types": "./types/component/download-image/DownloadImage.svelte.d.ts",
 			"svelte": "./src/component/download-image/DownloadImage.svelte"
 		},
 		"./*": "./src/*.ts"
@@ -23,6 +23,7 @@
 		"clean": "pnpm run \"/^clean:.*/\" ",
 		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
 		"clean:test": "del \"./coverage\" ",
+		"clean:types": "del \"./types\" ",
 		"dev": "pnpm run \"/^dev:.*/\" ",
 		"dev:doc": "pnpm run \"/^dev:doc:.*/\" ",
 		"dev:doc:watch": "typedoc --watch",
@@ -31,19 +32,19 @@
 		"fix": "pnpm run \"/^fix:.*/\" ",
 		"fix:format": "biome format . --verbose --write",
 		"fix:js": "biome lint . --verbose --fix --unsafe",
-		"fix:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" --fix",
+		"fix:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" --fix",
 		"fix:typos": "typos --verbose --write-changes",
 		"lint": "pnpm run \"/^lint:.*/\" ",
 		"lint:format": "biome format . --verbose",
 		"lint:js": "biome lint . --verbose",
-		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
+		"lint:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
 		"lint:ts": "tsc --noEmit",
 		"lint:typos": "typos --verbose",
+		"prepublish": "pnpm build:types",
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-monorepo\" "
 	},
 	"dependencies": {
 		"@storybook/types": "8.2.2",
-		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",
 		"@xeho91/lib-geometry": "workspace:*",
 		"@xeho91/lib-logger": "workspace:*",
