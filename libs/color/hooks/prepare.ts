@@ -19,6 +19,9 @@ const HOOK_NAME = "prepare";
 const OUTPUT_DIR_PALETTE = path.resolve(__dirname, "..", "src", "palette");
 const TEMPLATE = await fs.readFile(path.resolve(__dirname, HOOK_NAME, "template.ts.hbs")).then((b) => b.toString());
 
+const white = Object.fromEntries(Array.from({ length: 12 }, (_, idx) => [idx + 1, "#ffffff"]));
+const black = Object.fromEntries(Array.from({ length: 12 }, (_, idx) => [idx + 1, "#000000"]));
+
 const COLORS = {
 	brand: {
 		primary: {
@@ -54,7 +57,7 @@ const COLORS = {
 	},
 	grayscale: {
 		black: {
-			solid: { light: radix.blackA, dark: radix.whiteA },
+			solid: { light: black, dark: white },
 			blend: { light: radix.blackA, dark: radix.whiteA },
 		},
 		gray: {
@@ -62,7 +65,7 @@ const COLORS = {
 			blend: { light: radix.sandA, dark: radix.sandDarkA },
 		},
 		white: {
-			solid: { light: radix.blackA, dark: radix.whiteA },
+			solid: { light: white, dark: black },
 			blend: { light: radix.blackA, dark: radix.whiteA },
 		},
 	},

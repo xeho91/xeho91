@@ -20,7 +20,7 @@ export const BLACK_SOLID_LIGHT_1 = new Color({
 	scheme: "light",
 	type: "solid",
 	step: 1,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 5 }),
+	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_LIGHT_2 = new Color({
 	category,
@@ -28,7 +28,7 @@ export const BLACK_SOLID_LIGHT_2 = new Color({
 	scheme: "light",
 	type: "solid",
 	step: 2,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 10 }),
+	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_LIGHT_3 = new Color({
 	category,
@@ -36,7 +36,7 @@ export const BLACK_SOLID_LIGHT_3 = new Color({
 	scheme: "light",
 	type: "solid",
 	step: 3,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 15 }),
+	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_LIGHT_4 = new Color({
 	category,
@@ -44,7 +44,7 @@ export const BLACK_SOLID_LIGHT_4 = new Color({
 	scheme: "light",
 	type: "solid",
 	step: 4,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 20 }),
+	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_LIGHT_5 = new Color({
 	category,
@@ -52,7 +52,7 @@ export const BLACK_SOLID_LIGHT_5 = new Color({
 	scheme: "light",
 	type: "solid",
 	step: 5,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 30 }),
+	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_LIGHT_6 = new Color({
 	category,
@@ -60,7 +60,7 @@ export const BLACK_SOLID_LIGHT_6 = new Color({
 	scheme: "light",
 	type: "solid",
 	step: 6,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 40 }),
+	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_LIGHT_7 = new Color({
 	category,
@@ -68,7 +68,7 @@ export const BLACK_SOLID_LIGHT_7 = new Color({
 	scheme: "light",
 	type: "solid",
 	step: 7,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 50 }),
+	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_LIGHT_8 = new Color({
 	category,
@@ -76,7 +76,7 @@ export const BLACK_SOLID_LIGHT_8 = new Color({
 	scheme: "light",
 	type: "solid",
 	step: 8,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 60 }),
+	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_LIGHT_9 = new Color({
 	category,
@@ -84,7 +84,7 @@ export const BLACK_SOLID_LIGHT_9 = new Color({
 	scheme: "light",
 	type: "solid",
 	step: 9,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 70 }),
+	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_LIGHT_10 = new Color({
 	category,
@@ -92,7 +92,7 @@ export const BLACK_SOLID_LIGHT_10 = new Color({
 	scheme: "light",
 	type: "solid",
 	step: 10,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 80 }),
+	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_LIGHT_11 = new Color({
 	category,
@@ -100,7 +100,7 @@ export const BLACK_SOLID_LIGHT_11 = new Color({
 	scheme: "light",
 	type: "solid",
 	step: 11,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 90 }),
+	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_LIGHT_12 = new Color({
 	category,
@@ -108,7 +108,7 @@ export const BLACK_SOLID_LIGHT_12 = new Color({
 	scheme: "light",
 	type: "solid",
 	step: 12,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 95 }),
+	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_DARK_1 = new Color({
 	category,
@@ -116,7 +116,7 @@ export const BLACK_SOLID_DARK_1 = new Color({
 	scheme: "dark",
 	type: "solid",
 	step: 1,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 5 }),
+	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_DARK_2 = new Color({
 	category,
@@ -124,7 +124,7 @@ export const BLACK_SOLID_DARK_2 = new Color({
 	scheme: "dark",
 	type: "solid",
 	step: 2,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 10 }),
+	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_DARK_3 = new Color({
 	category,
@@ -132,7 +132,7 @@ export const BLACK_SOLID_DARK_3 = new Color({
 	scheme: "dark",
 	type: "solid",
 	step: 3,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 15 }),
+	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_DARK_4 = new Color({
 	category,
@@ -140,7 +140,7 @@ export const BLACK_SOLID_DARK_4 = new Color({
 	scheme: "dark",
 	type: "solid",
 	step: 4,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 20 }),
+	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_DARK_5 = new Color({
 	category,
@@ -148,7 +148,7 @@ export const BLACK_SOLID_DARK_5 = new Color({
 	scheme: "dark",
 	type: "solid",
 	step: 5,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 30 }),
+	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_DARK_6 = new Color({
 	category,
@@ -156,7 +156,7 @@ export const BLACK_SOLID_DARK_6 = new Color({
 	scheme: "dark",
 	type: "solid",
 	step: 6,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 40 }),
+	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_DARK_7 = new Color({
 	category,
@@ -164,7 +164,7 @@ export const BLACK_SOLID_DARK_7 = new Color({
 	scheme: "dark",
 	type: "solid",
 	step: 7,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 50 }),
+	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_DARK_8 = new Color({
 	category,
@@ -172,7 +172,7 @@ export const BLACK_SOLID_DARK_8 = new Color({
 	scheme: "dark",
 	type: "solid",
 	step: 8,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 60 }),
+	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_DARK_9 = new Color({
 	category,
@@ -180,7 +180,7 @@ export const BLACK_SOLID_DARK_9 = new Color({
 	scheme: "dark",
 	type: "solid",
 	step: 9,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 70 }),
+	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_DARK_10 = new Color({
 	category,
@@ -188,7 +188,7 @@ export const BLACK_SOLID_DARK_10 = new Color({
 	scheme: "dark",
 	type: "solid",
 	step: 10,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 80 }),
+	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_DARK_11 = new Color({
 	category,
@@ -196,7 +196,7 @@ export const BLACK_SOLID_DARK_11 = new Color({
 	scheme: "dark",
 	type: "solid",
 	step: 11,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 90 }),
+	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_SOLID_DARK_12 = new Color({
 	category,
@@ -204,7 +204,7 @@ export const BLACK_SOLID_DARK_12 = new Color({
 	scheme: "dark",
 	type: "solid",
 	step: 12,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 95 }),
+	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
 });
 export const BLACK_BLEND_LIGHT_1 = new Color({
 	category,
