@@ -1,0 +1,86 @@
+{
+	"$schema": "https://json.schemastore.org/package",
+	"type": "module",
+	"name": "@xeho91/lib-brand",
+	"version": "0.0.0",
+	"description": "@xeho91' personal brand assets.",
+	"keywords": ["brand", "logo", "avatar"],
+	"license": "MIT",
+	"author": {
+		"name": "Mateusz Kadlubowski",
+		"email": "xeho91@pm.me",
+		"url": "https://github.com/xeho91"
+	},
+	"homepage": "https://github.com/xeho91/xeho91",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xeho91/xeho91.git",
+		"directory": "libs/brand"
+	},
+	"bugs": "https://github.com/xeho91/xeho91/issues",
+	"engines": {
+		"node": ">=20"
+	},
+	"files": ["src/"],
+	"imports": {
+		"#*": "./src/*.ts"
+	},
+	"exports": {
+		".": "./src/mod.ts",
+		"./avatar": {
+			"svelte": "./src/component/avatar/Avatar.svelte"
+		},
+		"./design": "./src/design.ts",
+		"./logo": {
+			"svelte": "./src/component/logo/Logo.svelte"
+		},
+		"./logotype": "./src/logotype.ts",
+		"./meta": "./src/meta.ts"
+	},
+	"scripts": {
+		"clean": "pnpm run \"/^clean:.*/\" ",
+		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
+		"clean:test": "del \"./coverage\" ",
+		"dev": "pnpm run \"/^dev:.*/\" ",
+		"dev:doc": "pnpm run \"/^dev:doc:.*/\" ",
+		"dev:doc:watch": "typedoc --watch",
+		"dev:doc:serve": "pnpm serve \"./docs\"",
+		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-color\" ",
+		"fix": "pnpm run \"/^fix:.*/\" ",
+		"fix:format": "biome format . --verbose --write",
+		"fix:js": "biome lint . --verbose --fix --unsafe",
+		"fix:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" --fix",
+		"fix:typos": "typos --verbose --write-changes",
+		"lint": "pnpm run \"/^lint:.*/\" ",
+		"lint:format": "biome format . --verbose",
+		"lint:js": "biome lint . --verbose",
+		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
+		"lint:ts": "tsc --noEmit",
+		"lint:typos": "typos --verbose",
+		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-color\" "
+	},
+	"dependencies": {
+		"@storybook/addon-svelte-csf": "5.0.0--canary.181.168fccb.0",
+		"@xeho91/lib-color": "workspace:*",
+		"@xeho91/lib-error": "workspace:*",
+		"@xeho91/lib-geometry": "workspace:*",
+		"@xeho91/lib-snippet": "workspace:*",
+		"@xeho91/lib-storybook": "workspace:*",
+		"@xeho91/lib-struct": "workspace:*",
+		"@xeho91/lib-type": "workspace:*",
+		"dedent": "1.5.3",
+		"mime": "4.0.4",
+		"svelte": "5.0.0-next.181",
+		"type-fest": "4.20.1",
+		"typescript-svelte-plugin": "0.3.39"
+	},
+	"devDependencies": {
+		"@radix-ui/colors": "3.0.0",
+		"@types/culori": "2.1.0",
+		"@xeho91/lib-logger": "workspace:*",
+		"culori": "4.0.1",
+		"handlebars": "4.7.8",
+		"rollup": "4.18.0",
+		"rollup-plugin-svelte": "7.2.2"
+	}
+}
