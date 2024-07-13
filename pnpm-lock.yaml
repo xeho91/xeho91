@@ -201,6 +201,15 @@ importers:
         specifier: 5.5.2
         version: 5.5.2
 
+  libs/struct:
+    dependencies:
+      '@xeho91/lib-type':
+        specifier: workspace:*
+        version: link:../type
+      valibot:
+        specifier: 0.35.0
+        version: 0.35.0
+
   libs/type:
     dependencies:
       '@total-typescript/ts-reset':
