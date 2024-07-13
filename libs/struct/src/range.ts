@@ -17,14 +17,18 @@ export class Range<TMin extends number = number, TMax extends number = number>
 	#max: TMax;
 	#step: number;
 
+	static #parse_min = (min: number) => v.parse(v.number(), min);
+	static #parse_max = (min: number, max: number) =>
+		v.parse(v.pipe(v.number(), v.notValue(min), v.minValue(min)), max);
+
 	/**
 	 * @param min - minimum value
 	 * @param max - maximum value
 	 * @param step - defaults to 1% between min and max
 	 */
 	constructor(min: TMin, max: TMax, step?: number) {
-		this.#min = v.parse(v.number(), min) as TMin;
-		this.#max = v.parse(v.pipe(v.number(), v.notValue(min), v.minValue(min)), max) as TMax;
+		this.#min = Range.#parse_min(min) as TMin;
+		this.#max = Range.#parse_max(min, max) as TMax;
 		this.#step = step ?? (max - min) * 0.01;
 	}
 
@@ -37,7 +41,7 @@ export class Range<TMin extends number = number, TMax extends number = number>
 	}
 
 	public set min(value: TMin) {
-		this.#min = value;
+		this.#min = Range.#parse_min(value) as TMin;
 	}
 
 	public get max() {
@@ -45,7 +49,7 @@ export class Range<TMin extends number = number, TMax extends number = number>
 	}
 
 	public set max(value: TMax) {
-		this.#max = value;
+		this.#max = Range.#parse_max(this.min, value) as TMax;
 	}
 
 	public get step() {
