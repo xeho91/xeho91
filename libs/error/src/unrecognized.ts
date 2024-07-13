@@ -22,30 +22,32 @@ export class UnrecognizedError<TCase extends Primitive> extends Error {
 	/** A primitive value which caused the error. */
 	public readonly case: Primitive;
 
-	constructor(message: string, _case: TCase, asserter: AnyFunction | undefined = undefined) {
-		super(message, {
+	constructor(case_: TCase, message: string | undefined = undefined, asserter: AnyFunction | undefined = undefined) {
+		const stringified_case = typeof case_ === "string" ? `"${case_}"` : case_?.toString();
+		super(message ?? `An unrecognized case { ${stringified_case} } has occurred!`, {
 			cause: "UNRECOGNIZED",
 		});
+		this.case = case_;
 		this.name = "UnrecognizedError";
 		Error.captureStackTrace?.(this, asserter || this.constructor);
 	}
 
 	public override toString(): string {
-		return `[${this.cause} - { ${this.case?.toString()} }] ${this.message}`;
+		return `[${this.cause}] ${this.message}`;
 	}
 }
 
 /**
  * @see {@link UnrecognizedError}
  *
- * @param _case A primitive value which caused the error.
+ * @param case_ A primitive value which caused the error.
  * @param message Override a default message.
  */
-export function unrecognized<Case extends Primitive>(
-	_case: Case,
-	message?: string | undefined,
-): UnrecognizedError<Case> {
-	return new UnrecognizedError(message ?? `An unrecognized case { ${_case?.toString()} } has occurred!`, _case);
+export function unrecognized<TCase extends Primitive = Primitive>(
+	case_: TCase,
+	message?: ConstructorParameters<typeof UnrecognizedError>[1],
+): UnrecognizedError<TCase> {
+	return new UnrecognizedError(case_, message);
 }
 
 if (import.meta.vitest) {
@@ -56,7 +58,7 @@ if (import.meta.vitest) {
 			expect(() => {
 				throw unrecognized("who-are-you");
 			}).toThrowErrorMatchingInlineSnapshot(
-				"[UnrecognizedError: An unrecognized case { who-are-you } has occurred!]",
+				`[UnrecognizedError: An unrecognized case { "who-are-you" } has occurred!]`,
 			);
 		});
 	});

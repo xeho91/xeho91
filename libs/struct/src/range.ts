@@ -37,7 +37,8 @@ export class Range<TMin extends number = number, TMax extends number = number>
 	}
 
 	public set min(value: TMin) {
-		this.#min = value;
+		const { max } = this;
+		this.#min = v.parse(v.pipe(v.number(), v.notValue(this.max), v.maxValue(max)), value) as TMin;
 	}
 
 	public get max() {
@@ -45,7 +46,8 @@ export class Range<TMin extends number = number, TMax extends number = number>
 	}
 
 	public set max(value: TMax) {
-		this.#max = value;
+		const { min } = this;
+		this.#max = v.parse(v.pipe(v.number(), v.notValue(this.min), v.minValue(min)), value) as TMax;
 	}
 
 	public get step() {
@@ -99,6 +101,50 @@ if (import.meta.vitest) {
 			});
 			it("returns instance when values matches constraints", ({ expect }) => {
 				expect(new Range(1, 100)).toBeInstanceOf(Range);
+			});
+		});
+
+		describe("set min", () => {
+			it("throws error when min and max are equal", ({ expect }) => {
+				const range = new Range<number>(0, 100);
+				expect(() => {
+					range.min = 100;
+				}).toThrowErrorMatchingInlineSnapshot("[ValiError: Invalid value: Expected !100 but received 100]");
+			});
+
+			it("throws error when min is higher than current max", ({ expect }) => {
+				const range = new Range<number>(0, 100);
+				expect(() => {
+					range.min = 101;
+				}).toThrowErrorMatchingInlineSnapshot("[ValiError: Invalid value: Expected <=100 but received 101]");
+			});
+
+			it("works when min is still less than max", ({ expect }) => {
+				const range = new Range<number>(0, 100);
+				range.min = -1;
+				expect(range.min).toBe(-1);
+			});
+		});
+
+		describe("set max", () => {
+			it("throws error when min and max are equal", ({ expect }) => {
+				const range = new Range<number, number>(0, 100);
+				expect(() => {
+					range.max = 0;
+				}).toThrowErrorMatchingInlineSnapshot("[ValiError: Invalid value: Expected !0 but received 0]");
+			});
+
+			it("throws error when max is less than current min", ({ expect }) => {
+				const range = new Range<number>(0, 100);
+				expect(() => {
+					range.min = 101;
+				}).toThrowErrorMatchingInlineSnapshot("[ValiError: Invalid value: Expected <=100 but received 101]");
+			});
+
+			it("works when min is still less than max", ({ expect }) => {
+				const range = new Range<number, number>(0, 100);
+				range.max = 101;
+				expect(range.max).toBe(101);
 			});
 		});
 
