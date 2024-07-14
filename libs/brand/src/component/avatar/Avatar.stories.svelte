@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-import { defineMeta, setTemplate, type Args } from "@storybook/addon-svelte-csf";
+import { type Args, defineMeta, setTemplate } from "@storybook/addon-svelte-csf";
 import {
 	create_control_from_iterable,
 	create_control_from_range,
