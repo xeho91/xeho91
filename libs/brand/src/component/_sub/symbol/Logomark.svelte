@@ -6,7 +6,7 @@ export const DIMENSIONS_LOGOMARK = new Rectangle(49.45, 59.54);
 
 <script lang="ts">
 	import { LogotypeChar } from "#logotype";
-	import { set_id } from "#meta";
+	import { set_id } from "#id";
 
 	interface Props {
 		id: string;

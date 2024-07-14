@@ -7,7 +7,7 @@ export const GRADIENT_ROTATE = 90;
 	import { PALETTE_PRIMARY } from "@xeho91/lib-color/palette/brand/primary";
 	import { PALETTE_ACCENT } from "@xeho91/lib-color/palette/brand/accent";
 
-	import { set_id } from "#meta";
+	import { set_id } from "#id";
 
 	interface Props {
 		id: string;

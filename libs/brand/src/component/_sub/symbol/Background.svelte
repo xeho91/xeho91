@@ -2,9 +2,9 @@
 import type { Rectangle } from "@xeho91/lib-geometry/two-dimension/rectangle";
 
 import type { BrandAssetTheme } from "#design";
-import { set_id } from "#meta";
+import { set_id } from "#id";
 
-import { SHADOW_BLUR, SHADOW_OFFSET_X, SHADOW_OFFSET_Y, SHADOW_SIZE } from "../FeDropShadow.svelte";
+import { SHADOW_BLUR, SHADOW_OFFSET_X, SHADOW_SIZE } from "../FeDropShadow.svelte";
 
 interface Props {
 	id: string;
@@ -16,10 +16,9 @@ interface Props {
 let { id, dimensions, theme, shape }: Props = $props();
 
 const r = dimensions.half("width") - SHADOW_SIZE * 2;
-const [width, height] = [
-	dimensions.width - SHADOW_OFFSET_X - SHADOW_BLUR,
-	dimensions.height - SHADOW_OFFSET_Y - SHADOW_BLUR,
-];
+
+const width = $derived(dimensions.width - SHADOW_OFFSET_X - SHADOW_BLUR);
+const height = $derived(dimensions.height - SHADOW_OFFSET_X - SHADOW_BLUR);
 const cx = dimensions.half("width");
 const cy = dimensions.half("height");
 </script>

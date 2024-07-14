@@ -1,8 +1,10 @@
 <script context="module" lang="ts">
 import { Square } from "@xeho91/lib-geometry/two-dimension/square";
 
-export const AVATAR_DIMENSIONS = new Square(100);
 export const AVATAR_DEFAULT_ID = "xeho91-avatar";
+export const AVATAR_TITLE = "xeho91's avatar";
+export const AVATAR_DESCRIPTION = `In the style of quickly using a paintbrush on the wall. It\'s written "x" in uppercase.'`;
+export const AVATAR_DIMENSIONS = new Square(100);
 export const AVATAR_DEFAULT_ANIMATED = false;
 export const AVATAR_DEFAULT_BACKGROUNDED = false;
 </script>
@@ -12,14 +14,12 @@ export const AVATAR_DEFAULT_BACKGROUNDED = false;
 	import BackgroundSymbol from "../_sub/symbol/Background.svelte";
 	import FrameSymbol from "../_sub/symbol/Frame.svelte";
 	import LinearGradient from "../_sub/LinearGradient.svelte";
-	import LogomarkSymbol, {
-		DIMENSIONS_LOGOMARK,
-	} from "../_sub/symbol/Logomark.svelte";
+	import LogomarkSymbol, { DIMENSIONS_LOGOMARK } from "../_sub/symbol/Logomark.svelte";
 	import FeDropShadow from "../_sub/FeDropShadow.svelte";
 
 	import type { SharedProps } from "#component/props";
 	import { BrandAssetTheme } from "#design";
-	import { set_id } from "#meta";
+	import { set_id } from "#id";
 
 	interface Props extends SharedProps {
 		/**
@@ -37,14 +37,12 @@ export const AVATAR_DEFAULT_BACKGROUNDED = false;
 		svg = $bindable(),
 	}: Props = $props();
 
-	const theme = $derived(new BrandAssetTheme(_theme));
-	const fill = $derived(theme.get_fill_foreground(id));
+	let theme = $derived(new BrandAssetTheme(_theme));
+	let fill = $derived(theme.get_fill_foreground(id));
 
 	const dimensions_rectangle = AVATAR_DIMENSIONS.to_rectangle();
-	const translate_x =
-		AVATAR_DIMENSIONS.half() - DIMENSIONS_LOGOMARK.half("width");
-	const translate_y =
-		(AVATAR_DIMENSIONS.half() - DIMENSIONS_LOGOMARK.half("height")) / 4;
+	const translate_x = AVATAR_DIMENSIONS.half() - DIMENSIONS_LOGOMARK.half("width");
+	const translate_y = (AVATAR_DIMENSIONS.half() - DIMENSIONS_LOGOMARK.half("height")) / 4;
 
 	const filter = `url(#${set_id(id, "shadow")})`;
 </script>
@@ -52,8 +50,8 @@ export const AVATAR_DEFAULT_BACKGROUNDED = false;
 <SVG
 	bind:svg
 	{id}
-	title={""}
-	description={""}
+	title={AVATAR_TITLE}
+	description={AVATAR_DESCRIPTION}
 	dimensions={AVATAR_DIMENSIONS.to_rectangle()}
 	{theme}
 >

@@ -1,10 +1,10 @@
 import type { Color, ColorScheme } from "@xeho91/lib-color/instance";
 import { PALETTE_SECONDARY } from "@xeho91/lib-color/palette/brand/secondary";
 import { PALETTE_GRAY } from "@xeho91/lib-color/palette/grayscale/gray";
-import { unreachable } from "@xeho91/lib-error/unreachable";
+import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import type { IterableElement } from "type-fest/source/iterable-element";
 
-import { set_id } from "#meta";
+import { set_id } from "#id";
 
 export type BrandAssetThemeName = IterableElement<typeof BrandAssetTheme.NAMES>;
 export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetThemeName> {
@@ -30,7 +30,6 @@ export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetTheme
 			case "color": return;
 			case "black": return PALETTE_GRAY.solid(scheme, 12);
 			case "white": return PALETTE_GRAY.solid(scheme, 1);
-			default: throw unreachable();
 		}
 	}
 
@@ -49,7 +48,7 @@ export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetTheme
 			case "color": return `url(#${set_id(id, "gradient")})`;
 			case "black":
 			case "white": return "light-dark(var(--light), var(--dark))";
-			default: throw unreachable();
+			default: throw unrecognized(this.#name);
 		}
 	}
 
@@ -60,7 +59,7 @@ export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetTheme
 			case "color": return PALETTE_SECONDARY.blend(scheme, 2);
 			case "black": return PALETTE_GRAY.blend(scheme, 2);
 			case "white": return PALETTE_GRAY.blend(scheme, 9);
-			default: throw unreachable();
+			default: throw unrecognized(this.#name);
 		}
 	}
 

@@ -9,7 +9,7 @@ export const SHADOW_SIZE = SHADOW_OFFSET_X + SHADOW_OFFSET_Y + SHADOW_BLUR;
 	import { COLOR } from "@xeho91/lib-color";
 	import type { Color } from "@xeho91/lib-color/instance";
 
-	import { set_id } from "#meta";
+	import { set_id } from "#id";
 
 	interface Props {
 		id: string;

@@ -6,7 +6,7 @@ import {
 	create_control_from_string,
 } from "@xeho91/lib-storybook/arg-type";
 
-import Logo, { LOGO_DEFAULT_ID } from "./Logo.svelte";
+import Logo, { LOGO_DEFAULT_ID, LOGO_DIMENSIONS } from "./Logo.svelte";
 
 import { SHARED_ARG_TYPES } from "#component/props";
 
@@ -27,7 +27,7 @@ const { Story } = defineMeta({
 </script>
 
 <script lang="ts">
-	import { Square } from "@xeho91/lib-geometry/two-dimension/square";
+	import { Rectangle } from "@xeho91/lib-geometry/two-dimension/rectangle";
 	import DownloadImage, { DownloadImageManager } from "@xeho91/lib-storybook/download-image";
 	import { Range } from "@xeho91/lib-struct/range";
 
@@ -79,14 +79,26 @@ const { Story } = defineMeta({
 			summary: "ImageFormat",
 			category: "download",
 		}),
-		size: create_control_from_range(new Range(32, 1024, 1), {
+		background_width: create_control_from_range(new Range(LOGO_DIMENSIONS.width, 2160, 1), {
+			category: "download",
+		}),
+		background_height: create_control_from_range(new Range(LOGO_DIMENSIONS.height, 2160, 1), {
+			category: "download",
+		}),
+		scale: create_control_from_range(new Range(1, 10, 0.05), {
 			category: "download",
 		}),
 	}}
 >
-	{#snippet children({ format, size, ...args })}
-		<DownloadImage {svg} dimensions={new Square(size ?? 32)} {format}>
-			<Logo {...args} bind:svg />
+	{#snippet children({ format, background_width, background_height, scale, ...args })}
+		{@const dimensions = new Rectangle(background_width ?? LOGO_DIMENSIONS.width, background_height ?? LOGO_DIMENSIONS.height)}
+		<DownloadImage
+			{svg}
+			{dimensions}
+			{format}
+			{scale}
+		>
+			<Logo {...args} {background_width} {background_height} bind:svg />
 		</DownloadImage>
 	{/snippet}
 </Story>

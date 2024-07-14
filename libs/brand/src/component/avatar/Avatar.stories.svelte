@@ -65,7 +65,7 @@ const { Story } = defineMeta({
 		<Avatar id="theme-black" theme="black" />
 		<Avatar id="theme-white" theme="white" />
 	</div>
-	<div style:min-width="200px" style:min-height="100px" style:display="flex">
+	<div style:min-width="300px" style:min-height="100px" style:display="flex">
 		<Avatar id="background-transparent-color" theme="color" backgrounded />
 		<Avatar id="background-transparent-black" theme="black" backgrounded />
 		<Avatar id="background-color-color-white" theme="white" backgrounded />
@@ -86,7 +86,8 @@ const { Story } = defineMeta({
 	}}
 >
 	{#snippet children({ format, size, ...args })}
-		<DownloadImage {svg} dimensions={new Square(size ?? 32)} {format}>
+		{@const dimensions = new Square(size ?? 32)}
+		<DownloadImage {svg} {dimensions} {format}>
 			<Avatar {...args} bind:svg />
 		</DownloadImage>
 	{/snippet}

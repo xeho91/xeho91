@@ -6,7 +6,7 @@ export const FRAME_SIZE = 6;
 	import type { Square } from "@xeho91/lib-geometry/two-dimension/square";
 	import dedent from "dedent";
 
-	import { set_id } from "#meta";
+	import { set_id } from "#id";
 
 	import { SHADOW_SIZE } from "../FeDropShadow.svelte";
 

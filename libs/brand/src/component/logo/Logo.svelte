@@ -2,23 +2,25 @@
 import { Rectangle } from "@xeho91/lib-geometry/two-dimension/rectangle";
 
 export const LOGO_DEFAULT_ID = "xeho91-logo";
+export const LOGO_TITLE = "xeho91's logo";
+export const LOGO_DESCRIPTION = `xeho91's logotype painted in the style of quickly using a paintbrush on the wall. It\'s written "xeho91" in capital letters.'`;
 export const LOGO_DIMENSIONS = new Rectangle(300, 100);
 export const LOGO_DEFAULT_ANIMATED = false;
 export const LOGO_DEFAULT_BACKGROUNDED = false;
 </script>
 
 <script lang="ts">
+	import { Percentage } from "@xeho91/lib-struct/percentage";
+
 	import SVG from "../_sub/SVG.svelte";
 	import BackgroundSymbol from "../_sub/symbol/Background.svelte";
 	import LinearGradient from "../_sub/LinearGradient.svelte";
-	import LogotypeSymbol, {
-		LOGOTYPE_DIMENSIONS,
-	} from "../_sub/symbol/Logotype.svelte";
-	import FeDropShadow from "../_sub/FeDropShadow.svelte";
+	import LogotypeSymbol, { LOGOTYPE_DIMENSIONS } from "../_sub/symbol/Logotype.svelte";
+	import FeDropShadow, { SHADOW_OFFSET_X } from "../_sub/FeDropShadow.svelte";
 
 	import type { SharedProps } from "#component/props";
 	import { BrandAssetTheme } from "#design";
-	import { set_id } from "#meta";
+	import { set_id } from "#id";
 
 	interface Props extends SharedProps {
 		/**
@@ -50,17 +52,13 @@ export const LOGO_DEFAULT_BACKGROUNDED = false;
 		svg = $bindable(),
 	}: Props = $props();
 
-	const theme = $derived(new BrandAssetTheme(_theme));
-	const fill = $derived(theme.get_fill_foreground(id));
-	const dimensions = $derived(
-		new Rectangle(background_width, background_height),
-	);
-	const translate_x = $derived(
-		dimensions.half("width") - LOGOTYPE_DIMENSIONS.half("width"),
-	);
-	const translate_y = $derived(
-		(dimensions.half("height") - LOGOTYPE_DIMENSIONS.half("height")) / 4,
-	);
+	let theme = $derived(new BrandAssetTheme(_theme));
+	let fill = $derived(theme.get_fill_foreground(id));
+	let dimensions = $derived(new Rectangle(background_width, background_height));
+	let shadow_safe_area_x = $derived(new Percentage(SHADOW_OFFSET_X * 4, background_height));
+	let scale = $derived(1 - shadow_safe_area_x.decimal * 2);
+	let translate_x = $derived((-LOGOTYPE_DIMENSIONS.width / 2) * scale);
+	let translate_y = $derived((-LOGOTYPE_DIMENSIONS.height / 2) * scale);
 
 	const filter = `url(#${set_id(id, "shadow")})`;
 </script>
@@ -68,8 +66,8 @@ export const LOGO_DEFAULT_BACKGROUNDED = false;
 <SVG
 	bind:svg
 	{id}
-	title="TODO: ADD TITLE"
-	description="TODO: ADD DESC"
+	title={LOGO_TITLE}
+	description={LOGO_DESCRIPTION}
 	{dimensions}
 	{theme}
 >
@@ -91,6 +89,8 @@ export const LOGO_DEFAULT_BACKGROUNDED = false;
 		href={`#${set_id(id, "logotype")}`}
 		{fill}
 		{filter}
-		transform={`translate(${translate_x}, ${translate_y})`}
+		x="50%"
+		y="50%"
+		transform={`scale(${scale}) translate(${translate_x} ${translate_y})`}
 	/>
 </SVG>

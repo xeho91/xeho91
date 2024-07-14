@@ -3,7 +3,7 @@ import type { Rectangle } from "@xeho91/lib-geometry/two-dimension/rectangle";
 import type { Snippet } from "svelte";
 
 import type { BrandAssetTheme } from "#design";
-import { set_id } from "#meta";
+import { set_id } from "#id";
 
 interface Props {
 	children: Snippet;
@@ -20,7 +20,8 @@ interface Props {
 
 let { children, id, title, description, dimensions, theme, svg = $bindable() }: Props = $props();
 
-const { width, height } = dimensions;
+const width = $derived(dimensions.width);
+const height = $derived(dimensions.height);
 
 const id_title = set_id(id, "title");
 const id_description = set_id(id, "description");
