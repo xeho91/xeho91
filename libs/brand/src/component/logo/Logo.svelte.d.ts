@@ -16,6 +16,12 @@
  * This directory is automatically generated with script `build:types`.
  */
 
+/**
+ * WARN: **Do not edit!**
+          *
+ * This directory is automatically generated with script `build:types`.
+ */
+
 import { SvelteComponentTyped } from "svelte";
 export declare const LOGO_DEFAULT_ID = "xeho91-logo";
 export declare const LOGO_TITLE = "xeho91's logo";

@@ -12,6 +12,12 @@
 
 /**
  * WARN: **Do not edit!**
+          *
+ * This directory is automatically generated with script `build:types`.
+ */
+
+/**
+ * WARN: **Do not edit!**
 		  *
  * This directory is automatically generated with script `build:types`.
  */

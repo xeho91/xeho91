@@ -4,6 +4,12 @@
  * This directory is automatically generated with script `build:types`.
  */
 
+/**
+ * WARN: **Do not edit!**
+          *
+ * This directory is automatically generated with script `build:types`.
+ */
+
 import { SvelteComponentTyped } from "svelte";
 export * from "./manager.svelte";
 declare class __sveltets_Render<TWidth extends number = number, THeight extends number = number> {
