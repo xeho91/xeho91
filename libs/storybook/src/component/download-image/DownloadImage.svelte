@@ -14,15 +14,22 @@ interface Props {
 	dimensions: Rectangle<TWidth, THeight> | Square<TWidth>;
 	svg: SVGElement | undefined;
 	format?: ImageFormat;
+	scale?: number;
 }
 
-let { children, dimensions, svg, format = "svg" }: Props = $props();
+let { children, dimensions, svg, format = "svg", scale = 1 }: Props = $props();
 
-let manager = new DownloadImageManager({ dimensions, svg, format });
+let manager = new DownloadImageManager({ dimensions, svg, format, scale });
 
 let width = $derived(dimensions instanceof Square ? dimensions.size : dimensions.width);
 let height = $derived(dimensions instanceof Square ? dimensions.size : dimensions.height);
 
+$effect(() => {
+	manager.dimensions = (dimensions instanceof Square ? dimensions.to_rectangle() : dimensions) as Rectangle<
+		TWidth,
+		THeight
+	>;
+})
 $effect(() => {
 	manager.svg = svg;
 });
