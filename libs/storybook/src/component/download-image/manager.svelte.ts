@@ -21,22 +21,25 @@ export class DownloadImageManager<
 	}
 
 	public format = $state<TFormat>("svg" as TFormat);
-	public svg: SVGElement | undefined;
+	public svg = $state<SVGElement>();
+	public scale = $state(1);
 
 	public dimensions = $state<Rectangle<TWidth, THeight>>(new Rectangle(0 as TWidth, 0 as THeight));
 
 	constructor(params: {
 		dimensions: Rectangle<TWidth, THeight> | Square<TWidth>;
-		format?: TFormat;
+		format?: DownloadImageManager["format"];
 		svg: DownloadImageManager["svg"];
+		scale: DownloadImageManager["scale"];
 	}) {
-		const { dimensions, format = "svg" as TFormat, svg } = params;
+		const { dimensions, format = "svg", svg, scale } = params;
 		this.dimensions = (dimensions instanceof Square ? dimensions.to_rectangle() : dimensions) as Rectangle<
 			TWidth,
 			THeight
 		>;
-		this.format = format;
+		this.format = format as TFormat;
 		this.svg = svg;
+		this.scale = scale;
 	}
 
 	get #mime_type() {
@@ -46,7 +49,7 @@ export class DownloadImageManager<
 		return mime_type;
 	}
 
-	get #svg(): SVGElement {
+	get _svg(): SVGElement {
 		const { svg } = this;
 		if (!svg) throw not_found("Couldn't find an asset SVG element in the DOM");
 		return svg;
@@ -55,12 +58,12 @@ export class DownloadImageManager<
 	get #svg_url(): string {
 		const type = mime.getType("svg");
 		if (!type) throw not_found("type", `Couldn't get a mime type for ${type}`);
-		const { outerHTML } = this.#svg;
+		const { outerHTML } = this._svg;
 		return URL.createObjectURL(new Blob([outerHTML], { type }));
 	}
 
 	get #url(): string {
-		const { outerHTML } = this.#svg;
+		const { outerHTML } = this._svg;
 		return URL.createObjectURL(new Blob([outerHTML], { type: this.#mime_type }));
 	}
 
@@ -77,7 +80,7 @@ export class DownloadImageManager<
 			const image = await this.#create_image();
 			const context = canvas.getContext("2d");
 			if (!context) throw unreachable("Failed to get canvas context 2D");
-			const { width, height } = this.dimensions;
+			const { width, height } = canvas;
 			context.drawImage(image, 0, 0, width, height);
 			anchor.href = canvas.toDataURL(this.#mime_type, 1);
 		}
@@ -86,9 +89,10 @@ export class DownloadImageManager<
 
 	#create_canvas(): HTMLCanvasElement {
 		const canvas = document.createElement("canvas");
-		const { width, height } = this.dimensions;
-		canvas.setAttribute("width", width.toString());
-		canvas.setAttribute("height", height.toString());
+		const width = $derived(this.dimensions.width * this.scale);
+		const height = $derived(this.dimensions.height * this.scale);
+		canvas.setAttribute("width", `${width}px`);
+		canvas.setAttribute("height", `${height}px`);
 		return canvas;
 	}
 

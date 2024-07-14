@@ -109,6 +109,52 @@ importers:
         specifier: 5.0.0-next.181
         version: 5.0.0-next.181
 
+  libs/brand:
+    dependencies:
+      '@storybook/addon-svelte-csf':
+        specifier: 5.0.0--canary.181.168fccb.0
+        version: 5.0.0--canary.181.168fccb.0(@storybook/svelte@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7))(svelte@5.0.0-next.183))(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.183)(vite@5.3.3(@types/node@20.14.10)))(svelte@5.0.0-next.183)(vite@5.3.3(@types/node@20.14.10))
+      '@xeho91/lib-color':
+        specifier: workspace:*
+        version: link:../color
+      '@xeho91/lib-error':
+        specifier: workspace:*
+        version: link:../error
+      '@xeho91/lib-geometry':
+        specifier: workspace:*
+        version: link:../geometry
+      '@xeho91/lib-storybook':
+        specifier: workspace:*
+        version: link:../storybook
+      '@xeho91/lib-struct':
+        specifier: workspace:*
+        version: link:../struct
+      '@xeho91/lib-type':
+        specifier: workspace:*
+        version: link:../type
+      dedent:
+        specifier: 1.5.3
+        version: 1.5.3
+      mime:
+        specifier: 4.0.4
+        version: 4.0.4
+      type-fest:
+        specifier: 4.20.1
+        version: 4.20.1
+    devDependencies:
+      '@sveltejs/package':
+        specifier: 2.3.2
+        version: 2.3.2(svelte@5.0.0-next.183)(typescript@5.5.3)
+      '@xeho91/lib-logger':
+        specifier: workspace:*
+        version: link:../logger
+      svelte:
+        specifier: 5.0.0-next.183
+        version: 5.0.0-next.183
+      typescript-svelte-plugin:
+        specifier: 0.3.39
+        version: 0.3.39(svelte@5.0.0-next.183)(typescript@5.5.3)
+
   libs/color:
     dependencies:
       '@xeho91/lib-error':
@@ -151,6 +197,9 @@ importers:
 
   libs/geometry:
     dependencies:
+      '@xeho91/lib-type':
+        specifier: workspace:*
+        version: link:../type
       type-fest:
         specifier: 4.20.1
         version: 4.20.1
@@ -212,9 +261,6 @@ importers:
       '@xeho91/lib-geometry':
         specifier: workspace:*
         version: link:../geometry
-      '@xeho91/lib-logger':
-        specifier: workspace:*
-        version: link:../logger
       '@xeho91/lib-snippet':
         specifier: workspace:*
         version: link:../snippet
@@ -224,9 +270,6 @@ importers:
       mime:
         specifier: 4.0.4
         version: 4.0.4
-      svelte:
-        specifier: 5.0.0-next.181
-        version: 5.0.0-next.181
       type-fest:
         specifier: 4.20.1
         version: 4.20.1
@@ -234,9 +277,15 @@ importers:
       '@sveltejs/package':
         specifier: 2.3.2
         version: 2.3.2(svelte@5.0.0-next.181)(typescript@5.5.3)
-      svelte2tsx:
-        specifier: 0.7.13
-        version: 0.7.13(svelte@5.0.0-next.181)(typescript@5.5.3)
+      '@xeho91/lib-logger':
+        specifier: workspace:*
+        version: link:../logger
+      dedent:
+        specifier: 1.5.3
+        version: 1.5.3
+      svelte:
+        specifier: 5.0.0-next.181
+        version: 5.0.0-next.181
       typescript-svelte-plugin:
         specifier: 0.3.39
         version: 0.3.39(svelte@5.0.0-next.181)(typescript@5.5.3)
@@ -3934,6 +3983,10 @@ packages:
     resolution: {integrity: sha512-F4vPUp0NKxku5ZXEiCZ1C8lhKlL0hXedbTRu2i5Cf49SCSS9lceSPhLP/Zn2Ds5MSlfEnjBF3a0jWDc51pbF2Q==}
     engines: {node: '>=18'}
 
+  svelte@5.0.0-next.183:
+    resolution: {integrity: sha512-1onDKWp5+a5ehYVWJ0scHVO0IbOTH9zIqYb/odXp/aG0qF9XdR76DL2tLrgRM5xzUdcvXSmakxa+tQDJojTBVw==}
+    engines: {node: '>=18'}
+
   sveltedoc-parser@4.2.1:
     resolution: {integrity: sha512-sWJRa4qOfRdSORSVw9GhfDEwsbsYsegnDzBevUCF6k/Eis/QqCu9lJ6I0+d/E2wOWCjOhlcJ3+jl/Iur+5mmCw==}
     engines: {node: '>=10.0.0'}
@@ -5769,6 +5822,20 @@ snapshots:
     transitivePeerDependencies:
       - babel-plugin-macros
 
+  '@storybook/addon-svelte-csf@5.0.0--canary.181.168fccb.0(@storybook/svelte@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7))(svelte@5.0.0-next.183))(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.183)(vite@5.3.3(@types/node@20.14.10)))(svelte@5.0.0-next.183)(vite@5.3.3(@types/node@20.14.10))':
+    dependencies:
+      '@storybook/svelte': 8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7))(svelte@5.0.0-next.183)
+      '@sveltejs/vite-plugin-svelte': 3.1.1(svelte@5.0.0-next.183)(vite@5.3.3(@types/node@20.14.10))
+      dedent: 1.5.3
+      esrap: 1.2.2
+      lodash-es: 4.17.21
+      magic-string: 0.30.10
+      svelte: 5.0.0-next.183
+      vite: 5.3.3(@types/node@20.14.10)
+      zimmerframe: 1.1.2
+    transitivePeerDependencies:
+      - babel-plugin-macros
+
   '@storybook/addon-themes@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
     dependencies:
       storybook: 8.2.2(@babel/preset-env@7.24.7)
@@ -5928,6 +5995,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@storybook/svelte@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7))(svelte@5.0.0-next.183)':
+    dependencies:
+      '@storybook/global': 5.0.0
+      storybook: 8.2.2(@babel/preset-env@7.24.7)
+      svelte: 5.0.0-next.183
+      sveltedoc-parser: 4.2.1
+      ts-dedent: 2.2.0
+      type-fest: 2.19.0
+    transitivePeerDependencies:
+      - supports-color
+
   '@storybook/types@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7))':
     dependencies:
       storybook: 8.2.2(@babel/preset-env@7.24.7)
@@ -5943,11 +6021,31 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
+  '@sveltejs/package@2.3.2(svelte@5.0.0-next.183)(typescript@5.5.3)':
+    dependencies:
+      chokidar: 3.6.0
+      kleur: 4.1.5
+      sade: 1.8.1
+      semver: 7.6.2
+      svelte: 5.0.0-next.183
+      svelte2tsx: 0.7.13(svelte@5.0.0-next.183)(typescript@5.5.3)
+    transitivePeerDependencies:
+      - typescript
+
   '@sveltejs/vite-plugin-svelte-inspector@2.1.0(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.181)(vite@5.3.3(@types/node@20.14.10)))(svelte@5.0.0-next.181)(vite@5.3.3(@types/node@20.14.10))':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.1.1(svelte@5.0.0-next.181)(vite@5.3.3(@types/node@20.14.10))
       debug: 4.3.5
       svelte: 5.0.0-next.181
+      vite: 5.3.3(@types/node@20.14.10)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@sveltejs/vite-plugin-svelte-inspector@2.1.0(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.183)(vite@5.3.3(@types/node@20.14.10)))(svelte@5.0.0-next.183)(vite@5.3.3(@types/node@20.14.10))':
+    dependencies:
+      '@sveltejs/vite-plugin-svelte': 3.1.1(svelte@5.0.0-next.183)(vite@5.3.3(@types/node@20.14.10))
+      debug: 4.3.5
+      svelte: 5.0.0-next.183
       vite: 5.3.3(@types/node@20.14.10)
     transitivePeerDependencies:
       - supports-color
@@ -5961,6 +6059,20 @@ snapshots:
       magic-string: 0.30.10
       svelte: 5.0.0-next.181
       svelte-hmr: 0.16.0(svelte@5.0.0-next.181)
+      vite: 5.3.3(@types/node@20.14.10)
+      vitefu: 0.2.5(vite@5.3.3(@types/node@20.14.10))
+    transitivePeerDependencies:
+      - supports-color
+
+  '@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.183)(vite@5.3.3(@types/node@20.14.10))':
+    dependencies:
+      '@sveltejs/vite-plugin-svelte-inspector': 2.1.0(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.183)(vite@5.3.3(@types/node@20.14.10)))(svelte@5.0.0-next.183)(vite@5.3.3(@types/node@20.14.10))
+      debug: 4.3.5
+      deepmerge: 4.3.1
+      kleur: 4.1.5
+      magic-string: 0.30.10
+      svelte: 5.0.0-next.183
+      svelte-hmr: 0.16.0(svelte@5.0.0-next.183)
       vite: 5.3.3(@types/node@20.14.10)
       vitefu: 0.2.5(vite@5.3.3(@types/node@20.14.10))
     transitivePeerDependencies:
@@ -8713,6 +8825,10 @@ snapshots:
     dependencies:
       svelte: 5.0.0-next.181
 
+  svelte-hmr@0.16.0(svelte@5.0.0-next.183):
+    dependencies:
+      svelte: 5.0.0-next.183
+
   svelte-preprocess@5.1.4(@babel/core@7.24.7)(postcss@8.4.39)(svelte@5.0.0-next.181)(typescript@5.5.3):
     dependencies:
       '@types/pug': 2.0.10
@@ -8733,7 +8849,30 @@ snapshots:
       svelte: 5.0.0-next.181
       typescript: 5.5.3
 
+  svelte2tsx@0.7.13(svelte@5.0.0-next.183)(typescript@5.5.3):
+    dependencies:
+      dedent-js: 1.0.1
+      pascal-case: 3.1.2
+      svelte: 5.0.0-next.183
+      typescript: 5.5.3
+
   svelte@5.0.0-next.181:
+    dependencies:
+      '@ampproject/remapping': 2.3.0
+      '@jridgewell/sourcemap-codec': 1.5.0
+      '@types/estree': 1.0.5
+      acorn: 8.12.1
+      acorn-typescript: 1.4.13(acorn@8.12.1)
+      aria-query: 5.3.0
+      axobject-query: 4.0.0
+      esm-env: 1.0.0
+      esrap: 1.2.2
+      is-reference: 3.0.2
+      locate-character: 3.0.0
+      magic-string: 0.30.10
+      zimmerframe: 1.1.2
+
+  svelte@5.0.0-next.183:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@jridgewell/sourcemap-codec': 1.5.0
@@ -8916,6 +9055,14 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
       svelte2tsx: 0.7.13(svelte@5.0.0-next.181)(typescript@5.5.3)
+    transitivePeerDependencies:
+      - svelte
+      - typescript
+
+  typescript-svelte-plugin@0.3.39(svelte@5.0.0-next.183)(typescript@5.5.3):
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.0
+      svelte2tsx: 0.7.13(svelte@5.0.0-next.183)(typescript@5.5.3)
     transitivePeerDependencies:
       - svelte
       - typescript

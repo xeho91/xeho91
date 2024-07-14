@@ -1,3 +1,4 @@
+import type { Display } from "@xeho91/lib-type/trait/display";
 import type { IsEqual } from "type-fest/source/is-equal";
 import type { IterableElement } from "type-fest/source/iterable-element";
 import * as v from "valibot";
@@ -7,58 +8,71 @@ import { Square } from "#two-dimension/square";
 
 export type RectangleDimensionName = IterableElement<typeof Rectangle.DIMENSIONS>;
 
-export class Rectangle<TWidth extends number = number, THeight extends number = number> extends TwoDimensionalFigure {
+export class Rectangle<TWidth extends number = number, THeight extends number = number>
+	extends TwoDimensionalFigure
+	implements Display<Stringified<TWidth, THeight>>
+{
 	static readonly #DIMENSIONS = ["width", "height"] as const;
 	public static readonly DIMENSIONS = Object.freeze(new Set(Rectangle.#DIMENSIONS));
 
-	public readonly width: TWidth;
-	public readonly height: THeight;
+	#width: TWidth;
+	#height: THeight;
 
 	/**
 	 * @throws When one of the arguments is less than or equal to 0.
 	 */
 	constructor(width: TWidth, height: THeight) {
 		super();
-
 		const schema = v.pipe(v.number(), v.minValue(0));
+		this.#width = v.parse(schema, width) as TWidth;
+		this.#height = v.parse(schema, height) as THeight;
+	}
 
-		this.width = v.parse(schema, width) as TWidth;
-		this.height = v.parse(schema, height) as THeight;
+	public toString(): Stringified<TWidth, THeight> {
+		const { width, height } = this;
+		return `Rectangle (${width} x ${height})`;
+	}
+
+	public get width() {
+		return this.#width;
+	}
+
+	public set width(width: TWidth) {
+		this.#width = width;
+	}
+
+	public get height() {
+		return this.#height;
+	}
+
+	public set height(height: THeight) {
+		this.#height = height;
 	}
 
 	public get aspect_ratio(): number {
-		const { width, height } = this;
-
-		return width / height;
+		return this.#width / this.#height;
 	}
 
 	public half<TDimension extends RectangleDimensionName | undefined = undefined>(
 		dimension?: TDimension,
 	): HalfRectangle<TDimension> {
 		const { width, height } = this;
-
-		if (dimension) {
-			return (this[dimension] / 2) as HalfRectangle<TDimension>;
-		}
-
+		if (dimension) return (this[dimension] / 2) as HalfRectangle<TDimension>;
 		return [width / 2, height / 2] as HalfRectangle<TDimension>;
 	}
 
 	public get perimeter(): number {
 		const { width, height } = this;
-
 		return 2 * (width + height);
 	}
 
 	public get area(): number {
 		const { width, height } = this;
-
 		return width * height;
 	}
 
 	public get is_square(): IsEqual<TWidth, THeight> {
 		const { width, height } = this;
-
 		// @ts-ignore No overlap isn't a problem in this case.
 		return width === height;
 	}
@@ -68,16 +82,14 @@ export class Rectangle<TWidth extends number = number, THeight extends number = 
 	 */
 	public to_square(): ToSquare<TWidth, THeight> {
 		const { is_square, width, height } = this;
-
-		if (is_square) {
-			return new Square(width) as ToSquare<TWidth, THeight>;
-		}
-
+		if (is_square) return new Square(width) as ToSquare<TWidth, THeight>;
 		throw new TypeError(
 			`Rectangle's width (${width}) and height (${height}) are not same - cannot convert to square`,
 		);
 	}
 }
+
+type Stringified<TWidth extends number, THeight extends number> = `Rectangle (${TWidth} x ${THeight})`;
 
 type HalfRectangle<TDimension extends RectangleDimensionName | undefined = undefined> =
 	TDimension extends RectangleDimensionName ? number : [number, number];

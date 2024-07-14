@@ -20,7 +20,7 @@ async function build_types() {
 	const svelte_dts_files = fs.readdirSync(output_dir, { withFileTypes: true, recursive: true }).filter((dirent) => {
 		const { name, parentPath } = dirent;
 		const regex = /^[A-Z].*(?<!\.stories)\.svelte\.d\.ts$/;
-		return parentPath.includes("dist/component") && regex.test(name);
+		return parentPath.includes("dist/component") && !parentPath.includes("_sub") && regex.test(name);
 	});
 
 	for (const dirent of svelte_dts_files) {

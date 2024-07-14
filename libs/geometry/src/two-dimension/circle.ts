@@ -1,18 +1,24 @@
+import type { Display } from "@xeho91/lib-type/trait/display";
 import * as v from "valibot";
 
 import { Ellipse } from "#two-dimension/ellipse";
 import { TwoDimensionalFigure } from "#two-dimension/mod";
 import { Square } from "#two-dimension/square";
 
-export class Circle<TRadius extends number = number> extends TwoDimensionalFigure {
+export class Circle<TRadius extends number = number>
+	extends TwoDimensionalFigure
+	implements Display<Stringified<TRadius>>
+{
 	public readonly radius: TRadius;
 
 	constructor(radius: TRadius) {
 		super();
-
 		const schema = v.pipe(v.number(), v.minValue(0));
-
 		this.radius = v.parse(schema, radius) as TRadius;
+	}
+
+	public toString(): Stringified<TRadius> {
+		return `Circle (radius: ${this.radius})`;
 	}
 
 	public override get aspect_ratio(): 1 {
@@ -33,7 +39,6 @@ export class Circle<TRadius extends number = number> extends TwoDimensionalFigur
 
 	public to_ellipse(): Ellipse<TRadius, TRadius> {
 		const { radius } = this;
-
 		return new Ellipse(radius, radius);
 	}
 
@@ -41,6 +46,8 @@ export class Circle<TRadius extends number = number> extends TwoDimensionalFigur
 		return new Square(this.radius * 2);
 	}
 }
+
+type Stringified<TRadius extends number> = `Circle (radius: ${TRadius})`;
 
 if (import.meta.vitest) {
 	const { describe, expectTypeOf, test } = import.meta.vitest;
@@ -78,7 +85,7 @@ if (import.meta.vitest) {
 			const square = circle.to_square();
 			expect(square).toBeInstanceOf(Square);
 			expectTypeOf(square).toEqualTypeOf<Square>();
-			expect(square.side).toBe(20);
+			expect(square.size).toBe(20);
 		});
 	});
 }

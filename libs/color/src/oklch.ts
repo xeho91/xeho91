@@ -107,12 +107,7 @@ export class ColorOklch<
 		ColorHue<THue>,
 		ColorAlpha<TAlpha>
 	> {
-		return `${this.lightness} ${this.chroma} ${this.hue} / ${this.alpha}` as StringifiedOklch<
-			ColorLightness<TLightness>,
-			ColorChroma<TChroma>,
-			ColorHue<THue>,
-			ColorAlpha<TAlpha>
-		>;
+		return `oklch(${this.lightness.toString()} ${this.chroma.toString()} ${this.hue.toString()} / ${this.alpha.toString()})`;
 	}
 }
 
@@ -121,4 +116,4 @@ type StringifiedOklch<
 	TChroma extends ColorChroma,
 	THue extends ColorHue,
 	TAlpha extends ColorAlpha,
-> = `${ToString<TLightness>} ${ToString<TChroma>} ${ToString<THue>} / ${ToString<TAlpha>}`;
+> = `oklch(${ToString<TLightness>} ${ToString<TChroma>} ${ToString<THue>} / ${ToString<TAlpha>})`;
