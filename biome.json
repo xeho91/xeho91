@@ -7,7 +7,7 @@
 		"useIgnoreFile": true
 	},
 	"files": {
-		"ignore": ["types/**"],
+		"ignore": ["*.svelte.d.ts"],
 		"ignoreUnknown": true
 	},
 	"formatter": {
