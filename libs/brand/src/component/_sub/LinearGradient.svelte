@@ -17,14 +17,6 @@ export const GRADIENT_ROTATE = 90;
 
 	let { id, rotate = GRADIENT_ROTATE, animated }: Props = $props();
 
-	function set_offset(index: number) {
-		return (100 / ColorGradient.STOPS) * index;
-	}
-
-	function set_stop_color(position: number) {
-		return `var(--gradient-stop-${position + 1})`;
-	}
-
 	const gradient_light = new ColorGradient(
 		PALETTE_PRIMARY.solid("light", 9),
 		PALETTE_ACCENT.solid("light", 9),
@@ -56,13 +48,11 @@ export const GRADIENT_ROTATE = 90;
 	style:--gradient-stop-4="light-dark(var(--light-4), var(--dark-4))"
 	style:--gradient-stop-5="light-dark(var(--light-5), var(--dark-5))"
 >
-	{#each ColorGradient as stop_position}
-		{#if typeof stop_position === "number"}
-			<stop
-				offset={`${set_offset(stop_position)}%`}
-				stop-color={set_stop_color(stop_position)}
-			/>
-		{/if}
+	{#each ColorGradient.STOPS as stop_position}
+		<stop
+			offset={ColorGradient.get_offset(stop_position).toString()}
+			stop-color={`var(--gradient-stop-${stop_position})`}
+		/>
 	{/each}
 	{#if animated}
 		<animateTransform

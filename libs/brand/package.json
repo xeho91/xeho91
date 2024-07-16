@@ -62,6 +62,7 @@
 		"@xeho91/lib-storybook": "workspace:*",
 		"@xeho91/lib-struct": "workspace:*",
 		"@xeho91/lib-type": "workspace:*",
+		"dedent": "1.5.3",
 		"mime": "4.0.4",
 		"type-fest": "4.20.1"
 	},
