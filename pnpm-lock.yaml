@@ -139,6 +139,18 @@ importers:
         specifier: 5.0.0-next.181
         version: 5.0.0-next.181
 
+  libs/asset:
+    dependencies:
+      '@fontsource-variable/fraunces':
+        specifier: 5.0.21
+        version: 5.0.21
+      '@fontsource-variable/jetbrains-mono':
+        specifier: 5.0.21
+        version: 5.0.21
+      '@fontsource-variable/work-sans':
+        specifier: 5.0.19
+        version: 5.0.19
+
   libs/brand:
     dependencies:
       '@storybook/addon-svelte-csf':
@@ -1227,6 +1239,15 @@ packages:
   '@eslint/eslintrc@1.4.1':
     resolution: {integrity: sha512-XXrH9Uarn0stsyldqDYq8r++mROmWRI1xKMXa640Bb//SY1+ECYX6VzT6Lcx5frD0V30XieqJ0oX9I2Xj5aoMA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@fontsource-variable/fraunces@5.0.21':
+    resolution: {integrity: sha512-/3gPfqgbsrS8RVx/xhxvBkU1r/5mf9PmqgJ9kidCaiXYgjqj30aYdVooJg7dQEsmhjg+6qIJ8D2/2mRy1gJctw==}
+
+  '@fontsource-variable/jetbrains-mono@5.0.21':
+    resolution: {integrity: sha512-LL/57KBbM3r0UMuN6tSeYExiBObt0QuGq49m1FyoDFIv1GAcuKU0EQ/GAKJ/yt3R8onOCD3f5X9Dln//G6uzRQ==}
+
+  '@fontsource-variable/work-sans@5.0.19':
+    resolution: {integrity: sha512-UAHRcHDhCt1RyDwzigdQXFwL6skyVDQJxcnD7neHEdAHP9aQuDPWDWeHUfWsmPiBlseOlyczpfsQQcAllOxA9w==}
 
   '@humanwhocodes/config-array@0.9.5':
     resolution: {integrity: sha512-ObyMyWxZiCu/yTisA7uzx81s40xR2fD5Cg/2Kq7G02ajkNubJf6BopgDTmDyc3U7sXpNKM8cYOw7s7Tyr+DnCw==}
@@ -5802,6 +5823,12 @@ snapshots:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+
+  '@fontsource-variable/fraunces@5.0.21': {}
+
+  '@fontsource-variable/jetbrains-mono@5.0.21': {}
+
+  '@fontsource-variable/work-sans@5.0.19': {}
 
   '@humanwhocodes/config-array@0.9.5':
     dependencies:
