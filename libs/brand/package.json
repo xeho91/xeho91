@@ -65,7 +65,7 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-color\" "
 	},
 	"dependencies": {
-		"@storybook/addon-svelte-csf": "5.0.0--canary.181.168fccb.0",
+		"@storybook/addon-svelte-csf": "5.0.0-next.1",
 		"@xeho91/lib-color": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",
 		"@xeho91/lib-geometry": "workspace:*",
@@ -79,7 +79,7 @@
 	"devDependencies": {
 		"@sveltejs/package": "2.3.2",
 		"@xeho91/lib-logger": "workspace:*",
-		"svelte": "5.0.0-next.183",
+		"svelte": "5.0.0-next.184",
 		"typescript-svelte-plugin": "0.3.39"
 	}
 }

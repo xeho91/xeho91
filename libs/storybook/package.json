@@ -45,7 +45,7 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-monorepo\" "
 	},
 	"dependencies": {
-		"@storybook/types": "8.2.2",
+		"@storybook/types": "8.2.4",
 		"@xeho91/lib-error": "workspace:*",
 		"@xeho91/lib-geometry": "workspace:*",
 		"@xeho91/lib-snippet": "workspace:*",
@@ -57,7 +57,7 @@
 		"@sveltejs/package": "2.3.2",
 		"@xeho91/lib-logger": "workspace:*",
 		"dedent": "1.5.3",
-		"svelte": "5.0.0-next.181",
+		"svelte": "5.0.0-next.184",
 		"typescript-svelte-plugin": "0.3.39"
 	}
 }
