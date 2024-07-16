@@ -162,6 +162,9 @@ importers:
       '@xeho91/lib-type':
         specifier: workspace:*
         version: link:../type
+      dedent:
+        specifier: 1.5.3
+        version: 1.5.3
       mime:
         specifier: 4.0.4
         version: 4.0.4
@@ -184,6 +187,9 @@ importers:
       '@xeho91/lib-snippet':
         specifier: workspace:*
         version: link:../snippet
+      '@xeho91/lib-struct':
+        specifier: workspace:*
+        version: link:../struct
       '@xeho91/lib-type':
         specifier: workspace:*
         version: link:../type

@@ -2,7 +2,7 @@ import type { NewTypeStruct } from "@xeho91/lib-type/struct";
 import type { Display } from "@xeho91/lib-type/trait/display";
 import * as v from "valibot";
 
-export class Percentage<TActual extends number = number, TTotal extends number = number>
+export class Percentage<TActual extends number = number, TTotal extends number = 100>
 	implements NewTypeStruct<number>, Display<Stringified>
 {
 	#actual: TActual;
@@ -10,7 +10,7 @@ export class Percentage<TActual extends number = number, TTotal extends number =
 
 	static #parse_total = (total: number) => v.parse(v.pipe(v.number(), v.notValue(0)), total);
 
-	constructor(actual: TActual, total: TTotal) {
+	constructor(actual: TActual, total = 100 as TTotal) {
 		this.#actual = actual;
 		this.#total = Percentage.#parse_total(total) as TTotal;
 	}
@@ -53,6 +53,11 @@ if (import.meta.vitest) {
 		describe("constructor", () => {
 			it("works when provided actual is zero", ({ expect }) => {
 				expect(new Percentage(0, 1)).toBeInstanceOf(Percentage);
+			});
+
+			it("works when omitted total which by default is 100", ({ expect }) => {
+				expect(new Percentage(0)).toBeInstanceOf(Percentage);
+				expect(new Percentage(0).total).toBe(100);
 			});
 
 			it("throws error when provided total is zero", ({ expect }) => {

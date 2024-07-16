@@ -1,4 +1,6 @@
 import { unreachable } from "@xeho91/lib-error/unreachable";
+import { Percentage } from "@xeho91/lib-struct/percentage";
+import { Range } from "@xeho91/lib-struct/range";
 import { type Oklch, interpolate, samples } from "culori";
 import type { ReadonlyTuple } from "type-fest/source/readonly-tuple";
 
@@ -7,7 +9,11 @@ import { ColorOklch } from "#oklch";
 import { PRIMARY_SOLID_LIGHT_1, PRIMARY_SOLID_LIGHT_12 } from "#palette/brand/primary";
 
 export class ColorGradient<TFrom extends Color = Color, TTo extends Color = Color> {
-	public static readonly STOPS = 5;
+	public static readonly STOPS = new Range(1, 5, 1);
+
+	public static get_offset(position: number): Percentage<number, 100> {
+		return new Percentage(position * (100 / ColorGradient.STOPS.max));
+	}
 
 	public readonly from: TFrom;
 	public readonly to: TTo;
@@ -17,13 +23,9 @@ export class ColorGradient<TFrom extends Color = Color, TTo extends Color = Colo
 		this.to = to;
 	}
 
-	public static [Symbol.iterator](): IterableIterator<number> {
-		return Array.from({ length: ColorGradient.STOPS }, (_, idx) => idx).values();
-	}
-
 	public get stops(): ColorSamplesTuple {
 		const interpolated = interpolate([this.from.culori_oklch, this.to.culori_oklch], "oklch");
-		return Object.freeze(samples(ColorGradient.STOPS).map(interpolated)) as ColorSamplesTuple;
+		return Object.freeze(samples(ColorGradient.STOPS.max).map(interpolated)) as ColorSamplesTuple;
 	}
 
 	public get_stop(position: number) {

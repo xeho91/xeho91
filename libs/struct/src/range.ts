@@ -68,7 +68,7 @@ export class Range<TMin extends number = number, TMax extends number = number>
 					value += step;
 					return result;
 				}
-				return { value: undefined, done: true } as const;
+				return { value, done: true } as const;
 			},
 		};
 	}
