@@ -49,7 +49,6 @@
 		"lefthook": "1.7.1",
 		"markdownlint-cli2": "0.13.0",
 		"serve": "14.2.3",
-		"svelte": "5.0.0-next.181",
 		"typedoc": "0.26.3",
 		"typedoc-plugin-coverage": "3.3.0",
 		"typedoc-plugin-mdn-links": "3.2.3",
