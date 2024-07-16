@@ -27,20 +27,12 @@
 	},
 	"exports": {
 		".": "./src/mod.ts",
-		"./avatar": {
-			"types": "./src/component/avatar/Avatar.svelte.d.ts",
-			"svelte": "./src/component/avatar/Avatar.svelte"
-		},
+		"./avatar": "./src/component/avatar/mod.ts",
 		"./design": "./src/design.ts",
-		"./logo": {
-			"types": "./src/component/logo/Logo.svelte.d.ts",
-			"svelte": "./src/component/logo/Logo.svelte"
-		},
+		"./logo": "./src/component/logo/mod.ts",
 		"./logotype": "./src/logotype.ts"
 	},
 	"scripts": {
-		"build": "pnpm run \"/^build:.*/\" ",
-		"build:types": "tsx \"./scripts/build-types.ts\" ",
 		"clean": "pnpm run \"/^clean:.*/\" ",
 		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
 		"clean:test": "del \"./coverage\" ",
@@ -48,7 +40,7 @@
 		"dev:doc": "pnpm run \"/^dev:doc:.*/\" ",
 		"dev:doc:watch": "typedoc --watch",
 		"dev:doc:serve": "pnpm serve \"./docs\"",
-		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-color\" ",
+		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-brand\" ",
 		"fix": "pnpm run \"/^fix:.*/\" ",
 		"fix:format": "biome format . --verbose --write",
 		"fix:js": "biome lint . --verbose --fix --unsafe",
@@ -60,9 +52,7 @@
 		"lint:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
 		"lint:ts": "tsc --noEmit",
 		"lint:typos": "typos --verbose",
-		"prepare": "pnpm build:types",
-		"prepublish": "pnpm build:types",
-		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-color\" "
+		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-brand\" "
 	},
 	"dependencies": {
 		"@storybook/addon-svelte-csf": "5.0.0-next.1",
@@ -72,13 +62,10 @@
 		"@xeho91/lib-storybook": "workspace:*",
 		"@xeho91/lib-struct": "workspace:*",
 		"@xeho91/lib-type": "workspace:*",
-		"dedent": "1.5.3",
 		"mime": "4.0.4",
 		"type-fest": "4.20.1"
 	},
 	"devDependencies": {
-		"@sveltejs/package": "2.3.2",
-		"@xeho91/lib-logger": "workspace:*",
 		"svelte": "5.0.0-next.184",
 		"typescript-svelte-plugin": "0.3.39"
 	}

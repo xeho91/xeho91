@@ -12,15 +12,10 @@
 		"#*": "./src/*.ts"
 	},
 	"exports": {
-		"./download-image": {
-			"types": "./src/component/download-image/DownloadImage.svelte.d.ts",
-			"svelte": "./src/component/download-image/DownloadImage.svelte"
-		},
+		"./download-image": "./src/component/download-image/mod.ts",
 		"./*": "./src/*.ts"
 	},
 	"scripts": {
-		"build": "pnpm run \"/^build:.*/\" ",
-		"build:types": "tsx \"./scripts/build-types.ts\" ",
 		"clean": "pnpm run \"/^clean:.*/\" ",
 		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
 		"clean:test": "del \"./coverage\" ",
@@ -40,8 +35,6 @@
 		"lint:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
 		"lint:ts": "tsc --noEmit",
 		"lint:typos": "typos --verbose",
-		"prepare": "pnpm build:types",
-		"prepublish": "pnpm build:types",
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-monorepo\" "
 	},
 	"dependencies": {
@@ -54,9 +47,6 @@
 		"type-fest": "4.20.1"
 	},
 	"devDependencies": {
-		"@sveltejs/package": "2.3.2",
-		"@xeho91/lib-logger": "workspace:*",
-		"dedent": "1.5.3",
 		"svelte": "5.0.0-next.184",
 		"typescript-svelte-plugin": "0.3.39"
 	}

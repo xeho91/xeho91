@@ -86,4 +86,15 @@ if (import.meta.vitest) {
 		expectTypeOf<LogotypeCharStrokeName<"9">>().toEqualTypeOf<"left" | "right">();
 		expectTypeOf<LogotypeCharStrokeName<"1">>().toEqualTypeOf<"left" | "middle" | "bottom">();
 	});
+
+	test("[Symbol.iterator]()", ({ expect }) => {
+		const chars = ["x", "e", "h", "o", "9", "1"] as const;
+		let index = 0;
+		for (const char of LogotypeChar) {
+			expect(char).toBe(chars[index]);
+			console.log(LogotypeChar[char].path_attribute_d);
+			expect(char).toBe(chars[index]);
+			index++;
+		}
+	});
 }

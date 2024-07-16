@@ -19,7 +19,11 @@ export const LOGOTYPE_DIMENSIONS = new Rectangle(300, 100);
 	{#each LogotypeChar as name}
 		<path
 			id={`${id}-char-${name}`}
-			d={LogotypeChar[name].path_attribute_d}
+			d={LogotypeChar[name]?.path_attribute_d}
 		/>
+		<!-- <path -->
+		<!-- 	id={`${id}-char-${name}`} -->
+		<!-- 	d={LogotypeChar[name].path_attribute_d} -->
+		<!-- /> -->
 	{/each}
 </symbol>

@@ -57,10 +57,12 @@ export const GRADIENT_ROTATE = 90;
 	style:--gradient-stop-5="light-dark(var(--light-5), var(--dark-5))"
 >
 	{#each ColorGradient as stop_position}
-		<stop
-			offset={`${set_offset(stop_position)}%`}
-			stop-color={set_stop_color(stop_position)}
-		/>
+		{#if typeof stop_position === "number"}
+			<stop
+				offset={`${set_offset(stop_position)}%`}
+				stop-color={set_stop_color(stop_position)}
+			/>
+		{/if}
 	{/each}
 	{#if animated}
 		<animateTransform

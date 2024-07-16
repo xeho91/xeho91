@@ -28,7 +28,7 @@ const { Story } = defineMeta({
 
 <script lang="ts">
 	import { Rectangle } from "@xeho91/lib-geometry/two-dimension/rectangle";
-	import DownloadImage, { DownloadImageManager } from "@xeho91/lib-storybook/download-image";
+	import { DownloadImage, DownloadImageManager } from "@xeho91/lib-storybook/download-image";
 	import { Range } from "@xeho91/lib-struct/range";
 
 	let svg = $state<SVGElement>();
