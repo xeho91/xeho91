@@ -17,22 +17,11 @@ interface Props {
 	scale?: number;
 }
 
-let { children, dimensions, svg, format = "svg", scale = 1 }: Props = $props();
+let { children, dimensions = $bindable(), svg = $bindable(), format = $bindable("svg"), scale = 1 }: Props = $props();
 
-let manager = new DownloadImageManager({ dimensions, svg, format, scale });
-
+let manager = $derived(new DownloadImageManager({ dimensions, svg, format, scale }));
 let width = $derived(dimensions instanceof Square ? dimensions.size : dimensions.width);
 let height = $derived(dimensions instanceof Square ? dimensions.size : dimensions.height);
-
-$effect(() => {
-	manager.dimensions = (dimensions instanceof Square ? dimensions.to_rectangle() : dimensions) as Rectangle<
-		TWidth,
-		THeight
-	>;
-})
-$effect(() => {
-	manager.svg = svg;
-});
 </script>
 
 <div class="asset" style:width={width + "px"} style:height={height + "px"}>
