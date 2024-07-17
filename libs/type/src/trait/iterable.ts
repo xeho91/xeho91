@@ -53,12 +53,27 @@ import type { Display } from "#trait/display";
  * ```
  */
 export abstract class IterableInstance<T> implements Iterable<T>, Display {
+	/**
+	 * Iterable instance to wrap with this abstract class
+	 * @see {@link Symbol.iterator}.
+	 */
 	protected abstract iterable: Iterable<T>;
 
+	/**
+	 * Allows using for loop on instance.
+	 * @see {@link Symbol.iterator}.
+	 */
 	public [Symbol.iterator](): Iterator<T> {
 		return this.iterable[Symbol.iterator]();
 	}
 
+	/**
+	 * Get the size of wrapped iterable.
+	 *
+	 * NOTE: Works when is an {@link Array} too.
+	 *
+	 * @throws {TypeError} when it doesn't recognize an iterable type.
+	 */
 	public get size(): number {
 		const { iterable } = this;
 		if (Array.isArray(iterable)) return iterable.length;
@@ -66,10 +81,18 @@ export abstract class IterableInstance<T> implements Iterable<T>, Display {
 		throw new TypeError("Unrecognized iterable size, cannot get size");
 	}
 
+	/**
+	 * Get the size of wrapped iterable.
+	 *
+	 * NOTE: Works when is an {@link Array} too.
+	 */
 	public get is_empty(): boolean {
 		return this.size === 0;
 	}
 
+	/**
+	 * @see {@link Display}
+	 */
 	public abstract toString(): string;
 }
 
@@ -142,6 +165,20 @@ if (import.meta.vitest) {
 			it("works for class wrapping map", ({ expect }) => {
 				expect(iterable_map.map).toBeInstanceOf(Map);
 				expectTypeOf(iterable_map.map).toEqualTypeOf<Map<string, number>>();
+			});
+		});
+
+		describe("[Symbol.iterator]()", () => {
+			it("iterates over an iterable correctly", ({ expect }) => {
+				for (const number of iterable_arr) {
+					expect(number).toBeTypeOf("number");
+				}
+				for (const number of iterable_set) {
+					expect(number).toBeTypeOf("number");
+				}
+				for (const [_, number] of iterable_map) {
+					expect(number).toBeTypeOf("number");
+				}
 			});
 		});
 
