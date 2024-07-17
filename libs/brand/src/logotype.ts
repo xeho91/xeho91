@@ -92,8 +92,6 @@ if (import.meta.vitest) {
 		let index = 0;
 		for (const char of LogotypeChar) {
 			expect(char).toBe(chars[index]);
-			console.log(LogotypeChar[char].path_attribute_d);
-			expect(char).toBe(chars[index]);
 			index++;
 		}
 	});
