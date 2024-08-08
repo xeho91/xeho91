@@ -5,7 +5,7 @@ import url from "node:url";
 import * as radix from "@radix-ui/colors";
 import { log } from "@xeho91/lib-logger";
 import { round_up } from "@xeho91/lib-snippet/number";
-import { typed_object_entries } from "@xeho91/lib-snippet/object";
+import { object_entries } from "@xeho91/lib-snippet/object";
 import { parse } from "culori";
 import { modeOklch, parseHex, useMode } from "culori/fn";
 import handlebars from "handlebars";
@@ -74,7 +74,7 @@ const COLORS = {
 async function prepare() {
 	log.info("Starting hook prepare...");
 
-	const promises = typed_object_entries(COLORS).flatMap(create_write_file_promise);
+	const promises = object_entries(COLORS).flatMap(create_write_file_promise);
 
 	await Promise.all(promises);
 
@@ -83,13 +83,13 @@ async function prepare() {
 
 await prepare();
 
-type ColorsEntry = ReturnType<typeof typed_object_entries<typeof COLORS>>[number];
+type ColorsEntry = ReturnType<typeof object_entries<typeof COLORS>>[number];
 
 function create_write_file_promise(entry: ColorsEntry) {
 	const [color_category, category] = entry;
 	const category_dir_path = path.join(OUTPUT_DIR_PALETTE, color_category);
 
-	return typed_object_entries(category).map((entry) => {
+	return object_entries(category).map((entry) => {
 		const [color_name, color_data] = entry;
 		const file_name = `${color_name}.ts`;
 		const file_path = path.join(category_dir_path, file_name);
@@ -110,7 +110,7 @@ function create_write_file_promise(entry: ColorsEntry) {
 	});
 }
 
-type ColorData = ReturnType<typeof typed_object_entries<ColorsEntry[1]>>[number][1];
+type ColorData = ReturnType<typeof object_entries<ColorsEntry[1]>>[number][1];
 
 function create_variables({
 	color_name,
@@ -120,10 +120,10 @@ function create_variables({
 	color_name: ColorName;
 	color_data: ColorData;
 }): string[] {
-	return typed_object_entries(color_data).flatMap((entry) => {
+	return object_entries(color_data).flatMap((entry) => {
 		const [color_type, color_type_data] = entry;
 
-		return typed_object_entries(color_type_data).flatMap((entry) => {
+		return object_entries(color_type_data).flatMap((entry) => {
 			const [color_scheme, hexes] = entry;
 			const new_oklchs = Object.values(hexes).map((hex_or_rgb) =>
 				create_color_oklch_var({ color_name, hex_or_rgb }),
