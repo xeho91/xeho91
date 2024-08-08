@@ -30,7 +30,7 @@ export class AtLayer<TName extends AtLayerName = AtLayerName, TBlock extends Blo
 			let index = 0;
 			for (const name of iterable) {
 				results += name;
-				if (index < iterable.size) results += ",";
+				if (!this.is_index_last(index)) results += ",";
 				else results += ";";
 				index++;
 			}
@@ -43,7 +43,7 @@ export class AtLayer<TName extends AtLayerName = AtLayerName, TBlock extends Blo
 			let index = 0;
 			for (const name of iterable) {
 				children.push(new Identifier(name).to_ast());
-				if (index < iterable.size) children.push(Operator.COMMA.to_ast());
+				if (!this.is_index_last(index)) children.push(Operator.COMMA.to_ast());
 				index++;
 			}
 			return {

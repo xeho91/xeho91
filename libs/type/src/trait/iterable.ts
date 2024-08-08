@@ -94,6 +94,11 @@ export abstract class IterableInstance<T> implements Iterable<T>, Display {
 	 * @see {@link Display}
 	 */
 	public abstract toString(): string;
+
+	public is_index_last(index: number): boolean {
+		const { size } = this;
+		return index + 1 === size;
+	}
 }
 
 if (import.meta.vitest) {

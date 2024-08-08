@@ -29,7 +29,7 @@ export class Block<const TChildren extends Item[] = Item[]> extends IterableInst
 		let index = 0;
 		for (const child of children) {
 			results += child.toString();
-			if (index < children.length - 1) results += ";";
+			if (!this.is_index_last(index)) results += ";";
 			index++;
 		}
 		return `{${results}}` as Stringified<TChildren>;

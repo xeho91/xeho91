@@ -2,7 +2,7 @@ import type { Display } from "@xeho91/lib-type/trait/display";
 
 import type { SelectorKind } from "#selector";
 import { SelectorsJoint } from "#selector/joint";
-import { SelectorsList } from "#selectors-list";
+import { SelectorsList } from "#selector/list";
 
 export abstract class SelectorBase<TKind extends SelectorKind = SelectorKind> implements Display {
 	public readonly kind: TKind;

@@ -171,7 +171,7 @@ export class BoxShadow<const TLayers extends BoxShadowLayer[]>
 		let index = 0;
 		for (const layer of layers) {
 			value_items.push(...layer.to_value().list);
-			if (index < layers.length - 1) value_items.push(Operator.COMMA);
+			if (!this.is_index_last(index)) value_items.push(Operator.COMMA);
 			index++;
 		}
 		return new Value(...value_items) as BoxShadowValue<TLayers>;

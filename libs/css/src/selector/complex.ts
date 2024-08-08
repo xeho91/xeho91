@@ -31,7 +31,7 @@ export class SelectorComplex<const TSelectors extends Item[] = Item[]>
 		let results = "";
 		for (const [index, selector] of selectors.entries()) {
 			results += selector.toString();
-			if (index < selectors.length) results += " ";
+			if (!this.is_index_last(index)) results += " ";
 		}
 		return results as Stringified<TSelectors>;
 	}
