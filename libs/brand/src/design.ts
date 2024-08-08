@@ -1,21 +1,26 @@
-import type { Color, ColorScheme } from "@xeho91/lib-color/instance";
-import { PALETTE_SECONDARY } from "@xeho91/lib-color/palette/brand/secondary";
-import { PALETTE_GRAY } from "@xeho91/lib-color/palette/grayscale/gray";
+import { Color, type ColorScheme } from "@xeho91/lib-color";
+import type { AtomicColor } from "@xeho91/lib-color/atomic";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
+import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 
 import { set_id } from "#id";
 
 export type BrandAssetThemeName = IterableElement<typeof BrandAssetTheme.NAMES>;
-export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetThemeName> {
-	static readonly #NAMES = ["color", "black", "white"] as const;
-	public static readonly NAMES = Object.freeze(new Set(BrandAssetTheme.#NAMES));
 
-	public static readonly DEFAULT = "color" satisfies BrandAssetThemeName;
+export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetThemeName> {
+	public static readonly NAMES = readonly_set([
+		//
+		"color",
+		"black",
+		"white",
+	]);
 
 	public static [Symbol.iterator](): IterableIterator<BrandAssetThemeName> {
-		return BrandAssetTheme.#NAMES[Symbol.iterator]();
+		return BrandAssetTheme.NAMES[Symbol.iterator]();
 	}
+
+	public static readonly DEFAULT = "color" satisfies BrandAssetThemeName;
 
 	readonly #name: TName;
 
@@ -23,13 +28,12 @@ export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetTheme
 		this.#name = name;
 	}
 
-	public get_color_foreground<TScheme extends ColorScheme>(scheme: TScheme): Color | undefined {
+	public get_color_foreground<TScheme extends ColorScheme>(scheme: TScheme): AtomicColor | undefined {
 		// biome-ignore format: Prettier
-		/* prettier-ignore */
 		switch (this.#name) {
 			case "color": return;
-			case "black": return PALETTE_GRAY.solid(scheme, 12);
-			case "white": return PALETTE_GRAY.solid(scheme, 1);
+			case "black": return Color.get("grayscale", "gray", "solid", 12)[scheme];
+			case "white": return Color.get("grayscale", "gray", "solid", 1)[scheme];
 		}
 	}
 
@@ -42,24 +46,24 @@ export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetTheme
 	}
 
 	public get_fill_foreground(id: string): string {
+		const name = this.#name;
 		// biome-ignore format: Prettier
-		/* prettier-ignore */
-		switch (this.#name) {
+		switch (name) {
 			case "color": return `url(#${set_id(id, "gradient")})`;
 			case "black":
 			case "white": return "light-dark(var(--light), var(--dark))";
-			default: throw unrecognized(this.#name);
+			default: throw unrecognized(name);
 		}
 	}
 
-	public get_color_background<TScheme extends ColorScheme>(scheme: TScheme): Color {
+	public get_color_background<TScheme extends ColorScheme>(scheme: TScheme): AtomicColor {
+		const name = this.#name;
 		// biome-ignore format: Prettier
-		/* prettier-ignore */
-		switch (this.#name) {
-			case "color": return PALETTE_SECONDARY.blend(scheme, 2);
-			case "black": return PALETTE_GRAY.blend(scheme, 2);
-			case "white": return PALETTE_GRAY.blend(scheme, 9);
-			default: throw unrecognized(this.#name);
+		switch (name) {
+			case "color": return Color.get("brand", "secondary", "blend", 2)[scheme];
+			case "black": return Color.get("grayscale", "gray", "blend", 2)[scheme];
+			case "white": return Color.get("grayscale", "gray", "blend", 9)[scheme];
+			default: throw unrecognized(name);
 		}
 	}
 

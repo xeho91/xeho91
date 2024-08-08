@@ -169,6 +169,9 @@ importers:
       '@xeho91/lib-geometry':
         specifier: workspace:*
         version: link:../geometry
+      '@xeho91/lib-snippet':
+        specifier: workspace:*
+        version: link:../snippet
       '@xeho91/lib-storybook':
         specifier: workspace:*
         version: link:../storybook
