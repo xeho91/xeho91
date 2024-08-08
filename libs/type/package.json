@@ -53,5 +53,8 @@
 	"dependencies": {
 		"@total-typescript/ts-reset": "0.5.1",
 		"type-fest": "4.20.1"
+	},
+	"peerDependencies": {
+		"typescript": "catalog:"
 	}
 }

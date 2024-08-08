@@ -1,5 +1,12 @@
 # https://pnpm.io/pnpm-workspace_yaml
 ---
 packages:
-  - "apps/*" # Applications
-  - "libs/*" # Libraries
+    - "apps/*" # Applications
+    - "libs/*" # Libraries
+
+# https://pnpm.io/catalogs
+catalog:
+    "@storybook/addon-svelte-csf": "5.0.0-next.1"
+    "svelte": "5.0.0-next.184"
+    "typescript": "5.5.3"
+    "typescript-svelte-plugin": "0.3.39"
