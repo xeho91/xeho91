@@ -3,15 +3,15 @@
  * @module
  */
 
-import type { Display } from "@xeho91/lib-type/trait/display";
-import type { Oklch as CuloriOklch } from "culori/fn";
-import { Oklch } from "@xeho91/lib-css/function/oklch";
-import type { Percentage } from "@xeho91/lib-css/value/percentage";
-import type { Dimension } from "@xeho91/lib-css/value/dimension";
-import { Lightness } from "@xeho91/lib-css/data-type/lightness";
+import { Alpha } from "@xeho91/lib-css/data-type/alpha";
 import { Chroma } from "@xeho91/lib-css/data-type/chroma";
 import { Hue } from "@xeho91/lib-css/data-type/hue";
-import { Alpha } from "@xeho91/lib-css/data-type/alpha";
+import { Lightness } from "@xeho91/lib-css/data-type/lightness";
+import { Oklch } from "@xeho91/lib-css/function/oklch";
+import type { Dimension } from "@xeho91/lib-css/value/dimension";
+import type { Percentage } from "@xeho91/lib-css/value/percentage";
+import type { Display } from "@xeho91/lib-type/trait/display";
+import type { Oklch as CuloriOklch } from "culori/fn";
 
 import type { ColorCategory, ColorName, ColorScheme, ColorStep, ColorType } from "#mod";
 
