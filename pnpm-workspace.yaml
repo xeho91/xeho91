@@ -10,6 +10,7 @@ catalog:
     "@sveltejs/vite-plugin-svelte": "4.0.0-next.6"
     "@total-typescript/tsconfig": "1.0.4"
     "@types/node": "22.1.0"
+    "rxjs": "7.8.1"
     "svelte": "5.0.0-next.210"
     "typescript": "5.5.4"
     "typescript-svelte-plugin": "0.3.40"
