@@ -1,12 +1,12 @@
 import "@xeho91/lib-type/reset";
 import { unreachable } from "@xeho91/lib-error/unreachable";
+import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
-import type { UnitStruct } from "@xeho91/lib-type/struct";
 import type { Display } from "@xeho91/lib-type/trait/display";
 
 import { Syntax, type SyntaxName, type SyntaxUnits } from "#syntax";
 
-export class Unit<TName extends UnitName = UnitName> implements UnitStruct<TName>, Display<TName> {
+export class Unit<TName extends UnitName = UnitName> implements Display {
 	#name: TName;
 
 	constructor(name: TName) {
@@ -28,18 +28,12 @@ export class Unit<TName extends UnitName = UnitName> implements UnitStruct<TName
 	}
 
 	/**
-	 * @throws {TypError} when attempting to set name which doesn't match initially set syntax
+	 * @throws {import("@xeho91/lib-error/unrecognized").UnrecognizedError} when attempting to set name which doesn't match initially set syntax
 	 */
 	public set name(name: SyntaxUnits<SyntaxNameFromUnitName<TName>>) {
 		// @ts-expect-error FIXME: Couldn't figure out why instantiation didn't work
 		if (this.syntax.units.has(name)) this.#name = name as TName;
-		else {
-			throw new TypeError(`This unit doesn't match the syntax ${this.syntax.name}`);
-		}
-	}
-
-	public valueOf(): TName {
-		return this.name;
+		else throw unrecognized(`This unit doesn't match the syntax ${this.syntax.name}`);
 	}
 
 	public toString(): TName {
