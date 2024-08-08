@@ -56,6 +56,8 @@
 		"@fontsource-variable/work-sans": "5.0.19"
 	},
 	"peerDependencies": {
+		"@total-typescript/tsconfig": "catalog:",
+		"@types/node": "catalog:",
 		"typescript": "catalog:"
 	}
 }

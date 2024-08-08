@@ -55,6 +55,8 @@
 		"valibot": "0.35.0"
 	},
 	"peerDependencies": {
+		"@total-typescript/tsconfig": "catalog:",
+		"@types/node": "catalog:",
 		"typescript": "catalog:"
 	}
 }

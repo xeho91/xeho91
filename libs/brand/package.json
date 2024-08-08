@@ -70,6 +70,8 @@
 		"typescript-svelte-plugin": "catalog:"
 	},
 	"peerDependencies": {
+		"@total-typescript/tsconfig": "catalog:",
+		"@types/node": "catalog:",
 		"typescript": "catalog:"
 	}
 }

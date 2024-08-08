@@ -56,6 +56,8 @@
 		"@xeho91/lib-type": "workspace:*"
 	},
 	"peerDependencies": {
+		"@total-typescript/tsconfig": "catalog:",
+		"@types/node": "catalog:",
 		"typescript": "catalog:"
 	}
 }
