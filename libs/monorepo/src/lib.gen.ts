@@ -11,6 +11,7 @@ export const WORKSPACE_LIBS = [
 	"asset",
 	"brand",
 	"color",
+	"css",
 	"error",
 	"geometry",
 	"logger",
