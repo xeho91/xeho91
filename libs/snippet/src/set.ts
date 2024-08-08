@@ -121,3 +121,34 @@ if (import.meta.vitest) {
 		});
 	});
 }
+
+/**
+ * Create a single sets with unionized items from as many sets as you wish
+ * @param sets sets to unionize
+ */
+export function unionize_sets<T>(...sets: (Set<T> | ReadonlySet<T>)[]): Set<T> {
+	const first = sets[0] as Set<T>;
+	// TODO: Use Set.prototype.union() once Node.js LTS is v22
+	for (let index = 1; index < sets.length; index++) {
+		const next_set = sets[index] as Set<T>;
+		for (const item of next_set) first.add(item);
+	}
+	return first;
+}
+
+if (import.meta.vitest) {
+	const { describe, expectTypeOf, it } = import.meta.vitest;
+
+	describe(unionize_sets.name, () => {
+		it("returns a single set correctly with unionized items", ({ expect }) => {
+			const set1 = new Set([1, 2, 3] as const);
+			const set2 = readonly_set([3, 4, 5]);
+			const unionized = unionize_sets(set1, set2);
+			expect(unionized).toBeInstanceOf(Set);
+			for (const item of [1, 2, 3, 4, 5] as const) {
+				expect(unionized.has(item)).toBe(true);
+				expectTypeOf(unionized).toEqualTypeOf<Set<1 | 2 | 3 | 4 | 5>>();
+			}
+		});
+	});
+}
