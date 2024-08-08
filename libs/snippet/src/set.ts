@@ -35,7 +35,6 @@ export function extract_set_entries<
 
 	return new_set;
 }
-
 if (import.meta.vitest) {
 	const { describe, expectTypeOf, it } = import.meta.vitest;
 
@@ -97,6 +96,27 @@ if (import.meta.vitest) {
 			for (const key of to_exclude) {
 				expect(excluded).not.toContainEqual(key);
 			}
+		});
+	});
+}
+
+/**
+ * Create typed {@link ReadonlySet}
+ * @param items array of items to be included in readonly set
+ */
+export function readonly_set<const Items extends unknown[]>(items: Items): ReadonlySet<Items[number]> {
+	// TODO: Create a custom readonly set instance to prevent adding new items
+	return Object.freeze(new Set(items));
+}
+
+if (import.meta.vitest) {
+	const { describe, expectTypeOf, it } = import.meta.vitest;
+
+	describe(readonly_set.name, () => {
+		it("returns typed readonly set from random items", ({ expect }) => {
+			const set = readonly_set([1, 2, 3, "four", null, true]);
+			expect(set).toBeInstanceOf(set);
+			expectTypeOf(set).toEqualTypeOf<ReadonlySet<1 | 2 | 3 | "four" | null | true>>();
 		});
 	});
 }
