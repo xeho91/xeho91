@@ -24,7 +24,8 @@ export class TextShadowLayer<
 	TY extends Offset<"y"> = Offset<"y">,
 	TBlur extends Blur = Blur,
 	TColor extends Color = Color,
-> implements Display<StringifiedLayer<TX, TY, TBlur, TColor>>, ToValue {
+> implements Display<StringifiedLayer<TX, TY, TBlur, TColor>>, ToValue
+{
 	public static readonly NAME = "text-shadow";
 	public static readonly ATOMIC_PROPERTIES = readonly_set(["x", "y", "blur", "color"]);
 
@@ -117,7 +118,8 @@ if (import.meta.vitest) {
 
 export class TextShadow<const TLayers extends TextShadowLayer[]>
 	extends IterableInstance<TextShadowLayer>
-	implements ToAST, ToValue {
+	implements ToAST, ToValue
+{
 	public static readonly PROPERTY = new Property("text-shadow");
 
 	public static readonly layer = TextShadowLayer;
@@ -171,8 +173,8 @@ type TextShadowValue<TLayers extends TextShadowLayer[]> = TLayers extends [
 	...infer TRest extends TextShadowLayer[],
 ]
 	? TRest extends []
-	? InferValue<TFirst>
-	: Value<[...InferValue<TFirst>["list"], Operator<",">, TextShadowValue<TRest>]>
+		? InferValue<TFirst>
+		: Value<[...InferValue<TFirst>["list"], Operator<",">, TextShadowValue<TRest>]>
 	: never;
 
 type Stringified<TLayers extends TextShadowLayer[]> = ToString<

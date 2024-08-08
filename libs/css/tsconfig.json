@@ -1,11 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": [
-		"@total-typescript/tsconfig/bundler/dom/library-monorepo"
-	],
+	"extends": ["@total-typescript/tsconfig/bundler/dom/library-monorepo"],
 	"compilerOptions": {
-		"types": [
-			"vitest/importMeta"
-		]
+		"types": ["vitest/importMeta"]
 	}
 }

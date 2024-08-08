@@ -27,7 +27,8 @@ export class BoxShadowLayer<
 	TBlur extends Blur = Blur,
 	TSpread extends Spread = Spread,
 	TColor extends Color = Color,
-> implements Display<StringifiedLayer<TInset, TX, TY, TBlur, TSpread, TColor>>, ToValue {
+> implements Display<StringifiedLayer<TInset, TX, TY, TBlur, TSpread, TColor>>, ToValue
+{
 	public static readonly NAME = "box-shadow";
 	public static readonly ATOMIC_PROPERTIES = readonly_set(["x", "y", "blur", "spread", "color"]);
 
@@ -136,7 +137,8 @@ if (import.meta.vitest) {
 
 export class BoxShadow<const TLayers extends BoxShadowLayer[]>
 	extends IterableInstance<BoxShadowLayer>
-	implements ToAST, ToValue {
+	implements ToAST, ToValue
+{
 	public static readonly PROPERTY = new Property("box-shadow");
 
 	public static layer = BoxShadowLayer;
@@ -190,8 +192,8 @@ type BoxShadowValue<TLayers extends BoxShadowLayer[]> = TLayers extends [
 	...infer TRest extends BoxShadowLayer[],
 ]
 	? TRest extends []
-	? InferValue<TFirst>
-	: Value<[...InferValue<TFirst>["list"], Operator<",">, BoxShadowValue<TRest>]>
+		? InferValue<TFirst>
+		: Value<[...InferValue<TFirst>["list"], Operator<",">, BoxShadowValue<TRest>]>
 	: never;
 
 type Stringified<TLayers extends BoxShadowLayer[]> = ToString<

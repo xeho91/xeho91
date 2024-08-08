@@ -11,7 +11,8 @@ type AllowedValue = ToValue & ToAST;
 
 export class Color<TValue extends AllowedValue = AllowedValue>
 	extends DataType<"color", TValue>
-	implements ToValue, ToAST {
+	implements ToValue, ToAST
+{
 	public static readonly DEFAULT_VALUE = new Identifier("transparent") satisfies AllowedValue;
 
 	public static default = () => new Color(Color.DEFAULT_VALUE);

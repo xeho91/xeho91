@@ -7,7 +7,8 @@ import { Block } from "#block";
 
 export class RulesetsList<const TList extends Ruleset[] = Ruleset[]>
 	extends IterableInstance<Ruleset>
-	implements Display<Stringified<TList>> {
+	implements Display<Stringified<TList>>
+{
 	protected iterable: TList;
 
 	constructor(...list: TList) {

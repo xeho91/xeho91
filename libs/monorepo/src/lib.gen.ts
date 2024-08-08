@@ -11,8 +11,11 @@ export const WORKSPACE_LIBS = [
 	"asset",
 	"brand",
 	"color",
+	"config",
 	"css",
+	"design",
 	"error",
+	"feature",
 	"geometry",
 	"logger",
 	"monorepo",
@@ -20,4 +23,5 @@ export const WORKSPACE_LIBS = [
 	"storybook",
 	"struct",
 	"type",
+	"ui",
 ] as const;

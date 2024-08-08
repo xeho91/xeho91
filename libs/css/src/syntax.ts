@@ -15,7 +15,8 @@ export type SyntaxUnits<TSyntax extends SyntaxName> = keyof SyntaxUnitsSet<TSynt
 	: IterableElement<SyntaxUnitsSet<TSyntax>>;
 
 export class Syntax<TName extends SyntaxName = SyntaxName>
-	implements UnitStruct<TName>, Display<Stringified<TName>>, ToValue {
+	implements UnitStruct<TName>, Display<Stringified<TName>>, ToValue
+{
 	static readonly #NAMES = [
 		//
 		"angle",

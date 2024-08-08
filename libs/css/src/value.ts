@@ -3,13 +3,13 @@ import type { Display, InferDisplays } from "@xeho91/lib-type/trait/display";
 import { IterableInstance } from "@xeho91/lib-type/trait/iterable";
 import { List, type Value as ValueAST } from "css-tree";
 
-import type { ToAST } from "#type";
+import type { ToAST } from "#ast";
 
 export type Item = ToAST;
 
 export class Value<const TList extends Item[] = Item[]>
 	extends IterableInstance<Item>
-	implements Display<Stringified<TList>>, ToAST<ValueAST>
+	implements Display<Stringified<TList>>, ToAST
 {
 	protected iterable: TList;
 

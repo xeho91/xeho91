@@ -9,7 +9,8 @@ type Item = Display & ToAST;
 
 export class Block<const TChildren extends Item[] = Item[]>
 	extends IterableInstance<Item>
-	implements Display<Stringified<TChildren>>, ToAST<BlockAST> {
+	implements Display<Stringified<TChildren>>, ToAST<BlockAST>
+{
 	protected iterable: TChildren;
 
 	constructor(...children: TChildren) {

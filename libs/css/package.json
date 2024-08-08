@@ -4,9 +4,7 @@
 	"name": "@xeho91/lib-css",
 	"version": "0.0.0",
 	"description": "CSS library and framework",
-	"keywords": [
-		"css"
-	],
+	"keywords": ["css"],
 	"license": "MIT",
 	"author": {
 		"name": "Mateusz Kadlubowski",
@@ -23,9 +21,7 @@
 	"engines": {
 		"node": ">=20"
 	},
-	"files": [
-		"src/"
-	],
+	"files": ["src/"],
 	"imports": {
 		"#*": "./src/*.ts"
 	},
@@ -56,7 +52,6 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-css\" "
 	},
 	"dependencies": {
-		"@total-typescript/ts-reset": "0.5.1",
 		"@types/css-tree": "2.3.8",
 		"@xeho91/lib-error": "workspace:*",
 		"@xeho91/lib-snippet": "workspace:*",
@@ -65,5 +60,8 @@
 		"css-tree": "2.3.1",
 		"csstype": "3.1.3",
 		"rxjs": "7.8.1"
+	},
+	"peerDependencies": {
+		"typescript": "catalog:"
 	}
 }

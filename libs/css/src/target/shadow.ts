@@ -90,17 +90,17 @@ export class ShadowTarget<TName extends ShadowTargetName = ShadowTargetName> {
 type GetProperty<TTarget extends ShadowTargetName> = TTarget extends "box-shadow"
 	? typeof BoxShadow
 	: TTarget extends "text-shadow"
-	? typeof TextShadow
-	: never;
+		? typeof TextShadow
+		: never;
 
 type LayersTuple<TTarget extends ShadowTargetName, TLayerCount extends number> = TTarget extends "box-shadow"
 	? ReadonlyTuple<Var<ReturnType<typeof BoxShadowLayer.create_reference>>, TLayerCount>
 	: TTarget extends "text-shadow"
-	? ReadonlyTuple<Var<ReturnType<typeof TextShadowLayer.create_reference>>, TLayerCount>
-	: never;
+		? ReadonlyTuple<Var<ReturnType<typeof TextShadowLayer.create_reference>>, TLayerCount>
+		: never;
 
 type AtomizedLayer<TTarget extends ShadowTargetName> = TTarget extends "box-shadow"
 	? ReturnType<typeof BoxShadowLayer.create_atomized>
 	: TTarget extends "text-shadow"
-	? ReturnType<typeof TextShadowLayer.create_atomized_layer>
-	: never;
+		? ReturnType<typeof TextShadowLayer.create_atomized_layer>
+		: never;

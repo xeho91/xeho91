@@ -15,7 +15,8 @@ export type AtLayerName = IterableElement<typeof AtLayer.NAMES>;
 
 export class AtLayer<TName extends AtLayerName = AtLayerName, TBlock extends Block = Block>
 	extends AtRuleBase<"layer">
-	implements Display<Stringified<TName, TBlock>>, ToAST<Atrule> {
+	implements Display<Stringified<TName, TBlock>>, ToAST<Atrule>
+{
 	static readonly #NAME = "layer";
 
 	public static readonly NAMES = readonly_set(["reset", "token", "framework", "base", "component", "override"]);
