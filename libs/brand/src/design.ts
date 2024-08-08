@@ -2,7 +2,7 @@ import type { Color, ColorScheme } from "@xeho91/lib-color/instance";
 import { PALETTE_SECONDARY } from "@xeho91/lib-color/palette/brand/secondary";
 import { PALETTE_GRAY } from "@xeho91/lib-color/palette/grayscale/gray";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
-import type { IterableElement } from "type-fest/source/iterable-element";
+import type { IterableElement } from "@xeho91/lib-type/iterable";
 
 import { set_id } from "#id";
 

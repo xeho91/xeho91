@@ -3,7 +3,7 @@
  * @module
  */
 
-import type { Join, JoinableItem } from "type-fest/source/join";
+import type { Join, JoinableItem } from "@xeho91/lib-type/array";
 
 /**
  * @see {@link quoteify_array}

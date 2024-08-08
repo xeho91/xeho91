@@ -51,8 +51,7 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-error\" "
 	},
 	"dependencies": {
-		"@xeho91/lib-type": "workspace:*",
-		"type-fest": "4.20.1"
+		"@xeho91/lib-type": "workspace:*"
 	},
 	"peerDependencies": {
 		"typescript": "catalog:"

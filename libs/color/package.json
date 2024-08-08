@@ -56,8 +56,7 @@
 		"@xeho91/lib-error": "workspace:*",
 		"@xeho91/lib-type": "workspace:*",
 		"@xeho91/lib-snippet": "workspace:*",
-		"@xeho91/lib-struct": "workspace:*",
-		"type-fest": "4.20.1"
+		"@xeho91/lib-struct": "workspace:*"
 	},
 	"devDependencies": {
 		"@radix-ui/colors": "3.0.0",

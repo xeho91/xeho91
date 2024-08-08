@@ -3,8 +3,8 @@ import { unreachable } from "@xeho91/lib-error/unreachable";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import { Rectangle } from "@xeho91/lib-geometry/two-dimension/rectangle";
 import { Square } from "@xeho91/lib-geometry/two-dimension/square";
+import type { IterableElement } from "@xeho91/lib-type/iterable";
 import { default as mime } from "mime/lite";
-import type { IterableElement } from "type-fest/source/iterable-element";
 
 export type ImageFormat = IterableElement<typeof DownloadImageManager.SUPPORTED_FORMATS>;
 

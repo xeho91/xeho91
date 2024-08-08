@@ -3,7 +3,7 @@
  * @module
  */
 
-import type { IterableElement } from "type-fest/source/iterable-element";
+import type { IterableElement } from "@xeho91/lib-type/iterable";
 
 /**
  * Create a new set from an existing one with entries to be **extracted**.

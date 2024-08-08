@@ -1,8 +1,8 @@
 import type { InputType } from "@storybook/types";
 import { stringified_union_from_array } from "@xeho91/lib-snippet/array";
 import type { Range } from "@xeho91/lib-struct/range";
-import type { IterableElement } from "type-fest/source/iterable-element";
-import type { JoinableItem } from "type-fest/source/join";
+import type { JoinableItem } from "@xeho91/lib-type/array";
+import type { IterableElement } from "@xeho91/lib-type/iterable";
 
 type Category = "design" | "options" | "meta" | "download";
 type Subcategory = "overrides";

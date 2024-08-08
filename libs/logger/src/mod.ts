@@ -1,6 +1,6 @@
+import type { IterableElement } from "@xeho91/lib-type/iterable";
 import pino from "pino";
 import pretty from "pino-pretty";
-import type { IterableElement } from "type-fest/source/iterable-element";
 
 /** Set of available log levels for printing certain group of messages into terminal. */
 export const LOG_LEVELS = new Set([

@@ -1,7 +1,7 @@
+import type { IterableElement } from "@xeho91/lib-type/iterable";
 import type { UnitStruct } from "@xeho91/lib-type/struct";
 import type { Display } from "@xeho91/lib-type/trait/display";
 import type { SVGAttributes } from "svelte/elements";
-import type { IterableElement } from "type-fest";
 
 type SVGPathAttributeD = NonNullable<SVGAttributes<SVGPathElement>["d"]>;
 type LetterStrokesPaths = Record<string, string>;
