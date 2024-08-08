@@ -53,6 +53,7 @@
 		"prepare": "tsx \"./hooks/prepare.ts\" && biome format \"./src/palette\" --verbose --write "
 	},
 	"dependencies": {
+		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",
 		"@xeho91/lib-type": "workspace:*",
 		"@xeho91/lib-snippet": "workspace:*",

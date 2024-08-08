@@ -6,11 +6,12 @@ import * as radix from "@radix-ui/colors";
 import { log } from "@xeho91/lib-logger";
 import { round_up } from "@xeho91/lib-snippet/number";
 import { object_entries } from "@xeho91/lib-snippet/object";
+import type { Entries } from "@xeho91/lib-type/iterable";
 import { parse } from "culori";
 import { modeOklch, parseHex, useMode } from "culori/fn";
 import handlebars from "handlebars";
 
-import type { ColorCategory, ColorName, ColorScheme, ColorStep, ColorType } from "#instance";
+import type { ColorCategory, ColorName, ColorScheme, ColorStep, ColorType } from "#mod";
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -83,7 +84,7 @@ async function prepare() {
 
 await prepare();
 
-type ColorsEntry = ReturnType<typeof object_entries<typeof COLORS>>[number];
+type ColorsEntry = Entries<typeof COLORS>[number];
 
 function create_write_file_promise(entry: ColorsEntry) {
 	const [color_category, category] = entry;
@@ -102,7 +103,7 @@ function create_write_file_promise(entry: ColorsEntry) {
 			color_category,
 			color_name,
 			variables,
-			palette: create_palette_var(color_name),
+			// palette: create_palette_var(color_name),
 		});
 
 		log.info(`Generated: ${url.pathToFileURL(file_path)}`);
@@ -135,7 +136,7 @@ function create_variables({
 					color_scheme,
 					color_type,
 					color_step: (idx + 1) as ColorStep,
-					new_oklch,
+					oklch_props: new_oklch,
 				}),
 			);
 		});
@@ -163,7 +164,12 @@ function create_color_oklch_var({ color_name, hex_or_rgb }: { color_name: ColorN
 	const h = round_up(parsed_oklch.h ?? 0);
 	const a = round_up(parsed_oklch.alpha ? parsed_oklch.alpha * 100 : 100);
 
-	return `new ColorOklch({ l: ${l}, c: ${c}, h: ${h}, a: ${a} })`;
+	return `{
+		lightness: new Percentage(${l}),
+		chroma: new Percentage(${c}),
+		hue: new Dimension(${h}, "deg"),
+		alpha: new Percentage(${a}),
+	}`;
 }
 
 function create_color_var({
@@ -171,53 +177,25 @@ function create_color_var({
 	color_type,
 	color_scheme,
 	color_step,
-	new_oklch,
+	oklch_props,
 }: {
 	color_name: ColorName;
 	color_type: ColorType;
 	color_scheme: ColorScheme;
 	color_step: ColorStep;
-	new_oklch: string;
+	oklch_props: string;
 }): string {
 	const identifier = create_identifier({ color_name, color_type, color_scheme, color_step });
-	return `export const ${identifier} = new Color({ category, name, scheme: "${color_scheme}", type: "${color_type}", step: ${color_step}, oklch: ${new_oklch} });`;
-}
-
-function create_palette_var(color_name: ColorName): string {
-	const solid = create_color_type_object_with_schemes({ color_name, color_type: "solid" });
-	const blend = create_color_type_object_with_schemes({ color_name, color_type: "blend" });
-	return `export const PALETTE_${color_name.toUpperCase()} = new ColorPalette({ category, name, solid: ${solid}, blend: ${blend}, });`;
-}
-
-function create_color_type_object_with_schemes({
-	color_name,
-	color_type,
-}: {
-	color_name: ColorName;
-	color_type: ColorType;
-}) {
-	const array_light = create_array_with_identifiers({
-		color_name,
-		color_scheme: "light",
-		color_type,
-	});
-	const array_dark = create_array_with_identifiers({
-		color_name,
-		color_scheme: "dark",
-		color_type,
-	});
-	return `{ light: ${array_light}, dark: ${array_dark} }`;
-}
-
-function create_array_with_identifiers(params: {
-	color_name: ColorName;
-	color_type: ColorType;
-	color_scheme: ColorScheme;
-}) {
-	const identifiers = Array.from({ length: 12 }, (_, idx) =>
-		create_identifier({ ...params, color_step: (idx + 1) as ColorStep }),
-	);
-	return `[${identifiers.join(",")}]`;
+	return `
+		export const ${identifier} = new AtomicColor({
+			category,
+			name,
+			scheme: "${color_scheme}",
+			type: "${color_type}",
+			step: ${color_step},
+			oklch: ${oklch_props}
+		});
+	`;
 }
 
 function create_identifier({
@@ -231,5 +209,5 @@ function create_identifier({
 	color_scheme: ColorScheme;
 	color_step: ColorStep;
 }) {
-	return `${color_name.toUpperCase()}_${color_type.toUpperCase()}_${color_scheme.toUpperCase()}_${color_step}`;
+	return `${color_name.toUpperCase()}_${color_type.toUpperCase()}_${color_step}_${color_scheme.toUpperCase()}`;
 }
