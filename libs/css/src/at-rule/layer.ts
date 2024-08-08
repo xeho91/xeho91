@@ -5,17 +5,17 @@ import type { Display, ToString } from "@xeho91/lib-type/trait/display";
 import { IterableInstance } from "@xeho91/lib-type/trait/iterable";
 import { type Atrule, type CssNode, List } from "css-tree";
 
+import type { ToAST } from "#ast";
 import { AtRuleBase } from "#at-rule";
 import type { Block } from "#block";
 import { Identifier } from "#identifier";
 import { Operator } from "#operator";
-import type { ToAST } from "#type";
 
 export type AtLayerName = IterableElement<typeof AtLayer.NAMES>;
 
 export class AtLayer<TName extends AtLayerName = AtLayerName, TBlock extends Block = Block>
 	extends AtRuleBase<"layer">
-	implements Display<Stringified<TName, TBlock>>, ToAST<Atrule>
+	implements Display, ToAST
 {
 	static readonly #NAME = "layer";
 

@@ -10,7 +10,8 @@ export type Item = ToAST;
 
 export class Value<const TList extends Item[] = Item[]>
 	extends IterableInstance<TList[number]>
-	implements Display, ToAST {
+	implements Display, ToAST
+{
 	protected iterable: TList;
 
 	constructor(...list: TList) {

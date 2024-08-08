@@ -3,11 +3,11 @@ import type { IterableElement } from "@xeho91/lib-type/iterable";
 
 import { Alpha } from "#data-type/alpha";
 import { Chroma } from "#data-type/chroma";
+import { Color } from "#data-type/color";
 import { Hue } from "#data-type/hue";
 import { Lightness } from "#data-type/lightness";
-import { FunctionChildren, FunctionBase } from "#function";
+import { FunctionBase, FunctionChildren } from "#function";
 import { Operator } from "#operator";
-import { Color } from "#data-type/color";
 
 export type OklchPropertyName = IterableElement<typeof Oklch.PROPERTIES>;
 

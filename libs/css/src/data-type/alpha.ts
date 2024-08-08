@@ -1,10 +1,10 @@
+import { AtProperty } from "#at-rule/property";
 import { DataType } from "#data-type/type";
 import type { Var } from "#function/var";
 import { Reference } from "#reference";
+import { Syntax } from "#syntax";
 import type { NumberCSS } from "#value/number";
 import { Percentage } from "#value/percentage";
-import { AtProperty } from "#at-rule/property";
-import { Syntax } from "#syntax";
 
 type AllowedValue = NumberCSS | Percentage | Var;
 

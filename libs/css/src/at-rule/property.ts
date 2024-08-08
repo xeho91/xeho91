@@ -3,6 +3,7 @@ import { type Atrule, type CssNode, List } from "css-tree";
 import { Subject } from "rxjs/internal/Subject";
 import { defer } from "rxjs/internal/observable/defer";
 
+import type { ToAST } from "#ast";
 import { AtRuleBase } from "#at-rule";
 import { Block } from "#block";
 import { Declaration } from "#declaration";
@@ -10,7 +11,6 @@ import { Identifier } from "#identifier";
 import { Property } from "#property";
 import type { Reference } from "#reference";
 import type { Syntax } from "#syntax";
-import type { ToAST } from "#type";
 import type { Value } from "#value";
 import { BooleanCSS } from "#value/boolean";
 import type { StringCSS } from "#value/string";
@@ -26,7 +26,7 @@ export class AtProperty<
 		TInherits extends boolean = boolean,
 	>
 	extends AtRuleBase<"property">
-	implements Display<Stringified<TReference, TSyntax, TInitialValue, TInherits>>, ToAST<Atrule>
+	implements Display, ToAST
 {
 	static readonly #NAME = "property";
 

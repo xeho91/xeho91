@@ -2,7 +2,7 @@ import type { Display } from "@xeho91/lib-type/trait/display";
 import type { StringNode } from "css-tree";
 
 import type { ToAST } from "#ast";
-import { Value, type ToValue } from "#value";
+import { type ToValue, Value } from "#value";
 
 export class StringCSS<TValue extends string = string> implements Display, ToAST, ToValue {
 	public value: TValue;

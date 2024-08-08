@@ -1,4 +1,4 @@
-import { FunctionChildren, FunctionBase } from "#function";
+import { FunctionBase, FunctionChildren } from "#function";
 import { Operator } from "#operator";
 import type { Dimension } from "#value/dimension";
 import type { Percentage } from "#value/percentage";

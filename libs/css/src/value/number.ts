@@ -3,7 +3,7 @@ import type { NumberNode } from "css-tree";
 
 import type { ToAST } from "#ast";
 import { Syntax } from "#syntax";
-import { Value, type ToValue } from "#value";
+import { type ToValue, Value } from "#value";
 
 export class NumberCSS<TValue extends number = number> implements Display, ToAST, ToValue {
 	public static readonly SYNTAX = new Syntax("number");

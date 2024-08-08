@@ -3,11 +3,11 @@ import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 import type { ReadonlyTuple } from "@xeho91/lib-type/tuple";
 
+import type { Var } from "#function/var";
 import { Property } from "#property";
 import { BoxShadow, BoxShadowLayer } from "#property/box-shadow";
 import { TextShadow, TextShadowLayer } from "#property/text-shadow";
 import { Reference } from "#reference";
-import type { Var } from "#function/var";
 
 export type ShadowTargetName = IterableElement<typeof ShadowTarget.NAMES>;
 export type ShadowPropertyName = IterableElement<typeof ShadowTarget.ATOMIC_PROPERTIES>;

@@ -6,7 +6,7 @@ import type { Dimension as DimensionAST } from "css-tree";
 import type { ToAST } from "#ast";
 import { Syntax, type SyntaxUnits } from "#syntax";
 import { Unit } from "#unit";
-import { Value, type ToValue } from "#value";
+import { type ToValue, Value } from "#value";
 
 const POSSIBLE_SYNTAX_NAMES = extract_set_entries(Syntax.NAMES, ["angle", "length"]);
 type PossibleSyntaxName = IterableElement<typeof POSSIBLE_SYNTAX_NAMES>;

@@ -3,7 +3,7 @@ import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import { readonly_set, unionize_sets } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 
-import { Property, type InferProperty, type ToProperty } from "#property";
+import { type InferProperty, Property, type ToProperty } from "#property";
 
 type TargetGap = IterableElement<typeof GapTarget.TARGETS>;
 export class GapTarget<TName extends TargetGap = TargetGap> implements ToProperty {

@@ -1,6 +1,6 @@
 import { readonly_set } from "@xeho91/lib-snippet/set";
-import type { Display } from "@xeho91/lib-type/trait/display";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
+import type { Display } from "@xeho91/lib-type/trait/display";
 
 export type AtRuleType = IterableElement<typeof AtRule.TYPES>;
 

@@ -1,7 +1,7 @@
+import type { Join } from "@xeho91/lib-type/array";
 import type { Display, InferDisplays } from "@xeho91/lib-type/trait/display";
 import { IterableInstance } from "@xeho91/lib-type/trait/iterable";
-import { List, type Block as BlockAST, type CssNode } from "css-tree";
-import type { Join } from "@xeho91/lib-type/array";
+import { type Block as BlockAST, type CssNode, List } from "css-tree";
 
 import type { ToAST } from "#ast";
 

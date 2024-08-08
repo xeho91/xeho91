@@ -1,3 +1,5 @@
+import { readonly_set } from "@xeho91/lib-snippet/set";
+
 import type { ToAST } from "#ast";
 import { AtProperty } from "#at-rule/property";
 import { DataType } from "#data-type/type";
@@ -7,7 +9,6 @@ import { ShadowTarget, type ShadowTargetName } from "#target/shadow";
 import type { ToValue } from "#value";
 import { Dimension } from "#value/dimension";
 import { NumberCSS } from "#value/number";
-import { readonly_set } from "@xeho91/lib-snippet/set";
 
 type OffsetAxis = "x" | "y";
 
