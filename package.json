@@ -31,8 +31,6 @@
 		"_version": "pnpm changeset version && pnpm fix:format"
 	},
 	"devDependencies": {
-		"@total-typescript/tsconfig": "1.0.4",
-		"@types/node": "22.1.0",
 		"tslib": "2.6.3",
 		"tsx": "4.16.5",
 		"turbo": "2.0.12"

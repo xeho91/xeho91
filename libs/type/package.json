@@ -55,6 +55,8 @@
 		"type-fest": "4.20.1"
 	},
 	"peerDependencies": {
+		"@total-typescript/tsconfig": "catalog:",
+		"@types/node": "catalog:",
 		"typescript": "catalog:"
 	}
 }
