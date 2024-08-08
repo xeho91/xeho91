@@ -7,7 +7,7 @@ import type { Property } from "#property";
 import type { Value } from "#value";
 
 export class Declaration<TProperty extends Property = Property, TValue extends Value = Value>
-	implements Display<Stringified<TProperty, TValue>>, ToAST
+	implements Display, ToAST
 {
 	public readonly property: TProperty;
 	public readonly value: TValue;

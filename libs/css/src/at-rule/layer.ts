@@ -24,22 +24,28 @@ export class AtLayer<TName extends AtLayerName = AtLayerName, TBlock extends Blo
 	public static readonly ORDER = new (class extends IterableInstance<AtLayerName> {
 		protected iterable = AtLayer.NAMES;
 
-		get #array(): AtLayerName[] {
-			return [...AtLayer.NAMES];
-		}
-
 		public toString(): StringifiedOrder<typeof AtLayer.NAMES> {
-			// TODO: Optimize it
-			return `@layer ${this.#array.join(",")};` as StringifiedOrder<typeof AtLayer.NAMES>;
+			const { iterable } = this;
+			let results = "@layer ";
+			let index = 0;
+			for (const name of iterable) {
+				results += name;
+				if (index < iterable.size) results += ",";
+				else results += ";";
+				index++;
+			}
+			return results as StringifiedOrder<typeof AtLayer.NAMES>;
 		}
 
 		public to_ast(): Atrule {
+			const { iterable } = this;
 			const children = new List<CssNode>();
-			this.#array.forEach((name, index) => {
+			let index = 0;
+			for (const name of iterable) {
 				children.push(new Identifier(name).to_ast());
-				const next = this.#array[index + 1];
-				if (next) children.push(Operator.COMMA.to_ast());
-			});
+				if (index < iterable.size) children.push(Operator.COMMA.to_ast());
+				index++;
+			}
 			return {
 				type: "Atrule",
 				name: "layer",
@@ -72,7 +78,7 @@ export class AtLayer<TName extends AtLayerName = AtLayerName, TBlock extends Blo
 
 	public toString(): Stringified<TName, TBlock> {
 		const { block, name, prefix } = this;
-		return `${prefix} ${name} ${block.toString()}` as Stringified<TName, TBlock>;
+		return `${prefix} ${name} ${block}` as Stringified<TName, TBlock>;
 	}
 
 	public to_ast(): Atrule {

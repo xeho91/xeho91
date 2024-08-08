@@ -106,7 +106,7 @@ export class FunctionChildren<const TList extends FunctionChildrenItem[] = Funct
 
 	public to_ast(): List<CssNode> {
 		const { iterable } = this;
-		// biome-ignore lint/style/useConst: NOTE: I'm mutating it
+		// biome-ignore lint/style/useConst: Readability - mutation
 		let children = new List<CssNode>();
 		for (const node of iterable) children.push(node.to_ast());
 		return children;

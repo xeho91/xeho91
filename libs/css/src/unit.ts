@@ -86,7 +86,9 @@ if (import.meta.vitest) {
 				expect(() => {
 					// @ts-expect-error Testing
 					unit.name = "%";
-				}).toThrowErrorMatchingInlineSnapshot(`[TypeError: This unit doesn't match the syntax length]`);
+				}).toThrowErrorMatchingInlineSnapshot(
+					`[UnrecognizedError: An unrecognized case { "This unit doesn't match the syntax length" } has occurred!]`,
+				);
 			});
 		});
 	});

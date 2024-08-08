@@ -8,7 +8,7 @@ import type { SelectorsJoint } from "#selector/joint";
 type Item = SelectorBase | SelectorsJoint;
 
 export class SelectorComplex<const TSelectors extends Item[] = Item[]>
-	extends IterableInstance<Item>
+	extends IterableInstance<TSelectors[number]>
 	implements Display
 {
 	protected iterable: TSelectors;
@@ -26,8 +26,14 @@ export class SelectorComplex<const TSelectors extends Item[] = Item[]>
 		this.iterable = selectors;
 	}
 
-	public toString() {
-		return this.iterable.map((s) => s.toString()).join(" ") as Stringified<TSelectors>;
+	public toString(): Stringified<TSelectors> {
+		const { selectors } = this;
+		let results = "";
+		for (const [index, selector] of selectors.entries()) {
+			results += selector.toString();
+			if (index < selectors.length) results += " ";
+		}
+		return results as Stringified<TSelectors>;
 	}
 }
 

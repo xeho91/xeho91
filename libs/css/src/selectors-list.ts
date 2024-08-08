@@ -8,7 +8,10 @@ import type { SelectorsJoint } from "#selector/joint";
 
 type Item = SelectorComplex | SelectorsJoint | SelectorBase;
 
-export class SelectorsList<const TList extends Item[] = Item[]> extends IterableInstance<Item> implements Display {
+export class SelectorsList<const TList extends Item[] = Item[]>
+	extends IterableInstance<TList[number]>
+	implements Display
+{
 	protected iterable: TList;
 
 	constructor(...selectors: TList) {
@@ -24,16 +27,14 @@ export class SelectorsList<const TList extends Item[] = Item[]> extends Iterable
 		this.iterable = list;
 	}
 
-	public get first(): TList[0] {
-		return this.iterable[0] as TList[0];
-	}
-
-	public get last() {
-		return this.iterable[this.size - 1];
-	}
-
-	public toString() {
-		return this.iterable.map((s) => s.toString()).join(",") as Stringified<TList>;
+	public toString(): Stringified<TList> {
+		const { list } = this;
+		let results = "";
+		for (const [index, selector] of list.entries()) {
+			results += selector.toString();
+			if (index < list.length) results += ",";
+		}
+		return results as Stringified<TList>;
 	}
 }
 

@@ -24,7 +24,10 @@ export class RulesetsList<const TList extends Ruleset[] = Ruleset[]>
 	}
 
 	public toString(): Stringified<TList> {
-		return this.iterable.map((r) => r.toString()).join("") as Stringified<TList>;
+		const { list } = this;
+		let results = "";
+		for (const ruleset of list) results += ruleset.toString();
+		return results as Stringified<TList>;
 	}
 }
 
