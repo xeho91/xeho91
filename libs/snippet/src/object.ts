@@ -22,10 +22,6 @@ export function object_keys<const TObject extends object>(object: TObject) {
 	return Object.keys(object) as (keyof TObject)[];
 }
 
-export function readonly_object<const TObject extends object>(object: TObject) {
-	return Object.freeze(object);
-}
-
 if (import.meta.vitest) {
 	const { describe, expectTypeOf, it } = import.meta.vitest;
 
@@ -78,6 +74,47 @@ if (import.meta.vitest) {
 
 			expect(object_entries(input)).toEqual(Object.entries(input));
 			expectTypeOf(object_entries(input)).toEqualTypeOf<ObjectEntries<typeof input>>();
+		});
+	});
+}
+
+/**
+ * Create typed readonly {@link object}
+ * @param object to freeze
+ */
+export function readonly_object<const TObject extends object>(object: TObject): Readonly<TObject> {
+	return Object.freeze(object);
+}
+
+if (import.meta.vitest) {
+	const { describe, expectTypeOf, it } = import.meta.vitest;
+
+	describe(readonly_object.name, () => {
+		it("creates a typed frozen - readonly - object", ({ expect }) => {
+			const readonly_obj = readonly_object({
+				key1: 1337,
+				key2: "hello",
+				key3: [1, 2, 3],
+				key4: false,
+			});
+			expect(readonly_obj).toStrictEqual({
+				key1: 1337,
+				key2: "hello",
+				key3: [1, 2, 3],
+				key4: false,
+			});
+			expect(() => {
+				// @ts-expect-error Testing
+				readonly_obj.key4 = true;
+			}).toThrowError();
+			expectTypeOf(readonly_obj).toEqualTypeOf<
+				Readonly<{
+					key1: 1337;
+					key2: "hello";
+					key3: readonly [1, 2, 3];
+					key4: false;
+				}>
+			>();
 		});
 	});
 }
