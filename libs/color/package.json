@@ -65,5 +65,8 @@
 		"@xeho91/lib-logger": "workspace:*",
 		"culori": "4.0.1",
 		"handlebars": "4.7.8"
+	},
+	"peerDependencies": {
+		"typescript": "catalog:"
 	}
 }

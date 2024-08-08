@@ -53,5 +53,8 @@
 	"dependencies": {
 		"@xeho91/lib-type": "workspace:*",
 		"type-fest": "4.20.1"
+	},
+	"peerDependencies": {
+		"typescript": "catalog:"
 	}
 }

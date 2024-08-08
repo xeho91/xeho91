@@ -53,5 +53,8 @@
 	"dependencies": {
 		"@xeho91/lib-type": "workspace:*",
 		"valibot": "0.35.0"
+	},
+	"peerDependencies": {
+		"typescript": "catalog:"
 	}
 }

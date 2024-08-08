@@ -47,7 +47,10 @@
 		"type-fest": "4.20.1"
 	},
 	"devDependencies": {
-		"svelte": "5.0.0-next.184",
-		"typescript-svelte-plugin": "0.3.39"
+		"svelte": "catalog:",
+		"typescript-svelte-plugin": "catalog:"
+	},
+	"peerDependencies": {
+		"typescript": "catalog:"
 	}
 }
