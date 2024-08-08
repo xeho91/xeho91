@@ -294,12 +294,12 @@ importers:
       '@xeho91/lib-struct':
         specifier: workspace:*
         version: link:../struct
+      '@xeho91/lib-type':
+        specifier: workspace:*
+        version: link:../type
       mime:
         specifier: 4.0.4
         version: 4.0.4
-      type-fest:
-        specifier: 4.20.1
-        version: 4.20.1
       typescript:
         specifier: 'catalog:'
         version: 5.5.3

@@ -43,8 +43,8 @@
 		"@xeho91/lib-geometry": "workspace:*",
 		"@xeho91/lib-snippet": "workspace:*",
 		"@xeho91/lib-struct": "workspace:*",
-		"mime": "4.0.4",
-		"type-fest": "4.20.1"
+		"@xeho91/lib-type": "workspace:*",
+		"mime": "4.0.4"
 	},
 	"devDependencies": {
 		"svelte": "catalog:",
