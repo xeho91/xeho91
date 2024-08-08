@@ -70,7 +70,7 @@ if (import.meta.vitest) {
  * //.   ^ new Set<4 | 5 | 6>();
  * ```
  */
-export function exclude_set_entries<
+export function exclude_set<
 	// biome-ignore lint/suspicious/noExplicitAny: This is intentional
 	const TCurrentSet extends Set<any> | ReadonlySet<any>,
 	const TToExclude extends readonly IterableElement<TCurrentSet>[],
@@ -78,22 +78,18 @@ export function exclude_set_entries<
 	// TODO: Use `Set.difference()` when Node.js LTS is v22
 	// return current_set.difference(new Set(to_exclude));
 	const new_set = current_set as Set<Exclude<IterableElement<TCurrentSet>, TToExclude[number]>>;
-
-	for (const item of to_exclude) {
-		new_set.delete(item as IterableElement<typeof new_set>);
-	}
-
+	for (const item of to_exclude) new_set.delete(item as IterableElement<typeof new_set>);
 	return new_set;
 }
 
 if (import.meta.vitest) {
 	const { describe, expectTypeOf, it } = import.meta.vitest;
 
-	describe(exclude_set_entries.name, () => {
+	describe(exclude_set.name, () => {
 		it("returns correctly a new set with keys to be excluded", ({ expect }) => {
 			const set = new Set([1, 2, 3, 4, 5, 6] as const);
 			const to_exclude = [4, 5, 6] as const;
-			const excluded = exclude_set_entries(set, to_exclude);
+			const excluded = exclude_set(set, to_exclude);
 
 			expect(excluded).toHaveLength(to_exclude.length);
 			expectTypeOf(excluded).toEqualTypeOf<Set<1 | 2 | 3>>();
