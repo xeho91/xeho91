@@ -115,7 +115,8 @@ if (import.meta.vitest) {
 	describe(readonly_set.name, () => {
 		it("returns typed readonly set from random items", ({ expect }) => {
 			const set = readonly_set([1, 2, 3, "four", null, true]);
-			expect(set).toBeInstanceOf(set);
+			expect(set).toBeInstanceOf(Set);
+			expect(Object.isFrozen(set)).toBe(true);
 			expectTypeOf(set).toEqualTypeOf<ReadonlySet<1 | 2 | 3 | "four" | null | true>>();
 		});
 	});
