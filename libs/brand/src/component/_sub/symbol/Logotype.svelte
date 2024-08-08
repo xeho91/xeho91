@@ -21,9 +21,5 @@ export const LOGOTYPE_DIMENSIONS = new Rectangle(300, 100);
 			id={`${id}-char-${name}`}
 			d={LogotypeChar[name]?.path_attribute_d}
 		/>
-		<!-- <path -->
-		<!-- 	id={`${id}-char-${name}`} -->
-		<!-- 	d={LogotypeChar[name].path_attribute_d} -->
-		<!-- /> -->
 	{/each}
 </symbol>

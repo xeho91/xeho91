@@ -58,6 +58,7 @@
 		"@xeho91/lib-color": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",
 		"@xeho91/lib-geometry": "workspace:*",
+		"@xeho91/lib-snippet": "workspace:*",
 		"@xeho91/lib-storybook": "workspace:*",
 		"@xeho91/lib-struct": "workspace:*",
 		"@xeho91/lib-type": "workspace:*",

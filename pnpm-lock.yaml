@@ -169,6 +169,9 @@ importers:
       '@xeho91/lib-geometry':
         specifier: workspace:*
         version: link:../geometry
+      '@xeho91/lib-snippet':
+        specifier: workspace:*
+        version: link:../snippet
       '@xeho91/lib-storybook':
         specifier: workspace:*
         version: link:../storybook
@@ -206,6 +209,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.1.0
+      '@xeho91/lib-css':
+        specifier: workspace:*
+        version: link:../css
       '@xeho91/lib-error':
         specifier: workspace:*
         version: link:../error

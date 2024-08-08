@@ -7,462 +7,683 @@
  * @module
  */
 
-import { Color, type ColorCategory, type ColorName } from "#instance";
-import { ColorOklch } from "#oklch";
-import { ColorPalette } from "#palette";
+import { Dimension } from "@xeho91/lib-css/value/dimension";
+import { Percentage } from "@xeho91/lib-css/value/percentage";
+
+import { AtomicColor } from "#atomic";
+import type { ColorCategory, ColorName } from "#mod";
 
 const category = "brand" satisfies ColorCategory;
 const name = "primary" satisfies ColorName;
 
-export const PRIMARY_SOLID_LIGHT_1 = new Color({
+export const PRIMARY_SOLID_1_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
 	type: "solid",
 	step: 1,
-	oklch: new ColorOklch({ l: 99.32, c: 0.84, h: 325.6, a: 100 }),
-});
-export const PRIMARY_SOLID_LIGHT_2 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 2,
-	oklch: new ColorOklch({ l: 98.12, c: 2.53, h: 311.18, a: 100 }),
-});
-export const PRIMARY_SOLID_LIGHT_3 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 3,
-	oklch: new ColorOklch({ l: 95.88, c: 6.22, h: 311.71, a: 100 }),
-});
-export const PRIMARY_SOLID_LIGHT_4 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 4,
-	oklch: new ColorOklch({ l: 93.33, c: 9.65, h: 312.65, a: 100 }),
-});
-export const PRIMARY_SOLID_LIGHT_5 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 5,
-	oklch: new ColorOklch({ l: 90.12, c: 13.34, h: 311.25, a: 100 }),
-});
-export const PRIMARY_SOLID_LIGHT_6 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 6,
-	oklch: new ColorOklch({ l: 85.92, c: 17.96, h: 311.05, a: 100 }),
-});
-export const PRIMARY_SOLID_LIGHT_7 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 7,
-	oklch: new ColorOklch({ l: 80.43, c: 22.94, h: 309.69, a: 100 }),
-});
-export const PRIMARY_SOLID_LIGHT_8 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 8,
-	oklch: new ColorOklch({ l: 73.31, c: 30.63, h: 307.97, a: 100 }),
-});
-export const PRIMARY_SOLID_LIGHT_9 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 9,
-	oklch: new ColorOklch({ l: 55.56, c: 45.73, h: 305.86, a: 100 }),
-});
-export const PRIMARY_SOLID_LIGHT_10 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 10,
-	oklch: new ColorOklch({ l: 52.46, c: 43.87, h: 305.39, a: 100 }),
-});
-export const PRIMARY_SOLID_LIGHT_11 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 11,
-	oklch: new ColorOklch({ l: 51.68, c: 43.33, h: 305.88, a: 100 }),
-});
-export const PRIMARY_SOLID_LIGHT_12 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 12,
-	oklch: new ColorOklch({ l: 32.22, c: 27.55, h: 303.84, a: 100 }),
-});
-export const PRIMARY_SOLID_DARK_1 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 1,
-	oklch: new ColorOklch({ l: 19.13, c: 5.62, h: 315.59, a: 100 }),
-});
-export const PRIMARY_SOLID_DARK_2 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 2,
-	oklch: new ColorOklch({ l: 21.37, c: 7.49, h: 313.13, a: 100 }),
-});
-export const PRIMARY_SOLID_DARK_3 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 3,
-	oklch: new ColorOklch({ l: 26.77, c: 15.3, h: 312.61, a: 100 }),
-});
-export const PRIMARY_SOLID_DARK_4 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 4,
-	oklch: new ColorOklch({ l: 30.88, c: 20.46, h: 310.8, a: 100 }),
-});
-export const PRIMARY_SOLID_DARK_5 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 5,
-	oklch: new ColorOklch({ l: 34.47, c: 23.01, h: 310.5, a: 100 }),
-});
-export const PRIMARY_SOLID_DARK_6 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 6,
-	oklch: new ColorOklch({ l: 38.87, c: 24.1, h: 309.45, a: 100 }),
-});
-export const PRIMARY_SOLID_DARK_7 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 7,
-	oklch: new ColorOklch({ l: 44.86, c: 26.99, h: 308.61, a: 100 }),
-});
-export const PRIMARY_SOLID_DARK_8 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 8,
-	oklch: new ColorOklch({ l: 54.12, c: 33.16, h: 307.57, a: 100 }),
-});
-export const PRIMARY_SOLID_DARK_9 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 9,
-	oklch: new ColorOklch({ l: 55.56, c: 45.73, h: 305.86, a: 100 }),
-});
-export const PRIMARY_SOLID_DARK_10 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 10,
-	oklch: new ColorOklch({ l: 59.55, c: 44.19, h: 306.45, a: 100 }),
-});
-export const PRIMARY_SOLID_DARK_11 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 11,
-	oklch: new ColorOklch({ l: 78.07, c: 36.3, h: 307.74, a: 100 }),
-});
-export const PRIMARY_SOLID_DARK_12 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 12,
-	oklch: new ColorOklch({ l: 91.07, c: 12.17, h: 310.99, a: 100 }),
-});
-export const PRIMARY_BLEND_LIGHT_1 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 1,
-	oklch: new ColorOklch({ l: 51.78, c: 59.5, h: 328.36, a: 1.18 }),
-});
-export const PRIMARY_BLEND_LIGHT_2 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 2,
-	oklch: new ColorOklch({ l: 50.03, c: 66.81, h: 299.88, a: 3.14 }),
-});
-export const PRIMARY_BLEND_LIGHT_3 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 3,
-	oklch: new ColorOklch({ l: 53.34, c: 70.73, h: 301.16, a: 7.06 }),
-});
-export const PRIMARY_BLEND_LIGHT_4 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 4,
-	oklch: new ColorOklch({ l: 52.12, c: 68.3, h: 303.32, a: 11.37 }),
-});
-export const PRIMARY_BLEND_LIGHT_5 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 5,
-	oklch: new ColorOklch({ l: 49.56, c: 65.79, h: 300.96, a: 16.47 }),
-});
-export const PRIMARY_BLEND_LIGHT_6 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 6,
-	oklch: new ColorOklch({ l: 47.8, c: 63.24, h: 301.2, a: 23.14 }),
-});
-export const PRIMARY_BLEND_LIGHT_7 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 7,
-	oklch: new ColorOklch({ l: 44.88, c: 60.16, h: 299.19, a: 31.37 }),
-});
-export const PRIMARY_BLEND_LIGHT_8 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 8,
-	oklch: new ColorOklch({ l: 43.72, c: 59.33, h: 297.01, a: 42.35 }),
-});
-export const PRIMARY_BLEND_LIGHT_9 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 9,
-	oklch: new ColorOklch({ l: 40.55, c: 54.92, h: 297.34, a: 69.41 }),
-});
-export const PRIMARY_BLEND_LIGHT_10 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 10,
-	oklch: new ColorOklch({ l: 37.86, c: 51.36, h: 297.09, a: 72.16 }),
-});
-export const PRIMARY_BLEND_LIGHT_11 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 11,
-	oklch: new ColorOklch({ l: 37.32, c: 50.43, h: 297.73, a: 72.94 }),
-});
-export const PRIMARY_BLEND_LIGHT_12 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 12,
-	oklch: new ColorOklch({ l: 22.24, c: 29.84, h: 299, a: 87.45 }),
-});
-export const PRIMARY_BLEND_DARK_1 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 1,
-	oklch: new ColorOklch({ l: 59.34, c: 72.99, h: 310.91, a: 4.31 }),
-});
-export const PRIMARY_BLEND_DARK_2 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 2,
-	oklch: new ColorOklch({ l: 62.61, c: 64.02, h: 310.28, a: 7.84 }),
-});
-export const PRIMARY_BLEND_DARK_3 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 3,
-	oklch: new ColorOklch({ l: 65.56, c: 63.24, h: 310.88, a: 17.65 }),
-});
-export const PRIMARY_BLEND_DARK_4 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 4,
-	oklch: new ColorOklch({ l: 65.03, c: 61.44, h: 309.19, a: 25.88 }),
-});
-export const PRIMARY_BLEND_DARK_5 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 5,
-	oklch: new ColorOklch({ l: 66.41, c: 58.83, h: 309.42, a: 31.76 }),
-});
-export const PRIMARY_BLEND_DARK_6 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 6,
-	oklch: new ColorOklch({ l: 68.93, c: 53.21, h: 308.77, a: 38.04 }),
-});
-export const PRIMARY_BLEND_DARK_7 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 7,
-	oklch: new ColorOklch({ l: 70.7, c: 49.3, h: 308.2, a: 47.84 }),
-});
-export const PRIMARY_BLEND_DARK_8 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 8,
-	oklch: new ColorOklch({ l: 71.81, c: 47.65, h: 307.32, a: 64.31 }),
-});
-export const PRIMARY_BLEND_DARK_9 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 9,
-	oklch: new ColorOklch({ l: 66.26, c: 57.15, h: 305.82, a: 76.08 }),
-});
-export const PRIMARY_BLEND_DARK_10 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 10,
-	oklch: new ColorOklch({ l: 68.79, c: 52.67, h: 306.32, a: 80.39 }),
-});
-export const PRIMARY_BLEND_DARK_11 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 11,
-	oklch: new ColorOklch({ l: 78.07, c: 36.3, h: 307.74, a: 100 }),
-});
-export const PRIMARY_BLEND_DARK_12 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 12,
-	oklch: new ColorOklch({ l: 92.4, c: 12.54, h: 311.49, a: 98.04 }),
+	oklch: {
+		lightness: new Percentage(99.32),
+		chroma: new Percentage(0.84),
+		hue: new Dimension(325.6, "deg"),
+		alpha: new Percentage(100),
+	},
 });
 
-/**
- * Color palette for the color primary.
- */
-export const PALETTE_PRIMARY = new ColorPalette({
+export const PRIMARY_SOLID_2_LIGHT = new AtomicColor({
 	category,
 	name,
-	solid: {
-		light: [
-			PRIMARY_SOLID_LIGHT_1,
-			PRIMARY_SOLID_LIGHT_2,
-			PRIMARY_SOLID_LIGHT_3,
-			PRIMARY_SOLID_LIGHT_4,
-			PRIMARY_SOLID_LIGHT_5,
-			PRIMARY_SOLID_LIGHT_6,
-			PRIMARY_SOLID_LIGHT_7,
-			PRIMARY_SOLID_LIGHT_8,
-			PRIMARY_SOLID_LIGHT_9,
-			PRIMARY_SOLID_LIGHT_10,
-			PRIMARY_SOLID_LIGHT_11,
-			PRIMARY_SOLID_LIGHT_12,
-		],
-		dark: [
-			PRIMARY_SOLID_DARK_1,
-			PRIMARY_SOLID_DARK_2,
-			PRIMARY_SOLID_DARK_3,
-			PRIMARY_SOLID_DARK_4,
-			PRIMARY_SOLID_DARK_5,
-			PRIMARY_SOLID_DARK_6,
-			PRIMARY_SOLID_DARK_7,
-			PRIMARY_SOLID_DARK_8,
-			PRIMARY_SOLID_DARK_9,
-			PRIMARY_SOLID_DARK_10,
-			PRIMARY_SOLID_DARK_11,
-			PRIMARY_SOLID_DARK_12,
-		],
+	scheme: "light",
+	type: "solid",
+	step: 2,
+	oklch: {
+		lightness: new Percentage(98.12),
+		chroma: new Percentage(2.53),
+		hue: new Dimension(311.18, "deg"),
+		alpha: new Percentage(100),
 	},
-	blend: {
-		light: [
-			PRIMARY_BLEND_LIGHT_1,
-			PRIMARY_BLEND_LIGHT_2,
-			PRIMARY_BLEND_LIGHT_3,
-			PRIMARY_BLEND_LIGHT_4,
-			PRIMARY_BLEND_LIGHT_5,
-			PRIMARY_BLEND_LIGHT_6,
-			PRIMARY_BLEND_LIGHT_7,
-			PRIMARY_BLEND_LIGHT_8,
-			PRIMARY_BLEND_LIGHT_9,
-			PRIMARY_BLEND_LIGHT_10,
-			PRIMARY_BLEND_LIGHT_11,
-			PRIMARY_BLEND_LIGHT_12,
-		],
-		dark: [
-			PRIMARY_BLEND_DARK_1,
-			PRIMARY_BLEND_DARK_2,
-			PRIMARY_BLEND_DARK_3,
-			PRIMARY_BLEND_DARK_4,
-			PRIMARY_BLEND_DARK_5,
-			PRIMARY_BLEND_DARK_6,
-			PRIMARY_BLEND_DARK_7,
-			PRIMARY_BLEND_DARK_8,
-			PRIMARY_BLEND_DARK_9,
-			PRIMARY_BLEND_DARK_10,
-			PRIMARY_BLEND_DARK_11,
-			PRIMARY_BLEND_DARK_12,
-		],
+});
+
+export const PRIMARY_SOLID_3_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 3,
+	oklch: {
+		lightness: new Percentage(95.88),
+		chroma: new Percentage(6.22),
+		hue: new Dimension(311.71, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_4_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 4,
+	oklch: {
+		lightness: new Percentage(93.33),
+		chroma: new Percentage(9.65),
+		hue: new Dimension(312.65, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_5_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 5,
+	oklch: {
+		lightness: new Percentage(90.12),
+		chroma: new Percentage(13.34),
+		hue: new Dimension(311.25, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_6_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 6,
+	oklch: {
+		lightness: new Percentage(85.92),
+		chroma: new Percentage(17.96),
+		hue: new Dimension(311.05, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_7_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 7,
+	oklch: {
+		lightness: new Percentage(80.43),
+		chroma: new Percentage(22.94),
+		hue: new Dimension(309.69, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_8_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 8,
+	oklch: {
+		lightness: new Percentage(73.31),
+		chroma: new Percentage(30.63),
+		hue: new Dimension(307.97, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_9_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 9,
+	oklch: {
+		lightness: new Percentage(55.56),
+		chroma: new Percentage(45.73),
+		hue: new Dimension(305.86, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_10_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 10,
+	oklch: {
+		lightness: new Percentage(52.46),
+		chroma: new Percentage(43.87),
+		hue: new Dimension(305.39, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_11_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 11,
+	oklch: {
+		lightness: new Percentage(51.68),
+		chroma: new Percentage(43.33),
+		hue: new Dimension(305.88, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_12_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 12,
+	oklch: {
+		lightness: new Percentage(32.22),
+		chroma: new Percentage(27.55),
+		hue: new Dimension(303.84, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_1_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 1,
+	oklch: {
+		lightness: new Percentage(19.13),
+		chroma: new Percentage(5.62),
+		hue: new Dimension(315.59, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_2_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 2,
+	oklch: {
+		lightness: new Percentage(21.37),
+		chroma: new Percentage(7.49),
+		hue: new Dimension(313.13, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_3_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 3,
+	oklch: {
+		lightness: new Percentage(26.77),
+		chroma: new Percentage(15.3),
+		hue: new Dimension(312.61, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_4_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 4,
+	oklch: {
+		lightness: new Percentage(30.88),
+		chroma: new Percentage(20.46),
+		hue: new Dimension(310.8, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_5_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 5,
+	oklch: {
+		lightness: new Percentage(34.47),
+		chroma: new Percentage(23.01),
+		hue: new Dimension(310.5, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_6_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 6,
+	oklch: {
+		lightness: new Percentage(38.87),
+		chroma: new Percentage(24.1),
+		hue: new Dimension(309.45, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_7_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 7,
+	oklch: {
+		lightness: new Percentage(44.86),
+		chroma: new Percentage(26.99),
+		hue: new Dimension(308.61, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_8_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 8,
+	oklch: {
+		lightness: new Percentage(54.12),
+		chroma: new Percentage(33.16),
+		hue: new Dimension(307.57, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_9_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 9,
+	oklch: {
+		lightness: new Percentage(55.56),
+		chroma: new Percentage(45.73),
+		hue: new Dimension(305.86, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_10_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 10,
+	oklch: {
+		lightness: new Percentage(59.55),
+		chroma: new Percentage(44.19),
+		hue: new Dimension(306.45, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_11_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 11,
+	oklch: {
+		lightness: new Percentage(78.07),
+		chroma: new Percentage(36.3),
+		hue: new Dimension(307.74, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_SOLID_12_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 12,
+	oklch: {
+		lightness: new Percentage(91.07),
+		chroma: new Percentage(12.17),
+		hue: new Dimension(310.99, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_BLEND_1_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 1,
+	oklch: {
+		lightness: new Percentage(51.78),
+		chroma: new Percentage(59.5),
+		hue: new Dimension(328.36, "deg"),
+		alpha: new Percentage(1.18),
+	},
+});
+
+export const PRIMARY_BLEND_2_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 2,
+	oklch: {
+		lightness: new Percentage(50.03),
+		chroma: new Percentage(66.81),
+		hue: new Dimension(299.88, "deg"),
+		alpha: new Percentage(3.14),
+	},
+});
+
+export const PRIMARY_BLEND_3_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 3,
+	oklch: {
+		lightness: new Percentage(53.34),
+		chroma: new Percentage(70.73),
+		hue: new Dimension(301.16, "deg"),
+		alpha: new Percentage(7.06),
+	},
+});
+
+export const PRIMARY_BLEND_4_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 4,
+	oklch: {
+		lightness: new Percentage(52.12),
+		chroma: new Percentage(68.3),
+		hue: new Dimension(303.32, "deg"),
+		alpha: new Percentage(11.37),
+	},
+});
+
+export const PRIMARY_BLEND_5_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 5,
+	oklch: {
+		lightness: new Percentage(49.56),
+		chroma: new Percentage(65.79),
+		hue: new Dimension(300.96, "deg"),
+		alpha: new Percentage(16.47),
+	},
+});
+
+export const PRIMARY_BLEND_6_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 6,
+	oklch: {
+		lightness: new Percentage(47.8),
+		chroma: new Percentage(63.24),
+		hue: new Dimension(301.2, "deg"),
+		alpha: new Percentage(23.14),
+	},
+});
+
+export const PRIMARY_BLEND_7_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 7,
+	oklch: {
+		lightness: new Percentage(44.88),
+		chroma: new Percentage(60.16),
+		hue: new Dimension(299.19, "deg"),
+		alpha: new Percentage(31.37),
+	},
+});
+
+export const PRIMARY_BLEND_8_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 8,
+	oklch: {
+		lightness: new Percentage(43.72),
+		chroma: new Percentage(59.33),
+		hue: new Dimension(297.01, "deg"),
+		alpha: new Percentage(42.35),
+	},
+});
+
+export const PRIMARY_BLEND_9_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 9,
+	oklch: {
+		lightness: new Percentage(40.55),
+		chroma: new Percentage(54.92),
+		hue: new Dimension(297.34, "deg"),
+		alpha: new Percentage(69.41),
+	},
+});
+
+export const PRIMARY_BLEND_10_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 10,
+	oklch: {
+		lightness: new Percentage(37.86),
+		chroma: new Percentage(51.36),
+		hue: new Dimension(297.09, "deg"),
+		alpha: new Percentage(72.16),
+	},
+});
+
+export const PRIMARY_BLEND_11_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 11,
+	oklch: {
+		lightness: new Percentage(37.32),
+		chroma: new Percentage(50.43),
+		hue: new Dimension(297.73, "deg"),
+		alpha: new Percentage(72.94),
+	},
+});
+
+export const PRIMARY_BLEND_12_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 12,
+	oklch: {
+		lightness: new Percentage(22.24),
+		chroma: new Percentage(29.84),
+		hue: new Dimension(299, "deg"),
+		alpha: new Percentage(87.45),
+	},
+});
+
+export const PRIMARY_BLEND_1_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 1,
+	oklch: {
+		lightness: new Percentage(59.34),
+		chroma: new Percentage(72.99),
+		hue: new Dimension(310.91, "deg"),
+		alpha: new Percentage(4.31),
+	},
+});
+
+export const PRIMARY_BLEND_2_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 2,
+	oklch: {
+		lightness: new Percentage(62.61),
+		chroma: new Percentage(64.02),
+		hue: new Dimension(310.28, "deg"),
+		alpha: new Percentage(7.84),
+	},
+});
+
+export const PRIMARY_BLEND_3_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 3,
+	oklch: {
+		lightness: new Percentage(65.56),
+		chroma: new Percentage(63.24),
+		hue: new Dimension(310.88, "deg"),
+		alpha: new Percentage(17.65),
+	},
+});
+
+export const PRIMARY_BLEND_4_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 4,
+	oklch: {
+		lightness: new Percentage(65.03),
+		chroma: new Percentage(61.44),
+		hue: new Dimension(309.19, "deg"),
+		alpha: new Percentage(25.88),
+	},
+});
+
+export const PRIMARY_BLEND_5_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 5,
+	oklch: {
+		lightness: new Percentage(66.41),
+		chroma: new Percentage(58.83),
+		hue: new Dimension(309.42, "deg"),
+		alpha: new Percentage(31.76),
+	},
+});
+
+export const PRIMARY_BLEND_6_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 6,
+	oklch: {
+		lightness: new Percentage(68.93),
+		chroma: new Percentage(53.21),
+		hue: new Dimension(308.77, "deg"),
+		alpha: new Percentage(38.04),
+	},
+});
+
+export const PRIMARY_BLEND_7_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 7,
+	oklch: {
+		lightness: new Percentage(70.7),
+		chroma: new Percentage(49.3),
+		hue: new Dimension(308.2, "deg"),
+		alpha: new Percentage(47.84),
+	},
+});
+
+export const PRIMARY_BLEND_8_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 8,
+	oklch: {
+		lightness: new Percentage(71.81),
+		chroma: new Percentage(47.65),
+		hue: new Dimension(307.32, "deg"),
+		alpha: new Percentage(64.31),
+	},
+});
+
+export const PRIMARY_BLEND_9_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 9,
+	oklch: {
+		lightness: new Percentage(66.26),
+		chroma: new Percentage(57.15),
+		hue: new Dimension(305.82, "deg"),
+		alpha: new Percentage(76.08),
+	},
+});
+
+export const PRIMARY_BLEND_10_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 10,
+	oklch: {
+		lightness: new Percentage(68.79),
+		chroma: new Percentage(52.67),
+		hue: new Dimension(306.32, "deg"),
+		alpha: new Percentage(80.39),
+	},
+});
+
+export const PRIMARY_BLEND_11_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 11,
+	oklch: {
+		lightness: new Percentage(78.07),
+		chroma: new Percentage(36.3),
+		hue: new Dimension(307.74, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const PRIMARY_BLEND_12_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 12,
+	oklch: {
+		lightness: new Percentage(92.4),
+		chroma: new Percentage(12.54),
+		hue: new Dimension(311.49, "deg"),
+		alpha: new Percentage(98.04),
 	},
 });

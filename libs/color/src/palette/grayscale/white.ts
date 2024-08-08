@@ -7,462 +7,683 @@
  * @module
  */
 
-import { Color, type ColorCategory, type ColorName } from "#instance";
-import { ColorOklch } from "#oklch";
-import { ColorPalette } from "#palette";
+import { Dimension } from "@xeho91/lib-css/value/dimension";
+import { Percentage } from "@xeho91/lib-css/value/percentage";
+
+import { AtomicColor } from "#atomic";
+import type { ColorCategory, ColorName } from "#mod";
 
 const category = "grayscale" satisfies ColorCategory;
 const name = "white" satisfies ColorName;
 
-export const WHITE_SOLID_LIGHT_1 = new Color({
+export const WHITE_SOLID_1_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
 	type: "solid",
 	step: 1,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_LIGHT_2 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 2,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_LIGHT_3 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 3,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_LIGHT_4 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 4,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_LIGHT_5 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 5,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_LIGHT_6 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 6,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_LIGHT_7 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 7,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_LIGHT_8 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 8,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_LIGHT_9 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 9,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_LIGHT_10 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 10,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_LIGHT_11 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 11,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_LIGHT_12 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 12,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_DARK_1 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 1,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_DARK_2 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 2,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_DARK_3 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 3,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_DARK_4 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 4,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_DARK_5 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 5,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_DARK_6 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 6,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_DARK_7 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 7,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_DARK_8 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 8,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_DARK_9 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 9,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_DARK_10 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 10,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_DARK_11 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 11,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_SOLID_DARK_12 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
-	step: 12,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 100 }),
-});
-export const WHITE_BLEND_LIGHT_1 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 1,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 5 }),
-});
-export const WHITE_BLEND_LIGHT_2 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 2,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 10 }),
-});
-export const WHITE_BLEND_LIGHT_3 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 3,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 15 }),
-});
-export const WHITE_BLEND_LIGHT_4 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 4,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 20 }),
-});
-export const WHITE_BLEND_LIGHT_5 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 5,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 30 }),
-});
-export const WHITE_BLEND_LIGHT_6 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 6,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 40 }),
-});
-export const WHITE_BLEND_LIGHT_7 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 7,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 50 }),
-});
-export const WHITE_BLEND_LIGHT_8 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 8,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 60 }),
-});
-export const WHITE_BLEND_LIGHT_9 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 9,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 70 }),
-});
-export const WHITE_BLEND_LIGHT_10 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 10,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 80 }),
-});
-export const WHITE_BLEND_LIGHT_11 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 11,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 90 }),
-});
-export const WHITE_BLEND_LIGHT_12 = new Color({
-	category,
-	name,
-	scheme: "light",
-	type: "blend",
-	step: 12,
-	oklch: new ColorOklch({ l: 0, c: 0, h: 0, a: 95 }),
-});
-export const WHITE_BLEND_DARK_1 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 1,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 5 }),
-});
-export const WHITE_BLEND_DARK_2 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 2,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 10 }),
-});
-export const WHITE_BLEND_DARK_3 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 3,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 15 }),
-});
-export const WHITE_BLEND_DARK_4 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 4,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 20 }),
-});
-export const WHITE_BLEND_DARK_5 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 5,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 30 }),
-});
-export const WHITE_BLEND_DARK_6 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 6,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 40 }),
-});
-export const WHITE_BLEND_DARK_7 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 7,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 50 }),
-});
-export const WHITE_BLEND_DARK_8 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 8,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 60 }),
-});
-export const WHITE_BLEND_DARK_9 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 9,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 70 }),
-});
-export const WHITE_BLEND_DARK_10 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 10,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 80 }),
-});
-export const WHITE_BLEND_DARK_11 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 11,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 90 }),
-});
-export const WHITE_BLEND_DARK_12 = new Color({
-	category,
-	name,
-	scheme: "dark",
-	type: "blend",
-	step: 12,
-	oklch: new ColorOklch({ l: 100, c: 0, h: 0, a: 95 }),
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
 });
 
-/**
- * Color palette for the color white.
- */
-export const PALETTE_WHITE = new ColorPalette({
+export const WHITE_SOLID_2_LIGHT = new AtomicColor({
 	category,
 	name,
-	solid: {
-		light: [
-			WHITE_SOLID_LIGHT_1,
-			WHITE_SOLID_LIGHT_2,
-			WHITE_SOLID_LIGHT_3,
-			WHITE_SOLID_LIGHT_4,
-			WHITE_SOLID_LIGHT_5,
-			WHITE_SOLID_LIGHT_6,
-			WHITE_SOLID_LIGHT_7,
-			WHITE_SOLID_LIGHT_8,
-			WHITE_SOLID_LIGHT_9,
-			WHITE_SOLID_LIGHT_10,
-			WHITE_SOLID_LIGHT_11,
-			WHITE_SOLID_LIGHT_12,
-		],
-		dark: [
-			WHITE_SOLID_DARK_1,
-			WHITE_SOLID_DARK_2,
-			WHITE_SOLID_DARK_3,
-			WHITE_SOLID_DARK_4,
-			WHITE_SOLID_DARK_5,
-			WHITE_SOLID_DARK_6,
-			WHITE_SOLID_DARK_7,
-			WHITE_SOLID_DARK_8,
-			WHITE_SOLID_DARK_9,
-			WHITE_SOLID_DARK_10,
-			WHITE_SOLID_DARK_11,
-			WHITE_SOLID_DARK_12,
-		],
+	scheme: "light",
+	type: "solid",
+	step: 2,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
 	},
-	blend: {
-		light: [
-			WHITE_BLEND_LIGHT_1,
-			WHITE_BLEND_LIGHT_2,
-			WHITE_BLEND_LIGHT_3,
-			WHITE_BLEND_LIGHT_4,
-			WHITE_BLEND_LIGHT_5,
-			WHITE_BLEND_LIGHT_6,
-			WHITE_BLEND_LIGHT_7,
-			WHITE_BLEND_LIGHT_8,
-			WHITE_BLEND_LIGHT_9,
-			WHITE_BLEND_LIGHT_10,
-			WHITE_BLEND_LIGHT_11,
-			WHITE_BLEND_LIGHT_12,
-		],
-		dark: [
-			WHITE_BLEND_DARK_1,
-			WHITE_BLEND_DARK_2,
-			WHITE_BLEND_DARK_3,
-			WHITE_BLEND_DARK_4,
-			WHITE_BLEND_DARK_5,
-			WHITE_BLEND_DARK_6,
-			WHITE_BLEND_DARK_7,
-			WHITE_BLEND_DARK_8,
-			WHITE_BLEND_DARK_9,
-			WHITE_BLEND_DARK_10,
-			WHITE_BLEND_DARK_11,
-			WHITE_BLEND_DARK_12,
-		],
+});
+
+export const WHITE_SOLID_3_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 3,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_4_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 4,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_5_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 5,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_6_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 6,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_7_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 7,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_8_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 8,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_9_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 9,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_10_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 10,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_11_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 11,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_12_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "solid",
+	step: 12,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_1_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 1,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_2_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 2,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_3_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 3,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_4_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 4,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_5_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 5,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_6_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 6,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_7_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 7,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_8_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 8,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_9_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 9,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_10_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 10,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_11_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 11,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_SOLID_12_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "solid",
+	step: 12,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_BLEND_1_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 1,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(5),
+	},
+});
+
+export const WHITE_BLEND_2_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 2,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(10),
+	},
+});
+
+export const WHITE_BLEND_3_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 3,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(15),
+	},
+});
+
+export const WHITE_BLEND_4_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 4,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(20),
+	},
+});
+
+export const WHITE_BLEND_5_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 5,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(30),
+	},
+});
+
+export const WHITE_BLEND_6_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 6,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(40),
+	},
+});
+
+export const WHITE_BLEND_7_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 7,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(50),
+	},
+});
+
+export const WHITE_BLEND_8_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 8,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(60),
+	},
+});
+
+export const WHITE_BLEND_9_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 9,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(70),
+	},
+});
+
+export const WHITE_BLEND_10_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 10,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(80),
+	},
+});
+
+export const WHITE_BLEND_11_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 11,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(90),
+	},
+});
+
+export const WHITE_BLEND_12_LIGHT = new AtomicColor({
+	category,
+	name,
+	scheme: "light",
+	type: "blend",
+	step: 12,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(95),
+	},
+});
+
+export const WHITE_BLEND_1_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 1,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(5),
+	},
+});
+
+export const WHITE_BLEND_2_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 2,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(10),
+	},
+});
+
+export const WHITE_BLEND_3_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 3,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(15),
+	},
+});
+
+export const WHITE_BLEND_4_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 4,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(20),
+	},
+});
+
+export const WHITE_BLEND_5_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 5,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(30),
+	},
+});
+
+export const WHITE_BLEND_6_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 6,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(40),
+	},
+});
+
+export const WHITE_BLEND_7_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 7,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(50),
+	},
+});
+
+export const WHITE_BLEND_8_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 8,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(60),
+	},
+});
+
+export const WHITE_BLEND_9_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 9,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(70),
+	},
+});
+
+export const WHITE_BLEND_10_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 10,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(80),
+	},
+});
+
+export const WHITE_BLEND_11_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 11,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(90),
+	},
+});
+
+export const WHITE_BLEND_12_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "blend",
+	step: 12,
+	oklch: {
+		lightness: new Percentage(100),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(95),
 	},
 });

@@ -7,16 +7,13 @@
  * @module
  */
 
-import { Color, type ColorCategory, type ColorName } from "#instance";
-import { ColorOklch } from "#oklch";
-import { ColorPalette } from "#palette";
+import { Dimension } from "@xeho91/lib-css/value/dimension";
+import { Percentage } from "@xeho91/lib-css/value/percentage";
+
+import { AtomicColor } from "#atomic";
+import type { ColorCategory, ColorName } from "#mod";
 
 const category = "{{color_category}}" satisfies ColorCategory;
 const name = "{{color_name}}" satisfies ColorName;
 
 {{variables}}
-
-/**
- * Color palette for the color {{color_name}}.
- */
-{{palette}}

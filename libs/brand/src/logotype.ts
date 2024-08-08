@@ -1,3 +1,4 @@
+import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 import type { UnitStruct } from "@xeho91/lib-type/struct";
 import type { Display } from "@xeho91/lib-type/trait/display";
@@ -15,11 +16,10 @@ export class LogotypeChar<
 	const TSVGPaths extends LetterStrokesPaths = LetterStrokesPaths,
 > implements UnitStruct<TName>, Display<TName>
 {
-	static readonly #LETTERS = ["x", "e", "h", "o", "9", "1"] as const;
-	public static readonly LETTERS = Object.freeze(new Set(LogotypeChar.#LETTERS));
+	public static readonly LETTERS = readonly_set(["x", "e", "h", "o", "9", "1"]);
 
 	public static [Symbol.iterator](): IterableIterator<LogotypeCharName> {
-		return LogotypeChar.#LETTERS[Symbol.iterator]();
+		return LogotypeChar.LETTERS[Symbol.iterator]();
 	}
 
 	public static readonly x = new LogotypeChar("x", {

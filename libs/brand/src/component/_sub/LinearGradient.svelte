@@ -3,9 +3,8 @@ export const GRADIENT_ROTATE = 90;
 </script>
 
 <script lang="ts">
+	import { Color } from "@xeho91/lib-color";
 	import { ColorGradient } from "@xeho91/lib-color/gradient";
-	import { PALETTE_PRIMARY } from "@xeho91/lib-color/palette/brand/primary";
-	import { PALETTE_ACCENT } from "@xeho91/lib-color/palette/brand/accent";
 
 	import { set_id } from "#id";
 
@@ -18,12 +17,12 @@ export const GRADIENT_ROTATE = 90;
 	let { id, rotate = GRADIENT_ROTATE, animated }: Props = $props();
 
 	const gradient_light = new ColorGradient(
-		PALETTE_PRIMARY.solid("light", 9),
-		PALETTE_ACCENT.solid("light", 9),
+		Color.get("brand", "primary", "solid", 9).light,
+		Color.get("brand", "accent", "solid", 9).light,
 	);
 	const gradient_dark = new ColorGradient(
-		PALETTE_PRIMARY.solid("dark", 9),
-		PALETTE_ACCENT.solid("dark", 9),
+		Color.get("brand", "primary", "solid", 9).dark,
+		Color.get("brand", "accent", "solid", 9).dark,
 	);
 </script>
 
