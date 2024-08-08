@@ -206,6 +206,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.1.0
+      '@xeho91/lib-css':
+        specifier: workspace:*
+        version: link:../css
       '@xeho91/lib-error':
         specifier: workspace:*
         version: link:../error
