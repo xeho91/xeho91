@@ -1,10 +1,10 @@
+import type { ToAST } from "#ast";
 import { AtProperty } from "#at-rule/property";
 import { DataType } from "#data-type/type";
 import type { Var } from "#function/var";
 import { Identifier } from "#identifier";
 import { Reference } from "#reference";
 import { Syntax } from "#syntax";
-import type { ToAST } from "#type";
 import type { ToValue } from "#value";
 
 type AllowedValue = ToValue & ToAST;

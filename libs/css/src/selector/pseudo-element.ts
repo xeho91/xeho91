@@ -3,16 +3,16 @@ import type { IterableElement } from "@xeho91/lib-type/iterable";
 import type { Display } from "@xeho91/lib-type/trait/display";
 import type { PseudoElementSelector } from "css-tree";
 
+import type { ToAST } from "#ast";
 import { SelectorBase } from "#selector/base";
-import type { ToAST } from "#type";
 
 export type PseudoElementName = IterableElement<typeof SelectorPseudoElement.NAMES>;
 
 export class SelectorPseudoElement<TName extends PseudoElementName>
 	extends SelectorBase<"pseudo-element">
-	implements Display<Stringified<TName>>, ToAST<PseudoElementSelector>
+	implements Display, ToAST
 {
-	static readonly #NAMES = [
+	public static readonly NAMES = readonly_set([
 		"after",
 		"backdrop",
 		"before",
@@ -22,8 +22,7 @@ export class SelectorPseudoElement<TName extends PseudoElementName>
 		"marker",
 		"placeholder",
 		"selection",
-	] as const;
-	public static readonly NAMES = readonly_set(SelectorPseudoElement.#NAMES);
+	]);
 
 	public static [Symbol.iterator](): IterableIterator<PseudoElementName> {
 		return SelectorPseudoElement.NAMES[Symbol.iterator]();

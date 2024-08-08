@@ -1,13 +1,10 @@
 import type { Display } from "@xeho91/lib-type/trait/display";
 import type { IdSelector } from "css-tree";
 
+import type { ToAST } from "#ast";
 import { SelectorBase } from "#selector/base";
-import type { ToAST } from "#type";
 
-export class SelectorId<TId extends string = string>
-	extends SelectorBase<"id">
-	implements Display<Stringified<TId>>, ToAST<IdSelector>
-{
+export class SelectorId<TId extends string = string> extends SelectorBase<"id"> implements Display, ToAST {
 	public readonly id: TId;
 
 	constructor(id: TId) {
@@ -25,14 +22,6 @@ export class SelectorId<TId extends string = string>
 			type: "IdSelector",
 			name: id,
 		};
-	}
-
-	public add_prefix<Prefix extends string>(prefix: Prefix) {
-		return new SelectorId(`${prefix}-${this.id}`);
-	}
-
-	public add_suffix<Suffix extends string>(suffix: Suffix) {
-		return new SelectorId(`${this.id}-${suffix}`);
 	}
 }
 

@@ -3,14 +3,12 @@ import type { IterableElement } from "@xeho91/lib-type/iterable";
 import type { Display } from "@xeho91/lib-type/trait/display";
 import type { Operator as OperatorAST } from "css-tree";
 
-import type { ToAST } from "#type";
+import type { ToAST } from "#ast";
 
 type OperatorKind = IterableElement<typeof Operator.OPERATORS>;
 
-export class Operator<TKind extends OperatorKind = OperatorKind>
-	implements Display<Stringified<TKind>>, ToAST<OperatorAST>
-{
-	static readonly #OPERATORS = [
+export class Operator<TKind extends OperatorKind = OperatorKind> implements Display, ToAST {
+	public static readonly OPERATORS = readonly_set([
 		//
 		"/",
 		"*",
@@ -18,8 +16,7 @@ export class Operator<TKind extends OperatorKind = OperatorKind>
 		":",
 		"+",
 		"-",
-	] as const;
-	public static readonly OPERATORS = readonly_set(Operator.#OPERATORS);
+	]);
 
 	public static [Symbol.iterator](): IterableIterator<OperatorKind> {
 		return Operator.OPERATORS[Symbol.iterator]();

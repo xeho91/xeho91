@@ -3,14 +3,11 @@ import { IterableInstance } from "@xeho91/lib-type/trait/iterable";
 import { List, type Block as BlockAST, type CssNode } from "css-tree";
 import type { Join } from "@xeho91/lib-type/array";
 
-import type { ToAST } from "#type";
+import type { ToAST } from "#ast";
 
 type Item = Display & ToAST;
 
-export class Block<const TChildren extends Item[] = Item[]>
-	extends IterableInstance<Item>
-	implements Display<Stringified<TChildren>>, ToAST<BlockAST>
-{
+export class Block<const TChildren extends Item[] = Item[]> extends IterableInstance<Item> implements Display, ToAST {
 	protected iterable: TChildren;
 
 	constructor(...children: TChildren) {
@@ -47,10 +44,6 @@ export class Block<const TChildren extends Item[] = Item[]>
 			type: "Block",
 			children,
 		};
-	}
-
-	public clear(): void {
-		this.iterable = [] as unknown as TChildren;
 	}
 }
 

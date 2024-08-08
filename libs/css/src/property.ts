@@ -7,7 +7,7 @@ export type PropertyName = keyof PropertiesHyphen & {};
 
 type AllowedValue = Reference | PropertyName | (string & {});
 
-export class Property<TName extends AllowedValue = AllowedValue> implements Display<Stringified<TName>> {
+export class Property<TName extends AllowedValue = AllowedValue> implements Display {
 	readonly #name: TName;
 
 	constructor(name: TName) {

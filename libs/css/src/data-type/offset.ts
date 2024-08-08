@@ -1,12 +1,13 @@
+import type { ToAST } from "#ast";
 import { AtProperty } from "#at-rule/property";
 import { DataType } from "#data-type/type";
 import type { Var } from "#function/var";
 import { Reference } from "#reference";
 import { ShadowTarget, type ShadowTargetName } from "#target/shadow";
-import type { ToAST } from "#type";
 import type { ToValue } from "#value";
 import { Dimension } from "#value/dimension";
 import { NumberCSS } from "#value/number";
+import { readonly_set } from "@xeho91/lib-snippet/set";
 
 type OffsetAxis = "x" | "y";
 
@@ -19,6 +20,13 @@ export class Offset<TAxis extends OffsetAxis, TValue extends OffsetValue = Offse
 	TValue
 > {
 	public static readonly NAME = "offset";
+
+	public static readonly AXES = readonly_set(["x", "y"]);
+
+	public static [Symbol.iterator](): IterableIterator<OffsetAxis> {
+		return Offset.AXES[Symbol.iterator]();
+	}
+
 	public static readonly DEFAULT_VALUE = new Dimension(0, "px");
 
 	public static default = <TAxis extends OffsetAxis>(axis: TAxis) => new Offset(axis, Offset.DEFAULT_VALUE);

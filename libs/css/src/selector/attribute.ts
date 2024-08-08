@@ -15,7 +15,7 @@ export class SelectorAttribute<
 		TModifier extends AttributeModifier | undefined = undefined,
 	>
 	extends SelectorBase<"attribute">
-	implements Display<Stringified<TName, TOperator, TValue, TModifier>>
+	implements Display
 {
 	public name: string;
 	public operator: TOperator;

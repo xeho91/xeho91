@@ -1,16 +1,16 @@
 import type { Display } from "@xeho91/lib-type/trait/display";
 import type { Identifier } from "css-tree";
 
+import type { ToAST } from "#ast";
+import { AtProperty } from "#at-rule/property";
 import { Var } from "#function/var";
 import { Property } from "#property";
-import type { ToAST } from "#type";
-import { AtProperty } from "#at-rule/property";
-import type { Value } from "#value";
 import type { Syntax } from "#syntax";
+import type { Value } from "#value";
 
 type Prefix = typeof Reference.PREFIX;
 
-export class Reference<TName extends string = string> implements Display<Stringified<TName>>, ToAST<Identifier> {
+export class Reference<TName extends string = string> implements Display, ToAST {
 	public static readonly PREFIX = "--";
 
 	public readonly name: TName;

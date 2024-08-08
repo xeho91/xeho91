@@ -1,12 +1,11 @@
 // WARN: `lint:ts` will not fail from this package root directory, but other libs will fail
-import "@total-typescript/ts-reset/recommended";
+import "@xeho91/lib-type/reset";
 
 import { extract_set_entries, readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 
 import { Property } from "#property";
 import { Reference } from "#reference";
-import { AtProperty } from "#at-rule/property";
 
 type ColorPropertyName = IterableElement<typeof ColorProperty.NAMES>;
 

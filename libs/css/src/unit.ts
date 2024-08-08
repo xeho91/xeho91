@@ -1,22 +1,10 @@
+import "@xeho91/lib-type/reset";
 import { unreachable } from "@xeho91/lib-error/unreachable";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 import type { UnitStruct } from "@xeho91/lib-type/struct";
 import type { Display } from "@xeho91/lib-type/trait/display";
 
 import { Syntax, type SyntaxName, type SyntaxUnits } from "#syntax";
-
-type MappedSyntaxUnits = {
-	[TKey in SyntaxName]: SyntaxUnits<TKey>;
-};
-export type UnitName = NonNullable<MappedSyntaxUnits[SyntaxName]>;
-
-type FindSyntax<TUnit extends UnitName> = {
-	[TKey in SyntaxName]: TUnit extends IterableElement<(typeof Syntax.UNITS)[TKey]> ? TKey : never;
-};
-type FindSyntaxValues<TUnit extends UnitName> = FindSyntax<TUnit>[keyof FindSyntax<TUnit>];
-type SyntaxNameFromUnitName<TUnit extends UnitName> = FindSyntaxValues<TUnit> extends never
-	? never
-	: FindSyntaxValues<TUnit>;
 
 export class Unit<TName extends UnitName = UnitName> implements UnitStruct<TName>, Display<TName> {
 	#name: TName;
@@ -44,9 +32,8 @@ export class Unit<TName extends UnitName = UnitName> implements UnitStruct<TName
 	 */
 	public set name(name: SyntaxUnits<SyntaxNameFromUnitName<TName>>) {
 		// @ts-expect-error FIXME: Couldn't figure out why instantiation didn't work
-		if (this.syntax.units.has(name)) {
-			this.#name = name as TName;
-		} else {
+		if (this.syntax.units.has(name)) this.#name = name as TName;
+		else {
 			throw new TypeError(`This unit doesn't match the syntax ${this.syntax.name}`);
 		}
 	}
@@ -59,6 +46,19 @@ export class Unit<TName extends UnitName = UnitName> implements UnitStruct<TName
 		return this.#name;
 	}
 }
+
+type MappedSyntaxUnits = {
+	[TKey in SyntaxName]: SyntaxUnits<TKey>;
+};
+export type UnitName = NonNullable<MappedSyntaxUnits[SyntaxName]>;
+
+type FindSyntax<TUnit extends UnitName> = {
+	[TKey in SyntaxName]: TUnit extends IterableElement<(typeof Syntax.UNITS)[TKey]> ? TKey : never;
+};
+type FindSyntaxValues<TUnit extends UnitName> = FindSyntax<TUnit>[keyof FindSyntax<TUnit>];
+type SyntaxNameFromUnitName<TUnit extends UnitName> = FindSyntaxValues<TUnit> extends never
+	? never
+	: FindSyntaxValues<TUnit>;
 
 if (import.meta.vitest) {
 	const { describe, expectTypeOf, it } = import.meta.vitest;
@@ -76,7 +76,7 @@ if (import.meta.vitest) {
 				expect(syntax).toBeInstanceOf(Syntax);
 				expect(syntax.valueOf()).toBe("length");
 				expectTypeOf(syntax).toEqualTypeOf<Syntax<"length">>();
-				expectTypeOf(syntax.name).toEqualTypeOf("length" as const);
+				expectTypeOf(syntax.name).toEqualTypeOf<"length">();
 			});
 		});
 

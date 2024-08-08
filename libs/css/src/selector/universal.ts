@@ -2,7 +2,7 @@ import type { Display } from "@xeho91/lib-type/trait/display";
 
 import { SelectorBase } from "#selector/base";
 
-export class SelectorUniversal extends SelectorBase<"universal"> implements Display<Stringified> {
+export class SelectorUniversal extends SelectorBase<"universal"> implements Display {
 	public readonly value = "*" as const;
 
 	constructor() {

@@ -1,6 +1,6 @@
-import { FunctionChildren, FunctionBase } from "#function";
+import type { ToAST } from "#ast";
+import { FunctionBase, FunctionChildren } from "#function";
 import { Operator } from "#operator";
-import type { ToAST } from "#type";
 
 type Value = ToAST;
 

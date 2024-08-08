@@ -5,7 +5,7 @@ import type { SelectorsList } from "#selectors-list";
 import { RulesetsList } from "#rulesets-list";
 
 export class Ruleset<const TSelectors extends SelectorsList = SelectorsList, const TBlock extends Block = Block>
-	implements Display<Stringified<TSelectors, TBlock>>
+	implements Display
 {
 	public selectors: TSelectors;
 	public block: TBlock;

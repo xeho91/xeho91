@@ -3,8 +3,8 @@ import type { IterableElement } from "@xeho91/lib-type/iterable";
 import type { Display } from "@xeho91/lib-type/trait/display";
 import type { Dimension as DimensionAST } from "css-tree";
 
+import type { ToAST } from "#ast";
 import { Syntax, type SyntaxUnits } from "#syntax";
-import type { ToAST } from "#type";
 import { Unit } from "#unit";
 import { Value, type ToValue } from "#value";
 
@@ -13,7 +13,7 @@ type PossibleSyntaxName = IterableElement<typeof POSSIBLE_SYNTAX_NAMES>;
 type PossibleUnits = SyntaxUnits<PossibleSyntaxName>;
 
 export class Dimension<TValue extends number = number, TUnit extends PossibleUnits = PossibleUnits>
-	implements Display<Stringified<TValue, TUnit>>, ToAST<DimensionAST>, ToValue
+	implements Display, ToAST, ToValue
 {
 	public value: TValue;
 	public unit: Unit<TUnit>;

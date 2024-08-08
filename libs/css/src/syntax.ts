@@ -1,44 +1,33 @@
+import { readonly_object } from "@xeho91/lib-snippet/object";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
-import type { UnitStruct } from "@xeho91/lib-type/struct";
 import type { Display } from "@xeho91/lib-type/trait/display";
 
-import { Value, type ToValue } from "#value";
+import { type ToValue, Value } from "#value";
 import { StringCSS } from "#value/string";
-import { readonly_object } from "@xeho91/lib-snippet/object";
 
 export type SyntaxName = IterableElement<typeof Syntax.NAMES>;
 
-type SyntaxUnitsSet<TSyntax extends SyntaxName> = (typeof Syntax.UNITS)[TSyntax];
-export type SyntaxUnits<TSyntax extends SyntaxName> = keyof SyntaxUnitsSet<TSyntax> extends undefined
-	? undefined
-	: IterableElement<SyntaxUnitsSet<TSyntax>>;
-
-export class Syntax<TName extends SyntaxName = SyntaxName>
-	implements UnitStruct<TName>, Display<Stringified<TName>>, ToValue
-{
-	static readonly #NAMES = [
+export class Syntax<TName extends SyntaxName = SyntaxName> implements Display, ToValue {
+	public static readonly NAMES = readonly_set([
 		//
 		"angle",
 		"color",
 		"length",
-		"length-percentage",
 		"number",
 		"percentage",
-	] as const;
-	public static readonly NAMES = Object.freeze(new Set(Syntax.#NAMES));
+	]);
 
 	public static readonly UNITS = readonly_object({
 		angle: readonly_set(["deg", "turn"]),
 		color: undefined,
 		length: readonly_set(["px", "vw", "vh"]),
-		"length-percentage": readonly_set(["px", "vw", "vh", "%"]),
 		number: undefined,
 		percentage: readonly_set(["%"]),
 	} satisfies Record<SyntaxName, ReadonlySet<string> | undefined>);
 
 	public static [Symbol.iterator](): IterableIterator<SyntaxName> {
-		return Syntax.#NAMES[Symbol.iterator]();
+		return Syntax.NAMES[Symbol.iterator]();
 	}
 
 	#name: TName;
@@ -77,6 +66,11 @@ export class Syntax<TName extends SyntaxName = SyntaxName>
 }
 
 type Stringified<TName extends SyntaxName> = `<${TName}>`;
+
+type SyntaxUnitsSet<TSyntax extends SyntaxName> = (typeof Syntax.UNITS)[TSyntax];
+export type SyntaxUnits<TSyntax extends SyntaxName> = keyof SyntaxUnitsSet<TSyntax> extends undefined
+	? undefined
+	: IterableElement<SyntaxUnitsSet<TSyntax>>;
 
 if (import.meta.vitest) {
 	const { describe, expectTypeOf, it } = import.meta.vitest;

@@ -8,10 +8,7 @@ import type { SelectorsJoint } from "#selector/joint";
 
 type Item = SelectorComplex | SelectorsJoint | SelectorBase;
 
-export class SelectorsList<const TList extends Item[] = Item[]>
-	extends IterableInstance<Item>
-	implements Display<Stringified<TList>>
-{
+export class SelectorsList<const TList extends Item[] = Item[]> extends IterableInstance<Item> implements Display {
 	protected iterable: TList;
 
 	constructor(...selectors: TList) {

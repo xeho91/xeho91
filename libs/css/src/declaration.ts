@@ -1,13 +1,13 @@
 import type { Display, ToString } from "@xeho91/lib-type/trait/display";
 import type { Declaration as DeclarationAST } from "css-tree";
 
+import type { ToAST } from "#ast";
 import type { Property } from "#property";
-import type { ToAST } from "#type";
 import type { Value } from "#value";
 import { Block } from "#block";
 
 export class Declaration<TProperty extends Property = Property, TValue extends Value = Value>
-	implements Display<Stringified<TProperty, TValue>>, ToAST<DeclarationAST>
+	implements Display<Stringified<TProperty, TValue>>, ToAST
 {
 	public readonly property: TProperty;
 	public readonly value: TValue;

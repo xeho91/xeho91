@@ -3,11 +3,10 @@ import type { Display, InferDisplays } from "@xeho91/lib-type/trait/display";
 import { IterableInstance } from "@xeho91/lib-type/trait/iterable";
 
 import type { Ruleset } from "#ruleset";
-import { Block } from "#block";
 
 export class RulesetsList<const TList extends Ruleset[] = Ruleset[]>
 	extends IterableInstance<Ruleset>
-	implements Display<Stringified<TList>>
+	implements Display
 {
 	protected iterable: TList;
 

@@ -1,5 +1,4 @@
-import "@total-typescript/ts-reset/recommended";
-
+import "@xeho91/lib-type/reset";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import { readonly_set, unionize_sets } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";

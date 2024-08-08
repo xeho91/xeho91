@@ -5,23 +5,22 @@ import type { Display, InferDisplays, ToString } from "@xeho91/lib-type/trait/di
 import { IterableInstance } from "@xeho91/lib-type/trait/iterable";
 import { type CssNode, type FunctionNode, List } from "css-tree";
 
-import type { ToAST } from "#type";
+import type { ToAST } from "#ast";
 import { type ToValue, Value } from "#value";
 
 export type FunctionNameType = IterableElement<typeof FunctionName.NAMES>;
 
-export class FunctionName<TName extends FunctionNameType = FunctionNameType> implements Display<TName> {
-	static readonly #NAMES = [
+export class FunctionName<TName extends FunctionNameType = FunctionNameType> implements Display {
+	public static readonly NAMES = readonly_set([
 		//
 		"clamp",
 		"light-dark",
 		"oklch",
 		"var",
-	] as const;
-	public static readonly NAMES = readonly_set(FunctionName.#NAMES);
+	]);
 
 	public static [Symbol.iterator](): IterableIterator<FunctionNameType> {
-		return FunctionName.#NAMES[Symbol.iterator]();
+		return FunctionName.NAMES[Symbol.iterator]();
 	}
 
 	public readonly name: TName;
@@ -38,7 +37,7 @@ export class FunctionName<TName extends FunctionNameType = FunctionNameType> imp
 export abstract class FunctionBase<
 	TName extends FunctionNameType = FunctionNameType,
 	TChildren extends FunctionChildren = FunctionChildren,
-> implements Display<Stringified<TName, TChildren>>, ToAST<FunctionNode>, ToValue
+> implements Display, ToAST, ToValue
 {
 	public readonly name: FunctionName<TName>;
 
@@ -76,7 +75,7 @@ type FunctionChildrenItem = ToAST;
 
 export class FunctionChildren<const TList extends FunctionChildrenItem[] = FunctionChildrenItem[]>
 	extends IterableInstance<FunctionChildrenItem>
-	implements Display<StringifiedChildren<TList>>
+	implements Display
 {
 	protected iterable: TList;
 

@@ -1,14 +1,11 @@
 import { Percentage as PercentageStruct } from "@xeho91/lib-struct/percentage";
 import type { Percentage as PercentageAST } from "css-tree";
 
+import type { ToAST } from "#ast";
 import { Syntax } from "#syntax";
-import type { ToAST } from "#type";
 import { Value, type ToValue } from "#value";
 
-export class Percentage<TValue extends number = number>
-	extends PercentageStruct
-	implements ToAST<PercentageAST>, ToValue
-{
+export class Percentage<TValue extends number = number> extends PercentageStruct implements ToAST, ToValue {
 	public static readonly SYNTAX = new Syntax("percentage");
 
 	public value: TValue;

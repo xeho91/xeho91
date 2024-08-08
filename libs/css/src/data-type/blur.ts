@@ -1,9 +1,9 @@
+import type { ToAST } from "#ast";
 import { AtProperty } from "#at-rule/property";
 import { DataType } from "#data-type/type";
 import type { Var } from "#function/var";
 import { Reference } from "#reference";
 import { ShadowTarget, type ShadowTargetName } from "#target/shadow";
-import type { ToAST } from "#type";
 import type { ToValue } from "#value";
 import { Dimension } from "#value/dimension";
 

@@ -1,12 +1,10 @@
 import type { Display } from "@xeho91/lib-type/trait/display";
 import type { Identifier } from "css-tree";
 
-import type { ToAST } from "#type";
+import type { ToAST } from "#ast";
 import { Value, type ToValue } from "#value";
 
-export class BooleanCSS<TValue extends boolean = boolean>
-	implements Display<Stringified<TValue>>, ToAST<Identifier>, ToValue
-{
+export class BooleanCSS<TValue extends boolean = boolean> implements Display, ToAST, ToValue {
 	public value: TValue;
 
 	constructor(value: TValue) {

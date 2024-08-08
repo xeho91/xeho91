@@ -1,23 +1,15 @@
-import type { NewTypeStruct } from "@xeho91/lib-type/struct";
 import type { Display } from "@xeho91/lib-type/trait/display";
 import type { ClassSelector } from "css-tree";
 
+import type { ToAST } from "#ast";
 import { SelectorBase } from "#selector/base";
-import type { ToAST } from "#type";
 
-export class SelectorClass<TName extends string = string>
-	extends SelectorBase<"class">
-	implements NewTypeStruct<TName>, Display<Stringified<TName>>, ToAST<ClassSelector>
-{
+export class SelectorClass<TName extends string = string> extends SelectorBase<"class"> implements Display, ToAST {
 	public name: TName;
 
 	constructor(name: TName) {
 		super("class");
 		this.name = name;
-	}
-
-	public override valueOf(): TName {
-		return this.name;
 	}
 
 	public toString(): Stringified<TName> {

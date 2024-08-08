@@ -8,15 +8,14 @@ export type AtRuleType = IterableElement<typeof AtRule.TYPES>;
 export class AtRule {
 	public static readonly PREFIX = "@";
 
-	static readonly #TYPES = [
+	static readonly TYPES = readonly_set([
 		//
 		"layer",
 		"property",
-	] as const;
-	static readonly TYPES = readonly_set(AtRule.#TYPES);
+	]);
 
 	public static [Symbol.iterator](): IterableIterator<AtRuleType> {
-		return AtRule.#TYPES[Symbol.iterator]();
+		return AtRule.TYPES[Symbol.iterator]();
 	}
 }
 

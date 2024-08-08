@@ -11,7 +11,7 @@ import { SelectorsList } from "#selectors-list";
 
 export class SelectorsJoint<const TSelectors extends SelectorBase[] = SelectorBase[]>
 	extends IterableInstance<SelectorBase>
-	implements Display<Stringified<TSelectors>>
+	implements Display
 {
 	protected iterable: TSelectors;
 
@@ -38,10 +38,6 @@ export class SelectorsJoint<const TSelectors extends SelectorBase[] = SelectorBa
 
 	public to_list(): SelectorsList<[typeof this]> {
 		return new SelectorsList(this);
-	}
-
-	public add<Selector extends SelectorBase>(selector: Selector): void {
-		this.iterable.push(selector);
 	}
 }
 

@@ -3,6 +3,7 @@ import type { IterableElement } from "@xeho91/lib-type/iterable";
 import type { Display, ToString } from "@xeho91/lib-type/trait/display";
 import { IterableInstance } from "@xeho91/lib-type/trait/iterable";
 
+import type { InferAST, ToAST } from "#ast";
 import { Blur } from "#data-type/blur";
 import { Color } from "#data-type/color";
 import { Offset } from "#data-type/offset";
@@ -12,11 +13,10 @@ import { Oklch } from "#function/oklch";
 import { Identifier } from "#identifier";
 import { Operator } from "#operator";
 import { Property } from "#property";
-import type { InferAST, ToAST } from "#type";
+import { Reference } from "#reference";
 import { type InferValue, type ToValue, Value } from "#value";
 import { Dimension } from "#value/dimension";
 import { NumberCSS } from "#value/number";
-import { Reference } from "#reference";
 
 export type BoxShadowAtomicProperty = IterableElement<typeof BoxShadowLayer.ATOMIC_PROPERTIES>;
 
@@ -27,7 +27,7 @@ export class BoxShadowLayer<
 	TBlur extends Blur = Blur,
 	TSpread extends Spread = Spread,
 	TColor extends Color = Color,
-> implements Display<StringifiedLayer<TInset, TX, TY, TBlur, TSpread, TColor>>, ToValue
+> implements Display, ToValue
 {
 	public static readonly NAME = "box-shadow";
 	public static readonly ATOMIC_PROPERTIES = readonly_set(["x", "y", "blur", "spread", "color"]);

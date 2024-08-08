@@ -9,7 +9,7 @@ type Item = SelectorBase | SelectorsJoint;
 
 export class SelectorComplex<const TSelectors extends Item[] = Item[]>
 	extends IterableInstance<Item>
-	implements Display<Stringified<TSelectors>>
+	implements Display
 {
 	protected iterable: TSelectors;
 
@@ -24,14 +24,6 @@ export class SelectorComplex<const TSelectors extends Item[] = Item[]>
 
 	public set selectors(selectors: TSelectors) {
 		this.iterable = selectors;
-	}
-
-	public get first(): TSelectors[0] {
-		return this.iterable[0] as TSelectors[0];
-	}
-
-	public get last() {
-		return this.iterable[this.size - 1];
 	}
 
 	public toString() {

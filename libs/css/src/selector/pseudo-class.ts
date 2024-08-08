@@ -9,9 +9,9 @@ export type PseudoClassName = IterableElement<typeof SelectorPseudoClass.NAMES>;
 // TODO: Add optional value for e.g. `where`
 export class SelectorPseudoClass<TName extends PseudoClassName>
 	extends SelectorBase<"pseudo-class">
-	implements Display<Stringified<TName>>
+	implements Display
 {
-	static readonly #NAMES = [
+	public static readonly NAMES = readonly_set([
 		"root",
 		"active",
 		"any-link",
@@ -64,8 +64,7 @@ export class SelectorPseudoClass<TName extends PseudoClassName>
 		"valid",
 		"visited",
 		"where",
-	] as const;
-	public static readonly NAMES = readonly_set(SelectorPseudoClass.#NAMES);
+	]);
 
 	public static [Symbol.iterator](): IterableIterator<PseudoClassName> {
 		return SelectorPseudoClass.NAMES[Symbol.iterator]();

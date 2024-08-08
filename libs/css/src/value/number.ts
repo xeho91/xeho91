@@ -1,13 +1,11 @@
 import type { Display } from "@xeho91/lib-type/trait/display";
 import type { NumberNode } from "css-tree";
 
+import type { ToAST } from "#ast";
 import { Syntax } from "#syntax";
-import type { ToAST } from "#type";
 import { Value, type ToValue } from "#value";
 
-export class NumberCSS<TValue extends number = number>
-	implements Display<Stringified<TValue>>, ToAST<NumberNode>, ToValue
-{
+export class NumberCSS<TValue extends number = number> implements Display, ToAST, ToValue {
 	public static readonly SYNTAX = new Syntax("number");
 
 	public value: TValue;
