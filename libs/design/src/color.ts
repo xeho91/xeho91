@@ -24,9 +24,9 @@ import type { PseudoClassName } from "@xeho91/lib-css/selector/pseudo-class";
 import type { PseudoElementName } from "@xeho91/lib-css/selector/pseudo-element";
 import { Syntax } from "@xeho91/lib-css/syntax";
 import { ColorTarget } from "@xeho91/lib-css/target/color";
+import type { Value } from "@xeho91/lib-css/value";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
 
-import type { Value } from "@xeho91/lib-css/value";
 import { DesignToken } from "#token";
 
 export type {
@@ -108,7 +108,7 @@ export class Color<
 		name: TName,
 		type = "solid" as TType,
 		step = 8 as TStep,
-	) => {
+	): Color<TCategory, TName, TType, TStep> => {
 		const variant = this.#create_variant(category, name, type, step);
 		const cached = DesignToken.CONSTRUCTED.get(`${Color.NAME}-${variant}`);
 		if (cached) return cached as Color<TCategory, TName, TType, TStep>;
@@ -182,7 +182,7 @@ export class Color<
 		});
 	}
 
-	public get light_dark() {
+	public get light_dark(): ReturnType<typeof ColorInstance.get<TCategory, TName, TType, TStep>> {
 		const { value } = this;
 		const { category, name, type, step } = value;
 		return ColorInstance.get(category, name, type, step);
@@ -196,7 +196,7 @@ export class Color<
 		target: TTarget,
 		scheme: TScheme,
 		property: TProperty,
-	) {
+	): Declaration {
 		const { reference } = this;
 		return new Declaration(
 			target.create_reference(`${scheme}-${property}`).to_property(),
