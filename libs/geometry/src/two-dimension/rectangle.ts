@@ -1,6 +1,6 @@
+import type { IsEqual } from "@xeho91/lib-type/eq";
+import type { IterableElement } from "@xeho91/lib-type/iterable";
 import type { Display } from "@xeho91/lib-type/trait/display";
-import type { IsEqual } from "type-fest/source/is-equal";
-import type { IterableElement } from "type-fest/source/iterable-element";
 import * as v from "valibot";
 
 import { TwoDimensionalFigure } from "#two-dimension/mod";

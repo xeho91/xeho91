@@ -3,7 +3,8 @@
  * @module
  */
 
-import type { Entries, ObjectEntries } from "type-fest/source/entries";
+import type { Entries } from "@xeho91/lib-type/iterable";
+import type { ObjectEntries } from "@xeho91/lib-type/object";
 
 /**
  * Get the typed object entries.

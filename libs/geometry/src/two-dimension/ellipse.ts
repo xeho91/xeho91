@@ -1,7 +1,6 @@
+import type { GreaterThanOrEqual, IsEqual } from "@xeho91/lib-type/eq";
+import type { IterableElement } from "@xeho91/lib-type/iterable";
 import type { Display } from "@xeho91/lib-type/trait/display";
-import type { GreaterThanOrEqual } from "type-fest/source/greater-than-or-equal";
-import type { IsEqual } from "type-fest/source/is-equal";
-import type { IterableElement } from "type-fest/source/iterable-element";
 import * as v from "valibot";
 
 import { Circle } from "#two-dimension/circle";

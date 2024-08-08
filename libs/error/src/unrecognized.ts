@@ -16,7 +16,7 @@
  */
 
 import type { AnyFunction } from "@xeho91/lib-type/function";
-import type { Primitive } from "type-fest/source/primitive";
+import type { Primitive } from "@xeho91/lib-type/primitive";
 
 export class UnrecognizedError<TCase extends Primitive> extends Error {
 	/** A primitive value which caused the error. */
