@@ -102,7 +102,7 @@ export class FontFamily<
 		});
 	}
 
-	public weight(): GetFontWeightInstance<TName> {
+	public get weight(): GetFontWeightInstance<TName> {
 		const { variant } = this;
 		// biome-ignore format: Prettier
 		switch (variant) {
