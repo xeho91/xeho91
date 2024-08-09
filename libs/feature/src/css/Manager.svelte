@@ -43,6 +43,7 @@
 />
 
 <style global>
+	/* TODO: Move it to unocss config, and see if we can put into layer reset */
 	@import "@unocss/reset/tailwind-compat.css" layer(reset);
 
 	/* TODO: automate it */
