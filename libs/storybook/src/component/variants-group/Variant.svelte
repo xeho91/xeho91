@@ -1,7 +1,7 @@
 <script lang="ts" generics="TComponent extends Component<any>, TPropName extends keyof ComponentProps<TComponent>, TValue extends ComponentProps<TComponent>[TPropName]">
+import { merge_classes, type WithClass } from "@xeho91/lib-feature/css";
+import { Font } from "@xeho91/lib-design/font";
 import { Space } from "@xeho91/lib-design/space";
-import { classes, type WithClass } from "@xeho91/lib-feature/css";
-import { Code } from "@xeho91/lib-ui/semantic/code";
 import type { ComponentProps, Snippet, Component } from "svelte";
 
 interface Props extends WithClass {
@@ -20,15 +20,20 @@ const {
 </script>
 
 <div
-	use:classes={[
+	class={merge_classes(
 		"variant",
 		"flex flex-row items-center",
 		Space.get("s").class("gap"),
 		class_,
-	]}
+	)}
 >
 	{@render children()}
-	<Code>
+	<code
+		class={merge_classes(
+			Font.family.get("mono").class(),
+			Font.size.default().class(),
+		)}
+	>
 		{prop}{"="}{typeof value === "string" ? `${`"${value}"`}` : `{${value}}`}
-	</Code>
+	</code>
 </div>

@@ -503,9 +503,18 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.1.0
+      '@xeho91/lib-css':
+        specifier: workspace:*
+        version: link:../css
+      '@xeho91/lib-design':
+        specifier: workspace:*
+        version: link:../design
       '@xeho91/lib-error':
         specifier: workspace:*
         version: link:../error
+      '@xeho91/lib-feature':
+        specifier: workspace:*
+        version: link:../feature
       '@xeho91/lib-geometry':
         specifier: workspace:*
         version: link:../geometry

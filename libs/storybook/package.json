@@ -48,7 +48,6 @@
 		"@xeho91/lib-snippet": "workspace:*",
 		"@xeho91/lib-struct": "workspace:*",
 		"@xeho91/lib-type": "workspace:*",
-		"@xeho91/lib-ui": "workspace:*",
 		"mime": "4.0.4"
 	},
 	"devDependencies": {

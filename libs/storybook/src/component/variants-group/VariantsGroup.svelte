@@ -2,10 +2,7 @@
 import { Color } from "@xeho91/lib-design/color";
 import { Space } from "@xeho91/lib-design/space";
 import { Stroke } from "@xeho91/lib-design/stroke";
-import { classes, merge_classes, type WithClass } from "@xeho91/lib-feature/css";
-import { Icon } from "@xeho91/lib-ui/primitive/icon";
-import { List, Item } from "@xeho91/lib-ui/semantic/list";
-import { Heading } from "@xeho91/lib-ui/semantic/heading";
+import { merge_classes, type WithClass } from "@xeho91/lib-feature/css";
 import type { ComponentProps, Snippet, Component } from "svelte";
 
 import Variant from "./Variant.svelte";
@@ -34,7 +31,7 @@ const {
 </script>
 
 <div
-	use:classes={[
+	class={merge_classes(
 		"variants-group",
 		"flex",
 		"w-full min-h-[fit-content]",
@@ -44,12 +41,12 @@ const {
 		Color.class("border"),
 		Color.get("grayscale", "gray", "solid", 6).class("border"),
 		class_,
-	]}
+	)}
 >
 
 	{#if header}
 		<header
-			use:classes={[
+			class={merge_classes(
 				"size-full",
 				"flex",
 				Space.get("s").class("padding-inline"),
@@ -60,28 +57,26 @@ const {
 				Stroke.get("xs").class("bottom"),
 				Color.class("border-bottom"),
 				Color.get("grayscale", "gray", "solid", 6).class("border-bottom"),
-			]}
+			)}
 		>
-			<Heading level={2} color="primary" size="m">
-				<Icon name="shield" />
-					{@render header()}
-			</Heading>
+			{@render header()}
 		</header>
 {/if}
 
-	<List
-		direction="column"
-		padding_x="2xs"
-		padding_y="3xs"
+	<ul
 		class={merge_classes(
-			"w-full",
+			"flex",
+			"flex-col",
 			"self-center",
+			"w-full",
+			Space.get("2xs").class("padding-inline"),
+			Space.get("3xs").class("padding-block"),
 		)}
 	>
 		{#each values as value}
-			<Item
-				padding_y="xs"
+			<li
 				class={merge_classes(
+					Space.get("xs").class("padding-inline"),
 					"border-dashed",
 					Stroke.get("xs").class("block-start"),
 					"border-y-0",
@@ -97,9 +92,9 @@ const {
 						<svelte:component this={component} {...args as ComponentProps<TComponent>} />
 					{/if}
 				</Variant>
-			</Item>
+			</li>
 		{/each}
-	</List>
+	</ul>
 </div>
 
 <style>
