@@ -242,9 +242,9 @@ if (import.meta.vitest) {
 
 			it("on created global ruleset subscriber receive [key, ruleset] tuple", ({ expect }) => {
 				const subscriber = vi.fn((tuple) => {
-					expect(tuple[0]).toBe("sans-light");
+					expect(tuple[0]).toBe("font-weight-sans-light");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
-					expect(tuple[1].toString()).toMatchInlineSnapshot();
+					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--font-weight-sans-light:300}"`);
 				});
 				FontWeight.on("create-global-ruleset").subscribe({
 					next: subscriber,
