@@ -8,9 +8,9 @@ export const CONFIG = {
 		// sveltePreprocess({
 		// 	script: false,
 		// }),
-		// vitePreprocess({
-		// 	style: false,
-		// }),
+		vitePreprocess({
+			style: false,
+		}),
 		preprocessMeltUI(),
 	]),
 };

@@ -14,3 +14,4 @@ catalog:
     "svelte": "5.0.0-next.210"
     "typescript": "5.5.4"
     "typescript-svelte-plugin": "0.3.40"
+    "unocss": "0.61.9"

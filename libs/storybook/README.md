@@ -1,7 +1,6 @@
 # `@xeho91/lib-storybook`
 
-> [!CAUTION]
-> **Private package**. For internal workspace usage only!
+> [!CAUTION] > **Private package**. For internal workspace usage only!
 
 Contains snippets, utilities, configuration related to using [Storybook].
 
