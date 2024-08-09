@@ -2,8 +2,13 @@ import { SelectorClass } from "@xeho91/lib-css/selector/class";
 import { clsx } from "clsx";
 import type { Action } from "svelte/action";
 
-export function merge_classes(...args: (Parameters<typeof clsx>[0] | SelectorClass)[]) {
-	return clsx(args.map((t) => (t instanceof SelectorClass ? t.name : t)));
+export function merge_classes(...args: (Parameters<typeof clsx>[0] | SelectorClass)[]): string {
+	let results = "";
+	for (const input of args) {
+		if (input instanceof SelectorClass) results += input.name;
+		else results += clsx(input);
+	}
+	return results;
 }
 
 type ClassInput = Parameters<typeof clsx>[0] | SelectorClass;

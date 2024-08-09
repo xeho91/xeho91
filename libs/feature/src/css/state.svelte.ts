@@ -2,7 +2,6 @@ import type { AtLayerName } from "@xeho91/lib-css/at-rule/layer";
 import { AtProperty } from "@xeho91/lib-css/at-rule/property";
 import type { Reference } from "@xeho91/lib-css/reference";
 import type { Ruleset } from "@xeho91/lib-css/ruleset";
-import { Elevation } from "@xeho91/lib-design/elevation";
 import { DesignToken } from "@xeho91/lib-design/token";
 import type { ToString } from "@xeho91/lib-type/trait/display";
 import { tick } from "svelte";
@@ -24,6 +23,7 @@ class State {
 			this[layer].push(ruleset);
 		});
 	}
+
 	public add_at_property(at_property: AtProperty): void {
 		const { reference } = at_property;
 		const stringified_reference = reference.toString();
@@ -49,9 +49,11 @@ DesignToken.on("construct").subscribe({
 DesignToken.on("create-global-ruleset").subscribe({
 	next: ([_variant, ruleset]) => state_css.add_ruleset("token", ruleset),
 });
+
 DesignToken.on("create-property-ruleset").subscribe({
-	next: ([_variant, ruleset]) => state_css.add_ruleset("base", ruleset),
+	next: ([_selector, ruleset]) => state_css.add_ruleset("base", ruleset),
 });
+
 DesignToken.on("create-class-ruleset").subscribe({
-	next: ([_variant, ruleset]) => state_css.add_ruleset("token", ruleset),
+	next: ([_selector, ruleset]) => state_css.add_ruleset("token", ruleset),
 });
