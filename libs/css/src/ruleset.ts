@@ -1,11 +1,12 @@
 import type { Display, ToString } from "@xeho91/lib-type/trait/display";
+import type { Rule } from "css-tree";
 
+import type { ToAST } from "#ast";
 import type { Block } from "#block";
-import { RulesetsList } from "#rulesets-list";
 import type { SelectorsList } from "#selector/list";
 
 export class Ruleset<const TSelectors extends SelectorsList = SelectorsList, const TBlock extends Block = Block>
-	implements Display
+	implements Display, ToAST
 {
 	public selectors: TSelectors;
 	public block: TBlock;
@@ -19,8 +20,13 @@ export class Ruleset<const TSelectors extends SelectorsList = SelectorsList, con
 		return `${this.selectors}${this.block}` as Stringified<TSelectors, TBlock>;
 	}
 
-	public to_list(): RulesetsList<[typeof this]> {
-		return new RulesetsList(this);
+	public to_ast(): Rule {
+		const { block, selectors } = this;
+		return {
+			prelude: selectors.to_ast(),
+			type: "Rule",
+			block: block.to_ast(),
+		};
 	}
 }
 

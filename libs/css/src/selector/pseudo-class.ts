@@ -1,6 +1,7 @@
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 import type { Display } from "@xeho91/lib-type/trait/display";
+import type { PseudoClassSelector } from "css-tree";
 
 import { SelectorBase } from "#selector/base";
 
@@ -79,6 +80,16 @@ export class SelectorPseudoClass<TName extends PseudoClassName>
 
 	public toString(): Stringified<TName> {
 		return `:${this.name}`;
+	}
+
+	public to_ast(): PseudoClassSelector {
+		const { name } = this;
+		return {
+			name,
+			type: "PseudoClassSelector",
+			// TODO: Add optional value for e.g. `where`
+			children: null,
+		};
 	}
 }
 

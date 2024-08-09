@@ -6,26 +6,28 @@ import { SelectorBase } from "#selector/base";
 
 export type HTMLTag = keyof HTMLElementTagNameMap & (string & {});
 
-export class SelectorType<TTag extends HTMLTag | string = HTMLTag | string>
+export class SelectorType<TName extends HTMLTag | string = HTMLTag | string>
 	extends SelectorBase<"type">
 	implements Display, ToAST
 {
-	public readonly tag: TTag;
+	public static UNIVERSAL = new SelectorType("*");
 
-	constructor(tag: TTag) {
+	public readonly name: TName;
+
+	constructor(tag: TName) {
 		super("type");
-		this.tag = tag;
+		this.name = tag;
 	}
 
 	public toString() {
-		return this.tag;
+		return this.name;
 	}
 
 	public to_ast(): TypeSelector {
-		const { tag } = this;
+		const { name } = this;
 		return {
 			type: "TypeSelector",
-			name: tag,
+			name: name,
 		};
 	}
 }
