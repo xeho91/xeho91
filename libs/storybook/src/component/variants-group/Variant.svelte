@@ -17,6 +17,8 @@ const {
 	prop,
 	value,
 }: Props = $props();
+
+const font_family = Font.family.get("mono");
 </script>
 
 <div
@@ -30,7 +32,8 @@ const {
 	{@render children()}
 	<code
 		class={merge_classes(
-			Font.family.get("mono").class(),
+			font_family.class(),
+			font_family.weight.default(),
 			Font.size.default().class(),
 		)}
 	>

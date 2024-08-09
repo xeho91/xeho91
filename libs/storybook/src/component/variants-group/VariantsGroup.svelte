@@ -33,7 +33,7 @@ const {
 <div
 	class={merge_classes(
 		"variants-group",
-		"flex",
+		"flex flex-col",
 		"w-full min-h-[fit-content]",
 		Stroke.get("s").class(),
 		Color.class("background"),
@@ -47,8 +47,8 @@ const {
 	{#if header}
 		<header
 			class={merge_classes(
+				"flex flex-row",
 				"size-full",
-				"flex",
 				Space.get("s").class("padding-inline"),
 				Space.get("3xs").class("padding-block"),
 				Color.class("background"),
@@ -61,7 +61,7 @@ const {
 		>
 			{@render header()}
 		</header>
-{/if}
+	{/if}
 
 	<ul
 		class={merge_classes(
@@ -76,7 +76,7 @@ const {
 		{#each values as value}
 			<li
 				class={merge_classes(
-					Space.get("xs").class("padding-inline"),
+					Space.get("xs").class("padding"),
 					"border-dashed",
 					Stroke.get("xs").class("block-start"),
 					"border-y-0",
@@ -98,10 +98,9 @@ const {
 </div>
 
 <style>
-:global(.variants-group) {
-	:global(.item:first-of-type) {
-		border-block-start: none;
+	.variants-group {
+		& li:first-of-type {
+			border-block-start: none;
+		}
 	}
-
-}
 </style>
