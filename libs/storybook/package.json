@@ -13,6 +13,7 @@
 	},
 	"exports": {
 		"./download-image": "./src/component/download-image/mod.ts",
+		"./variants-group": "./src/component/variants-group/mod.ts",
 		"./*": "./src/*.ts"
 	},
 	"scripts": {
@@ -39,11 +40,15 @@
 	},
 	"dependencies": {
 		"@storybook/types": "8.2.4",
+		"@xeho91/lib-css": "workspace:*",
+		"@xeho91/lib-design": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",
+		"@xeho91/lib-feature": "workspace:*",
 		"@xeho91/lib-geometry": "workspace:*",
 		"@xeho91/lib-snippet": "workspace:*",
 		"@xeho91/lib-struct": "workspace:*",
 		"@xeho91/lib-type": "workspace:*",
+		"@xeho91/lib-ui": "workspace:*",
 		"mime": "4.0.4"
 	},
 	"devDependencies": {
