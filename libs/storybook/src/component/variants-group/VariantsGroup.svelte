@@ -2,8 +2,8 @@
 import { Color } from "@xeho91/lib-design/color";
 import { Space } from "@xeho91/lib-design/space";
 import { Stroke } from "@xeho91/lib-design/stroke";
-import { merge_classes, type WithClass } from "@xeho91/lib-feature/css";
-import type { ComponentProps, Snippet, Component } from "svelte";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+import type { Component, ComponentProps, Snippet } from "svelte";
 
 import Variant from "./Variant.svelte";
 
