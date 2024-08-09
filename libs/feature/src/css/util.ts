@@ -2,7 +2,14 @@ import { SelectorClass } from "@xeho91/lib-css/selector/class";
 import { type ClassValue, clsx } from "clsx";
 import type { Action } from "svelte/action";
 
-export function merge_classes(...args: (Parameters<typeof clsx>[0] | SelectorClass)[]): string {
+type ClassInput = ClassValue | SelectorClass;
+
+/**
+ * Merge multiple selector class names into one string separated by spaces.
+ * It allows using conditions (powered by `clsx`).
+ * Also, accepts {@link SelectorClass}.
+ */
+export function merge_classes(...args: ClassInput[]): string {
 	let results = "";
 	for (const input of args) {
 		if (results) results += " ";
@@ -12,7 +19,16 @@ export function merge_classes(...args: (Parameters<typeof clsx>[0] | SelectorCla
 	return results;
 }
 
-type ClassInput = ClassValue | SelectorClass;
+if (import.meta.vitest) {
+	const { describe, it } = import.meta.vitest;
+
+	describe(merge_classes.name, () => {
+		it("accepts SelectorClass and stringifies them", ({ expect }) => {
+			const classes = merge_classes(new SelectorClass("round-xl"), new SelectorClass("flex"));
+			expect(classes).toBe("round-xl flex");
+		});
+	});
+}
 
 export const classes: Action<Element, ClassInput[]> = (node, ...classes) => {
 	// biome-ignore lint/style/useConst: Readability: It's mutating
@@ -31,17 +47,6 @@ export const classes: Action<Element, ClassInput[]> = (node, ...classes) => {
 		};
 	}
 };
-
-if (import.meta.vitest) {
-	const { describe, it } = import.meta.vitest;
-
-	describe(merge_classes.name, () => {
-		it("accepts SelectorClass and stringifies them", ({ expect }) => {
-			const classes = merge_classes(new SelectorClass("round-xl"), new SelectorClass("flex"));
-			expect(classes).toBe("round-xl flex");
-		});
-	});
-}
 
 export interface WithClass {
 	class?: Parameters<typeof merge_classes>[0];
