@@ -19,7 +19,7 @@ export class Declaration<TProperty extends Property = Property, TValue extends V
 
 	public toString(): Stringified<TProperty, TValue> {
 		const { property, value } = this;
-		return `${property}:${value}` as Stringified<TProperty, TValue>;
+		return `${property}:${value};` as Stringified<TProperty, TValue>;
 	}
 
 	public to_ast(): DeclarationAST {
@@ -37,4 +37,4 @@ export class Declaration<TProperty extends Property = Property, TValue extends V
 	}
 }
 
-type Stringified<TProperty extends Property, TValue extends Value> = `${ToString<TProperty>}:${ToString<TValue>}`;
+type Stringified<TProperty extends Property, TValue extends Value> = `${ToString<TProperty>}:${ToString<TValue>};`;

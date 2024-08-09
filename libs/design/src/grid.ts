@@ -192,7 +192,7 @@ if (import.meta.vitest) {
 				const global = grid.create_global_ruleset();
 				const stringified = global.toString();
 				expect(stringified).toMatchInlineSnapshot(
-					`":root{--min-grid-default:330px;--max-grid-default:1240px;--gutter-grid-default:clamp(20.625rem, 0rem + 100cqi, 77.5rem)}"`,
+					`":root{--min-grid-default:330px;--max-grid-default:1240px;--gutter-grid-default:clamp(20.625rem, 0rem + 100cqi, 77.5rem);}"`,
 				);
 			});
 
@@ -208,6 +208,9 @@ if (import.meta.vitest) {
 				const subscriber = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("grid-default");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`":root{--min-grid-default:330px;--max-grid-default:1240px;--gutter-grid-default:clamp(20.625rem, 0rem + 100cqi, 77.5rem);}"`,
+					);
 				});
 				Grid.on("create-global-ruleset").subscribe({
 					next: subscriber,
@@ -263,13 +266,18 @@ if (import.meta.vitest) {
 				const class_name = grid.class("min-width");
 				const ruleset = Grid.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
-				expect(ruleset?.toString()).toBe(".min-width-grid-default{min-width:var(--grid-default)}");
+				expect(ruleset?.toString()).toMatchInlineSnapshot(
+					`".min-width-grid-default{min-width:var(--grid-default);}"`,
+				);
 			});
 
 			it("on created class ruleset subscriber receive [class_name, ruleset] tuple", ({ expect }) => {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("flex-basis-grid-default");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`".flex-basis-grid-default{flex-basis:var(--grid-default);}"`,
+					);
 				});
 				Grid.on("create-class-ruleset").subscribe({
 					next: observer,

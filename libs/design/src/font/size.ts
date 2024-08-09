@@ -183,7 +183,7 @@ if (import.meta.vitest) {
 				const global = font_size.create_global_ruleset();
 				const stringified = global.toString();
 				expect(stringified).toMatchInlineSnapshot(
-					`":root{--font-size-m:clamp(1.125rem, 1.0797rem + 0.2198cqi, 1.25rem)}"`,
+					`":root{--font-size-m:clamp(1.125rem, 1.0797rem + 0.2198cqi, 1.25rem);}"`,
 				);
 			});
 
@@ -200,7 +200,7 @@ if (import.meta.vitest) {
 					expect(tuple[0]).toBe("font-size-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
 					expect(tuple[1].toString()).toMatchInlineSnapshot(
-						`":root{--font-size-l:clamp(1.35rem, 1.2729rem + 0.3736cqi, 1.5625rem)}"`,
+						`":root{--font-size-l:clamp(1.35rem, 1.2729rem + 0.3736cqi, 1.5625rem);}"`,
 					);
 				});
 				FontSize.on("create-global-ruleset").subscribe({
@@ -257,14 +257,14 @@ if (import.meta.vitest) {
 				const class_name = font_size.class();
 				const ruleset = FontSize.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
-				expect(ruleset?.toString()).toBe(".font-size-m{font-size:var(--font-size-m)}");
+				expect(ruleset?.toString()).toMatchInlineSnapshot(`".font-size-m{font-size:var(--font-size-m);}"`);
 			});
 
 			it("on created class ruleset subscriber receive [class_name, ruleset] tuple", ({ expect }) => {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("font-size-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
-					expect(tuple[1].toString()).toMatchInlineSnapshot(`".font-size-l{font-size:var(--font-size-l)}"`);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(`".font-size-l{font-size:var(--font-size-l);}"`);
 				});
 				FontSize.on("create-class-ruleset").subscribe({
 					next: observer,

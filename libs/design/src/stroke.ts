@@ -165,7 +165,7 @@ if (import.meta.vitest) {
 				const stroke = Stroke.default();
 				const global = stroke.create_global_ruleset();
 				const stringified = global.toString();
-				expect(stringified).toMatchInlineSnapshot(`":root{--stroke-xs:1px}"`);
+				expect(stringified).toMatchInlineSnapshot(`":root{--stroke-xs:1px;}"`);
 			});
 
 			it("created rulesets in Stroke.GLOBAL_RULESETS", ({ expect }) => {
@@ -180,7 +180,7 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("stroke-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
-					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--stroke-l:8px}"`);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--stroke-l:8px;}"`);
 				});
 				Stroke.on("create-global-ruleset").subscribe({
 					next: observer,
@@ -242,7 +242,7 @@ if (import.meta.vitest) {
 				const class_name = stroke.class();
 				const ruleset = Stroke.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
-				expect(ruleset?.toString()).toBe(".all-stroke-xs{border-width:var(--stroke-xs)}");
+				expect(ruleset?.toString()).toMatchInlineSnapshot(`".all-stroke-xs{border-width:var(--stroke-xs);}"`);
 			});
 
 			it("on created class ruleset subscriber receive [class_name, ruleset] tuple", ({ expect }) => {
@@ -250,7 +250,7 @@ if (import.meta.vitest) {
 					expect(tuple[0]).toBe("block-end-stroke-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
 					expect(tuple[1].toString()).toMatchInlineSnapshot(
-						`".block-end-stroke-l{border-block-end-width:var(--stroke-l)}"`,
+						`".block-end-stroke-l{border-block-end-width:var(--stroke-l);}"`,
 					);
 				});
 				Stroke.on("create-class-ruleset").subscribe({

@@ -22,6 +22,7 @@ export class Operator<TKind extends OperatorKind = OperatorKind> implements Disp
 		return Operator.OPERATORS[Symbol.iterator]();
 	}
 
+	public static COLON = new Operator(":");
 	public static COMMA = new Operator(",");
 	public static FORWARD_SLASH = new Operator("/");
 
