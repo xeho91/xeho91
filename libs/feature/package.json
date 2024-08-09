@@ -1,0 +1,56 @@
+{
+	"$schema": "https://json.schemastore.org/package",
+	"private": true,
+	"type": "module",
+	"name": "@xeho91/lib-feature",
+	"version": "0.0.0",
+	"engines": {
+		"node": ">=20"
+	},
+	"files": [
+		"/src"
+	],
+	"imports": {
+		"#*": "./src/*.ts"
+	},
+	"exports": {
+		"./css": "./src/css/mod.ts",
+		"./global": "./src/global/mod.ts",
+		"./*": "./src/*.ts"
+	},
+	"scripts": {
+		"clean": "pnpm run \"/^clean:.*/\" ",
+		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
+		"clean:test": "del \"./coverage\" ",
+		"dev": "pnpm run \"/^dev:.*/\" ",
+		"dev:doc": "pnpm run \"/^dev:doc:.*/\" ",
+		"dev:doc:watch": "typedoc --watch",
+		"dev:doc:serve": "pnpm serve \"./docs\"",
+		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-feature\" ",
+		"fix": "pnpm run \"/^fix:.*/\" ",
+		"fix:format": "biome format . --verbose --write",
+		"fix:js": "biome lint . --verbose --fix --unsafe",
+		"fix:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" --fix",
+		"fix:typos": "typos --verbose --write-changes",
+		"lint": "pnpm run \"/^lint:.*/\" ",
+		"lint:format": "biome format . --verbose",
+		"lint:js": "biome lint . --verbose",
+		"lint:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
+		"lint:ts": "tsc --noEmit",
+		"lint:typos": "typos --verbose",
+		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-feature\" "
+	},
+	"dependencies": {
+		"@unocss/reset": "0.61.9",
+		"@xeho91/lib-css": "workspace:*",
+		"@xeho91/lib-design": "workspace:*",
+		"@xeho91/lib-error": "workspace:*",
+		"@xeho91/lib-type": "workspace:*",
+		"clsx": "2.1.1",
+		"unocss": "0.61.9"
+	},
+	"devDependencies": {
+		"svelte": "5.0.0-next.184",
+		"typescript-svelte-plugin": "0.3.39"
+	}
+}
