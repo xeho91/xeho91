@@ -1,5 +1,5 @@
-import { defineConfig, presetUno } from "unocss";
 import extractorSvelte from "@unocss/extractor-svelte";
+import { defineConfig, presetUno } from "unocss";
 
 export const CONFIG = defineConfig({
 	extractors: [
