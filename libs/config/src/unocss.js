@@ -1,5 +1,5 @@
-import { defineConfig, presetUno } from "unocss";
 import extractorSvelte from "@unocss/extractor-svelte";
+import { defineConfig, presetUno } from "unocss";
 
 export const CONFIG = defineConfig({
 	extractors: [
@@ -10,11 +10,6 @@ export const CONFIG = defineConfig({
 		//
 		presetUno(),
 	],
-	layers: {
-		reset: -1,
-		base: 0,
-		framework: 5,
-	},
 	outputToCssLayers: {
 		cssLayerName: (name) => `framework.${name}`,
 	},
