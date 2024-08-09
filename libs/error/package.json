@@ -2,7 +2,7 @@
 	"$schema": "https://json.schemastore.org/package",
 	"type": "module",
 	"name": "@xeho91/lib-error",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Error related utilities and classes",
 	"keywords": ["error"],
 	"license": "MIT",
