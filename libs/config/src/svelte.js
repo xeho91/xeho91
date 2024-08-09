@@ -5,9 +5,9 @@ import { sveltePreprocess } from "svelte-preprocess";
 /** @type {import("@sveltejs/vite-plugin-svelte").Options} */
 export const CONFIG = {
 	preprocess: sequence([
-		// sveltePreprocess({
-		// 	script: false,
-		// }),
+		sveltePreprocess({
+			script: false,
+		}),
 		vitePreprocess({
 			style: false,
 		}),
