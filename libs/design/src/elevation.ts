@@ -98,12 +98,14 @@ export class Elevation<
 		return Elevation.LEVELS[Symbol.iterator]();
 	}
 
-	public static readonly DEFAULT = 0 satisfies ElevationLevel;
-
 	public static readonly LAYERS = readonly_set([1, 2, 3]);
 
-	public static get = <TLevel extends ElevationLevel = typeof Elevation.DEFAULT>(
-		level: TLevel = Elevation.DEFAULT as TLevel,
+	public static readonly DEFAULT = 0 satisfies ElevationLevel;
+
+	public static default = () => Elevation.get(Elevation.DEFAULT);
+
+	public static get = <TLevel extends ElevationLevel>(
+		level: TLevel,
 	): Elevation<TLevel, (typeof Elevation.VALUE)[TLevel]> => {
 		const cached = Elevation.CONSTRUCTED.get(level);
 		if (cached) return cached as Elevation<TLevel, (typeof Elevation.VALUE)[TLevel]>;
@@ -356,9 +358,27 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("static get(level?)", () => {
+		describe("static class(target, options?)", () => {
+			it("on call subscriber receive [selector, ruleset] tuple", ({ expect }) => {
+				const observer = vi.fn((tuple) => {
+					expect(tuple[0]).toBe("box-shadow");
+					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`".box-shadow{--box-shadow-1-color-light:oklch(var(--box-shadow-1-color-light-lightness) var(--box-shadow-1-color-light-chroma) var(--box-shadow-1-color-light-hue) / var(--box-shadow-1-color-light-alpha));--box-shadow-1-color-dark:oklch(var(--box-shadow-1-color-dark-lightness) var(--box-shadow-1-color-dark-chroma) var(--box-shadow-1-color-dark-hue) / var(--box-shadow-1-color-dark-alpha));--box-shadow-1-color:light-dark(var(--box-shadow-1-color-light) , var(--box-shadow-1-color-dark));--box-shadow-1:var(--box-shadow-1-x) var(--box-shadow-1-y) var(--box-shadow-1-blur) var(--box-shadow-1-spread) var(--box-shadow-1-color);--box-shadow-2-color-light:oklch(var(--box-shadow-2-color-light-lightness) var(--box-shadow-2-color-light-chroma) var(--box-shadow-2-color-light-hue) / var(--box-shadow-2-color-light-alpha));--box-shadow-2-color-dark:oklch(var(--box-shadow-2-color-dark-lightness) var(--box-shadow-2-color-dark-chroma) var(--box-shadow-2-color-dark-hue) / var(--box-shadow-2-color-dark-alpha));--box-shadow-2-color:light-dark(var(--box-shadow-2-color-light) , var(--box-shadow-2-color-dark));--box-shadow-2:var(--box-shadow-2-x) var(--box-shadow-2-y) var(--box-shadow-2-blur) var(--box-shadow-2-spread) var(--box-shadow-2-color);--box-shadow-3-color-light:oklch(var(--box-shadow-3-color-light-lightness) var(--box-shadow-3-color-light-chroma) var(--box-shadow-3-color-light-hue) / var(--box-shadow-3-color-light-alpha));--box-shadow-3-color-dark:oklch(var(--box-shadow-3-color-dark-lightness) var(--box-shadow-3-color-dark-chroma) var(--box-shadow-3-color-dark-hue) / var(--box-shadow-3-color-dark-alpha));--box-shadow-3-color:light-dark(var(--box-shadow-3-color-light) , var(--box-shadow-3-color-dark));--box-shadow-3:var(--box-shadow-3-x) var(--box-shadow-3-y) var(--box-shadow-3-blur) var(--box-shadow-3-spread) var(--box-shadow-3-color);box-shadow:var(--box-shadow-1) , var(--box-shadow-2) , var(--box-shadow-3)}"`,
+					);
+				});
+				Elevation.on("create-property-ruleset").subscribe({
+					next: observer,
+				});
+				Elevation.class("box-shadow");
+				Elevation.class("box-shadow");
+				expect(observer).toHaveBeenCalledOnce();
+			});
+		});
+
+		describe("static get(level)", () => {
 			it("returns default when no name provided", ({ expect }) => {
-				const level = Elevation.get();
+				const level = Elevation.default();
 				expect(level).toBeInstanceOf(Elevation);
 			});
 
@@ -390,7 +410,7 @@ if (import.meta.vitest) {
 
 		describe("create_global_ruleset()", () => {
 			it("returns a ruleset", ({ expect }) => {
-				const space = Elevation.get();
+				const space = Elevation.default();
 				const global = space.create_global_ruleset();
 				const stringified = global.toString();
 				expect(stringified).toMatchInlineSnapshot(
@@ -417,15 +437,15 @@ if (import.meta.vitest) {
 				Elevation.on("create-global-ruleset").subscribe({
 					next: observer,
 				});
-				const elevation = Elevation.get();
+				const elevation = Elevation.default();
 				elevation.create_global_ruleset();
 				expect(observer).toHaveBeenCalled();
 			});
 		});
 
-		describe("class_name(target, options?)", () => {
+		describe("class(target, options?)", () => {
 			it("returns correctly when first argument target provided", ({ expect }) => {
-				const elevation = Elevation.get();
+				const elevation = Elevation.default();
 				const class_name = elevation.class("text-shadow");
 				const expected_name = "text-shadow-elevation-0";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -434,7 +454,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided pseudo class", ({ expect }) => {
-				const elevation = Elevation.get();
+				const elevation = Elevation.default();
 				const class_name = elevation.class("box-shadow", { pseudo_class: "hover" });
 				const expected_name = "box-shadow-elevation-0-hover";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -443,7 +463,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided pseudo element", ({ expect }) => {
-				const elevation = Elevation.get();
+				const elevation = Elevation.default();
 				const class_name = elevation.class("text-shadow", { pseudo_element: "after" });
 				const expected_name = "text-shadow-elevation-0-after";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -452,7 +472,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided both pseudos", ({ expect }) => {
-				const elevation = Elevation.get();
+				const elevation = Elevation.default();
 				const class_name = elevation.class("box-shadow", {
 					pseudo_class: "checked",
 					pseudo_element: "before",
@@ -464,7 +484,7 @@ if (import.meta.vitest) {
 			});
 
 			it("created rulesets in Elevation.RULESETS", ({ expect }) => {
-				const elevation = Elevation.get();
+				const elevation = Elevation.default();
 				const class_name = elevation.class("box-shadow");
 				const ruleset = Elevation.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();

@@ -140,7 +140,7 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("static get(size?)", () => {
+		describe("static get(size)", () => {
 			it("on constructed instance subscriber receive instance", ({ expect }) => {
 				const subscriber = vi.fn((instance) => {
 					expect(instance).toBeInstanceOf(Space);
@@ -197,6 +197,9 @@ if (import.meta.vitest) {
 				const subscriber = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("space-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`":root{--space-l:clamp(2.25rem, 2.1593rem + 0.4396cqi, 2.5rem)}"`,
+					);
 				});
 				Space.on("create-global-ruleset").subscribe({
 					next: subscriber,
@@ -207,7 +210,7 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("class_name(target, options?)", () => {
+		describe("class(target, options?)", () => {
 			it("returns correctly when first argument target provided", ({ expect }) => {
 				const space = Space.default();
 				const class_name = space.class("height");
@@ -259,6 +262,9 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("flex-basis-space-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`".flex-basis-space-l{flex-basis:var(--space-l)}"`,
+					);
 				});
 				Space.on("create-class-ruleset").subscribe({
 					next: observer,

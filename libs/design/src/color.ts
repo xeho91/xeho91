@@ -276,6 +276,24 @@ if (import.meta.vitest) {
 			});
 		});
 
+		describe("static class(target, options?)", () => {
+			it("on call subscriber receive [selector, ruleset] tuple", ({ expect }) => {
+				const observer = vi.fn((tuple) => {
+					expect(tuple[0]).toBe("background-color");
+					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`".background-color{--background-color-light:oklch(var(--background-color-light-lightness) var(--background-color-light-chroma) var(--background-color-light-hue) / var(--background-color-light-alpha));--background-color-dark:oklch(var(--background-color-dark-lightness) var(--background-color-dark-chroma) var(--background-color-dark-hue) / var(--background-color-dark-alpha));background-color:light-dark(var(--background-color-light) , var(--background-color-dark))}"`,
+					);
+				});
+				Color.on("create-property-ruleset").subscribe({
+					next: observer,
+				});
+				Color.class("background");
+				Color.class("background");
+				expect(observer).toHaveBeenCalledOnce();
+			});
+		});
+
 		describe("create_global_ruleset()", () => {
 			it("returns a ruleset", ({ expect }) => {
 				const color = Color.get("brand", "accent");
@@ -290,6 +308,9 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("color-grayscale-gray-solid-8");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`":root{--color-grayscale-gray-solid-8-light-lightness:79.11%;--color-grayscale-gray-solid-8-dark-lightness:48.93%;--color-grayscale-gray-solid-8-light-chroma:2.11%;--color-grayscale-gray-solid-8-dark-chroma:2.06%;--color-grayscale-gray-solid-8-light-hue:98.91deg;--color-grayscale-gray-solid-8-dark-hue:88.7deg;--color-grayscale-gray-solid-8-light-alpha:100%;--color-grayscale-gray-solid-8-dark-alpha:100%}"`,
+					);
 				});
 				Color.on("create-global-ruleset").subscribe({
 					next: observer,
@@ -300,7 +321,7 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("class_name(target?, options?)", () => {
+		describe("class(target, options?)", () => {
 			it("returns correctly when first argument target provided", ({ expect }) => {
 				const color = Color.get("semantic", "success", "blend", 1);
 				const class_name = color.class("border-block");
@@ -354,6 +375,9 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("outline-color-grayscale-black-blend-12");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`".outline-color-grayscale-black-blend-12{--outline-color-light-lightness:var(--color-grayscale-black-blend-12-light-lightness);--outline-color-dark-lightness:var(--color-grayscale-black-blend-12-dark-lightness);--outline-color-light-chroma:var(--color-grayscale-black-blend-12-light-chroma);--outline-color-dark-chroma:var(--color-grayscale-black-blend-12-dark-chroma);--outline-color-light-hue:var(--color-grayscale-black-blend-12-light-hue);--outline-color-dark-hue:var(--color-grayscale-black-blend-12-dark-hue);--outline-color-light-alpha:var(--color-grayscale-black-blend-12-light-alpha);--outline-color-dark-alpha:var(--color-grayscale-black-blend-12-dark-alpha)}"`,
+					);
 				});
 				Color.on("create-class-ruleset").subscribe({
 					next: observer,

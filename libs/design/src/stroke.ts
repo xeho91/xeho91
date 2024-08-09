@@ -49,9 +49,9 @@ export class Stroke<TSize extends StrokeSize = StrokeSize, TValue extends Dimens
 	 */
 	public static readonly DEFAULT = "xs" satisfies StrokeSize;
 
-	public static get = <TSize extends StrokeSize = typeof Stroke.DEFAULT>(
-		size: TSize = Stroke.DEFAULT as TSize,
-	): Stroke<TSize, (typeof Stroke.VALUE)[TSize]> => {
+	public static default = () => Stroke.get(Stroke.DEFAULT);
+
+	public static get = <TSize extends StrokeSize>(size: TSize): Stroke<TSize, (typeof Stroke.VALUE)[TSize]> => {
 		const cached = DesignToken.CONSTRUCTED.get(`${Stroke.NAME}-${size}`);
 		if (cached) return cached as Stroke<TSize, (typeof Stroke.VALUE)[TSize]>;
 		return new Stroke(size, Stroke.VALUE[size]);
@@ -120,9 +120,9 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("static get(size?)", () => {
+		describe("static get(size)", () => {
 			it("returns default when no name provided", ({ expect }) => {
-				const stroke = Stroke.get();
+				const stroke = Stroke.default();
 				expect(stroke).toBeInstanceOf(Stroke);
 				expectTypeOf(stroke).toMatchTypeOf<Stroke<typeof Stroke.DEFAULT, Dimension<1, "px">>>();
 				expect(stroke.value).toBeInstanceOf(Dimension);
@@ -162,7 +162,7 @@ if (import.meta.vitest) {
 
 		describe("create_global_ruleset()", () => {
 			it("returns a ruleset", ({ expect }) => {
-				const stroke = Stroke.get();
+				const stroke = Stroke.default();
 				const global = stroke.create_global_ruleset();
 				const stringified = global.toString();
 				expect(stringified).toMatchInlineSnapshot(`":root{--stroke-xs:1px}"`);
@@ -180,6 +180,7 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("stroke-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--stroke-l:8px}"`);
 				});
 				Stroke.on("create-global-ruleset").subscribe({
 					next: observer,
@@ -190,9 +191,9 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("class_name(target?, options?)", () => {
+		describe("class(target?, options?)", () => {
 			it("returns correctly when no arguments provided", ({ expect }) => {
-				const stroke = Stroke.get();
+				const stroke = Stroke.default();
 				const class_name = stroke.class();
 				const expected_stringified = "all-stroke-xs";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -201,7 +202,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when first argument target provided", ({ expect }) => {
-				const stroke = Stroke.get();
+				const stroke = Stroke.default();
 				const class_name = stroke.class("bottom");
 				const expected_name = "bottom-stroke-xs";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -210,7 +211,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided pseudo class", ({ expect }) => {
-				const stroke = Stroke.get();
+				const stroke = Stroke.default();
 				const class_name = stroke.class("right", { pseudo_class: "hover" });
 				const expected_name = "right-stroke-xs-hover";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -219,7 +220,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided pseudo element", ({ expect }) => {
-				const stroke = Stroke.get();
+				const stroke = Stroke.default();
 				const class_name = stroke.class("top", { pseudo_element: "after" });
 				const expected_name = "top-stroke-xs-after";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -228,7 +229,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided both pseudos", ({ expect }) => {
-				const stroke = Stroke.get();
+				const stroke = Stroke.default();
 				const class_name = stroke.class("inline", { pseudo_class: "checked", pseudo_element: "before" });
 				const expected_name = "inline-stroke-xs-checked-before";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -237,7 +238,7 @@ if (import.meta.vitest) {
 			});
 
 			it("created rulesets in Stroke.RULESETS", ({ expect }) => {
-				const stroke = Stroke.get();
+				const stroke = Stroke.default();
 				const class_name = stroke.class();
 				const ruleset = Stroke.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
@@ -248,6 +249,9 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("block-end-stroke-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`".block-end-stroke-l{border-block-end-width:var(--stroke-l)}"`,
+					);
 				});
 				Stroke.on("create-class-ruleset").subscribe({
 					next: observer,

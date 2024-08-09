@@ -53,9 +53,9 @@ export class Radius<TSize extends RadiusSize = RadiusSize, TValue extends Dimens
 	 */
 	public static readonly DEFAULT = "s" satisfies RadiusSize;
 
-	public static get = <TSize extends RadiusSize = typeof Radius.DEFAULT>(
-		size: TSize = Radius.DEFAULT as TSize,
-	): Radius<TSize, (typeof Radius.VALUE)[TSize]> => {
+	public static default = () => Radius.get(Radius.DEFAULT);
+
+	public static get = <TSize extends RadiusSize>(size: TSize): Radius<TSize, (typeof Radius.VALUE)[TSize]> => {
 		const cached = Radius.CONSTRUCTED.get(size);
 		if (cached) return cached as Radius<TSize, (typeof Radius.VALUE)[TSize]>;
 		return new Radius(size, Radius.VALUE[size]);
@@ -126,7 +126,7 @@ if (import.meta.vitest) {
 
 		describe("static get(size?)", () => {
 			it("returns default when no name provided", ({ expect }) => {
-				const radius = Radius.get();
+				const radius = Radius.default();
 				expect(radius).toBeInstanceOf(Radius);
 				expectTypeOf(radius).toEqualTypeOf<Radius<typeof Radius.DEFAULT, Dimension<2, "px">>>();
 				expect(radius.value).toBeInstanceOf(Dimension);
@@ -175,7 +175,7 @@ if (import.meta.vitest) {
 
 		describe("create_global_ruleset()", () => {
 			it("returns a ruleset", ({ expect }) => {
-				const radius = Radius.get();
+				const radius = Radius.default();
 				const global = radius.create_global_ruleset();
 				const stringified = global.toString();
 				expect(stringified).toMatchInlineSnapshot(`":root{--radius-s:2px}"`);
@@ -193,6 +193,7 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("radius-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--radius-l:8px}"`);
 				});
 				Radius.on("create-global-ruleset").subscribe({
 					next: observer,
@@ -203,9 +204,9 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("class_name(target?, options?)", () => {
+		describe("class(target?, options?)", () => {
 			it("returns correctly when no arguments provided", ({ expect }) => {
-				const radius = Radius.get();
+				const radius = Radius.default();
 				const class_name = radius.class();
 				const expected_stringified = "all-radius-s";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -214,7 +215,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when first argument target provided", ({ expect }) => {
-				const radius = Radius.get();
+				const radius = Radius.default();
 				const class_name = radius.class("top-left");
 				const expected_name = "top-left-radius-s";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -223,7 +224,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided pseudo class", ({ expect }) => {
-				const radius = Radius.get();
+				const radius = Radius.default();
 				const class_name = radius.class("end-end", { pseudo_class: "hover" });
 				const expected_name = "end-end-radius-s-hover";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -232,7 +233,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided pseudo element", ({ expect }) => {
-				const radius = Radius.get();
+				const radius = Radius.default();
 				const class_name = radius.class("top-right", { pseudo_element: "after" });
 				const expected_name = "top-right-radius-s-after";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -241,7 +242,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided both pseudos", ({ expect }) => {
-				const radius = Radius.get();
+				const radius = Radius.default();
 				const class_name = radius.class("bottom-left", {
 					pseudo_class: "checked",
 					pseudo_element: "before",
@@ -253,7 +254,7 @@ if (import.meta.vitest) {
 			});
 
 			it("created rulesets in Radius.RULESETS", ({ expect }) => {
-				const radius = Radius.get();
+				const radius = Radius.default();
 				const class_name = radius.class("start-end");
 				const ruleset = Radius.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
@@ -264,6 +265,9 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("start-end-radius-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`".start-end-radius-l{border-start-end-radius:var(--radius-l)}"`,
+					);
 				});
 				Radius.on("create-class-ruleset").subscribe({
 					next: observer,

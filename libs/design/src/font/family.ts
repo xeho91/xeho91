@@ -199,6 +199,7 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("font-mono");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--font-mono:"Jetbrains Mono"}"`);
 				});
 				FontFamily.on("create-global-ruleset").subscribe({
 					next: observer,
@@ -209,7 +210,7 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("class_name(options?)", () => {
+		describe("class(options?)", () => {
 			it("returns correctly when no arguments provided", ({ expect }) => {
 				const font_family = FontFamily.default();
 				const class_name = font_family.class();
@@ -258,6 +259,7 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("font-serif");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(`".font-serif{font-family:var(--font-serif)}"`);
 				});
 				FontFamily.on("create-class-ruleset").subscribe({
 					next: observer,

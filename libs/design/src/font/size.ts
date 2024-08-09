@@ -134,7 +134,7 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("static size(name?)", () => {
+		describe("static size(name)", () => {
 			it("returns default when no name provided", ({ expect }) => {
 				const key = FontSize.default();
 				expect(key).toBeInstanceOf(FontSize);
@@ -199,6 +199,9 @@ if (import.meta.vitest) {
 				const subscriber = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("font-size-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`":root{--font-size-l:clamp(1.35rem, 1.2729rem + 0.3736cqi, 1.5625rem)}"`,
+					);
 				});
 				FontSize.on("create-global-ruleset").subscribe({
 					next: subscriber,
@@ -209,7 +212,7 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("class_name(options?)", () => {
+		describe("class(options?)", () => {
 			it("returns correctly when first argument target provided", ({ expect }) => {
 				const font_size = FontSize.default();
 				const class_name = font_size.class();
@@ -261,6 +264,7 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("font-size-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(`".font-size-l{font-size:var(--font-size-l)}"`);
 				});
 				FontSize.on("create-class-ruleset").subscribe({
 					next: observer,

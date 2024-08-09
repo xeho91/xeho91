@@ -35,7 +35,7 @@ export class FontWeight<
 	public static readonly NAME = "font-weight";
 	public static readonly PROPERTY = new Property(FontWeight.NAME);
 
-	public static get_keys = <TFamily extends FontFamilyName>(family: TFamily) => {
+	public static keys = <TFamily extends FontFamilyName>(family: TFamily) => {
 		// biome-ignore format: Prettier
 		switch (family) {
 			case "mono": return FontWeightMono.KEYS;
@@ -44,17 +44,29 @@ export class FontWeight<
 		}
 	};
 
-	public static mono = <TKey extends FontWeightMonoKey = typeof FontWeightMono.DEFAULT>(
-		key = FontWeightMono.DEFAULT as TKey,
-	): FontWeightMono<TKey, (typeof FontWeightMono.VALUE)[TKey]> => FontWeightMono.get(key);
+	public static get mono() {
+		return FontWeightMono;
+	}
 
-	public static sans = <TKey extends FontWeightSansKey = typeof FontWeightSans.DEFAULT>(
-		key = FontWeightSans.DEFAULT as TKey,
-	): FontWeightSans<TKey, (typeof FontWeightSans.VALUE)[TKey]> => FontWeightSans.get(key);
+	public static get sans() {
+		return FontWeightSans;
+	}
 
-	public static serif = <TKey extends FontWeightSerifKey = typeof FontWeightSerif.DEFAULT>(
-		key = FontWeightSerif.DEFAULT as TKey,
-	): FontWeightSerif<TKey, (typeof FontWeightSerif.VALUE)[TKey]> => FontWeightSerif.get(key);
+	public static get serif() {
+		return FontWeightSerif;
+	}
+
+	// public static mono = <TKey extends FontWeightMonoKey>(
+	// 	key: TKey,
+	// ): FontWeightMono<TKey, (typeof FontWeightMono.VALUE)[TKey]> => FontWeightMono.get(key);
+	//
+	// public static sans = <TKey extends FontWeightSansKey>(
+	// 	key: TKey,
+	// ): FontWeightSans<TKey, (typeof FontWeightSans.VALUE)[TKey]> => FontWeightSans.get(key);
+	//
+	// public static serif = <TKey extends FontWeightSerifKey>(
+	// 	key: TKey,
+	// ): FontWeightSerif<TKey, (typeof FontWeightSerif.VALUE)[TKey]> => FontWeightSerif.get(key);
 
 	public readonly family: TFamily;
 
@@ -196,20 +208,15 @@ export class FontWeightSerif<
 
 type WeightWithFamily<TFamily extends FontFamilyName, TWeight extends string> = `${TFamily}-${TWeight}`;
 
-// TODO: Update tests
 if (import.meta.vitest) {
 	const { describe, expectTypeOf, it, vi } = import.meta.vitest;
 
 	describe(FontWeight.name, () => {
 		describe("static get(family, key?)", () => {
 			it("returns default when no name provided", ({ expect }) => {
-				const key = FontWeight.mono();
+				const key = FontWeight.mono.default();
 				expect(key).toBeInstanceOf(FontWeight);
-				// expectTypeOf(key).toEqualTypeOf<FontWeight<typeof FontWeight.DEFAULT, Range<18, 20>>>();
-				// expect(key.value).toBeInstanceOf(Range);
-				// expect(key.value.min).toBe(18);
-				// expect(key.value.max).toBe(20);
-				// expectTypeOf(key.value).toEqualTypeOf<Range<18, 20>>();
+				expectTypeOf(key).toEqualTypeOf<FontWeightMono<"regular", NumberCSS<400>>>();
 			});
 
 			it("on constructed instance subscriber receive instance", ({ expect }) => {
@@ -219,55 +226,34 @@ if (import.meta.vitest) {
 				FontWeight.on("construct").subscribe({
 					next: subscriber,
 				});
-				FontWeight.serif();
+				FontWeight.serif.default();
 				expect(subscriber).toHaveBeenCalled();
 			});
-
-			// it("returns a FontWeight instance for each key", ({ expect }) => {
-			// 	for (const key of FontWeight) {
-			// 		const instance = FontWeight.get(key);
-			// 		expect(instance).toBeInstanceOf(FontWeight);
-			// 		expectTypeOf(instance).toMatchTypeOf<FontWeight<FontWeightKey, Range>>();
-			// 	}
-			// });
-
-			// it("it got cached in the CONSTRUCTED", ({ expect }) => {
-			// 	for (const key of FontWeight) {
-			// 		expect(FontWeight.CONSTRUCTED.has(key)).toBe(true);
-			// 	}
-			// });
 		});
 
-		// describe("create_global_ruleset()", () => {
-		// 	it("returns a ruleset", ({ expect }) => {
-		// 		const font_weight = FontWeight.get("sans");
-		// 		const global = font_weight.create_global_ruleset();
-		// 		const stringified = global.toString();
-		// 		const expected_stringified = ":root{--font-weight-sans-light:300}";
-		// 		expect(stringified).toBe(expected_stringified);
-		// 	});
-		//
-		// 	// it("created rulesets in FontWeight.GLOBAL_RULESETS", ({ expect }) => {
-		// 	// 	for (const key of FontWeight) {
-		// 	// 		const font_weight = FontWeight.get(key);
-		// 	// 		font_weight.create_global_ruleset();
-		// 	// 		expect(FontWeight.GLOBAL_RULESETS.has(key)).toBe(true);
-		// 	// 	}
-		// 	// });
-		//
-		// 	it("on created global ruleset subscriber receive [key, ruleset] tuple", ({ expect }) => {
-		// 		const subscriber = vi.fn((tuple) => {
-		// 			expect(tuple[0]).toBe("sans-light");
-		// 			expect(tuple[1]).toBeInstanceOf(Ruleset);
-		// 		});
-		// 		FontWeight.on("create-global-ruleset").subscribe({
-		// 			next: subscriber,
-		// 		});
-		// 		const space = FontWeight.get("sans", "light");
-		// 		space.create_global_ruleset();
-		// 		expect(subscriber).toHaveBeenCalled();
-		// 	});
-		// });
+		describe("create_global_ruleset()", () => {
+			it("returns a ruleset", ({ expect }) => {
+				const font_weight = FontWeight.sans.default();
+				const global = font_weight.create_global_ruleset();
+				const stringified = global.toString();
+				const expected_stringified = ":root{--font-weight-sans-light:300}";
+				expect(stringified).toBe(expected_stringified);
+			});
+
+			it("on created global ruleset subscriber receive [key, ruleset] tuple", ({ expect }) => {
+				const subscriber = vi.fn((tuple) => {
+					expect(tuple[0]).toBe("sans-light");
+					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot();
+				});
+				FontWeight.on("create-global-ruleset").subscribe({
+					next: subscriber,
+				});
+				const space = FontWeight.sans.get("light");
+				space.create_global_ruleset();
+				expect(subscriber).toHaveBeenCalled();
+			});
+		});
 
 		describe("class_name(options?)", () => {
 			it("returns correctly when first argument target provided", ({ expect }) => {
@@ -280,7 +266,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided pseudo class", ({ expect }) => {
-				const font_weight = FontWeight.mono();
+				const font_weight = FontWeight.mono.default();
 				const class_name = font_weight.class({ pseudo_class: "hover" });
 				const expected_name = "font-weight-mono-regular-hover";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -289,7 +275,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided pseudo element", ({ expect }) => {
-				const font_weight = FontWeight.mono();
+				const font_weight = FontWeight.mono.default();
 				const class_name = font_weight.class({ pseudo_element: "after" });
 				const expected_name = "font-weight-mono-regular-after";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -298,7 +284,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided both pseudos", ({ expect }) => {
-				const font_weight = FontWeight.mono("bold");
+				const font_weight = FontWeight.mono.get("bold");
 				const class_name = font_weight.class({
 					pseudo_class: "checked",
 					pseudo_element: "before",
@@ -310,7 +296,7 @@ if (import.meta.vitest) {
 			});
 
 			it("created rulesets in FontWeight.RULESETS", ({ expect }) => {
-				const font_weight = FontWeight.mono();
+				const font_weight = FontWeight.mono.default();
 				const class_name = font_weight.class();
 				const ruleset = FontWeight.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
@@ -323,11 +309,14 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("font-weight-mono-bold");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`".font-weight-mono-bold{font-weight:var(--font-weight-mono-bold)}"`,
+					);
 				});
 				FontWeight.on("create-class-ruleset").subscribe({
 					next: observer,
 				});
-				const font_weight = FontWeight.mono("bold");
+				const font_weight = FontWeight.mono.get("bold");
 				font_weight.class();
 				expect(observer).toHaveBeenCalled();
 			});

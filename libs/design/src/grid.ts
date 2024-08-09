@@ -19,7 +19,7 @@ import { calculateClamp } from "utopia-core";
 import { FLUID_CONFIG, type FluidClamp } from "#fluid";
 import { DesignToken } from "#token";
 
-export type GridKey = IterableElement<typeof Grid.VARIANTS>;
+export type GridVariant = IterableElement<typeof Grid.VARIANTS>;
 
 interface GridProperties {
 	min: Dimension;
@@ -31,7 +31,7 @@ interface GridProperties {
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/max-width}
  */
 export class Grid<
-	TVariant extends GridKey = GridKey,
+	TVariant extends GridVariant = GridVariant,
 	const TValue extends GridProperties = GridProperties,
 > extends DesignToken<"grid", TVariant, TValue> {
 	public static readonly VALUE = readonly_object({
@@ -46,15 +46,15 @@ export class Grid<
 	 */
 	public static readonly VARIANTS = readonly_set(object_keys(Grid.VALUE));
 
-	public static [Symbol.iterator](): IterableIterator<GridKey> {
+	public static [Symbol.iterator](): IterableIterator<GridVariant> {
 		return Grid.VARIANTS[Symbol.iterator]();
 	}
 
-	public static readonly DEFAULT = "default" satisfies GridKey;
+	public static readonly DEFAULT = "default" satisfies GridVariant;
 
 	public static default = () => Grid.get(Grid.DEFAULT);
 
-	public static get = <Key extends GridKey = typeof Grid.DEFAULT>(key: Key) => new Grid(key, Grid.VALUE[key]);
+	public static get = <Key extends GridVariant>(key: Key) => new Grid(key, Grid.VALUE[key]);
 
 	public static readonly COLUMNS = new Range(1, 12);
 
@@ -153,7 +153,7 @@ if (import.meta.vitest) {
 			it("iterates through available variants", ({ expect }) => {
 				for (const variant of Grid) {
 					expect(Grid.VARIANTS.has(variant)).toBe(true);
-					expectTypeOf(variant).toEqualTypeOf<GridKey>();
+					expectTypeOf(variant).toEqualTypeOf<GridVariant>();
 				}
 			});
 		});
@@ -174,7 +174,7 @@ if (import.meta.vitest) {
 				for (const variant of Grid) {
 					const instance = Grid.get(variant);
 					expect(instance).toBeInstanceOf(Grid);
-					expectTypeOf(instance).toMatchTypeOf<Grid<GridKey, GridProperties>>();
+					expectTypeOf(instance).toMatchTypeOf<Grid<GridVariant, GridProperties>>();
 				}
 				expectTypeOf(Grid.get("default")).toMatchTypeOf<Grid<"default", GridProperties>>();
 			});
@@ -218,7 +218,7 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("class_name(target, options?)", () => {
+		describe("class(target, options?)", () => {
 			it("returns correctly when first argument target provided", ({ expect }) => {
 				const grid = Grid.default();
 				const class_name = grid.class("height");
