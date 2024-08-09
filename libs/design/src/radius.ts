@@ -124,7 +124,7 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("static get(size?)", () => {
+		describe("static get(size)", () => {
 			it("returns default when no name provided", ({ expect }) => {
 				const radius = Radius.default();
 				expect(radius).toBeInstanceOf(Radius);
@@ -178,7 +178,7 @@ if (import.meta.vitest) {
 				const radius = Radius.default();
 				const global = radius.create_global_ruleset();
 				const stringified = global.toString();
-				expect(stringified).toMatchInlineSnapshot(`":root{--radius-s:2px}"`);
+				expect(stringified).toMatchInlineSnapshot(`":root{--radius-s:2px;}"`);
 			});
 
 			it("created rulesets in Radius.GLOBAL_RULESETS", ({ expect }) => {
@@ -193,7 +193,7 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("radius-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
-					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--radius-l:8px}"`);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--radius-l:8px;}"`);
 				});
 				Radius.on("create-global-ruleset").subscribe({
 					next: observer,
@@ -258,7 +258,9 @@ if (import.meta.vitest) {
 				const class_name = radius.class("start-end");
 				const ruleset = Radius.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
-				expect(ruleset?.toString()).toBe(".start-end-radius-s{border-start-end-radius:var(--radius-s)}");
+				expect(ruleset?.toString()).toMatchInlineSnapshot(
+					`".start-end-radius-s{border-start-end-radius:var(--radius-s);}"`,
+				);
 			});
 
 			it("on created class ruleset subscriber receive [class_name, ruleset] tuple", ({ expect }) => {
@@ -266,7 +268,7 @@ if (import.meta.vitest) {
 					expect(tuple[0]).toBe("start-end-radius-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
 					expect(tuple[1].toString()).toMatchInlineSnapshot(
-						`".start-end-radius-l{border-start-end-radius:var(--radius-l)}"`,
+						`".start-end-radius-l{border-start-end-radius:var(--radius-l);}"`,
 					);
 				});
 				Radius.on("create-class-ruleset").subscribe({

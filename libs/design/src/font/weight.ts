@@ -8,6 +8,7 @@ import type { PseudoClassName } from "@xeho91/lib-css/selector/pseudo-class";
 import type { PseudoElementName } from "@xeho91/lib-css/selector/pseudo-element";
 import type { InferValue } from "@xeho91/lib-css/value";
 import { NumberCSS } from "@xeho91/lib-css/value/number";
+import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import { object_keys, readonly_object } from "@xeho91/lib-snippet/object";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
@@ -41,6 +42,7 @@ export class FontWeight<
 			case "mono": return FontWeightMono.KEYS;
 			case "sans": return FontWeightSans.KEYS;
 			case "serif": return FontWeightSerif.KEYS;
+			default: throw unrecognized(family);
 		}
 	};
 
@@ -55,18 +57,6 @@ export class FontWeight<
 	public static get serif() {
 		return FontWeightSerif;
 	}
-
-	// public static mono = <TKey extends FontWeightMonoKey>(
-	// 	key: TKey,
-	// ): FontWeightMono<TKey, (typeof FontWeightMono.VALUE)[TKey]> => FontWeightMono.get(key);
-	//
-	// public static sans = <TKey extends FontWeightSansKey>(
-	// 	key: TKey,
-	// ): FontWeightSans<TKey, (typeof FontWeightSans.VALUE)[TKey]> => FontWeightSans.get(key);
-	//
-	// public static serif = <TKey extends FontWeightSerifKey>(
-	// 	key: TKey,
-	// ): FontWeightSerif<TKey, (typeof FontWeightSerif.VALUE)[TKey]> => FontWeightSerif.get(key);
 
 	public readonly family: TFamily;
 
@@ -134,7 +124,7 @@ export class FontWeightMono<
 
 	public static readonly DEFAULT = "regular" satisfies FontWeightMonoKey;
 
-	public static get = <TWeight extends FontWeightMonoKey>(key: TWeight) =>
+	public static get = <TWeight extends FontWeightKey<"mono">>(key: TWeight) =>
 		new FontWeightMono(key, FontWeightMono.VALUE[key]);
 
 	public static default = () => FontWeightMono.get(FontWeightMono.DEFAULT);
@@ -165,7 +155,7 @@ export class FontWeightSans<
 
 	public static readonly DEFAULT = "light" satisfies FontWeightSansKey;
 
-	public static get = <TWeight extends FontWeightSansKey>(key: TWeight) =>
+	public static get = <TWeight extends FontWeightKey<"sans">>(key: TWeight) =>
 		new FontWeightSans(key, FontWeightSans.VALUE[key]);
 
 	public static default = () => FontWeightSans.get(FontWeightSans.DEFAULT);
@@ -196,7 +186,7 @@ export class FontWeightSerif<
 
 	public static readonly DEFAULT = "light" satisfies FontWeightSerifKey;
 
-	public static get = <TWeight extends FontWeightSerifKey>(key: TWeight) =>
+	public static get = <TWeight extends FontWeightKey<"serif">>(key: TWeight) =>
 		new FontWeightSerif(key, FontWeightSerif.VALUE[key]);
 
 	public static default = () => FontWeightSerif.get(FontWeightSerif.DEFAULT);
@@ -236,15 +226,14 @@ if (import.meta.vitest) {
 				const font_weight = FontWeight.sans.default();
 				const global = font_weight.create_global_ruleset();
 				const stringified = global.toString();
-				const expected_stringified = ":root{--font-weight-sans-light:300}";
-				expect(stringified).toBe(expected_stringified);
+				expect(stringified).toMatchInlineSnapshot(`":root{--font-weight-sans-light:300;}"`);
 			});
 
 			it("on created global ruleset subscriber receive [key, ruleset] tuple", ({ expect }) => {
 				const subscriber = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("font-weight-sans-light");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
-					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--font-weight-sans-light:300}"`);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--font-weight-sans-light:300;}"`);
 				});
 				FontWeight.on("create-global-ruleset").subscribe({
 					next: subscriber,
@@ -300,8 +289,8 @@ if (import.meta.vitest) {
 				const class_name = font_weight.class();
 				const ruleset = FontWeight.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
-				expect(ruleset?.toString()).toBe(
-					".font-weight-mono-regular{font-weight:var(--font-weight-mono-regular)}",
+				expect(ruleset?.toString()).toMatchInlineSnapshot(
+					`".font-weight-mono-regular{font-weight:var(--font-weight-mono-regular);}"`,
 				);
 			});
 
@@ -310,7 +299,7 @@ if (import.meta.vitest) {
 					expect(tuple[0]).toBe("font-weight-mono-bold");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
 					expect(tuple[1].toString()).toMatchInlineSnapshot(
-						`".font-weight-mono-bold{font-weight:var(--font-weight-mono-bold)}"`,
+						`".font-weight-mono-bold{font-weight:var(--font-weight-mono-bold);}"`,
 					);
 				});
 				FontWeight.on("create-class-ruleset").subscribe({

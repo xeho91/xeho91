@@ -244,7 +244,7 @@ if (import.meta.vitest) {
 					}),
 				);
 				const stringified = text_shadow.toString();
-				const expected = "text-shadow:0px 0px 0px transparent";
+				const expected = "text-shadow:0px 0px 0px transparent;";
 				expect(stringified).toBe(expected);
 				expectTypeOf(stringified).toEqualTypeOf<typeof expected>();
 			});
@@ -271,7 +271,7 @@ if (import.meta.vitest) {
 				const text_shadow = new TextShadow(layer1, layer2, layer3);
 				const stringified = text_shadow.toString();
 				const expected =
-					"text-shadow:0px 0px 0px transparent , 2 2 0px transparent , 3px 3px 0px oklch(0% 0% 0deg / 100%)";
+					"text-shadow:0px 0px 0px transparent , 2 2 0px transparent , 3px 3px 0px oklch(0% 0% 0deg / 100%);";
 				expect(stringified).toBe(expected);
 				expectTypeOf(stringified).toEqualTypeOf<typeof expected>();
 			});

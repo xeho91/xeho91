@@ -13,15 +13,7 @@ import { object_keys, readonly_object } from "@xeho91/lib-snippet/object";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 
-import {
-	type FontWeightKey,
-	FontWeightMono,
-	type FontWeightMonoKey,
-	FontWeightSans,
-	type FontWeightSansKey,
-	FontWeightSerif,
-	type FontWeightSerifKey,
-} from "#font/weight";
+import { FontWeightMono, FontWeightSans, FontWeightSerif } from "#font/weight";
 import { DesignToken } from "#token";
 
 export type FontFamilyName = IterableElement<typeof FontFamily.NAMES>;
@@ -110,24 +102,24 @@ export class FontFamily<
 		});
 	}
 
-	public weight<TWeight extends FontWeightKey<TName>>(key: TWeight): GetFontWeight<TName, TWeight> {
+	public weight(): GetFontWeightInstance<TName> {
 		const { variant } = this;
 		// biome-ignore format: Prettier
 		switch (variant) {
-			case "mono": return FontWeightMono.get(key as FontWeightMonoKey) as GetFontWeight<TName, TWeight>;
-			case "sans": return FontWeightSans.get(key as FontWeightSansKey) as GetFontWeight<TName, TWeight>;
-			case "serif": return FontWeightSerif.get(key as FontWeightSerifKey) as GetFontWeight<TName, TWeight>;
+			case "mono": return FontWeightMono as GetFontWeightInstance<TName>;
+			case "sans": return FontWeightSans as GetFontWeightInstance<TName>;
+			case "serif": return FontWeightSerif as GetFontWeightInstance<TName>;
 			default: throw unrecognized(variant);
 		}
 	}
 }
 
-type GetFontWeight<TName extends FontFamilyName, TWeight extends FontWeightKey<TName>> = TName extends "mono"
-	? ReturnType<typeof FontWeightMono.get<TWeight extends FontWeightMonoKey ? TWeight : never>>
+type GetFontWeightInstance<TName extends FontFamilyName> = TName extends "mono"
+	? typeof FontWeightMono
 	: TName extends "sans"
-		? ReturnType<typeof FontWeightSans.get<TWeight extends FontWeightSansKey ? TWeight : never>>
+		? typeof FontWeightSans
 		: TName extends "serif"
-			? ReturnType<typeof FontWeightSerif.get<TWeight extends FontWeightSerifKey ? TWeight : never>>
+			? typeof FontWeightSerif
 			: never;
 
 if (import.meta.vitest) {
@@ -184,7 +176,7 @@ if (import.meta.vitest) {
 				const font_family = FontFamily.default();
 				const global = font_family.create_global_ruleset();
 				const stringified = global.toString();
-				expect(stringified).toMatchInlineSnapshot(`":root{--font-sans:"Work Sans"}"`);
+				expect(stringified).toMatchInlineSnapshot(`":root{--font-sans:"Work Sans";}"`);
 			});
 
 			it("created rulesets in FontFamily.GLOBAL_RULESETS", ({ expect }) => {
@@ -199,7 +191,7 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("font-mono");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
-					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--font-mono:"Jetbrains Mono"}"`);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--font-mono:"Jetbrains Mono";}"`);
 				});
 				FontFamily.on("create-global-ruleset").subscribe({
 					next: observer,
@@ -252,14 +244,14 @@ if (import.meta.vitest) {
 				const class_name = font_family.class();
 				const ruleset = FontFamily.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
-				expect(ruleset?.toString()).toBe(".font-sans{font-family:var(--font-sans)}");
+				expect(ruleset?.toString()).toMatchInlineSnapshot(`".font-sans{font-family:var(--font-sans);}"`);
 			});
 
 			it("on created class ruleset subscriber receive [class_name, ruleset] tuple", ({ expect }) => {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("font-serif");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
-					expect(tuple[1].toString()).toMatchInlineSnapshot(`".font-serif{font-family:var(--font-serif)}"`);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(`".font-serif{font-family:var(--font-serif);}"`);
 				});
 				FontFamily.on("create-class-ruleset").subscribe({
 					next: observer,

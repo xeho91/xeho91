@@ -1,60 +1,77 @@
-import type { Display } from "@xeho91/lib-type/trait/display";
+import type { Display, ToString } from "@xeho91/lib-type/trait/display";
+import type { AttributeSelector } from "css-tree";
 
+import type { Join } from "@xeho91/lib-type/array";
+import type { Identifier } from "#identifier";
 import { SelectorBase } from "#selector/base";
+import type { StringCSS } from "#value/string";
 
 type Value = string | number | boolean;
 // TODO: Idea: could create map with aliases for these operators
-export type AttributeOperator = "=" | "~=" | "|=" | "^=" | "$=" | "*=";
+export type AttributeMatcher = "=" | "~=" | "|=" | "^=" | "$=" | "*=";
 // TODO: Idea: could create map with aliases for these modifiers
-export type AttributeModifier = "i" | "s";
+export type AttributeFlags = "i" | "s";
 
 export class SelectorAttribute<
-		TName extends string = string,
-		TOperator extends AttributeOperator = "=",
-		TValue extends Value | undefined = undefined,
-		TModifier extends AttributeModifier | undefined = undefined,
+		TName extends Identifier = Identifier,
+		TMatcher extends AttributeMatcher | undefined = undefined,
+		TValue extends Identifier | StringCSS | undefined = undefined,
+		TFlags extends AttributeFlags[] | undefined = undefined,
 	>
 	extends SelectorBase<"attribute">
 	implements Display
 {
-	public name: string;
-	public operator: TOperator;
+	public name: TName;
+	public matcher: TMatcher | undefined;
 	public value: TValue | undefined;
-	public modifier: TModifier | undefined;
+	public flags: TFlags | undefined;
 
-	constructor(name: TName, data: { operator?: TOperator; value?: TValue; modifier?: TModifier } = {}) {
+	constructor(name: TName, data: { matcher?: TMatcher; value?: TValue; flags?: TFlags } = {}) {
 		super("attribute");
-		const { operator = "=", value, modifier } = data;
+		const { matcher, value, flags } = data;
 		this.name = name;
-		this.operator = operator as TOperator;
+		this.matcher = matcher;
 		this.value = value;
-		this.modifier = modifier;
+		this.flags = flags;
 	}
 
-	public override toString(): Stringified<TName, TOperator, TValue, TModifier> {
-		const { name, operator, value, modifier } = this;
-		let content = `${name}`;
+	public override toString(): Stringified<TName, TMatcher, TValue, TFlags> {
+		const { name, matcher, value, flags } = this;
+		let results = name.toString();
 		if (value) {
-			content += operator;
-			content += `"${value}"`;
+			results += matcher;
+			results += `"${value}"`;
 		}
-		if (modifier) {
-			content += " ";
-			content += modifier;
+		if (flags) {
+			results += " ";
+			results += flags.join("");
 		}
-		return `[${content}]` as Stringified<TName, TOperator, TValue, TModifier>;
+		return `[${results}]` as Stringified<TName, TMatcher, TValue, TFlags>;
+	}
+
+	public override to_ast(): AttributeSelector {
+		const { name, matcher, value, flags } = this;
+		return {
+			type: "AttributeSelector",
+			name: name.to_ast(),
+			matcher: matcher ?? null,
+			value: value?.to_ast() ?? null,
+			flags: flags?.join("") ?? null,
+		};
 	}
 }
 
 type Stringified<
-	TName extends string,
-	TOperator extends AttributeOperator,
-	TValue extends Value | undefined,
-	TModifier extends AttributeModifier | undefined,
+	TName extends Identifier,
+	TMatcher extends AttributeMatcher | undefined,
+	TValue extends Identifier | StringCSS | undefined,
+	TFlags extends AttributeFlags[] | undefined,
 > = TValue extends Value
-	? TModifier extends AttributeModifier
-		? `[${TName}${TOperator}"${TValue}" ${TModifier}]`
-		: `[${TName}${TOperator}"${TValue}"]`
-	: TModifier extends AttributeModifier
-		? `[${TName} ${TModifier}]`
-		: `[${TName}]`;
+	? TFlags extends AttributeFlags[]
+		? `[${ToString<TName>}${TMatcher}"${TValue}" ${JoinedFlags<TFlags>}]`
+		: `[${ToString<TName>}${TMatcher}"${TValue}"]`
+	: TFlags extends AttributeFlags[]
+		? `[${ToString<TName>} ${JoinedFlags<TFlags>}]`
+		: `[${ToString<TName>}]`;
+
+type JoinedFlags<TFlags extends AttributeFlags[]> = Join<TFlags, "">;

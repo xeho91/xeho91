@@ -70,7 +70,7 @@ export class Space<TSize extends SpaceSize = SpaceSize, TValue extends Range = R
 	 * Get the  clamp function for calculating the value of this space token.
 	 * @see {@link https://developer.mozilla.org/en-US/docs/Web//clamp}
 	 */
-	public get clamp() {
+	public get clamp(): Identifier<FluidClamp> {
 		const { value } = this;
 		const { min, max } = value;
 		const stringified = calculateClamp({
@@ -181,7 +181,7 @@ if (import.meta.vitest) {
 				const global = space.create_global_ruleset();
 				const stringified = global.toString();
 				expect(stringified).toMatchInlineSnapshot(
-					`":root{--space-l:clamp(2.25rem, 2.1593rem + 0.4396cqi, 2.5rem)}"`,
+					`":root{--space-l:clamp(2.25rem, 2.1593rem + 0.4396cqi, 2.5rem);}"`,
 				);
 			});
 
@@ -198,7 +198,7 @@ if (import.meta.vitest) {
 					expect(tuple[0]).toBe("space-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
 					expect(tuple[1].toString()).toMatchInlineSnapshot(
-						`":root{--space-l:clamp(2.25rem, 2.1593rem + 0.4396cqi, 2.5rem)}"`,
+						`":root{--space-l:clamp(2.25rem, 2.1593rem + 0.4396cqi, 2.5rem);}"`,
 					);
 				});
 				Space.on("create-global-ruleset").subscribe({
@@ -255,7 +255,7 @@ if (import.meta.vitest) {
 				const class_name = space.class("gap");
 				const ruleset = Space.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
-				expect(ruleset?.toString()).toBe(".gap-space-l{gap:var(--space-l)}");
+				expect(ruleset?.toString()).toMatchInlineSnapshot(`".gap-space-l{gap:var(--space-l);}"`);
 			});
 
 			it("on created class ruleset subscriber receive [class_name, ruleset] tuple", ({ expect }) => {
@@ -263,7 +263,7 @@ if (import.meta.vitest) {
 					expect(tuple[0]).toBe("flex-basis-space-l");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
 					expect(tuple[1].toString()).toMatchInlineSnapshot(
-						`".flex-basis-space-l{flex-basis:var(--space-l)}"`,
+						`".flex-basis-space-l{flex-basis:var(--space-l);}"`,
 					);
 				});
 				Space.on("create-class-ruleset").subscribe({

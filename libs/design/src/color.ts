@@ -282,7 +282,7 @@ if (import.meta.vitest) {
 					expect(tuple[0]).toBe("background-color");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
 					expect(tuple[1].toString()).toMatchInlineSnapshot(
-						`".background-color{--background-color-light:oklch(var(--background-color-light-lightness) var(--background-color-light-chroma) var(--background-color-light-hue) / var(--background-color-light-alpha));--background-color-dark:oklch(var(--background-color-dark-lightness) var(--background-color-dark-chroma) var(--background-color-dark-hue) / var(--background-color-dark-alpha));background-color:light-dark(var(--background-color-light) , var(--background-color-dark))}"`,
+						`".background-color{--background-color-light:oklch(var(--background-color-light-lightness) var(--background-color-light-chroma) var(--background-color-light-hue) / var(--background-color-light-alpha));--background-color-dark:oklch(var(--background-color-dark-lightness) var(--background-color-dark-chroma) var(--background-color-dark-hue) / var(--background-color-dark-alpha));background-color:light-dark(var(--background-color-light) , var(--background-color-dark));}"`,
 					);
 				});
 				Color.on("create-property-ruleset").subscribe({
@@ -300,7 +300,7 @@ if (import.meta.vitest) {
 				const global = color.create_global_ruleset();
 				const stringified = global.toString();
 				expect(stringified).toMatchInlineSnapshot(
-					`":root{--color-brand-accent-solid-8-light-lightness:74.5%;--color-brand-accent-solid-8-dark-lightness:54.06%;--color-brand-accent-solid-8-light-chroma:33.06%;--color-brand-accent-solid-8-dark-chroma:28.9%;--color-brand-accent-solid-8-light-hue:54.68deg;--color-brand-accent-solid-8-dark-hue:50.05deg;--color-brand-accent-solid-8-light-alpha:100%;--color-brand-accent-solid-8-dark-alpha:100%}"`,
+					`":root{--color-brand-accent-solid-8-light-lightness:74.5%;--color-brand-accent-solid-8-dark-lightness:54.06%;--color-brand-accent-solid-8-light-chroma:33.06%;--color-brand-accent-solid-8-dark-chroma:28.9%;--color-brand-accent-solid-8-light-hue:54.68deg;--color-brand-accent-solid-8-dark-hue:50.05deg;--color-brand-accent-solid-8-light-alpha:100%;--color-brand-accent-solid-8-dark-alpha:100%;}"`,
 				);
 			});
 
@@ -309,7 +309,7 @@ if (import.meta.vitest) {
 					expect(tuple[0]).toBe("color-grayscale-gray-solid-8");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
 					expect(tuple[1].toString()).toMatchInlineSnapshot(
-						`":root{--color-grayscale-gray-solid-8-light-lightness:79.11%;--color-grayscale-gray-solid-8-dark-lightness:48.93%;--color-grayscale-gray-solid-8-light-chroma:2.11%;--color-grayscale-gray-solid-8-dark-chroma:2.06%;--color-grayscale-gray-solid-8-light-hue:98.91deg;--color-grayscale-gray-solid-8-dark-hue:88.7deg;--color-grayscale-gray-solid-8-light-alpha:100%;--color-grayscale-gray-solid-8-dark-alpha:100%}"`,
+						`":root{--color-grayscale-gray-solid-8-light-lightness:79.11%;--color-grayscale-gray-solid-8-dark-lightness:48.93%;--color-grayscale-gray-solid-8-light-chroma:2.11%;--color-grayscale-gray-solid-8-dark-chroma:2.06%;--color-grayscale-gray-solid-8-light-hue:98.91deg;--color-grayscale-gray-solid-8-dark-hue:88.7deg;--color-grayscale-gray-solid-8-light-alpha:100%;--color-grayscale-gray-solid-8-dark-alpha:100%;}"`,
 					);
 				});
 				Color.on("create-global-ruleset").subscribe({
@@ -367,7 +367,7 @@ if (import.meta.vitest) {
 				const ruleset = Color.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
 				expect(ruleset?.toString()).toMatchInlineSnapshot(
-					`".accent-color-semantic-info-solid-4{--accent-color-light-lightness:var(--color-semantic-info-solid-4-light-lightness);--accent-color-dark-lightness:var(--color-semantic-info-solid-4-dark-lightness);--accent-color-light-chroma:var(--color-semantic-info-solid-4-light-chroma);--accent-color-dark-chroma:var(--color-semantic-info-solid-4-dark-chroma);--accent-color-light-hue:var(--color-semantic-info-solid-4-light-hue);--accent-color-dark-hue:var(--color-semantic-info-solid-4-dark-hue);--accent-color-light-alpha:var(--color-semantic-info-solid-4-light-alpha);--accent-color-dark-alpha:var(--color-semantic-info-solid-4-dark-alpha)}"`,
+					`".accent-color-semantic-info-solid-4{--accent-color-light-lightness:var(--color-semantic-info-solid-4-light-lightness);--accent-color-dark-lightness:var(--color-semantic-info-solid-4-dark-lightness);--accent-color-light-chroma:var(--color-semantic-info-solid-4-light-chroma);--accent-color-dark-chroma:var(--color-semantic-info-solid-4-dark-chroma);--accent-color-light-hue:var(--color-semantic-info-solid-4-light-hue);--accent-color-dark-hue:var(--color-semantic-info-solid-4-dark-hue);--accent-color-light-alpha:var(--color-semantic-info-solid-4-light-alpha);--accent-color-dark-alpha:var(--color-semantic-info-solid-4-dark-alpha);}"`,
 				);
 			});
 
@@ -376,7 +376,7 @@ if (import.meta.vitest) {
 					expect(tuple[0]).toBe("outline-color-grayscale-black-blend-12");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
 					expect(tuple[1].toString()).toMatchInlineSnapshot(
-						`".outline-color-grayscale-black-blend-12{--outline-color-light-lightness:var(--color-grayscale-black-blend-12-light-lightness);--outline-color-dark-lightness:var(--color-grayscale-black-blend-12-dark-lightness);--outline-color-light-chroma:var(--color-grayscale-black-blend-12-light-chroma);--outline-color-dark-chroma:var(--color-grayscale-black-blend-12-dark-chroma);--outline-color-light-hue:var(--color-grayscale-black-blend-12-light-hue);--outline-color-dark-hue:var(--color-grayscale-black-blend-12-dark-hue);--outline-color-light-alpha:var(--color-grayscale-black-blend-12-light-alpha);--outline-color-dark-alpha:var(--color-grayscale-black-blend-12-dark-alpha)}"`,
+						`".outline-color-grayscale-black-blend-12{--outline-color-light-lightness:var(--color-grayscale-black-blend-12-light-lightness);--outline-color-dark-lightness:var(--color-grayscale-black-blend-12-dark-lightness);--outline-color-light-chroma:var(--color-grayscale-black-blend-12-light-chroma);--outline-color-dark-chroma:var(--color-grayscale-black-blend-12-dark-chroma);--outline-color-light-hue:var(--color-grayscale-black-blend-12-light-hue);--outline-color-dark-hue:var(--color-grayscale-black-blend-12-dark-hue);--outline-color-light-alpha:var(--color-grayscale-black-blend-12-light-alpha);--outline-color-dark-alpha:var(--color-grayscale-black-blend-12-dark-alpha);}"`,
 					);
 				});
 				Color.on("create-class-ruleset").subscribe({

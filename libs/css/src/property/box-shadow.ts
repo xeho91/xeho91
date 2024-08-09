@@ -269,7 +269,7 @@ if (import.meta.vitest) {
 					}),
 				);
 				const stringified = box_shadow.toString();
-				const expected = "box-shadow:0px 0px 0px 0px transparent";
+				const expected = "box-shadow:0px 0px 0px 0px transparent;";
 				expect(stringified).toBe(expected);
 				expectTypeOf(stringified).toEqualTypeOf<typeof expected>();
 			});
@@ -299,7 +299,7 @@ if (import.meta.vitest) {
 				const box_shadow = new BoxShadow(layer1, layer2, layer3);
 				const stringified = box_shadow.toString();
 				const expected =
-					"box-shadow:0px 0px 0px 0px transparent , 2px 2px 0px 0px transparent , 3px 3px 0px 0px oklch(0% 0% 0deg / 100%)";
+					"box-shadow:0px 0px 0px 0px transparent , 2px 2px 0px 0px transparent , 3px 3px 0px 0px oklch(0% 0% 0deg / 100%);";
 				expect(stringified).toBe(expected);
 				expectTypeOf(stringified).toEqualTypeOf<typeof expected>();
 			});
@@ -312,7 +312,7 @@ if (import.meta.vitest) {
 				const { declaration } = box_shadow;
 				expect(declaration).toBeInstanceOf(Declaration);
 				expect(declaration.toString()).toMatchInlineSnapshot(
-					`"box-shadow:var(--box-shadow-1-x) var(--box-shadow-1-y) var(--box-shadow-1-blur) var(--box-shadow-1-spread) var(--box-shadow-1-color)"`,
+					`"box-shadow:var(--box-shadow-1-x) var(--box-shadow-1-y) var(--box-shadow-1-blur) var(--box-shadow-1-spread) var(--box-shadow-1-color);"`,
 				);
 			});
 
@@ -324,7 +324,7 @@ if (import.meta.vitest) {
 				const { declaration } = box_shadow;
 				expect(declaration).toBeInstanceOf(Declaration);
 				expect(declaration.toString()).toMatchInlineSnapshot(
-					`"box-shadow:var(--box-shadow-1-x) var(--box-shadow-1-y) var(--box-shadow-1-blur) var(--box-shadow-1-spread) var(--box-shadow-1-color) , var(--box-shadow-2-x) var(--box-shadow-2-y) var(--box-shadow-2-blur) var(--box-shadow-2-spread) var(--box-shadow-2-color) , var(--box-shadow-3-x) var(--box-shadow-3-y) var(--box-shadow-3-blur) var(--box-shadow-3-spread) var(--box-shadow-3-color)"`,
+					`"box-shadow:var(--box-shadow-1-x) var(--box-shadow-1-y) var(--box-shadow-1-blur) var(--box-shadow-1-spread) var(--box-shadow-1-color) , var(--box-shadow-2-x) var(--box-shadow-2-y) var(--box-shadow-2-blur) var(--box-shadow-2-spread) var(--box-shadow-2-color) , var(--box-shadow-3-x) var(--box-shadow-3-y) var(--box-shadow-3-blur) var(--box-shadow-3-spread) var(--box-shadow-3-color);"`,
 				);
 			});
 		});
