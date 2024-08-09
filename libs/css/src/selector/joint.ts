@@ -5,7 +5,7 @@ import { IterableInstance } from "@xeho91/lib-type/trait/iterable";
 import type { Selector } from "#selector";
 import type { SelectorBase } from "#selector/base";
 import { SelectorComplex } from "#selector/complex";
-import { SelectorsList } from "#selectors-list";
+import { SelectorsList } from "#selector/list";
 
 // TODO: Could possibly restrict it more, e.g. there can't be more than one ID selector?
 
@@ -38,6 +38,10 @@ export class SelectorsJoint<const TSelectors extends SelectorBase[] = SelectorBa
 
 	public to_list(): SelectorsList<[typeof this]> {
 		return new SelectorsList(this);
+	}
+
+	public add<Selector extends SelectorBase>(selector: Selector): void {
+		this.iterable.push(selector);
 	}
 }
 

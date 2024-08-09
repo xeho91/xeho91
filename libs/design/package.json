@@ -1,10 +1,10 @@
 {
 	"$schema": "https://json.schemastore.org/package",
 	"type": "module",
-	"name": "@xeho91/lib-css",
+	"name": "@xeho91/lib-design",
 	"version": "0.0.0",
-	"description": "CSS library and framework",
-	"keywords": ["css"],
+	"description": "@xeho91' design tokens.",
+	"keywords": ["design", "tokens"],
 	"license": "MIT",
 	"author": {
 		"name": "Mateusz Kadlubowski",
@@ -15,7 +15,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/xeho91/xeho91.git",
-		"directory": "libs/css"
+		"directory": "libs/design"
 	},
 	"bugs": "https://github.com/xeho91/xeho91/issues",
 	"engines": {
@@ -26,7 +26,6 @@
 		"#*": "./src/*.ts"
 	},
 	"exports": {
-		".": "./src/mod.ts",
 		"./*": "./src/*.ts"
 	},
 	"scripts": {
@@ -37,7 +36,7 @@
 		"dev:doc": "pnpm run \"/^dev:doc:.*/\" ",
 		"dev:doc:watch": "typedoc --watch",
 		"dev:doc:serve": "pnpm serve \"./docs\"",
-		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-css\" ",
+		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-design\" ",
 		"fix": "pnpm run \"/^fix:.*/\" ",
 		"fix:format": "biome format . --verbose --write",
 		"fix:js": "biome lint . --verbose --fix --unsafe",
@@ -49,17 +48,17 @@
 		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
 		"lint:ts": "tsc --noEmit",
 		"lint:typos": "typos --verbose",
-		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-css\" "
+		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-design\" "
 	},
 	"dependencies": {
-		"@types/css-tree": "2.3.8",
+		"@xeho91/lib-color": "workspace:*",
+		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",
 		"@xeho91/lib-snippet": "workspace:*",
 		"@xeho91/lib-struct": "workspace:*",
 		"@xeho91/lib-type": "workspace:*",
-		"css-tree": "2.3.1",
-		"csstype": "3.1.3",
-		"rxjs": "catalog:"
+		"rxjs": "catalog:",
+		"utopia-core": "1.3.0"
 	},
 	"peerDependencies": {
 		"@total-typescript/tsconfig": "catalog:",

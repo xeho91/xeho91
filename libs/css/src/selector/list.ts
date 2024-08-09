@@ -32,7 +32,7 @@ export class SelectorsList<const TList extends Item[] = Item[]>
 		let results = "";
 		for (const [index, selector] of list.entries()) {
 			results += selector.toString();
-			if (index < list.length) results += ",";
+			if (!this.is_index_last(index)) results += ",";
 		}
 		return results as Stringified<TList>;
 	}

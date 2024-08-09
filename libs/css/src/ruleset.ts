@@ -2,7 +2,7 @@ import type { Display, ToString } from "@xeho91/lib-type/trait/display";
 
 import type { Block } from "#block";
 import { RulesetsList } from "#rulesets-list";
-import type { SelectorsList } from "#selectors-list";
+import type { SelectorsList } from "#selector/list";
 
 export class Ruleset<const TSelectors extends SelectorsList = SelectorsList, const TBlock extends Block = Block>
 	implements Display
