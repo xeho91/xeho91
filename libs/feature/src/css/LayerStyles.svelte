@@ -1,27 +1,22 @@
 <script lang="ts">
-	import { AtLayer, type AtLayerName } from "@xeho91/lib-css/at-rule/layer";
-	import { RulesetsList } from "@xeho91/lib-css/rulesets-list";
+import { AtLayer, type AtLayerName } from "@xeho91/lib-css/at-rule/layer";
+import { Block } from "@xeho91/lib-css/block";
+import type { Ruleset } from "@xeho91/lib-css/ruleset";
 
-	import { state_css } from "./state.svelte";
+import { state_css } from "./state.svelte";
 
-	interface Props {
-		name: AtLayerName;
-	}
-	let {
-		//
-		name,
-	}: Props = $props();
+interface Props {
+	name: AtLayerName;
+}
 
-	const rulesets = $derived(new RulesetsList(...state_css[name]));
-	// TODO: Use AtLayer
+let { name }: Props = $props();
+
+const block = $derived(new Block<Ruleset[]>(...state_css[name]));
+const at_layer = $derived(new AtLayer({ name, block }));
 </script>
 
-{#if !rulesets.is_empty}
+{#if !block.is_empty}
 	<svelte:element this={"style"} id={`layer-${name}`}>
-		{`@layer ${name} {`}
-		{#each rulesets as ruleset}
-			{ruleset}
-		{/each}
-		{`}`}
+		{at_layer}
 	</svelte:element>
 {/if}

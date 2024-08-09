@@ -5,6 +5,7 @@ import type { Action } from "svelte/action";
 export function merge_classes(...args: (Parameters<typeof clsx>[0] | SelectorClass)[]): string {
 	let results = "";
 	for (const input of args) {
+		if (results) results += " ";
 		if (input instanceof SelectorClass) results += input.name;
 		else results += clsx(input);
 	}
