@@ -32,6 +32,17 @@ export const classes: Action<Element, ClassInput[]> = (node, ...classes) => {
 	}
 };
 
+if (import.meta.vitest) {
+	const { describe, it } = import.meta.vitest;
+
+	describe(merge_classes.name, () => {
+		it("accepts SelectorClass and stringifies them", ({ expect }) => {
+			const classes = merge_classes(new SelectorClass("round-xl"), new SelectorClass("flex"));
+			expect(classes).toBe("round-xl flex");
+		});
+	});
+}
+
 export interface WithClass {
 	class?: Parameters<typeof merge_classes>[0];
 }
