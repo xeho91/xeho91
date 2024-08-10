@@ -1,4 +1,14 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": ["@total-typescript/tsconfig/bundler/dom/app"]
+	"extends": ["@total-typescript/tsconfig/bundler/dom/app"],
+	"compilerOptions": {
+		"plugins": [
+			{
+				"name": "typescript-svelte-plugin",
+				"enabled": true,
+				"assumeIsSvelteProject": true
+			}
+		]
+	},
+	"include": ["src", "./*.config.js"]
 }

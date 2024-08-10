@@ -3,12 +3,22 @@
 import path from "node:path";
 
 import type { StorybookConfig } from "@storybook/svelte-vite";
+import { get_app_root_path_url } from "@xeho91/lib-monorepo/app";
 import { get_lib_root_path_url } from "@xeho91/lib-monorepo/lib";
 
 /** @see {@link https://storybook.js.org/docs/configure/typescript#configure-storybook-with-typescript} */
 const config = (async (): Promise<StorybookConfig> => {
-	// TODO: Add more libs
-	const [lib_brand_url] = await Promise.all([get_lib_root_path_url("brand")]);
+	const [{ default: UnoCSS }] = await Promise.all([import("unocss/vite")]);
+	const [
+		//
+		app_storybook_url,
+		lib_brand_url,
+		lib_ui_url,
+	] = await Promise.all([
+		get_app_root_path_url("storybook"),
+		get_lib_root_path_url("brand"),
+		get_lib_root_path_url("ui"),
+	]);
 
 	return {
 		addons: [
@@ -25,8 +35,18 @@ const config = (async (): Promise<StorybookConfig> => {
 			options: {},
 		},
 		stories: [
+			// Apps
+			{
+				directory: path.resolve(app_storybook_url.pathname, "stories"),
+				files: "**/*.stories.svelte",
+			},
+			// Libraries
 			{
 				directory: path.resolve(lib_brand_url.pathname, "src"),
+				files: "**/*.stories.svelte",
+			},
+			{
+				directory: path.resolve(lib_ui_url.pathname, "src"),
 				files: "**/*.stories.svelte",
 			},
 		],
@@ -40,7 +60,12 @@ const config = (async (): Promise<StorybookConfig> => {
 					...define,
 					"import.meta.vitest": "undefined",
 				},
-				plugins: [...(plugins ?? []), svelte()],
+				plugins: [
+					//
+					...(plugins ?? []),
+					UnoCSS(),
+					svelte(),
+				],
 			};
 		},
 	};
