@@ -1,16 +1,16 @@
 <script lang="ts">
-import { AtLayer } from "@xeho91/lib-css/at-rule/layer";
-import { Color } from "@xeho91/lib-design/color";
-import { Font } from "@xeho91/lib-design/font";
+	import { AtLayer } from "@xeho91/lib-css/at-rule/layer";
+	import { Color } from "@xeho91/lib-design/color";
+	import { Font } from "@xeho91/lib-design/font";
 
-import LayerStyles from "./LayerStyles.svelte";
+	import LayerStyles from "./LayerStyles.svelte";
 
-import { state_css } from "./state.svelte";
-import { classes } from "./util";
+	import { state_css } from "./state.svelte";
+	import { classes } from "./util";
 
-import "virtual:uno.css";
+	import "virtual:uno.css";
 
-const font_family = Font.family.default();
+	const font_family = Font.family.default();
 </script>
 
 <svelte:head>
@@ -35,11 +35,11 @@ const font_family = Font.family.default();
 <svelte:body
 	use:classes={[
 		Color.class("background"),
-		Color.get("brand", "secondary", "solid", 1).class("background"),
+		Color.get("secondary", "solid", 1).class("background"),
 		Color.class("text"),
-		Color.get("brand", "secondary", "solid", 11).class("text"),
+		Color.get("secondary", "solid", 11).class("text"),
 		font_family.class(),
-		font_family.weight().default().class(),
+		font_family.weight.default().class(),
 		Font.size.default().class(),
 	]}
 />
@@ -48,7 +48,7 @@ const font_family = Font.family.default();
 	/* TODO: Move it to unocss config, and see if we can put into layer reset */
 	@import "@unocss/reset/tailwind-compat.css" layer(reset);
 
-	@layer base {
+	@layer base.html {
 		:global(html[data-color-scheme="light"]) {
 			color-scheme: light;
 		}
@@ -58,7 +58,7 @@ const font_family = Font.family.default();
 	}
 
 	/* TODO: automate it */
-	@layer base {
+	@layer base.preflight {
 		:root {
 			--transition-fn: ease-in-out;
 			--transition-dur: 250ms;
@@ -162,7 +162,7 @@ const font_family = Font.family.default();
 		}
 	}
 
-	@layer base {
+	@layer base.body {
 		body {
 			transition-duration: var(--transition-dur);
 			transition-timing-function: var(--transition-fn);
