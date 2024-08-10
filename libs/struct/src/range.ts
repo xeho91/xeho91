@@ -174,10 +174,10 @@ if (import.meta.vitest) {
 			it("iterates correctly from min to max, based on default step", ({ expect }) => {
 				const range = new Range(0, 100);
 				let current_value = range.min;
-				const values = [];
+				const values: number[] = [];
 				for (const current_step of range) {
 					expect(current_step).toBe(current_value);
-					values.push(current_step);
+					values.push(current_step as number);
 					current_value += range.step;
 				}
 				expect(values.length).toBe(101);
@@ -186,7 +186,7 @@ if (import.meta.vitest) {
 			it("iterates correctly from min to max, based on manually set step", ({ expect }) => {
 				const range = new Range(0, 100, 5);
 				let current_value = range.min;
-				const values = [];
+				const values: number[] = [];
 				for (const current_step of range) {
 					expect(current_step).toBe(current_value);
 					values.push(current_step);

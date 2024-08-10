@@ -52,7 +52,7 @@
 		"lint:format": "biome format . --verbose",
 		"lint:js": "biome lint . --verbose",
 		"lint:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
-		"lint:ts": "tsc --noEmit",
+		"lint:svelte": "svelte-check",
 		"lint:typos": "typos --verbose",
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-brand\" "
 	},

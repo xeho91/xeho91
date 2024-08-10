@@ -48,7 +48,7 @@ const font_family = Font.family.default();
 	/* TODO: Move it to unocss config, and see if we can put into layer reset */
 	@import "@unocss/reset/tailwind-compat.css" layer(reset);
 
-	@layer base {
+	@layer base.html {
 		:global(html[data-color-scheme="light"]) {
 			color-scheme: light;
 		}
@@ -58,7 +58,7 @@ const font_family = Font.family.default();
 	}
 
 	/* TODO: automate it */
-	@layer base {
+	@layer base.preflight {
 		:root {
 			--transition-fn: ease-in-out;
 			--transition-dur: 250ms;
@@ -162,7 +162,7 @@ const font_family = Font.family.default();
 		}
 	}
 
-	@layer base {
+	@layer base.body {
 		body {
 			transition-duration: var(--transition-dur);
 			transition-timing-function: var(--transition-fn);

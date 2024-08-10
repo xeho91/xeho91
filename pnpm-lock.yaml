@@ -585,6 +585,52 @@ importers:
         specifier: 'catalog:'
         version: 5.5.4
 
+  libs/ui:
+    dependencies:
+      '@total-typescript/tsconfig':
+        specifier: 'catalog:'
+        version: 1.0.4
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.1.0
+      '@xeho91/lib-css':
+        specifier: workspace:*
+        version: link:../css
+      '@xeho91/lib-design':
+        specifier: workspace:*
+        version: link:../design
+      '@xeho91/lib-error':
+        specifier: workspace:*
+        version: link:../error
+      '@xeho91/lib-feature':
+        specifier: workspace:*
+        version: link:../feature
+      '@xeho91/lib-snippet':
+        specifier: workspace:*
+        version: link:../snippet
+      '@xeho91/lib-type':
+        specifier: workspace:*
+        version: link:../type
+      iconify-icon:
+        specifier: 2.1.0
+        version: 2.1.0
+      svelte:
+        specifier: 'catalog:'
+        version: 5.0.0-next.210
+      typescript:
+        specifier: 'catalog:'
+        version: 5.5.4
+      typescript-svelte-plugin:
+        specifier: 'catalog:'
+        version: 0.3.40(svelte@5.0.0-next.210)(typescript@5.5.4)
+    devDependencies:
+      '@storybook/addon-svelte-csf':
+        specifier: 'catalog:'
+        version: 5.0.0-next.1(@storybook/svelte@8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.210))(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.210)(vite@5.4.0(@types/node@22.1.0)))(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.210)(vite@5.4.0(@types/node@22.1.0))
+      '@xeho91/lib-storybook':
+        specifier: workspace:*
+        version: link:../storybook
+
 packages:
 
   '@ampproject/remapping@2.3.0':
@@ -3092,6 +3138,9 @@ packages:
   human-signals@5.0.0:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
+
+  iconify-icon@2.1.0:
+    resolution: {integrity: sha512-lto4XU3bwTQnb+D/CsJ4dWAo0aDe+uPMxEtxyOodw9l7R9QnJUUab3GCehlw2M8mDHdeUu/ufx8PvRQiJphhXg==}
 
   iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
@@ -8257,6 +8306,10 @@ snapshots:
   human-signals@2.1.0: {}
 
   human-signals@5.0.0: {}
+
+  iconify-icon@2.1.0:
+    dependencies:
+      '@iconify/types': 2.0.0
 
   iconv-lite@0.4.24:
     dependencies:
