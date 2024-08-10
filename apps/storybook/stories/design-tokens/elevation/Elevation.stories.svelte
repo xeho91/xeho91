@@ -1,0 +1,42 @@
+<script context="module" lang="ts">
+import { defineMeta } from "@storybook/addon-svelte-csf";
+import { Elevation } from "@xeho91/lib-design/elevation";
+import { PARAMETERS, create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
+import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
+
+import Sample from "./Sample.svelte";
+
+export const { Story, meta } = defineMeta({
+	title: "Design tokens/Elevation",
+	component: Sample,
+	tags: ["autodocs"],
+	args: {},
+	argTypes: {
+		level: create_control_from_iterable(Elevation, {
+			summary: "ElevationLevel",
+		}),
+	},
+	parameters: {
+		actions: { disable: false },
+		layout: "centered",
+	},
+});
+</script>
+
+
+<Story name="Playground" parameters={PARAMETERS.playground}>
+	{#snippet children(args)}
+		<Sample {...args} />
+	{/snippet}
+</Story>
+
+<Story
+	name="Levels"
+	parameters={PARAMETERS.variants}
+>
+	<VariantsGroup prop="level" values={Elevation}>
+		{#snippet children({ level })}
+			<Sample {level} />
+		{/snippet}
+	</VariantsGroup>
+</Story>
