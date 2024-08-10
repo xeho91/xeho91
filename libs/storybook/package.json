@@ -26,15 +26,17 @@
 		"dev:doc:serve": "pnpm serve \"./docs\"",
 		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-storybook\" ",
 		"fix": "pnpm run \"/^fix:.*/\" ",
+		"fix:biome": "biome check . --verbose --write",
 		"fix:format": "biome format . --verbose --write",
 		"fix:js": "biome lint . --verbose --fix --unsafe",
 		"fix:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" --fix",
 		"fix:typos": "typos --verbose --write-changes",
 		"lint": "pnpm run \"/^lint:.*/\" ",
+		"lint:biome": "biome check . --verbose",
 		"lint:format": "biome format . --verbose",
 		"lint:js": "biome lint . --verbose",
 		"lint:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
-		"lint:ts": "tsc --noEmit",
+		"lint:svelte": "svelte-check",
 		"lint:typos": "typos --verbose",
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-storybook\" "
 	},
@@ -50,13 +52,12 @@
 		"@xeho91/lib-type": "workspace:*",
 		"mime": "4.0.4"
 	},
-	"devDependencies": {
-		"svelte": "catalog:",
-		"typescript-svelte-plugin": "catalog:"
-	},
 	"peerDependencies": {
 		"@total-typescript/tsconfig": "catalog:",
 		"@types/node": "catalog:",
-		"typescript": "catalog:"
+		"svelte": "catalog:",
+		"svelte-check": "catalog:",
+		"typescript": "catalog:",
+		"typescript-svelte-plugin": "catalog:"
 	}
 }

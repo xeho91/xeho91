@@ -1,0 +1,47 @@
+name: svelte-check
+
+on:
+    workflow_call:
+    workflow_dispatch:
+
+defaults:
+    run:
+        shell: bash
+
+env:
+    CI: true
+
+permissions:
+    contents: read
+    pull-requests: write
+
+jobs:
+    svelte-check:
+        name: svelte-check
+        runs-on: macos-latest
+        timeout-minutes: 2
+        steps:
+            # https://github.com/actions/checkout
+            - uses: actions/checkout@v4
+
+            # https://nodejs.org/api/corepack.html
+            - name: Enable corepack (for pnpm)
+              run: corepack enable
+
+            # https://github.com/actions/setup-node
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  cache: pnpm
+                  node-version-file: ".nvmrc"
+
+            # https://pnpm.io/cli/install
+            - name: Install Node.js dependencies with pnpm
+              run: >
+                  pnpm install
+                  --frozen-lockfile
+
+            # https://github.com/sveltejs/language-tools/tree/master/packages/svelte-check
+            - name: Run svelte-check on packages
+              run: >
+                  pnpm --recursive lint:svelte

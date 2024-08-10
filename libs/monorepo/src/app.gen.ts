@@ -9,5 +9,4 @@
 export const WORKSPACE_APPS = [
 	// biome ignore-format: Easier to read, even if the list is short
 	"storybook",
-	"website",
 ] as const;
