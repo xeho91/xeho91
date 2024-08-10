@@ -24,7 +24,15 @@ interface Props extends WithClass {
 
 type TextProps = Omit<ComponentProps<Text<"code", "mono", FontWeightMonoKey>>, "tag" | "class" | "family">;
 
-const { children, class: class_, size = "m", weight = "regular", ...text_props }: Props & TextProps = $props();
+const {
+	//
+	children,
+	class: class_,
+	color,
+	size = "m",
+	weight = "regular",
+	...text_props
+}: Props & TextProps = $props();
 </script>
 
 <Text
@@ -36,7 +44,7 @@ const { children, class: class_, size = "m", weight = "regular", ...text_props }
 		Space.get("3xs").class("padding-inline"),
 		Radius.get("s").class(),
 		Color.class("background"),
-		Color.get("primary", "blend", 3).class("background"),
+		Color.get(color ?? "secondary", "blend", 3).class("background"),
 		class_,
 	)}
 	family="mono"
@@ -51,12 +59,7 @@ const { children, class: class_, size = "m", weight = "regular", ...text_props }
 	:global(.code) {
 		transition-duration: var(--transition-dur);
 		transition-timing-function: var(--transition-fn);
-		/* prettier-ignore */
-		transition-property:
-			--background-color-lightness,
-			--background-color-chroma,
-			--background-color-hue,
-			--background-color-alpha;
+		transition-property: background-color;
 	}
 }
 </style>

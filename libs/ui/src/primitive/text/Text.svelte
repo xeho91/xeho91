@@ -128,10 +128,7 @@ const _selection_color = $derived.by(() => {
 			transition:
 				font-size ease-in-out 250ms,
 				font-weight ease-in-out 250ms,
-				--text-color-lightness ease-in-out 250ms,
-				--text-color-chroma ease-in-out 250ms,
-				--text-color-hue ease-in-out 250ms,
-				--text-color-alpha ease-in-out 250ms;
+				color ease-in-out 250ms;
 
 			& :global(.icon) {
 				margin-block-start: 0.25rex;
