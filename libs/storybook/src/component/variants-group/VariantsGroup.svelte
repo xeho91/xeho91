@@ -37,9 +37,9 @@ const {
 		"w-full min-h-[fit-content]",
 		Stroke.get("s").class(),
 		Color.class("background"),
-		Color.get("grayscale", "gray", "solid", 2).class("background"),
+		Color.get("gray", "solid", 2).class("background"),
 		Color.class("border"),
-		Color.get("grayscale", "gray", "solid", 6).class("border"),
+		Color.get("gray", "solid", 6).class("border"),
 		class_,
 	)}
 >
@@ -52,11 +52,11 @@ const {
 				Space.get("s").class("padding-inline"),
 				Space.get("3xs").class("padding-block"),
 				Color.class("background"),
-				Color.get("brand", "primary", "solid", 3).class("background"),
+				Color.get("primary", "solid", 3).class("background"),
 				"border-solid",
 				Stroke.get("xs").class("bottom"),
 				Color.class("border-bottom"),
-				Color.get("grayscale", "gray", "solid", 6).class("border-bottom"),
+				Color.get("gray", "solid", 6).class("border-bottom"),
 			)}
 		>
 			{@render header()}
@@ -81,7 +81,7 @@ const {
 					Stroke.get("xs").class("block-start"),
 					"border-y-0",
 					Color.class("border-block-start"),
-					Color.get("grayscale", "gray", "blend", 6).class("border-block-start"),
+					Color.get("gray", "blend", 6).class("border-block-start"),
 				)}
 			>
 				<Variant {prop} {value}>

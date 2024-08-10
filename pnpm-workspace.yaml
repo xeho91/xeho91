@@ -12,6 +12,7 @@ catalog:
     "@types/node": "22.1.0"
     "rxjs": "7.8.1"
     "svelte": "5.0.0-next.210"
+    "svelte-check": "3.8.5"
     "typescript": "5.5.4"
     "typescript-svelte-plugin": "0.3.40"
     "unocss": "0.61.9"

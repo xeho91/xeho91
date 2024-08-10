@@ -35,11 +35,11 @@ const font_family = Font.family.default();
 <svelte:body
 	use:classes={[
 		Color.class("background"),
-		Color.get("brand", "secondary", "solid", 1).class("background"),
+		Color.get("secondary", "solid", 1).class("background"),
 		Color.class("text"),
-		Color.get("brand", "secondary", "solid", 11).class("text"),
+		Color.get("secondary", "solid", 11).class("text"),
 		font_family.class(),
-		font_family.weight().default().class(),
+		font_family.weight.default().class(),
 		Font.size.default().class(),
 	]}
 />
