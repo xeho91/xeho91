@@ -43,7 +43,7 @@ jobs:
 
     lint_svelte:
         name: Lint
-        uses: ./.github/workflows/svelte.yml
+        uses: ./.github/workflows/svelte-check.yml
 
     lint_typos:
         name: Lint
