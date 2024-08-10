@@ -137,6 +137,10 @@ function set_summary<TItem extends JoinableItem>(
 }
 
 export const PARAMETERS = readonly_object({
+	default: {
+		controls: { disable: true },
+		layout: "centered",
+	},
 	playground: {
 		controls: { disable: false },
 		layout: "centered",
