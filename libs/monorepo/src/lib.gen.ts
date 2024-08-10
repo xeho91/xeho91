@@ -23,4 +23,5 @@ export const WORKSPACE_LIBS = [
 	"storybook",
 	"struct",
 	"type",
+	"ui",
 ] as const;
