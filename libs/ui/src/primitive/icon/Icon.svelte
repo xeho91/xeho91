@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { ColorName } from "@xeho91/lib-design/color";
-import { merge_classes, type WithClass } from "@xeho91/lib-feature/css";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 
 import "iconify-icon";
 
-import { type IconName, ICONS_MAP } from "./util";
+import { ICONS_MAP, type IconName } from "./util";
 
-import { set_skeleton_color, Skeleton } from "#primitive/skeleton/mod";
+import { Skeleton, set_skeleton_color } from "#primitive/skeleton/mod";
 
 interface Props extends WithClass {
 	color?: ColorName;

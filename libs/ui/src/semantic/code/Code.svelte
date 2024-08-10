@@ -4,7 +4,7 @@ import type { FontSizeKey } from "@xeho91/lib-design/font/size";
 import type { FontWeightMonoKey } from "@xeho91/lib-design/font/weight";
 import { Radius } from "@xeho91/lib-design/radius";
 import { Space } from "@xeho91/lib-design/space";
-import { merge_classes, type WithClass } from "@xeho91/lib-feature/css";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import type { ComponentProps } from "svelte";
 
 import type { CodeWeight } from "./util";

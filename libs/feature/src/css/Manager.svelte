@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { AtLayer } from "@xeho91/lib-css/at-rule/layer";
-	import { Color } from "@xeho91/lib-design/color";
-	import { Font } from "@xeho91/lib-design/font";
+import { AtLayer } from "@xeho91/lib-css/at-rule/layer";
+import { Color } from "@xeho91/lib-design/color";
+import { Font } from "@xeho91/lib-design/font";
 
-	import LayerStyles from "./LayerStyles.svelte";
+import LayerStyles from "./LayerStyles.svelte";
 
-	import { state_css } from "./state.svelte";
-	import { classes } from "./util";
+import { state_css } from "./state.svelte";
+import { classes } from "./util";
 
-	import "virtual:uno.css";
+import "virtual:uno.css";
 
-	const font_family = Font.family.default();
+const font_family = Font.family.default();
 </script>
 
 <svelte:head>

@@ -1,11 +1,11 @@
 <script context="module" lang="ts">
 import { defineMeta } from "@storybook/addon-svelte-csf";
 import { Space } from "@xeho91/lib-design/space";
-import { create_control_from_iterable, PARAMETERS } from "@xeho91/lib-storybook/arg-type";
+import { PARAMETERS, create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
 import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
 
-import Stack from "./Stack.svelte";
 import Sample from "./Sample.svelte";
+import Stack from "./Stack.svelte";
 
 import { STACK_DIRECTIONS, STACK_HTML_TAGS } from "./util";
 

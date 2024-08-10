@@ -1,7 +1,7 @@
 <script lang="ts" generics="TColor extends SkeletonColor = 'gray'">
 import { Color } from "@xeho91/lib-design/color";
 import { Radius } from "@xeho91/lib-design/radius";
-import { merge_classes, type WithClass } from "@xeho91/lib-feature/css";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 
 import type { SkeletonColor, SkeletonVariant } from "./util";
 

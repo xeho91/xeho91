@@ -2,7 +2,7 @@
 import { defineMeta } from "@storybook/addon-svelte-csf";
 import { Elevation } from "@xeho91/lib-design/elevation";
 import { Font } from "@xeho91/lib-design/font";
-import { create_control_from_iterable, PARAMETERS } from "@xeho91/lib-storybook/arg-type";
+import { PARAMETERS, create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
 import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
 
 import Text from "./Text.svelte";
