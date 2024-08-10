@@ -31,7 +31,7 @@
 		"lint:format": "biome format . --verbose",
 		"lint:js": "biome lint . --verbose",
 		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
-		"lint:ts": "tsc --noEmit",
+		"lint:svelte": "svelte-check",
 		"lint:typos": "typos --verbose",
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/app-storybook\" "
 	},
@@ -39,25 +39,26 @@
 		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-design": "workspace:*",
 		"@xeho91/lib-feature": "workspace:*",
-		"@xeho91/lib-storybook": "workspace:*",
 		"@xeho91/lib-ui": "workspace:*"
 	},
 	"devDependencies": {
-		"@storybook/addon-essentials": "8.2.4",
+		"@storybook/addon-essentials": "8.2.8",
 		"@storybook/addon-svelte-csf": "catalog:",
-		"@storybook/addon-themes": "8.2.4",
-		"@storybook/docs-tools": "8.2.4",
-		"@storybook/node-logger": "8.2.4",
-		"@storybook/svelte": "8.2.4",
-		"@storybook/svelte-vite": "8.2.4",
+		"@storybook/addon-themes": "8.2.8",
+		"@storybook/docs-tools": "8.2.8",
+		"@storybook/node-logger": "8.2.8",
+		"@storybook/svelte": "8.2.8",
+		"@storybook/svelte-vite": "8.2.8",
 		"@sveltejs/vite-plugin-svelte": "catalog:",
 		"@total-typescript/tsconfig": "catalog:",
 		"@types/node": "catalog:",
 		"@xeho91/lib-config": "workspace:*",
-		"storybook": "8.2.4",
+		"@xeho91/lib-storybook": "workspace:*",
+		"storybook": "8.2.8",
 		"svelte": "catalog:",
+		"svelte-check": "catalog:",
 		"typescript": "catalog:",
 		"typescript-svelte-plugin": "catalog:",
-		"unocss": "0.61.9"
+		"unocss": "catalog:"
 	}
 }

@@ -9,7 +9,7 @@ catalog:
     "@storybook/addon-svelte-csf": "5.0.0-next.1"
     "@sveltejs/vite-plugin-svelte": "4.0.0-next.6"
     "@total-typescript/tsconfig": "1.0.4"
-    "@types/node": "22.1.0"
+    "@types/node": "22.2.0"
     "rxjs": "7.8.1"
     "svelte": "5.0.0-next.210"
     "svelte-check": "3.8.5"
