@@ -3,7 +3,6 @@ import {
 	type ColorCategoryFromName,
 	Color as ColorInstance,
 	type ColorName,
-	type ColorNameFromCategory,
 	type ColorScheme,
 	type ColorStep,
 	type ColorType,
@@ -33,7 +32,6 @@ export type {
 	ColorCategory,
 	ColorCategoryFromName,
 	ColorName,
-	ColorNameFromCategory,
 	ColorStep,
 	ColorScheme,
 	ColorType,
@@ -41,14 +39,14 @@ export type {
 
 type Variant<
 	TCategory extends ColorCategory = ColorCategory,
-	TName extends ColorNameFromCategory<TCategory> = ColorNameFromCategory<TCategory>,
+	TName extends ColorName = ColorName,
 	TType extends ColorType = ColorType,
 	TStep extends ColorStep = ColorStep,
-> = `${TCategory}-${TName extends ColorName ? TName : never}-${TType}-${TStep}`;
+> = `${TCategory}-${TName}-${TType}-${TStep}`;
 
 export class Color<
 	TCategory extends ColorCategory = ColorCategory,
-	TName extends ColorNameFromCategory<TCategory> = ColorNameFromCategory<TCategory>,
+	TName extends ColorName = ColorName,
 	TType extends ColorType = ColorType,
 	TStep extends ColorStep = ColorStep,
 > extends DesignToken<
@@ -87,7 +85,7 @@ export class Color<
 
 	static #create_variant = <
 		TCategory extends ColorCategory,
-		TName extends ColorNameFromCategory<TCategory>,
+		TName extends ColorName,
 		TType extends ColorType,
 		TStep extends ColorStep,
 	>(
@@ -95,23 +93,17 @@ export class Color<
 		name: TName,
 		type: TType,
 		step: TStep,
-	): Variant<TCategory, TName, TType, TStep> =>
-		`${category}-${name as TName extends ColorName ? TName : never}-${type}-${step}`;
+	): Variant<TCategory, TName, TType, TStep> => `${category}-${name}-${type}-${step}`;
 
-	public static get = <
-		TCategory extends ColorCategory,
-		TName extends ColorNameFromCategory<TCategory>,
-		TType extends ColorType = "solid",
-		TStep extends ColorStep = 8,
-	>(
-		category: TCategory,
+	public static get = <TName extends ColorName, TType extends ColorType = "solid", TStep extends ColorStep = 8>(
 		name: TName,
 		type = "solid" as TType,
 		step = 8 as TStep,
-	): Color<TCategory, TName, TType, TStep> => {
+	): Color<ColorCategoryFromName<TName>, TName, TType, TStep> => {
+		const category = Color.get_category_from_name(name);
 		const variant = this.#create_variant(category, name, type, step);
 		const cached = DesignToken.CONSTRUCTED.get(`${Color.NAME}-${variant}`);
-		if (cached) return cached as Color<TCategory, TName, TType, TStep>;
+		if (cached) return cached as Color<ColorCategoryFromName<TName>, TName, TType, TStep>;
 		return new Color({ category, name, type, step });
 	};
 
@@ -271,7 +263,7 @@ if (import.meta.vitest) {
 				Color.on("construct").subscribe({
 					next: observer,
 				});
-				Color.get("semantic", "error");
+				Color.get("error");
 				expect(observer).toHaveBeenCalled();
 			});
 		});
@@ -296,7 +288,7 @@ if (import.meta.vitest) {
 
 		describe("create_global_ruleset()", () => {
 			it("returns a ruleset", ({ expect }) => {
-				const color = Color.get("brand", "accent");
+				const color = Color.get("accent");
 				const global = color.create_global_ruleset();
 				const stringified = global.toString();
 				expect(stringified).toMatchInlineSnapshot(
@@ -315,7 +307,7 @@ if (import.meta.vitest) {
 				Color.on("create-global-ruleset").subscribe({
 					next: observer,
 				});
-				const color = Color.get("grayscale", "gray");
+				const color = Color.get("gray");
 				color.create_global_ruleset();
 				expect(observer).toHaveBeenCalled();
 			});
@@ -323,7 +315,7 @@ if (import.meta.vitest) {
 
 		describe("class(target, options?)", () => {
 			it("returns correctly when first argument target provided", ({ expect }) => {
-				const color = Color.get("semantic", "success", "blend", 1);
+				const color = Color.get("success", "blend", 1);
 				const class_name = color.class("border-block");
 				const expected_name = "border-block-color-semantic-success-blend-1";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -332,7 +324,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided pseudo class", ({ expect }) => {
-				const color = Color.get("semantic", "warning");
+				const color = Color.get("warning");
 				const class_name = color.class("caret", { pseudo_class: "hover" });
 				const expected_name = "caret-color-semantic-warning-solid-8-hover";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -341,7 +333,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided pseudo element", ({ expect }) => {
-				const color = Color.get("brand", "primary", "blend", 2);
+				const color = Color.get("primary", "blend", 2);
 				const class_name = color.class("border-right", { pseudo_element: "after" });
 				const expected_name = "border-right-color-brand-primary-blend-2-after";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -350,7 +342,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided both pseudos", ({ expect }) => {
-				const color = Color.get("brand", "secondary", "solid", 6);
+				const color = Color.get("secondary", "solid", 6);
 				const class_name = color.class("text-decoration", {
 					pseudo_class: "checked",
 					pseudo_element: "before",
@@ -362,7 +354,7 @@ if (import.meta.vitest) {
 			});
 
 			it("created rulesets in Color.RULESETS", ({ expect }) => {
-				const color = Color.get("semantic", "info", "solid", 4);
+				const color = Color.get("info", "solid", 4);
 				const class_name = color.class("accent");
 				const ruleset = Color.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
@@ -382,7 +374,7 @@ if (import.meta.vitest) {
 				Color.on("create-class-ruleset").subscribe({
 					next: observer,
 				});
-				const color = Color.get("grayscale", "black", "blend", 12);
+				const color = Color.get("black", "blend", 12);
 				color.class("outline");
 				expect(observer).toHaveBeenCalled();
 			});

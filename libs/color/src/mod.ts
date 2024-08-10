@@ -34,8 +34,6 @@ const VARIABLE = readonly_object({
 	},
 });
 
-export type ColorNameFromCategory<TCategory extends ColorCategory> = keyof (typeof VARIABLE)[TCategory];
-
 export type ColorBrandName = IterableElement<typeof ColorBrand.NAMES>;
 
 // biome-ignore lint/complexity/noStaticOnlyClass: FIXME: What's the alternative?
@@ -250,14 +248,14 @@ type ImportedColor<
 	TScheme extends ColorScheme,
 > = VariableIdentifier<TName, TType, TStep, TScheme> extends keyof IdentifiersByCategory<TCategory, TName>
 	? IdentifiersByCategory<TCategory, TName>[VariableIdentifier<TName, TType, TStep, TScheme>] extends AtomicColor
-	? IdentifiersByCategory<TCategory, TName>[VariableIdentifier<TName, TType, TStep, TScheme>]
-	: never
+		? IdentifiersByCategory<TCategory, TName>[VariableIdentifier<TName, TType, TStep, TScheme>]
+		: never
 	: never;
 
 export type ColorCategoryFromName<TName extends ColorName> = TName extends "primary" | "secondary" | "accent"
 	? "brand"
 	: TName extends "error" | "info" | "success" | "warning"
-	? "semantic"
-	: TName extends "black" | "gray" | "white"
-	? "grayscale"
-	: never;
+		? "semantic"
+		: TName extends "black" | "gray" | "white"
+			? "grayscale"
+			: never;
