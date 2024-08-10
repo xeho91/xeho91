@@ -4,10 +4,7 @@
 	"name": "@xeho91/lib-ui",
 	"version": "0.0.0",
 	"description": "Reusable UI element components",
-	"keywords": [
-		"ui",
-		"components"
-	],
+	"keywords": ["ui", "components"],
 	"license": "MIT",
 	"author": {
 		"name": "Mateusz Kadlubowski",
@@ -24,9 +21,7 @@
 	"engines": {
 		"node": ">=20"
 	},
-	"files": [
-		"/src"
-	],
+	"files": ["/src"],
 	"imports": {
 		"#*": "./src/*.ts"
 	},
