@@ -12,7 +12,7 @@
 		"#*": "./src/*.ts"
 	},
 	"exports": {
-		"./s*": "./src/*.js"
+		"./*": "./src/*.js"
 	},
 	"scripts": {
 		"clean": "pnpm run \"/^clean:.*/\" ",
