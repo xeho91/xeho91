@@ -1,0 +1,74 @@
+{
+	"$schema": "https://json.schemastore.org/package",
+	"type": "module",
+	"name": "@xeho91/lib-ui",
+	"version": "0.0.0",
+	"description": "Reusable UI element components",
+	"keywords": ["ui", "components"],
+	"license": "MIT",
+	"author": {
+		"name": "Mateusz Kadlubowski",
+		"email": "xeho91@pm.me",
+		"url": "https://github.com/xeho91"
+	},
+	"homepage": "https://github.com/xeho91/xeho91",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xeho91/xeho91.git",
+		"directory": "libs/ui"
+	},
+	"bugs": "https://github.com/xeho91/xeho91/issues",
+	"engines": {
+		"node": ">=20"
+	},
+	"files": ["/src"],
+	"imports": {
+		"#*": "./src/*.ts"
+	},
+	"exports": {
+		"./primitive/*": "./src/primitive/*/mod.ts",
+		"./semantic/*": "./src/semantic/*/mod.ts"
+	},
+	"scripts": {
+		"clean": "pnpm run \"/^clean:.*/\" ",
+		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
+		"clean:test": "del \"./coverage\" ",
+		"dev": "pnpm run \"/^dev:.*/\" ",
+		"dev:doc": "pnpm run \"/^dev:doc:.*/\" ",
+		"dev:doc:watch": "typedoc --watch",
+		"dev:doc:serve": "pnpm serve \"./docs\"",
+		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-ui\" ",
+		"fix": "pnpm run \"/^fix:.*/\" ",
+		"fix:format": "biome format . --verbose --write",
+		"fix:js": "biome lint . --verbose --fix --unsafe",
+		"fix:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" --fix",
+		"fix:typos": "typos --verbose --write-changes",
+		"lint": "pnpm run \"/^lint:.*/\" ",
+		"lint:format": "biome format . --verbose",
+		"lint:js": "biome lint . --verbose",
+		"lint:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
+		"lint:ts": "tsc --noEmit",
+		"lint:typos": "typos --verbose",
+		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-ui\" "
+	},
+	"dependencies": {
+		"@xeho91/lib-css": "workspace:*",
+		"@xeho91/lib-design": "workspace:*",
+		"@xeho91/lib-error": "workspace:*",
+		"@xeho91/lib-feature": "workspace:*",
+		"@xeho91/lib-snippet": "workspace:*",
+		"@xeho91/lib-storybook": "workspace:*",
+		"@xeho91/lib-type": "workspace:*",
+		"iconify-icon": "2.1.0"
+	},
+	"devDependencies": {
+		"@storybook/addon-svelte-csf": "catalog:"
+	},
+	"peerDependencies": {
+		"@total-typescript/tsconfig": "catalog:",
+		"@types/node": "catalog:",
+		"svelte": "catalog:",
+		"typescript": "catalog:",
+		"typescript-svelte-plugin": "catalog:"
+	}
+}
