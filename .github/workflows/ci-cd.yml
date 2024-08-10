@@ -45,6 +45,10 @@ jobs:
         name: Lint
         uses: ./.github/workflows/svelte-check.yml
 
+    lint_tsc:
+        name: Lint
+        uses: ./.github/workflows/tsc.yml
+
     lint_typos:
         name: Lint
         uses: ./.github/workflows/typos.yml
@@ -67,8 +71,9 @@ jobs:
             [
                 lint_biome,
                 lint_markdownlint,
-                lint_typos,
                 lint_svelte,
+                lint_tsc,
+                lint_typos,
                 publish_typedoc,
                 test_vitest,
             ]
