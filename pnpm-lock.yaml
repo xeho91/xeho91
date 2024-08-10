@@ -608,9 +608,6 @@ importers:
       '@xeho91/lib-snippet':
         specifier: workspace:*
         version: link:../snippet
-      '@xeho91/lib-storybook':
-        specifier: workspace:*
-        version: link:../storybook
       '@xeho91/lib-type':
         specifier: workspace:*
         version: link:../type
@@ -630,6 +627,9 @@ importers:
       '@storybook/addon-svelte-csf':
         specifier: 'catalog:'
         version: 5.0.0-next.1(@storybook/svelte@8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.210))(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.210)(vite@5.4.0(@types/node@22.1.0)))(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.210)(vite@5.4.0(@types/node@22.1.0))
+      '@xeho91/lib-storybook':
+        specifier: workspace:*
+        version: link:../storybook
 
 packages:
 
