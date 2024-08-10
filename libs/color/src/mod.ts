@@ -161,7 +161,7 @@ export class Color {
 			TScheme
 		>;
 
-	static get_identifiers<TCategory extends ColorCategory, TName extends ColorName>(
+	static #get_identifiers<TCategory extends ColorCategory, TName extends ColorName>(
 		category: TCategory,
 		name: TName,
 	): IdentifiersByCategory<TCategory, TName> {
@@ -171,7 +171,7 @@ export class Color {
 
 	public static get = <
 		TCategory extends ColorCategory,
-		TName extends ColorNameFromCategory<TCategory>,
+		TName extends ColorName,
 		TType extends ColorType = "blend",
 		TStep extends ColorStep = 8,
 	>(
@@ -187,7 +187,7 @@ export class Color {
 		ImportedColor<TCategory, TName extends ColorName ? TName : never, TType, TStep, "light">,
 		ImportedColor<TCategory, TName extends ColorName ? TName : never, TType, TStep, "dark">
 	> => {
-		const by_category_and_name = Color.get_identifiers(category, name as ColorName);
+		const by_category_and_name = Color.#get_identifiers(category, name as ColorName);
 		const light = by_category_and_name[
 			Color.#variable_identifier(name as ColorName, type, step, "light") as keyof typeof by_category_and_name
 		] as AtomicColor;
@@ -250,14 +250,14 @@ type ImportedColor<
 	TScheme extends ColorScheme,
 > = VariableIdentifier<TName, TType, TStep, TScheme> extends keyof IdentifiersByCategory<TCategory, TName>
 	? IdentifiersByCategory<TCategory, TName>[VariableIdentifier<TName, TType, TStep, TScheme>] extends AtomicColor
-		? IdentifiersByCategory<TCategory, TName>[VariableIdentifier<TName, TType, TStep, TScheme>]
-		: never
+	? IdentifiersByCategory<TCategory, TName>[VariableIdentifier<TName, TType, TStep, TScheme>]
+	: never
 	: never;
 
 export type ColorCategoryFromName<TName extends ColorName> = TName extends "primary" | "secondary" | "accent"
 	? "brand"
 	: TName extends "error" | "info" | "success" | "warning"
-		? "semantic"
-		: TName extends "black" | "gray" | "white"
-			? "grayscale"
-			: never;
+	? "semantic"
+	: TName extends "black" | "gray" | "white"
+	? "grayscale"
+	: never;
