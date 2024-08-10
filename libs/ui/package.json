@@ -57,12 +57,12 @@
 		"@xeho91/lib-error": "workspace:*",
 		"@xeho91/lib-feature": "workspace:*",
 		"@xeho91/lib-snippet": "workspace:*",
-		"@xeho91/lib-storybook": "workspace:*",
 		"@xeho91/lib-type": "workspace:*",
 		"iconify-icon": "2.1.0"
 	},
 	"devDependencies": {
-		"@storybook/addon-svelte-csf": "catalog:"
+		"@storybook/addon-svelte-csf": "catalog:",
+		"@xeho91/lib-storybook": "workspace:*"
 	},
 	"peerDependencies": {
 		"@total-typescript/tsconfig": "catalog:",
