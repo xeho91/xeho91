@@ -4,7 +4,10 @@
 	"name": "@xeho91/lib-ui",
 	"version": "0.0.0",
 	"description": "Reusable UI element components",
-	"keywords": ["ui", "components"],
+	"keywords": [
+		"ui",
+		"components"
+	],
 	"license": "MIT",
 	"author": {
 		"name": "Mateusz Kadlubowski",
@@ -21,7 +24,9 @@
 	"engines": {
 		"node": ">=20"
 	},
-	"files": ["/src"],
+	"files": [
+		"/src"
+	],
 	"imports": {
 		"#*": "./src/*.ts"
 	},
@@ -47,7 +52,7 @@
 		"lint:format": "biome format . --verbose",
 		"lint:js": "biome lint . --verbose",
 		"lint:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
-		"lint:ts": "tsc --noEmit",
+		"lint:svelte": "svelte-check",
 		"lint:typos": "typos --verbose",
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-ui\" "
 	},
