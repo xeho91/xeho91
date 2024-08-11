@@ -55,7 +55,7 @@ const {
 </Text>
 
 <style>
-@layer component.code {
+@layer component {
 	:global(.code) {
 		transition-duration: var(--transition-dur);
 		transition-timing-function: var(--transition-fn);

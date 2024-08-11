@@ -36,7 +36,9 @@ let { class: class_, color, name, loading, ...rest_props }: Props = $props();
 {/if}
 
 <style>
-	.icon {
-		margin-block-end: -0.25ex;
+	@layer component {
+		.icon {
+			margin-block-end: -0.25ex;
+		}
 	}
 </style>
