@@ -28,15 +28,15 @@ interface Props extends Omit<HTMLAttributes<HTMLElementTagNameMap[TextHTMLTag]>,
 	 */
 	mode?: ColorType | undefined;
 	/**
-	 * Font's **family** from [design tokens](https://shan-shan.gitbook.io/handbook/design/brandbook/broom#typography)
+	 * TODO: Add desc
 	 */
 	family?: TFamily | undefined;
 	/**
-	 * Font's **size** from [design tokens](https://shan-shan.gitbook.io/handbook/design/brandbook/broom#typography)
+	 * TODO: Add desc
 	 */
 	size?: FontSizeKey | undefined;
 	/**
-	 * Font's **weight** from [design tokens](https://shan-shan.gitbook.io/handbook/design/brandbook/broom#typography)
+	 * TODO: Add desc
 	 */
 	weight?: TWeight | undefined;
 	/**
@@ -123,7 +123,7 @@ const _selection_color = $derived.by(() => {
 </svelte:element>
 
 <style>
-	@layer component.text {
+	@layer component {
 		.text {
 			transition:
 				font-size ease-in-out 250ms,
