@@ -123,7 +123,7 @@ const _selection_color = $derived.by(() => {
 </svelte:element>
 
 <style>
-	@layer component.text {
+	@layer component {
 		.text {
 			transition:
 				font-size ease-in-out 250ms,

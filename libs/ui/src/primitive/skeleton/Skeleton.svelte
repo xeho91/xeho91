@@ -57,7 +57,7 @@ const {
 {/each}
 
 <style>
-	@layer component.skeleton {
+	@layer component {
 		.skeleton {
 			animation: progress 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 
