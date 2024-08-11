@@ -26,6 +26,8 @@
 		"lint:biome": "biome check . --verbose",
 		"lint:format": "biome format . --verbose",
 		"lint:js": "biome lint . --verbose",
+		"lint:svelte": "turbo run lint:svelte",
+		"lint:ts": "turbo run lint:svelte",
 		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./.github/LICENSE_CC-BY-SA-4.0.md\" \"#apps\" \"#libs\" ",
 		"lint:typos": "typos --verbose",
 		"serve:doc": "serve \"./docs\" ",
