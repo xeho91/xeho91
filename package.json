@@ -8,7 +8,7 @@
 	"packageManager": "pnpm@9.7.0+sha512.dc09430156b427f5ecfc79888899e1c39d2d690f004be70e05230b72cb173d96839587545d09429b55ac3c429c801b4dc3c0e002f653830a420fa2dd4e3cf9cf",
 	"scripts": {
 		"build": "turbo run build",
-		"build:docs": "typedoc",
+		"build:doc": "typedoc",
 		"changelog": "pnpm changeset add",
 		"clean": "pnpm run \"/^clean:.*/\"; del \"./**/node_modules\" ",
 		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
@@ -26,10 +26,13 @@
 		"lint:biome": "biome check . --verbose",
 		"lint:format": "biome format . --verbose",
 		"lint:js": "biome lint . --verbose",
+		"lint:svelte": "turbo run lint:svelte",
+		"lint:ts": "turbo run lint:svelte",
 		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./.github/LICENSE_CC-BY-SA-4.0.md\" \"#apps\" \"#libs\" ",
 		"lint:typos": "typos --verbose",
 		"serve:doc": "serve \"./docs\" ",
-		"test": "turbo run test",
+		"test": "turbo run _test",
+		"_test": "vitest run --coverage.enabled --coverage.provider=v8 --coverage.reporter=json-summary --coverage.reporter=json",
 		"_version": "pnpm changeset version && pnpm fix:format"
 	},
 	"devDependencies": {

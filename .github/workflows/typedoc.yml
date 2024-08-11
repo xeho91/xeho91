@@ -35,6 +35,16 @@ jobs:
             # https://github.com/actions/checkout
             - uses: actions/checkout@v4
 
+            # https://github.com/actions/cache
+            # https://turbo.build/repo/docs/guides/ci-vendors/github-actions#caching-with-github-actionscache
+            - name: Cache turbo
+              uses: actions/cache@v4
+              with:
+                  path: .turbo
+                  key: ${{ runner.os }}-turbo-${{ github.sha }}
+                  restore-keys: |
+                      ${{ runner.os }}-turbo-
+
             # https://nodejs.org/api/corepack.html
             - name: Enable corepack (for pnpm)
               run: corepack enable
@@ -53,7 +63,7 @@ jobs:
                   --frozen-lockfile
 
             - name: Build documentation
-              run: pnpm run build:docs
+              run: pnpm turbo build:doc
 
             # https://github.com/rossjrw/pr-preview-action
             - name: Create PR preview on the GitHub Pages
