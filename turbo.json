@@ -9,6 +9,12 @@
 		"lint": {
 			"cache": true
 		},
+		"lint:svelte": {
+			"cache": true
+		},
+		"lint:ts": {
+			"cache": true
+		},
 		"test": {
 			"cache": true,
 			"dependsOn": ["^build"],
