@@ -205,6 +205,9 @@ importers:
       '@xeho91/lib-error':
         specifier: workspace:*
         version: link:../error
+      '@xeho91/lib-feature':
+        specifier: workspace:*
+        version: link:../feature
       '@xeho91/lib-geometry':
         specifier: workspace:*
         version: link:../geometry
@@ -220,6 +223,9 @@ importers:
       '@xeho91/lib-type':
         specifier: workspace:*
         version: link:../type
+      '@xeho91/lib-ui':
+        specifier: workspace:*
+        version: link:../ui
       dedent:
         specifier: 1.5.3
         version: 1.5.3

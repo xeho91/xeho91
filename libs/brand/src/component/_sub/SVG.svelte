@@ -1,11 +1,13 @@
 <script lang="ts" generics="TWidth extends number = number, THeight extends number = number">
+import type { WithClass } from "@xeho91/lib-feature/css";
 import type { Rectangle } from "@xeho91/lib-geometry/two-dimension/rectangle";
 import type { Snippet } from "svelte";
+import type { HTMLAttributes } from "svelte/elements";
 
 import type { BrandAssetTheme } from "#design";
 import { set_id } from "#id";
 
-interface Props {
+interface Props extends WithClass, HTMLAttributes<SVGElement> {
 	children: Snippet;
 	// Meta
 	id: string;
@@ -18,7 +20,18 @@ interface Props {
 	svg?: SVGElement;
 }
 
-let { children, id, title, description, dimensions, theme, svg = $bindable() }: Props = $props();
+let {
+	//
+	children,
+	class: class_,
+	id,
+	title,
+	description,
+	dimensions,
+	theme,
+	svg = $bindable(),
+	...rest_props
+}: Props = $props();
 
 const width = $derived(dimensions.width);
 const height = $derived(dimensions.height);
@@ -28,6 +41,7 @@ const id_description = set_id(id, "description");
 </script>
 
 <svg
+	{...rest_props}
 	bind:this={svg}
 	{id}
 	role="img"
@@ -37,6 +51,7 @@ const id_description = set_id(id, "description");
 	preserveAspectRatio="xMinYMin meet"
 	style:--light={theme.light_foreground?.oklch.toString()}
 	style:--dark={theme.dark_foreground?.oklch.toString()}
+	class={class_}
 >
 	<style global>
 		html,

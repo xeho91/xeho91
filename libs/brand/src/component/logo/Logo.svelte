@@ -15,7 +15,9 @@ export const LOGO_DEFAULT_BACKGROUNDED = false;
 	import SVG from "../_sub/SVG.svelte";
 	import BackgroundSymbol from "../_sub/symbol/Background.svelte";
 	import LinearGradient from "../_sub/LinearGradient.svelte";
-	import LogotypeSymbol, { LOGOTYPE_DIMENSIONS } from "../_sub/symbol/Logotype.svelte";
+	import LogotypeSymbol, {
+		LOGOTYPE_DIMENSIONS,
+	} from "../_sub/symbol/Logotype.svelte";
 	import FeDropShadow, { SHADOW_OFFSET_X } from "../_sub/FeDropShadow.svelte";
 
 	import type { SharedProps } from "#component/props";
@@ -44,18 +46,24 @@ export const LOGO_DEFAULT_BACKGROUNDED = false;
 
 	let {
 		id = LOGO_DEFAULT_ID,
+		class: class_,
 		theme: _theme = BrandAssetTheme.DEFAULT,
 		background_width = LOGO_DIMENSIONS.width,
 		background_height = LOGO_DIMENSIONS.height,
 		animated = LOGO_DEFAULT_ANIMATED,
 		backgrounded = LOGO_DEFAULT_BACKGROUNDED,
 		svg = $bindable(),
+		...rest_props
 	}: Props = $props();
 
 	let theme = $derived(new BrandAssetTheme(_theme));
 	let fill = $derived(theme.get_fill_foreground(id));
-	let dimensions = $derived(new Rectangle(background_width, background_height));
-	let shadow_safe_area_x = $derived(new Percentage(SHADOW_OFFSET_X * 4, background_height));
+	let dimensions = $derived(
+		new Rectangle(background_width, background_height),
+	);
+	let shadow_safe_area_x = $derived(
+		new Percentage(SHADOW_OFFSET_X * 4, background_height),
+	);
 	let scale = $derived(1 - shadow_safe_area_x.decimal * 2);
 	let translate_x = $derived((-LOGOTYPE_DIMENSIONS.width / 2) * scale);
 	let translate_y = $derived((-LOGOTYPE_DIMENSIONS.height / 2) * scale);
@@ -64,12 +72,14 @@ export const LOGO_DEFAULT_BACKGROUNDED = false;
 </script>
 
 <SVG
+	{...rest_props}
 	bind:svg
 	{id}
 	title={LOGO_TITLE}
 	description={LOGO_DESCRIPTION}
 	{dimensions}
 	{theme}
+	class={class_}
 >
 	<defs>
 		{#if _theme === "color"}
