@@ -1,16 +1,16 @@
 <script lang="ts">
-import { AtLayer } from "@xeho91/lib-css/at-rule/layer";
-import { Color } from "@xeho91/lib-design/color";
-import { Font } from "@xeho91/lib-design/font";
+	import { AtLayer } from "@xeho91/lib-css/at-rule/layer";
+	import { Color } from "@xeho91/lib-design/color";
+	import { Font } from "@xeho91/lib-design/font";
 
-import LayerStyles from "./LayerStyles.svelte";
+	import LayerStyles from "./LayerStyles.svelte";
 
-import { state_css } from "./state.svelte";
-import { classes } from "./util";
+	import { state_css } from "./state.svelte";
+	import { classes } from "./util";
 
-import "virtual:uno.css";
+	import "virtual:uno.css";
 
-const font_family = Font.family.default();
+	const font_family = Font.family.default();
 </script>
 
 <svelte:head>
@@ -44,7 +44,7 @@ const font_family = Font.family.default();
 	]}
 />
 
-<style global>
+<style>
 	/* TODO: Move it to unocss config, and see if we can put into layer reset */
 	@import "@unocss/reset/tailwind-compat.css" layer(reset);
 
@@ -98,12 +98,12 @@ const font_family = Font.family.default();
 			;
 			/* prettier-ignore */
 			--transition-props-color:
-				var(--transition-props-background-color),
-				var(--transition-props-border-color),
-				var(--transition-props-box-shadow-color),
-				var(--transition-props-text-color),
-				var(--transition-props-text-shadow-color)
-			;
+				background-color,
+				border-color,
+				box-shadow-color,
+				color,
+				text-shadow-color;
+
 			/* prettier-ignore */
 			--transition-props-box-shadow-x:
 				--box-shadow-x-1,

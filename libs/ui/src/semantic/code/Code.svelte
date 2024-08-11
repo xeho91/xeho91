@@ -59,7 +59,7 @@ const {
 	:global(.code) {
 		transition-duration: var(--transition-dur);
 		transition-timing-function: var(--transition-fn);
-		transition-property: background-color;
+		transition-property: background-color, color;
 	}
 }
 </style>
