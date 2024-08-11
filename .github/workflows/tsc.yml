@@ -54,4 +54,4 @@ jobs:
             # https://www.typescriptlang.org/docs/handbook/compiler-options.html
             - name: Run `tsc` (type check) on packages
               run: >
-                  pnpm lint:ts
+                  pnpm run lint:ts

@@ -54,4 +54,4 @@ jobs:
             # https://github.com/sveltejs/language-tools/tree/master/packages/svelte-check
             - name: Run svelte-check on packages
               run: >
-                  pnpm lint:svelte
+                  pnpm run lint:svelte

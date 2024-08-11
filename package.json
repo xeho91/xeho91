@@ -31,7 +31,8 @@
 		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./.github/LICENSE_CC-BY-SA-4.0.md\" \"#apps\" \"#libs\" ",
 		"lint:typos": "typos --verbose",
 		"serve:doc": "serve \"./docs\" ",
-		"test": "turbo run test",
+		"test": "turbo run _test",
+		"_test": "vitest run --coverage.enabled --coverage.provider=v8 --coverage.reporter=json-summary --coverage.reporter=json",
 		"_version": "pnpm changeset version && pnpm fix:format"
 	},
 	"devDependencies": {

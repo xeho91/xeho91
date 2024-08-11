@@ -24,6 +24,16 @@ jobs:
             # https://github.com/actions/checkout
             - uses: actions/checkout@v4
 
+            # https://github.com/actions/cache
+            # https://turbo.build/repo/docs/guides/ci-vendors/github-actions#caching-with-github-actionscache
+            - name: Cache turbo
+              uses: actions/cache@v4
+              with:
+                  path: .turbo
+                  key: ${{ runner.os }}-turbo-${{ github.sha }}
+                  restore-keys: |
+                      ${{ runner.os }}-turbo-
+
             # https://nodejs.org/api/corepack.html
             - name: Enable corepack (for pnpm)
               run: corepack enable
@@ -43,12 +53,7 @@ jobs:
 
             # https://vitest.dev/guide/cli.html
             - name: Run tests with Vitest
-              run: >
-                  pnpm vitest run
-                  --coverage.enabled
-                  --coverage.provider=v8
-                  --coverage.reporter=json-summary
-                  --coverage.reporter=json
+              run: pnpm run test
 
             # https://github.com/davelosert/vitest-coverage-report-action
             - name: Generate tests coverage report

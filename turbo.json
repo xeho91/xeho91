@@ -3,7 +3,7 @@
 	"tasks": {
 		"//#build:doc": {
 			"cache": true,
-			"inputs": ["$TURBO_DEFAULT$", "apps/src/**", "libs/src/**"],
+			"inputs": ["$TURBO_DEFAULT$", "src/**"],
 			"outputs": ["./docs"]
 		},
 		"lint": {
@@ -15,9 +15,8 @@
 		"lint:ts": {
 			"cache": true
 		},
-		"test": {
+		"//#_test": {
 			"cache": true,
-			"dependsOn": ["^build"],
 			"inputs": ["src/**", "test/**"],
 			"outputs": [".coverage/**"]
 		}
