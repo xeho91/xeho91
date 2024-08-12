@@ -12,7 +12,7 @@ node_modules/
 docs/
 
 # Logs
-pnpm-debug.log*
+*.log*
 
 # MacOS-specific files
 .DS_Store

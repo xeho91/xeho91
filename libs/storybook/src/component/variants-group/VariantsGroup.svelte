@@ -37,7 +37,7 @@ const {
 		"w-full min-h-[fit-content]",
 		Stroke.get("s").class(),
 		Color.class("background"),
-		Color.get("gray", "solid", 2).class("background"),
+		Color.get("secondary", "blend", 2).class("background"),
 		Color.class("border"),
 		Color.get("gray", "solid", 6).class("border"),
 		class_,
