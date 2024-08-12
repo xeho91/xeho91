@@ -9,6 +9,7 @@
 	"scripts": {
 		"build": "turbo run build",
 		"build:doc": "typedoc",
+		"build:storybook": "pnpm run --filter \"@xeho91/app-storybook\" build:storybook",
 		"changelog": "pnpm changeset add",
 		"clean": "pnpm run \"/^clean:.*/\"; del \"./**/node_modules\" ",
 		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
