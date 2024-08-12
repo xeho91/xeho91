@@ -58,6 +58,12 @@ jobs:
         uses: ./.github/workflows/vitest.yml
         secrets: inherit
 
+    publish_chromatic:
+        name: Publish
+        uses: ./.github/workflows/chromatic.yml
+        if: github.event.pull_request.draft == false
+        secrets: inherit
+
     publish_typedoc:
         name: Publish
         uses: ./.github/workflows/typedoc.yml
@@ -74,6 +80,7 @@ jobs:
                 lint_svelte,
                 lint_tsc,
                 lint_typos,
+                publish_chromatic,
                 publish_typedoc,
                 test_vitest,
             ]
