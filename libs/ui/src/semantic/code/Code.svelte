@@ -44,7 +44,7 @@ const {
 		Space.get("3xs").class("padding-inline"),
 		Radius.get("s").class(),
 		Color.class("background"),
-		Color.get(color ?? "secondary", "blend", 3).class("background"),
+		Color.get(color ?? "primary", "blend", 3).class("background"),
 		class_,
 	)}
 	family="mono"
