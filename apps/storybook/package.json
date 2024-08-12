@@ -17,6 +17,7 @@
 		"clean:build": "del \"./storybook-static\" ",
 		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
 		"clean:test": "del \"./coverage\" ",
+		"deploy:chromatic": "chromatic --exit-zero-on-changes",
 		"dev": "pnpm run \"/^dev:.*/\" ",
 		"dev:storybook": "storybook dev --debug --port 6006",
 		"dev:test": "pnpm vitest watch --passWithNoTests --ui --open=false --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/app-storybook\" ",
