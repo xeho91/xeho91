@@ -23,6 +23,7 @@ export class SelectorType<TName extends HTMLTag | string = HTMLTag | string>
 		return this.name;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): TypeSelector {
 		const { name } = this;
 		return {

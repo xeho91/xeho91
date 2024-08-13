@@ -27,6 +27,7 @@ export class Combinator<TName extends string = string> implements Display, ToAST
 		return this.name;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): CombinatorAST {
 		const { name } = this;
 		return {

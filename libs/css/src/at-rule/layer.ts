@@ -37,6 +37,7 @@ export class AtLayer<TName extends AtLayerName = AtLayerName, TBlock extends Blo
 			return results as StringifiedOrder<typeof AtLayer.NAMES>;
 		}
 
+		/*@__NO_SIDE_EFFECTS__*/
 		public to_ast(): Atrule {
 			const { iterable } = this;
 			const children = new List<CssNode>();
@@ -81,6 +82,7 @@ export class AtLayer<TName extends AtLayerName = AtLayerName, TBlock extends Blo
 		return `${prefix} ${name} ${block}` as Stringified<TName, TBlock>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): Atrule {
 		const { name, block } = this;
 		const children = new List<CssNode>();

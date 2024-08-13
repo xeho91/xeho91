@@ -39,6 +39,7 @@ export class SelectorsList<const TList extends Item[] = Item[]>
 		return results as Stringified<TList>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): SelectorList {
 		const { list } = this;
 		// biome-ignore lint/style/useConst: Readability - mutation

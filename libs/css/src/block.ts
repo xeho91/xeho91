@@ -30,6 +30,7 @@ export class Block<const TChildren extends Item[] = Item[]> extends IterableInst
 		return `{${results}}` as Stringified<TChildren>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): BlockAST {
 		const { iterable } = this;
 		// biome-ignore lint/style/useConst: Is being mutated

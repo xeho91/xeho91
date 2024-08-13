@@ -24,6 +24,7 @@ export abstract class DataType<TName extends string, TValue extends AllowedValue
 		return value.to_value() as InferValue<TValue>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): CssNode {
 		return this.value.to_ast();
 	}

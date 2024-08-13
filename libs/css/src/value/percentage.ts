@@ -24,6 +24,7 @@ export class Percentage<TValue extends number = number> extends PercentageStruct
 		return Percentage.SYNTAX;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): PercentageAST {
 		return {
 			type: "Percentage",

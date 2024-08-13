@@ -26,6 +26,7 @@ export class NumberCSS<TValue extends number = number> implements Display, ToAST
 		return new Value(this);
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): NumberNode {
 		return {
 			type: "Number",

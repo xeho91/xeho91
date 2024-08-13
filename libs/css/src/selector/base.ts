@@ -15,6 +15,7 @@ export abstract class SelectorBase<TKind extends SelectorKind = SelectorKind> im
 
 	public abstract toString(): string;
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public abstract to_ast(): CssNode;
 
 	public to_joint(): SelectorsJoint<[typeof this]> {

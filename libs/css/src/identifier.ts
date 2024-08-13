@@ -15,6 +15,7 @@ export class Identifier<TName extends string = string> implements Display, ToAST
 		return this.name;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): IdentifierAST {
 		const { name } = this;
 		return {

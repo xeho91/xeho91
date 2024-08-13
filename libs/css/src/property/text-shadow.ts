@@ -158,6 +158,7 @@ export class TextShadow<const TLayers extends TextShadowLayer[]>
 		return new Value(...value_items) as TextShadowValue<TLayers>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): InferAST<typeof this.declaration> {
 		const { declaration } = this;
 		return declaration.to_ast();

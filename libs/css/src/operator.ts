@@ -36,6 +36,7 @@ export class Operator<TKind extends OperatorKind = OperatorKind> implements Disp
 		return this.value;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): OperatorAST {
 		const { value } = this;
 		return {
