@@ -30,22 +30,22 @@ if (import.meta.vitest) {
 	});
 }
 
-export const classes: Action<Element, ClassInput[]> = (node, ...classes) => {
+export const classes: Action<Element, Array<ClassInput | ClassInput[]>> = (node, ...classes) => {
 	// biome-ignore lint/style/useConst: Readability: It's mutating
 	let tokens: string[] = [];
-	for (const selector_or_class of classes) {
+	for (const selector_or_class of classes.flat()) {
 		if (selector_or_class instanceof SelectorClass) tokens.push(selector_or_class.name);
 		else if (selector_or_class) {
 			const names = clsx(selector_or_class).split(" ");
 			tokens.push(...names);
 		}
 		node.classList.add(...tokens);
-		return {
-			destroy() {
-				node.classList.remove(...tokens);
-			},
-		};
 	}
+	return {
+		destroy() {
+			node.classList.remove(...tokens);
+		},
+	};
 };
 
 export interface WithClass {

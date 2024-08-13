@@ -22,10 +22,11 @@ const font_family = Font.family.default();
 		</svelte:element>
 	{/if}
 
-	<!-- FIXME: This doesn't work, because `uno.css` gets injected firstly. -->
-	<svelte:element this={"style"} id="layers-order">
-		{AtLayer.ORDER}
-	</svelte:element>
+	<!-- FIXME: This doesn't work in Storybook, because `uno.css` gets injected firstly. -->
+	<!-- FIXME: When using vite, it destroys existing rulesets -->
+	<!-- <svelte:element this={"style"} id="layers-order"> -->
+	<!-- 	{AtLayer.ORDER} -->
+	<!-- </svelte:element> -->
 
 	{#each AtLayer as name}
 		<LayerStyles {name} />
@@ -34,6 +35,8 @@ const font_family = Font.family.default();
 
 <svelte:body
 	use:classes={[
+		"w[100lvw]",
+		"h[100lvh]",
 		Color.class("background"),
 		Color.get("secondary", "solid", 1).class("background"),
 		Color.class("text"),
@@ -45,6 +48,9 @@ const font_family = Font.family.default();
 />
 
 <style>
+	/* FIXME: Temporary workaround */
+	@layer reset, token, framework, base, component, override;
+
 	@import "@unocss/reset/tailwind-compat.css" layer(reset);
 
 	@layer base.default {
@@ -54,8 +60,10 @@ const font_family = Font.family.default();
 		:global(html[data-color-scheme="dark"]) {
 			color-scheme: dark;
 		}
+	}
 
-		/* TODO: automate it */
+	@layer base.preflight {
+		/* TODO: Tokenize it */
 		:root {
 			--transition-fn: ease-in-out;
 			--transition-dur: 250ms;
@@ -135,7 +143,9 @@ const font_family = Font.family.default();
 				var(--transition-props-text-shadow-y),
 				var(--transition-props-text-shadow-blur);
 		}
+	}
 
+	@layer base.default {
 		body {
 			transition-duration: var(--transition-dur);
 			transition-timing-function: var(--transition-fn);
