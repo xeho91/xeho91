@@ -89,7 +89,7 @@ const {
 					{#if children}
 						{@render children(args)}
 					{:else if component}
-						<svelte:component this={component} {...args as ComponentProps<TComponent>} />
+						<component {...args as ComponentProps<TComponent>}></component>
 					{/if}
 				</Variant>
 			</li>

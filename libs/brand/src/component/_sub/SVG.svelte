@@ -7,7 +7,7 @@ import type { HTMLAttributes } from "svelte/elements";
 import type { BrandAssetTheme } from "#design";
 import { set_id } from "#id";
 
-interface Props extends WithClass, HTMLAttributes<SVGElement> {
+interface Props extends WithClass, Omit<HTMLAttributes<SVGElement>, "class"> {
 	children: Snippet;
 	// Meta
 	id: string;
