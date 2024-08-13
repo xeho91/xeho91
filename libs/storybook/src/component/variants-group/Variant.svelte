@@ -35,6 +35,7 @@ const font_family = Font.family.get("mono");
 			font_family.class(),
 			font_family.weight.default(),
 			Font.size.default().class(),
+			"whitespace-nowrap",
 		)}
 	>
 		{prop}{"="}{typeof value === "string" ? `${`"${value}"`}` : `{${value}}`}

@@ -1,14 +1,19 @@
 <script context="module">
 import { defineMeta, setTemplate } from "@storybook/addon-svelte-csf";
+import { merge_classes } from "@xeho91/lib-feature/css";
 import {
+	PARAMETERS,
 	create_control_from_iterable,
 	create_control_from_range,
 	create_control_from_string,
 } from "@xeho91/lib-storybook/arg-type";
+import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
+import { Code } from "@xeho91/lib-ui/semantic/code";
 
 import Logo, { LOGO_DEFAULT_ID, LOGO_DIMENSIONS } from "./Logo.svelte";
 
 import { SHARED_ARG_TYPES } from "#component/props";
+import { BrandAssetTheme } from "#design";
 
 const { Story } = defineMeta({
 	component: Logo,
@@ -18,12 +23,21 @@ const { Story } = defineMeta({
 		id: create_control_from_string(LOGO_DEFAULT_ID, {
 			category: "meta",
 		}),
+		theme: create_control_from_iterable(BrandAssetTheme, {
+			category: "design",
+		}),
 	},
 	tags: ["!dev"],
 	parameters: {
 		layout: "centered",
 	},
 });
+
+const classes = merge_classes(
+	//
+	"w-[300px]",
+	"h-[100px]",
+);
 </script>
 
 <script lang="ts">
@@ -37,38 +51,46 @@ const { Story } = defineMeta({
 </script>
 
 {#snippet template(args)}
-	<div style:min-width="300px" style:min-height="100px">
-		<Logo {...args} />
-	</div>
+	<Logo {...args} class={classes} />
 {/snippet}
 
-<Story name="Default" />
+<Story name="Playground" parameters={PARAMETERS.playground} />
 
-<Story name="Backgrounded">
-	<div style:min-width="200px" style:min-height="100px" style:display="flex">
-		<Logo id="background-transparent" />
-		<Logo id="background-color" backgrounded />
-	</div>
+<Story name="Default" parameters={PARAMETERS.default} />
+
+<Story name="Backgrounded" parameters={PARAMETERS.variants}>
+	<VariantsGroup prop="backgrounded" values={[false, true]}>
+		{#snippet children( { backgrounded })}
+			<Logo id={`backgrounded-${backgrounded}`} {backgrounded} class={classes} />
+		{/snippet}
+	</VariantsGroup>
 </Story>
 
-<Story name="Animated">
-	<div style:min-width="200px" style:min-height="100px" style:display="flex">
-		<Logo id="not-animated" />
-		<Logo id="animated" animated />
-	</div>
+<Story name="Animated" parameters={PARAMETERS.variants}>
+	<VariantsGroup prop="animated" values={[false, true]}>
+		{#snippet children( { animated })}
+			<Logo id={`animated-${animated}`} {animated} class={classes} />
+		{/snippet}
+	</VariantsGroup>
 </Story>
 
-<Story name="Themes">
-	<div style:min-width="300px" style:min-height="100px" style:display="flex">
-		<Logo id="theme-color" theme="color" />
-		<Logo id="theme-black" theme="black" />
-		<Logo id="theme-white" theme="white" />
-	</div>
-	<div style:min-width="300px" style:min-height="100px" style:display="flex">
-		<Logo id="background-transparent-color" theme="color" backgrounded />
-		<Logo id="background-transparent-black" theme="black" backgrounded />
-		<Logo id="background-color-color-white" theme="white" backgrounded />
-	</div>
+<Story name="Themes" parameters={PARAMETERS.variants}>
+	<VariantsGroup prop="theme" values={BrandAssetTheme}>
+		{#snippet header()}
+			<Code>{`background="false"`}</Code>
+		{/snippet}
+		{#snippet children( { theme })}
+			<Logo id={`theme-${theme}`} {theme} class={classes} />
+		{/snippet}
+	</VariantsGroup>
+	<VariantsGroup prop="theme" values={BrandAssetTheme}>
+		{#snippet header()}
+			<Code>{`background="true"`}</Code>
+		{/snippet}
+		{#snippet children( { theme })}
+			<Logo id={`theme-${theme}-backgrounded`} {theme} backgrounded class={classes} />
+		{/snippet}
+	</VariantsGroup>
 </Story>
 
 <Story

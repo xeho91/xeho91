@@ -26,7 +26,7 @@ jobs:
 
             # https://github.com/actions/cache
             # https://turbo.build/repo/docs/guides/ci-vendors/github-actions#caching-with-github-actionscache
-            - name: Cache turbo
+            - name: Cache turbo and coverage
               uses: actions/cache@v4
               with:
                   path: |

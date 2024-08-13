@@ -1,14 +1,15 @@
+import type { WithClass } from "@xeho91/lib-feature/css";
+import { create_control_from_boolean, create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
 import type { ComponentProps } from "svelte";
 
 import type SVG from "./_sub/SVG.svelte";
 
-import { create_control_from_boolean, create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
 import { BrandAssetTheme, type BrandAssetThemeName } from "#design";
 
 export const DEFAULT_ANIMATED = false;
 export const DEFAULT_BACKGROUNDED = false;
 
-export interface SharedProps {
+export interface SharedProps extends WithClass {
 	/**
 	 * Color **theme** for the foreground _(logomark and frame)_
 	 */

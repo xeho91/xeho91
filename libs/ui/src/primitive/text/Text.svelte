@@ -59,6 +59,10 @@ interface Props extends Omit<HTMLAttributes<HTMLElementTagNameMap[TextHTMLTag]>,
 	 * TODO: Add desc
 	 */
 	truncated?: boolean | undefined;
+	/**
+	 * TODO: Add desc
+	 */
+	nowrap?: boolean | undefined;
 }
 
 const {
@@ -75,6 +79,7 @@ const {
 	uppercased = false,
 	loading = false,
 	truncated = false,
+	nowrap = false,
 }: Props = $props();
 
 const _family = $derived(family && Font.family.get(family));
@@ -114,6 +119,7 @@ const _selection_color = $derived.by(() => {
 	)}
 	class:truncate={truncated}
 	class:uppercase={uppercased}
+	class:whitespace-nowrap={nowrap}
 >
 	{#if loading}
 		<Skeleton color={set_skeleton_color(color)} />

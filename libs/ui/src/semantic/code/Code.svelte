@@ -38,9 +38,9 @@ const {
 <Text
 	{...text_props}
 	tag="code"
+	nowrap
 	class={merge_classes(
 		"code",
-		"whitespace-nowrap",
 		Space.get("3xs").class("padding-inline"),
 		Radius.get("s").class(),
 		Color.class("background"),

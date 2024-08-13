@@ -14,7 +14,9 @@ export const AVATAR_DEFAULT_BACKGROUNDED = false;
 	import BackgroundSymbol from "../_sub/symbol/Background.svelte";
 	import FrameSymbol from "../_sub/symbol/Frame.svelte";
 	import LinearGradient from "../_sub/LinearGradient.svelte";
-	import LogomarkSymbol, { DIMENSIONS_LOGOMARK } from "../_sub/symbol/Logomark.svelte";
+	import LogomarkSymbol, {
+		DIMENSIONS_LOGOMARK,
+	} from "../_sub/symbol/Logomark.svelte";
 	import FeDropShadow from "../_sub/FeDropShadow.svelte";
 
 	import type { SharedProps } from "#component/props";
@@ -30,30 +32,36 @@ export const AVATAR_DEFAULT_BACKGROUNDED = false;
 	}
 
 	let {
+		class: class_,
 		id = AVATAR_DEFAULT_ID,
 		theme: _theme = BrandAssetTheme.DEFAULT,
 		animated = AVATAR_DEFAULT_ANIMATED,
 		backgrounded = AVATAR_DEFAULT_BACKGROUNDED,
 		svg = $bindable(),
+		...rest_props
 	}: Props = $props();
 
 	let theme = $derived(new BrandAssetTheme(_theme));
 	let fill = $derived(theme.get_fill_foreground(id));
 
 	const dimensions_rectangle = AVATAR_DIMENSIONS.to_rectangle();
-	const translate_x = AVATAR_DIMENSIONS.half() - DIMENSIONS_LOGOMARK.half("width");
-	const translate_y = (AVATAR_DIMENSIONS.half() - DIMENSIONS_LOGOMARK.half("height")) / 4;
+	const translate_x =
+		AVATAR_DIMENSIONS.half() - DIMENSIONS_LOGOMARK.half("width");
+	const translate_y =
+		(AVATAR_DIMENSIONS.half() - DIMENSIONS_LOGOMARK.half("height")) / 4;
 
 	const filter = `url(#${set_id(id, "shadow")})`;
 </script>
 
 <SVG
+	{...rest_props}
 	bind:svg
 	{id}
 	title={AVATAR_TITLE}
 	description={AVATAR_DESCRIPTION}
 	dimensions={AVATAR_DIMENSIONS.to_rectangle()}
 	{theme}
+	class={class_}
 >
 	<defs>
 		{#if _theme === "color"}

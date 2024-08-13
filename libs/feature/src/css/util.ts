@@ -49,5 +49,5 @@ export const classes: Action<Element, ClassInput[]> = (node, ...classes) => {
 };
 
 export interface WithClass {
-	class?: Parameters<typeof merge_classes>[0];
+	class?: ReturnType<typeof merge_classes>;
 }
