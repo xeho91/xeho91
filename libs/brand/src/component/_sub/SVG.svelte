@@ -53,19 +53,6 @@ const id_description = set_id(id, "description");
 	style:--dark={theme.dark_foreground?.oklch.toString()}
 	class={class_}
 >
-	<style global>
-		html,
-		html[data-color-scheme="light"] {
-			svg {
-				color-scheme: light;
-			}
-		}
-		html[data-color-scheme="dark"] {
-			svg {
-				color-scheme: dark;
-			}
-		}
-	</style>
 	<title id={id_title}>{title}</title>
 	<desc id={id_description}>{description}</desc>
 	{@render children()}
