@@ -1,7 +1,7 @@
 import path from "node:path";
 import url from "node:url";
 
-import adapter from "@sveltejs/adapter-auto";
+import adapter from "@sveltejs/adapter-static";
 import { CONFIG as SHARED_CONFIG } from "@xeho91/lib-config/svelte";
 
 const __filename = url.fileURLToPath(import.meta.url);
@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 const CONFIG = {
 	...SHARED_CONFIG,
 	kit: {
-		adapter: adapter(),
+		adapter,
 		alias: {
 			"$lib/*": "src/lib/*",
 		},
