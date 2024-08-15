@@ -11,7 +11,7 @@ catalog:
     "@total-typescript/tsconfig": "1.0.4"
     "@types/node": "22.2.0"
     "rxjs": "7.8.1"
-    "svelte": "5.0.0-next.218"
+    "svelte": "5.0.0-next.221"
     "svelte-check": "3.8.5"
     "typescript": "5.5.4"
     "typescript-svelte-plugin": "0.3.40"
