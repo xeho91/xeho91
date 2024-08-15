@@ -8,6 +8,7 @@
 				"enabled": true,
 				"assumeIsSvelteProject": true
 			}
-		]
+		],
+		"types": ["vitest/importMeta"]
 	}
 }
