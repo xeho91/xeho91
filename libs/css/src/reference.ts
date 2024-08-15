@@ -23,6 +23,7 @@ export class Reference<TName extends string = string> implements Display, ToAST 
 		return `${Reference.PREFIX}${this.name}` as Stringified<TName>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): Identifier {
 		return {
 			type: "Identifier",

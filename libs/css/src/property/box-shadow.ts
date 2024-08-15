@@ -177,6 +177,7 @@ export class BoxShadow<const TLayers extends BoxShadowLayer[]>
 		return new Value(...value_items) as BoxShadowValue<TLayers>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): InferAST<typeof this.declaration> {
 		const { declaration } = this;
 		return declaration.to_ast();

@@ -16,6 +16,7 @@ export class SelectorClass<TName extends string = string> extends SelectorBase<"
 		return `.${this.name}`;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): ClassSelector {
 		const { name } = this;
 		return {

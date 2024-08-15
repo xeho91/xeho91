@@ -39,6 +39,7 @@ export class SelectorPseudoElement<TName extends PseudoElementName>
 		return `::${this.name}`;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): PseudoElementSelector {
 		const { name } = this;
 		return {

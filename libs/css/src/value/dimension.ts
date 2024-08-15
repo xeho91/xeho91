@@ -27,6 +27,7 @@ export class Dimension<TValue extends number = number, TUnit extends PossibleUni
 		return `${this.value}${this.unit.toString()}`;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): DimensionAST {
 		const { unit, value } = this;
 		return {

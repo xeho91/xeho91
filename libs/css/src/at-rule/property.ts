@@ -69,6 +69,7 @@ export class AtProperty<
 		>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): Atrule {
 		const { reference, block } = this;
 		const children = new List<CssNode>();

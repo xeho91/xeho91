@@ -49,6 +49,7 @@ export class SelectorAttribute<
 		return `[${results}]` as Stringified<TName, TMatcher, TValue, TFlags>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public override to_ast(): AttributeSelector {
 		const { name, matcher, value, flags } = this;
 		return {

@@ -56,6 +56,7 @@ export abstract class FunctionBase<
 		return new Value(this);
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): FunctionNode {
 		const { name, children } = this;
 		return {

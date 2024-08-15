@@ -20,6 +20,7 @@ export class Ruleset<const TSelectors extends SelectorsList = SelectorsList, con
 		return `${this.selectors}${this.block}` as Stringified<TSelectors, TBlock>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): Rule {
 		const { block, selectors } = this;
 		return {

@@ -40,6 +40,7 @@ export class Value<const TList extends Item[] = Item[]>
 		return results as Stringified<TList>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): ValueAST {
 		const { list } = this;
 		const children = new List<ReturnType<Item["to_ast"]>>();

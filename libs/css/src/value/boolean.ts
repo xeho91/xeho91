@@ -15,6 +15,7 @@ export class BooleanCSS<TValue extends boolean = boolean> implements Display, To
 		return `${this.value}`;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): Identifier {
 		const { value } = this;
 		return {

@@ -15,6 +15,7 @@ export class StringCSS<TValue extends string = string> implements Display, ToAST
 		return `"${this.value}"`;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): StringNode {
 		const { value } = this;
 		return {

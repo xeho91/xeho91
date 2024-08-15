@@ -16,6 +16,7 @@ export class SelectorId<TId extends string = string> extends SelectorBase<"id"> 
 		return `#${this.id}`;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): IdSelector {
 		const { id } = this;
 		return {

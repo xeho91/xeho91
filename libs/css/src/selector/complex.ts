@@ -39,6 +39,7 @@ export class SelectorComplex<const TSelectors extends Item[] = Item[]>
 		return results as Stringified<TSelectors>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): Selector {
 		const { selectors } = this;
 		// biome-ignore lint/style/useConst: Readability - mutating

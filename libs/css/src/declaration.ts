@@ -22,6 +22,7 @@ export class Declaration<TProperty extends Property = Property, TValue extends V
 		return `${property}:${value};` as Stringified<TProperty, TValue>;
 	}
 
+	/*@__NO_SIDE_EFFECTS__*/
 	public to_ast(): DeclarationAST {
 		const { property, value } = this;
 		return {

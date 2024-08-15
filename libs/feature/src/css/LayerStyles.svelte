@@ -11,7 +11,8 @@ interface Props {
 
 let { name }: Props = $props();
 
-const block = $derived(new Block<Ruleset[]>(...state_css[name]));
+const rulesets = $derived(state_css[name]);
+const block = $derived(new Block<Ruleset[]>(...(rulesets ?? [])));
 const at_layer = $derived(new AtLayer({ name, block }));
 </script>
 
