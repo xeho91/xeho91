@@ -1,37 +1,37 @@
 <script lang="ts" generics="TColor extends SkeletonColor = 'gray'">
-	import { Color } from "@xeho91/lib-design/color";
-	import { Radius } from "@xeho91/lib-design/radius";
-	import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-	import { fade } from "svelte/transition";
+import { Color } from "@xeho91/lib-design/color";
+import { Radius } from "@xeho91/lib-design/radius";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+import { fade } from "svelte/transition";
 
-	import type { SkeletonColor, SkeletonVariant } from "./util";
+import type { SkeletonColor, SkeletonVariant } from "./util";
 
-	interface Props extends WithClass {
-		color?: TColor;
-		background_color?: SkeletonColor;
-		count?: number;
-		variant?: SkeletonVariant;
-		hidden?: boolean;
-	}
+interface Props extends WithClass {
+	color?: TColor;
+	background_color?: SkeletonColor;
+	count?: number;
+	variant?: SkeletonVariant;
+	hidden?: boolean;
+}
 
-	let {
-		//
-		class: class_,
-		color = "gray" as TColor,
-		background_color = "gray",
-		count = 1,
-		hidden = false,
-		variant = "text",
-	}: Props = $props();
+let {
+	//
+	class: class_,
+	color = "gray" as TColor,
+	background_color = "gray",
+	count = 1,
+	hidden = false,
+	variant = "text",
+}: Props = $props();
 
-	let rendered = $state(false);
+let rendered = $state(false);
 
-	let color_1 = $derived(Color.get(color, "blend", 3));
-	let color_2 = $derived(Color.get(color, "blend", 1));
+let color_1 = $derived(Color.get(color, "blend", 3));
+let color_2 = $derived(Color.get(color, "blend", 1));
 
-	$effect(() => {
-		rendered = true;
-	});
+$effect(() => {
+	rendered = true;
+});
 </script>
 
 {#if !hidden}
