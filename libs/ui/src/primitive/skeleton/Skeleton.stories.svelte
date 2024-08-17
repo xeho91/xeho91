@@ -1,6 +1,8 @@
 <script context="module" lang="ts">
 import { defineMeta } from "@storybook/addon-svelte-csf";
-import { PARAMETERS, create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
+import { create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
+import { SHARED_META } from "@xeho91/lib-storybook/meta";
+import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
 import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
 
 import { SKELETON_COLORS, SKELETON_VARIANTS } from "./util";
@@ -8,6 +10,7 @@ import { SKELETON_COLORS, SKELETON_VARIANTS } from "./util";
 import Skeleton from "./Skeleton.svelte";
 
 const { Story } = defineMeta({
+	...SHARED_META,
 	component: Skeleton,
 	tags: ["autodocs"],
 	argTypes: {
@@ -24,15 +27,9 @@ const { Story } = defineMeta({
 });
 </script>
 
-<Story name="Playground">
-	{#snippet children(args)}
-		<Skeleton {...args} />
-	{/snippet}
-</Story>
+<Story name="Playground" parameters={PARAMETERS.playground} />
 
-<Story name="Default" parameters={PARAMETERS.default}>
-	<Skeleton />
-</Story>
+<Story name="Default" parameters={PARAMETERS.default} />
 
 <Story
 	name="Colors"

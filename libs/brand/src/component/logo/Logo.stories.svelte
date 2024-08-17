@@ -2,11 +2,12 @@
 import { defineMeta, setTemplate } from "@storybook/addon-svelte-csf";
 import { merge_classes } from "@xeho91/lib-feature/css";
 import {
-	PARAMETERS,
 	create_control_from_iterable,
 	create_control_from_range,
 	create_control_from_string,
 } from "@xeho91/lib-storybook/arg-type";
+import { SHARED_META } from "@xeho91/lib-storybook/meta";
+import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
 import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
 import { Code } from "@xeho91/lib-ui/semantic/code";
 
@@ -16,6 +17,7 @@ import { SHARED_ARG_TYPES } from "#component/props";
 import { BrandAssetTheme } from "#design";
 
 const { Story } = defineMeta({
+	...SHARED_META,
 	component: Logo,
 	title: "Brand/Logo",
 	argTypes: {

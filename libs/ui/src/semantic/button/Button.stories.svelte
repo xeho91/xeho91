@@ -3,7 +3,9 @@ import { action } from "@storybook/addon-actions";
 import { type Args, defineMeta, setTemplate } from "@storybook/addon-svelte-csf";
 import { expect, fireEvent, userEvent, waitFor, within } from "@storybook/test";
 import { unreachable } from "@xeho91/lib-error/unreachable";
-import { PARAMETERS, create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
+import { create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
+import { SHARED_META } from "@xeho91/lib-storybook/meta";
+import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
 import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
 
 import Button from "./Button.svelte";
@@ -14,6 +16,7 @@ import { Icon } from "#primitive/icon/mod";
 import { Stack } from "#primitive/stack/mod";
 
 const { Story } = defineMeta({
+	...SHARED_META,
 	component: Button,
 	tags: ["autodocs"],
 	args: {
