@@ -281,9 +281,6 @@ importers:
       '@xeho91/lib-type':
         specifier: workspace:*
         version: link:../type
-      '@xeho91/lib-ui':
-        specifier: workspace:*
-        version: link:../ui
       dedent:
         specifier: 1.5.3
         version: 1.5.3

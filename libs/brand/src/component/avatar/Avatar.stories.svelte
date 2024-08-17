@@ -9,7 +9,6 @@ import {
 import { SHARED_META } from "@xeho91/lib-storybook/meta";
 import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
 import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
-import { Code } from "@xeho91/lib-ui/semantic/code";
 
 import Avatar, { AVATAR_DEFAULT_ID } from "./Avatar.svelte";
 
@@ -79,7 +78,7 @@ const classes = merge_classes(
 <Story name="Themes" parameters={PARAMETERS.variants}>
 	<VariantsGroup prop="theme" values={BrandAssetTheme}>
 		{#snippet header()}
-			<Code>{`background="false"`}</Code>
+			<code>{`background="false"`}</code>
 		{/snippet}
 		{#snippet children( { theme })}
 			<Avatar id={`theme-${theme}`} {theme} class={classes} />
@@ -87,7 +86,7 @@ const classes = merge_classes(
 	</VariantsGroup>
 	<VariantsGroup prop="theme" values={BrandAssetTheme}>
 		{#snippet header()}
-			<Code>{`background="true"`}</Code>
+			<code>{`background="true"`}</code>
 		{/snippet}
 		{#snippet children( { theme })}
 			<Avatar id={`theme-${theme}-backgrounded`} {theme} backgrounded class={classes} />
