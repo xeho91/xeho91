@@ -9,6 +9,9 @@ catalogs:
     '@storybook/addon-svelte-csf':
       specifier: 5.0.0-next.1
       version: 5.0.0-next.1
+    '@storybook/svelte':
+      specifier: 8.2.8
+      version: 8.2.8
     '@sveltejs/vite-plugin-svelte':
       specifier: 4.0.0-next.6
       version: 4.0.0-next.6
@@ -118,6 +121,9 @@ importers:
       '@storybook/addon-essentials':
         specifier: 8.2.8
         version: 8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
+      '@storybook/addon-interactions':
+        specifier: 8.2.8
+        version: 8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5))
       '@storybook/addon-svelte-csf':
         specifier: 'catalog:'
         version: 5.0.0-next.1(@storybook/svelte@8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218))(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
@@ -131,7 +137,7 @@ importers:
         specifier: 8.2.8
         version: 8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@storybook/svelte':
-        specifier: 8.2.8
+        specifier: 'catalog:'
         version: 8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)
       '@storybook/svelte-vite':
         specifier: 8.2.8
@@ -579,9 +585,9 @@ importers:
 
   libs/storybook:
     dependencies:
-      '@storybook/types':
-        specifier: 8.2.4
-        version: 8.2.4(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
+      '@storybook/svelte':
+        specifier: 'catalog:'
+        version: 8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
         version: 1.0.4
@@ -1996,6 +2002,11 @@ packages:
 
   '@storybook/addon-highlight@8.2.8':
     resolution: {integrity: sha512-IM1pPx6CCZbHV0bv3oB1qBCGDsr8soq7XLl93tc7mc4hstWSDFfNn7rx4CWycSlCqXlNTKh8cEkbrPrhV9cwbg==}
+    peerDependencies:
+      storybook: ^8.2.8
+
+  '@storybook/addon-interactions@8.2.8':
+    resolution: {integrity: sha512-ggctlrSlK72xMfhviHHRslZF5tr9aHr1VFwCG/tjF7s1lM3S7OGqgHLJpcja/wNREvq9GMEvX95ZSu5NMh5CtA==}
     peerDependencies:
       storybook: ^8.2.8
 
@@ -7000,6 +7011,21 @@ snapshots:
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2))
+
+  '@storybook/addon-interactions@8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5))':
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@storybook/instrumenter': 8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
+      '@storybook/test': 8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5))
+      polished: 4.3.1
+      storybook: 8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2))
+      ts-dedent: 2.2.0
+    transitivePeerDependencies:
+      - '@jest/globals'
+      - '@types/bun'
+      - '@types/jest'
+      - jest
+      - vitest
 
   '@storybook/addon-measure@8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))':
     dependencies:

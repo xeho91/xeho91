@@ -42,7 +42,6 @@
 	},
 	"dependencies": {
 		"@storybook/svelte": "catalog:",
-		"@storybook/types": "catalog:",
 		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-design": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",
