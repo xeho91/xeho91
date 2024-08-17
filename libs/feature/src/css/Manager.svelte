@@ -22,12 +22,6 @@ const font_family = Font.family.default();
 		</svelte:element>
 	{/if}
 
-	<!-- FIXME: This doesn't work in Storybook, because `uno.css` gets injected firstly. -->
-	<!-- FIXME: When using vite, it destroys existing rulesets -->
-	<!-- <svelte:element this={"style"} id="layers-order"> -->
-	<!-- 	{AtLayer.ORDER} -->
-	<!-- </svelte:element> -->
-
 	{#each AtLayer as name}
 		<LayerStyles {name} />
 	{/each}
