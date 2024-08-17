@@ -1,47 +1,52 @@
 <script lang="ts" generics="TColor extends SkeletonColor = 'gray'">
-import { Color } from "@xeho91/lib-design/color";
-import { Radius } from "@xeho91/lib-design/radius";
-import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-import { fade } from "svelte/transition";
+	import { Color } from "@xeho91/lib-design/color";
+	import { Radius } from "@xeho91/lib-design/radius";
+	import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+	import { fade } from "svelte/transition";
 
-import type { SkeletonColor, SkeletonVariant } from "./util";
+	import type { SkeletonColor, SkeletonVariant } from "./util";
 
-interface Props extends WithClass {
-	color?: TColor;
-	background_color?: SkeletonColor;
-	count?: number;
-	variant?: SkeletonVariant;
-	hidden?: boolean;
-}
+	interface Props extends WithClass {
+		color?: TColor;
+		background_color?: SkeletonColor;
+		count?: number;
+		variant?: SkeletonVariant;
+		hidden?: boolean;
+	}
 
-let {
-	//
-	class: class_,
-	color = "gray" as TColor,
-	background_color = "gray",
-	count = 1,
-	hidden = false,
-	variant = "text",
-}: Props = $props();
+	let {
+		//
+		class: class_,
+		color = "gray" as TColor,
+		background_color = "gray",
+		count = 1,
+		hidden = false,
+		variant = "text",
+	}: Props = $props();
 
-let rendered = $state(false);
+	let rendered = $state(false);
 
-$effect(() => {
-	rendered = true;
-});
+	let color_1 = $derived(Color.get(color, "blend", 3));
+	let color_2 = $derived(Color.get(color, "blend", 1));
+
+	$effect(() => {
+		rendered = true;
+	});
 </script>
 
 {#if !hidden}
 	<div
 		class={merge_classes(
-			//
 			"skeleton",
-			"flex",
-			background_color && Color.class("background"),
-			background_color &&
-				Color.get(background_color, "solid", 3).class("background"),
+			"inline-flex",
+			Color.class("background"),
+			Color.get(background_color, "solid", 3).class("background"),
+			variant === "circle" && Radius.get("circle").class(),
+			variant === "text" && Radius.get("m").class(),
 			class_,
 		)}
+		style:--color-1={color_1.light_dark.light.atomized_oklch.toString()}
+		style:--color-2={color_2.light_dark.light.atomized_oklch.toString()}
 		in:fade|global={{ delay: 250, duration: rendered ? 250 : 0 }}
 		out:fade|global={{ delay: 250, duration: 250 }}
 	>
@@ -49,25 +54,12 @@ $effect(() => {
 			<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 			<span
 				class={merge_classes(
-					"skeleton",
 					variant,
 					"outline-none relative overflow-hidden will-change-transform",
 					"inline-flex",
 					"w-full min-w-[1em] min-h-[1em]",
 					"bg-no-repeat",
-					variant === "circle" && Radius.get("circle").class(),
-					variant === "text" && Radius.get("m").class(),
 				)}
-				style:--color-1={Color.get(
-					color,
-					"blend",
-					2,
-				).light_dark.light.oklch.toString()}
-				style:--color-2={Color.get(
-					"gray",
-					"blend",
-					1,
-				).light_dark.light.oklch.toString()}
 				aria-busy="true"
 				aria-valuemin="0"
 				aria-valuemax="100"
