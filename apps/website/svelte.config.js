@@ -11,7 +11,9 @@ const __dirname = path.dirname(__filename);
 const CONFIG = {
 	...SHARED_CONFIG,
 	kit: {
-		adapter,
+		adapter: adapter({
+			fallback: "200.html",
+		}),
 		alias: {
 			"$lib/*": "src/lib/*",
 		},
