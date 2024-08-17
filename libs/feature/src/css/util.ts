@@ -25,7 +25,21 @@ if (import.meta.vitest) {
 	describe(merge_classes.name, () => {
 		it("accepts SelectorClass and stringifies them", ({ expect }) => {
 			const classes = merge_classes(new SelectorClass("round-xl"), new SelectorClass("flex"));
-			expect(classes).toBe("round-xl flex");
+			expect(classes).toMatchInlineSnapshot(`"round-xl flex"`);
+		});
+
+		it("there are no extra whitespaces in output", ({ expect }) => {
+			const existing = "flex flex-col";
+			const classes = merge_classes(
+				existing,
+				new SelectorClass("round-xl"),
+				new SelectorClass("flex"),
+				true && "absolute top-0",
+				{
+					"gap[1ch] items-center": true,
+				},
+			);
+			expect(classes).toMatchInlineSnapshot(`"flex flex-col round-xl flex absolute top-0 gap[1ch] items-center"`);
 		});
 	});
 }
