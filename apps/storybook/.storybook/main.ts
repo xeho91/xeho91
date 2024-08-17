@@ -8,7 +8,6 @@ import { get_lib_root_path_url } from "@xeho91/lib-monorepo/lib";
 
 /** @see {@link https://storybook.js.org/docs/configure/typescript#configure-storybook-with-typescript} */
 const config = (async (): Promise<StorybookConfig> => {
-	const [{ default: UnoCSS }] = await Promise.all([import("unocss/vite")]);
 	const [
 		//
 		app_storybook_url,
@@ -22,8 +21,9 @@ const config = (async (): Promise<StorybookConfig> => {
 
 	return {
 		addons: [
-			// "@chromatic-com/storybook",
+			"@chromatic-com/storybook",
 			"@storybook/addon-essentials",
+			"@storybook/addon-interactions",
 			"@storybook/addon-svelte-csf",
 			"@storybook/addon-themes",
 		],
@@ -52,7 +52,10 @@ const config = (async (): Promise<StorybookConfig> => {
 		],
 		typescript: {},
 		viteFinal: async (config, _options) => {
-			const { svelte } = await import("@sveltejs/vite-plugin-svelte");
+			const [{ svelte }, { default: uno_css }] = await Promise.all([
+				import("@sveltejs/vite-plugin-svelte"),
+				import("unocss/vite"),
+			]);
 			const { define, plugins, ...rest } = config;
 			return {
 				...rest,
@@ -63,7 +66,7 @@ const config = (async (): Promise<StorybookConfig> => {
 				plugins: [
 					//
 					...(plugins ?? []),
-					UnoCSS(),
+					uno_css(),
 					svelte(),
 				],
 			};

@@ -41,7 +41,6 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-storybook\" "
 	},
 	"dependencies": {
-		"@storybook/types": "8.2.4",
 		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-design": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",
@@ -53,8 +52,10 @@
 		"mime": "4.0.4"
 	},
 	"peerDependencies": {
+		"@storybook/svelte": "catalog:",
 		"@total-typescript/tsconfig": "catalog:",
 		"@types/node": "catalog:",
+		"storybook": "catalog:",
 		"svelte": "catalog:",
 		"svelte-check": "catalog:",
 		"typescript": "catalog:",

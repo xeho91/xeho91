@@ -1,0 +1,11 @@
+{
+	"autoAcceptChanges": "main",
+	"buildScriptName": "build:storybook",
+	"exitOnceUploaded": true,
+	"exitZeroOnChanges": true,
+	"onlyChanged": true,
+	"projectId": "Project:66b9c1d6080f59702379bdee",
+	"skip": "@(renovate/**|dependabot/**)",
+	"storybookBaseDir": "apps/storybook",
+	"zip": true
+}

@@ -11,7 +11,7 @@ type AllowedValue = NumberCSS | Percentage | Var;
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch#l}
  */
 export class Lightness<TValue extends AllowedValue = AllowedValue> extends DataType<typeof Lightness.NAME, TValue> {
-	public static NAME = "lightness";
+	public static readonly NAME = "lightness";
 	public static readonly DEFAULT_VALUE = new Percentage(0) satisfies AllowedValue;
 
 	public static default = () => new Lightness(Lightness.DEFAULT_VALUE);
