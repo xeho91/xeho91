@@ -26,6 +26,9 @@ let {
 
 let rendered = $state(false);
 
+let color_1 = $derived(Color.get(color, "blend", 3));
+let color_2 = $derived(Color.get(color, "blend", 1));
+
 $effect(() => {
 	rendered = true;
 });
@@ -36,12 +39,15 @@ $effect(() => {
 		class={merge_classes(
 			//
 			"skeleton",
-			"flex",
-			background_color && Color.class("background"),
-			background_color &&
-				Color.get(background_color, "solid", 3).class("background"),
+			"inline-flex",
+			Color.class("background"),
+			Color.get(background_color, "solid", 3).class("background"),
+			variant === "circle" && Radius.get("circle").class(),
+			variant === "text" && Radius.get("m").class(),
 			class_,
 		)}
+		style:--color-1={color_1.light_dark.light.atomized_oklch.toString()}
+		style:--color-2={color_2.light_dark.light.atomized_oklch.toString()}
 		in:fade|global={{ delay: 250, duration: rendered ? 250 : 0 }}
 		out:fade|global={{ delay: 250, duration: 250 }}
 	>
@@ -49,25 +55,12 @@ $effect(() => {
 			<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 			<span
 				class={merge_classes(
-					"skeleton",
 					variant,
 					"outline-none relative overflow-hidden will-change-transform",
 					"inline-flex",
 					"w-full min-w-[1em] min-h-[1em]",
 					"bg-no-repeat",
-					variant === "circle" && Radius.get("circle").class(),
-					variant === "text" && Radius.get("m").class(),
 				)}
-				style:--color-1={Color.get(
-					color,
-					"blend",
-					2,
-				).light_dark.light.oklch.toString()}
-				style:--color-2={Color.get(
-					"gray",
-					"blend",
-					1,
-				).light_dark.light.oklch.toString()}
 				aria-busy="true"
 				aria-valuemin="0"
 				aria-valuemax="100"
