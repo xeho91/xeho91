@@ -13,11 +13,7 @@ export const PARAMETERS = readonly_object({
 	},
 	variants: {
 		controls: { disable: true },
-		// docs: {
-		// 	source: {
-		// 		rawCode: null,
-		// 	},
-		// },
+		actions: { disable: true },
 		layout: "padded",
 	},
 } satisfies Record<string, Parameters>);
