@@ -19,7 +19,7 @@ export class AtLayer<TName extends AtLayerName = AtLayerName, TBlock extends Blo
 {
 	static readonly #NAME = "layer";
 
-	public static readonly NAMES = readonly_set(["reset", "token", "framework", "base", "component", "override"]);
+	public static readonly NAMES = readonly_set(["reset", "framework", "base", "token", "component", "override"]);
 
 	public static readonly ORDER = new (class extends IterableInstance<AtLayerName> {
 		protected iterable = AtLayer.NAMES;
