@@ -1,8 +1,7 @@
 <script lang="ts">
+import IconifyIcon from "@iconify/svelte";
 import type { ColorName } from "@xeho91/lib-design/color";
 import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-
-import "iconify-icon";
 
 import { ICONS_MAP, type IconName } from "./util";
 
@@ -20,7 +19,7 @@ let { class: class_, color, name, loading, ...rest_props }: Props = $props();
 {#if loading}
 	<Skeleton color={set_skeleton_color(color)} variant="circle" />
 {:else}
-	<iconify-icon
+	<IconifyIcon
 		{...rest_props}
 		class={merge_classes(
 			//
@@ -31,14 +30,5 @@ let { class: class_, color, name, loading, ...rest_props }: Props = $props();
 		icon={`ph:${ICONS_MAP.get(name)}-duotone`}
 		width="1em"
 		height="1em"
-	>
-	</iconify-icon>
+	></IconifyIcon>
 {/if}
-
-<style>
-	@layer component {
-		.icon {
-			margin-block-end: -0.25ex;
-		}
-	}
-</style>

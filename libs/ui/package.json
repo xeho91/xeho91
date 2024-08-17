@@ -52,16 +52,18 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-ui\" "
 	},
 	"dependencies": {
+		"@iconify/svelte": "4.0.2",
 		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-design": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",
 		"@xeho91/lib-feature": "workspace:*",
 		"@xeho91/lib-snippet": "workspace:*",
-		"@xeho91/lib-type": "workspace:*",
-		"iconify-icon": "2.1.0"
+		"@xeho91/lib-type": "workspace:*"
 	},
 	"devDependencies": {
+		"@storybook/addon-actions": "8.2.8",
 		"@storybook/addon-svelte-csf": "catalog:",
+		"@storybook/test": "8.2.8",
 		"@xeho91/lib-storybook": "workspace:*"
 	},
 	"peerDependencies": {
