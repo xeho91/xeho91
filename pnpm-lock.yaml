@@ -666,6 +666,9 @@ importers:
 
   libs/ui:
     dependencies:
+      '@iconify/svelte':
+        specifier: 4.0.2
+        version: 4.0.2(svelte@5.0.0-next.218)
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
         version: 1.0.4
@@ -690,9 +693,6 @@ importers:
       '@xeho91/lib-type':
         specifier: workspace:*
         version: link:../type
-      iconify-icon:
-        specifier: 2.1.0
-        version: 2.1.0
       svelte:
         specifier: 'catalog:'
         version: 5.0.0-next.218
@@ -1780,6 +1780,11 @@ packages:
   '@humanwhocodes/object-schema@1.2.1':
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     deprecated: Use @eslint/object-schema instead
+
+  '@iconify/svelte@4.0.2':
+    resolution: {integrity: sha512-6BSrU85FzGfhQD3bTXpnkCCvBAglEt8T9QednVnXAYm4C+d3464y+pYMzhQNJm5mPId2cuiw+2wXlDflXllHDw==}
+    peerDependencies:
+      svelte: '>4.0.0'
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3495,9 +3500,6 @@ packages:
   human-signals@5.0.0:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
-
-  iconify-icon@2.1.0:
-    resolution: {integrity: sha512-lto4XU3bwTQnb+D/CsJ4dWAo0aDe+uPMxEtxyOodw9l7R9QnJUUab3GCehlw2M8mDHdeUu/ufx8PvRQiJphhXg==}
 
   iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
@@ -6754,6 +6756,11 @@ snapshots:
 
   '@humanwhocodes/object-schema@1.2.1': {}
 
+  '@iconify/svelte@4.0.2(svelte@5.0.0-next.218)':
+    dependencies:
+      '@iconify/types': 2.0.0
+      svelte: 5.0.0-next.218
+
   '@iconify/types@2.0.0': {}
 
   '@iconify/utils@2.1.30':
@@ -8911,10 +8918,6 @@ snapshots:
   human-signals@2.1.0: {}
 
   human-signals@5.0.0: {}
-
-  iconify-icon@2.1.0:
-    dependencies:
-      '@iconify/types': 2.0.0
 
   iconv-lite@0.4.24:
     dependencies:
