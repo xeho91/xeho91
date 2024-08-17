@@ -26,6 +26,7 @@
 		"#*": "./src/*.ts"
 	},
 	"exports": {
+		"./layout/*": "./src/layout/*/mod.ts",
 		"./primitive/*": "./src/primitive/*/mod.ts",
 		"./semantic/*": "./src/semantic/*/mod.ts"
 	},
@@ -53,6 +54,7 @@
 	},
 	"dependencies": {
 		"@iconify/svelte": "4.0.2",
+		"@xeho91/lib-brand": "workspace:*",
 		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-design": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",

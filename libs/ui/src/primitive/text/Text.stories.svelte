@@ -9,9 +9,9 @@ import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
 
 import Text from "./Text.svelte";
 
-import { Code } from "#semantic/code/mod";
-
 import { TEXT_COLORS, TEXT_HTML_TAGS } from "./util";
+
+import { Code } from "#semantic/code/mod";
 
 const { Story } = defineMeta({
 	...SHARED_META,

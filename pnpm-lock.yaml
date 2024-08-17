@@ -281,9 +281,6 @@ importers:
       '@xeho91/lib-type':
         specifier: workspace:*
         version: link:../type
-      '@xeho91/lib-ui':
-        specifier: workspace:*
-        version: link:../ui
       dedent:
         specifier: 1.5.3
         version: 1.5.3
@@ -690,6 +687,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.2.0
+      '@xeho91/lib-brand':
+        specifier: workspace:*
+        version: link:../brand
       '@xeho91/lib-css':
         specifier: workspace:*
         version: link:../css

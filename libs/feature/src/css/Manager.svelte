@@ -22,12 +22,6 @@ const font_family = Font.family.default();
 		</svelte:element>
 	{/if}
 
-	<!-- FIXME: This doesn't work in Storybook, because `uno.css` gets injected firstly. -->
-	<!-- FIXME: When using vite, it destroys existing rulesets -->
-	<!-- <svelte:element this={"style"} id="layers-order"> -->
-	<!-- 	{AtLayer.ORDER} -->
-	<!-- </svelte:element> -->
-
 	{#each AtLayer as name}
 		<LayerStyles {name} />
 	{/each}
@@ -48,9 +42,6 @@ const font_family = Font.family.default();
 />
 
 <style>
-	/* FIXME: Temporary workaround */
-	@layer reset, token, framework, base, component, override;
-
 	@import "@unocss/reset/tailwind-compat.css" layer(reset);
 
 	@layer base.default {
@@ -146,7 +137,7 @@ const font_family = Font.family.default();
 	}
 
 	@layer base.default {
-		body {
+		:global(body) {
 			transition-duration: var(--transition-dur);
 			transition-timing-function: var(--transition-fn);
 			transition-property: var(--transition-props-color);
