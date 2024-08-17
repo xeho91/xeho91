@@ -2,7 +2,7 @@
 import { Color } from "@xeho91/lib-design/color";
 import { Elevation } from "@xeho91/lib-design/elevation";
 import { Stroke } from "@xeho91/lib-design/stroke";
-import { merge_classes, type WithClass } from "@xeho91/lib-feature/css";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 
