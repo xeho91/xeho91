@@ -2,7 +2,9 @@
 import { defineMeta } from "@storybook/addon-svelte-csf";
 import { Elevation } from "@xeho91/lib-design/elevation";
 import { Font } from "@xeho91/lib-design/font";
-import { PARAMETERS, create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
+import { create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
+import { SHARED_META } from "@xeho91/lib-storybook/meta";
+import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
 import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
 
 import Text from "./Text.svelte";
@@ -12,6 +14,7 @@ import { Code } from "#semantic/code/mod";
 import { TEXT_COLORS, TEXT_HTML_TAGS } from "./util";
 
 const { Story } = defineMeta({
+	...SHARED_META,
 	component: Text,
 	tags: ["autodocs"],
 	args: {
@@ -50,7 +53,7 @@ const { Story } = defineMeta({
 });
 </script>
 
-<Story name="Playground">
+<Story name="Playground" parameters={PARAMETERS.playground}>
 	{#snippet children(args)}
 		<Text {...args}>Text</Text>
 	{/snippet}

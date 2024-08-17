@@ -1,9 +1,8 @@
-import type { InputType, Parameters } from "@storybook/types";
 import { stringified_union_from_array } from "@xeho91/lib-snippet/array";
-import { readonly_object } from "@xeho91/lib-snippet/object";
 import type { Range } from "@xeho91/lib-struct/range";
 import type { JoinableItem } from "@xeho91/lib-type/array";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
+import type { InputType } from "storybook/internal/types";
 
 type Category = "design" | "options" | "meta" | "download";
 type Subcategory = "overrides";
@@ -135,23 +134,3 @@ function set_summary<TItem extends JoinableItem>(
 ): NonNullable<NonNullable<InputType["table"]>["defaultValue"]>["summary"] {
 	return typeof item === "string" ? `"${item}"` : item?.toString();
 }
-
-export const PARAMETERS = readonly_object({
-	default: {
-		controls: { disable: true },
-		layout: "centered",
-	},
-	playground: {
-		controls: { disable: false },
-		layout: "centered",
-	},
-	variants: {
-		controls: { disable: true },
-		// docs: {
-		// 	source: {
-		// 		rawCode: null,
-		// 	},
-		// },
-		layout: "padded",
-	},
-} satisfies Record<string, Parameters>);

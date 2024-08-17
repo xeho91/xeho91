@@ -1,6 +1,8 @@
 <script context="module" lang="ts">
 import { defineMeta } from "@storybook/addon-svelte-csf";
 import { create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
+import { SHARED_META } from "@xeho91/lib-storybook/meta";
+import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
 import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
 
 import Icon from "./Icon.svelte";
@@ -8,6 +10,7 @@ import Icon from "./Icon.svelte";
 import { ICONS_MAP } from "./util";
 
 const { Story } = defineMeta({
+	...SHARED_META,
 	component: Icon,
 	tags: ["autodocs"],
 	args: {
@@ -25,18 +28,11 @@ const { Story } = defineMeta({
 });
 </script>
 
-<Story name="Playground">
-	{#snippet children(args)}
-		<Icon {...args} />
-	{/snippet}
-</Story>
+<Story name="Playground" parameters={PARAMETERS.playground} />
 
 <Story
 	name="Names"
-	parameters={{
-		controls: { disable: true },
-		layout: "fullscreen",
-	}}
+	parameters={PARAMETERS.variants}
 >
 	<VariantsGroup prop="name" values={ICONS_MAP.keys()}>
 		{#snippet children({ name })}

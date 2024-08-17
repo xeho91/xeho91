@@ -37,6 +37,7 @@ $effect(() => {
 {#if !hidden}
 	<div
 		class={merge_classes(
+			//
 			"skeleton",
 			"inline-flex",
 			Color.class("background"),

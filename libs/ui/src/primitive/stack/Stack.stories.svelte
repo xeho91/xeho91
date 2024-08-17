@@ -1,7 +1,9 @@
 <script context="module" lang="ts">
 import { defineMeta } from "@storybook/addon-svelte-csf";
 import { Space } from "@xeho91/lib-design/space";
-import { PARAMETERS, create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
+import { create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
+import { SHARED_META } from "@xeho91/lib-storybook/meta";
+import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
 import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
 
 import Sample from "./Sample.svelte";
@@ -43,6 +45,7 @@ const margin_props = [
 ] as const;
 
 const { Story } = defineMeta({
+	...SHARED_META,
 	component: Stack,
 	tags: ["autodocs"],
 	argTypes: {
@@ -66,7 +69,7 @@ const { Story } = defineMeta({
 });
 </script>
 
-<Story name="Playground">
+<Story name="Playground" parameters={PARAMETERS.playground}>
 	{#snippet children(args)}
 		<Stack {...args}>
 			<Sample />
