@@ -48,9 +48,6 @@ const font_family = Font.family.default();
 />
 
 <style>
-	/* FIXME: Temporary workaround */
-	@layer reset, token, framework, base, component, override;
-
 	@import "@unocss/reset/tailwind-compat.css" layer(reset);
 
 	@layer base.default {
@@ -146,7 +143,7 @@ const font_family = Font.family.default();
 	}
 
 	@layer base.default {
-		body {
+		:global(body) {
 			transition-duration: var(--transition-dur);
 			transition-timing-function: var(--transition-fn);
 			transition-property: var(--transition-props-color);
