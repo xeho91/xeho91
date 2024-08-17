@@ -690,6 +690,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.2.0
+      '@xeho91/lib-brand':
+        specifier: workspace:*
+        version: link:../brand
       '@xeho91/lib-css':
         specifier: workspace:*
         version: link:../css
