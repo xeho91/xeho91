@@ -1,5 +1,5 @@
 /**
- * Color instance.
+ * Atomic color instance.
  * @module
  */
 
@@ -8,8 +8,10 @@ import { Chroma } from "@xeho91/lib-css/data-type/chroma";
 import { Hue } from "@xeho91/lib-css/data-type/hue";
 import { Lightness } from "@xeho91/lib-css/data-type/lightness";
 import { Oklch } from "@xeho91/lib-css/function/oklch";
-import type { Dimension } from "@xeho91/lib-css/value/dimension";
-import type { Percentage } from "@xeho91/lib-css/value/percentage";
+import type { Var } from "@xeho91/lib-css/function/var";
+import { Reference } from "@xeho91/lib-css/reference";
+import { Dimension } from "@xeho91/lib-css/value/dimension";
+import { Percentage } from "@xeho91/lib-css/value/percentage";
 import type { Display } from "@xeho91/lib-type/trait/display";
 import type { Oklch as CuloriOklch } from "culori/fn";
 
@@ -29,7 +31,7 @@ export class AtomicColor<
 	TStep extends ColorStep = ColorStep,
 	TScheme extends ColorScheme = ColorScheme,
 	const TOklch extends OklchProperties = OklchProperties,
-> implements Display<TName>
+> implements Display
 {
 	/**
 	 * @see {@link ColorCategory}
@@ -57,7 +59,7 @@ export class AtomicColor<
 	public readonly hue: TOklch["hue"];
 	public readonly alpha: TOklch["alpha"];
 
-	constructor({
+	public constructor({
 		category,
 		name,
 		type,
@@ -84,17 +86,38 @@ export class AtomicColor<
 		this.alpha = alpha;
 	}
 
-	public toString(): TName {
-		return this.name;
+	public toString(): Name<TCategory, TName, TType, TStep, TScheme> {
+		const { category, name, type, step, scheme } = this;
+		return `color-${category}-${name}-${type}-${step}-${scheme}`;
 	}
 
-	public get oklch() {
+	public get oklch(): Oklch<
+		Lightness<TOklch["lightness"]>,
+		Chroma<TOklch["chroma"]>,
+		Hue<TOklch["hue"]>,
+		Alpha<TOklch["alpha"]>
+	> {
 		const { lightness, chroma, hue, alpha } = this;
 		return new Oklch({
 			lightness: new Lightness(lightness),
 			chroma: new Chroma(chroma),
 			hue: new Hue(hue),
 			alpha: new Alpha(alpha),
+		});
+	}
+
+	public get atomized_oklch(): Oklch<
+		Lightness<Var<Reference<`${Name<TCategory, TName, TType, TStep, TScheme>}-lightness`>>>,
+		Chroma<Var<Reference<`${Name<TCategory, TName, TType, TStep, TScheme>}-chroma`>>>,
+		Hue<Var<Reference<`${Name<TCategory, TName, TType, TStep, TScheme>}-hue`>>>,
+		Alpha<Var<Reference<`${Name<TCategory, TName, TType, TStep, TScheme>}-alpha`>>>
+	> {
+		const reference = new Reference(this.toString());
+		return new Oklch({
+			lightness: Lightness.from_reference(reference),
+			chroma: Chroma.from_reference(reference),
+			hue: Hue.from_reference(reference),
+			alpha: Alpha.from_reference(reference),
 		});
 	}
 
@@ -108,4 +131,79 @@ export class AtomicColor<
 			alpha: this.alpha.value,
 		};
 	}
+}
+
+type Name<
+	TCategory extends ColorCategory,
+	TName extends ColorName,
+	TType extends ColorType,
+	TStep extends ColorStep,
+	TScheme extends ColorScheme,
+> = `color-${TCategory}-${TName}-${TType}-${TStep}-${TScheme}`;
+
+if (import.meta.vitest) {
+	const { describe, expectTypeOf, it } = import.meta.vitest;
+
+	describe(AtomicColor.name, () => {
+		const atomized_color = new AtomicColor({
+			category: "brand",
+			name: "info",
+			type: "solid",
+			step: 9,
+			scheme: "dark",
+			oklch: {
+				lightness: new Percentage(0),
+				chroma: new Percentage(0),
+				hue: new Dimension(0, "deg"),
+				alpha: new Percentage(0),
+			},
+		});
+
+		describe("toString()", () => {
+			it("returns stringified name", ({ expect }) => {
+				const stringified = atomized_color.toString();
+				expect(stringified).toMatchInlineSnapshot(`"color-brand-info-solid-9-dark"`);
+				expectTypeOf(stringified).toEqualTypeOf<Name<"brand", "info", "solid", 9, "dark">>();
+			});
+
+			it("stringified returns oklch with literal values", ({ expect }) => {
+				const { oklch } = atomized_color;
+				expect(oklch.toString()).toMatchInlineSnapshot(`"oklch(0% 0% 0deg / 0%)"`);
+			});
+		});
+
+		describe("get oklch", () => {
+			it("returns correctly an instance", ({ expect }) => {
+				const { oklch } = atomized_color;
+				expect(oklch).toBeInstanceOf(Oklch);
+				expectTypeOf(oklch).toMatchTypeOf<
+					Oklch<
+						Lightness<Percentage<0>>,
+						Chroma<Percentage<0>>,
+						Hue<Dimension<0, "deg">>,
+						Alpha<Percentage<0>>
+					>
+				>();
+			});
+
+			it("stringified returns oklch with literal values", ({ expect }) => {
+				const { oklch } = atomized_color;
+				expect(oklch.toString()).toMatchInlineSnapshot(`"oklch(0% 0% 0deg / 0%)"`);
+			});
+		});
+
+		describe("get atomized_oklch", () => {
+			it("returns correctly an instance", ({ expect }) => {
+				const { atomized_oklch } = atomized_color;
+				expect(atomized_oklch).toBeInstanceOf(Oklch);
+				expectTypeOf(atomized_oklch).toMatchTypeOf<Oklch<Lightness<Var>, Chroma<Var>, Hue<Var>, Alpha<Var>>>();
+			});
+			it("returns correctly an instance", ({ expect }) => {
+				const { atomized_oklch } = atomized_color;
+				expect(atomized_oklch.toString()).toMatchInlineSnapshot(
+					`"oklch(var(--color-brand-info-solid-9-dark-lightness) var(--color-brand-info-solid-9-dark-chroma) var(--color-brand-info-solid-9-dark-hue) / var(--color-brand-info-solid-9-dark-alpha))"`,
+				);
+			});
+		});
+	});
 }
