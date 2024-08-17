@@ -41,7 +41,8 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-storybook\" "
 	},
 	"dependencies": {
-		"@storybook/types": "8.2.4",
+		"@storybook/svelte": "catalog:",
+		"@storybook/types": "catalog:",
 		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-design": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",

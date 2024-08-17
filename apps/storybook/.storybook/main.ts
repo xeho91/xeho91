@@ -24,6 +24,7 @@ const config = (async (): Promise<StorybookConfig> => {
 		addons: [
 			// "@chromatic-com/storybook",
 			"@storybook/addon-essentials",
+			"@storybook/addon-interactions",
 			"@storybook/addon-svelte-csf",
 			"@storybook/addon-themes",
 		],

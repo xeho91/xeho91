@@ -44,11 +44,12 @@
 	},
 	"devDependencies": {
 		"@storybook/addon-essentials": "8.2.8",
+		"@storybook/addon-interactions": "8.2.8",
 		"@storybook/addon-svelte-csf": "catalog:",
 		"@storybook/addon-themes": "8.2.8",
 		"@storybook/docs-tools": "8.2.8",
 		"@storybook/node-logger": "8.2.8",
-		"@storybook/svelte": "8.2.8",
+		"@storybook/svelte": "catalog:",
 		"@storybook/svelte-vite": "8.2.8",
 		"@sveltejs/vite-plugin-svelte": "catalog:",
 		"@total-typescript/tsconfig": "catalog:",
