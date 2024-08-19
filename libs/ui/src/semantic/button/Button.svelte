@@ -1,10 +1,11 @@
 <script lang="ts" generics="TTag extends ButtonTag = 'button'">
+import { Reference } from "@xeho91/lib-css/reference";
 import { Color } from "@xeho91/lib-design/color";
 import { Elevation } from "@xeho91/lib-design/elevation";
 import { Stroke } from "@xeho91/lib-design/stroke";
 import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
+import type { HTMLAnchorAttributes, HTMLButtonAttributes } from "svelte/elements";
 
 import {
 	type ButtonColor,
@@ -19,16 +20,16 @@ import {
 
 import { Text } from "#primitive/text/mod";
 
-type Element = TTag extends "a" ? HTMLAnchorElement : TTag extends "button" ? HTMLButtonElement : never;
-type Attributes = Omit<HTMLAttributes<Element>, "class" | "children">;
+type Attributes = TTag extends "a" ? HTMLAnchorAttributes : TTag extends "button" ? HTMLButtonAttributes : never;
 
-interface Props extends WithClass, Attributes {
-	tag?: TTag;
-	children: Snippet;
-	color?: ButtonColor;
-	size?: ButtonSize;
-	variant?: ButtonVariant;
-}
+type Props = WithClass &
+	Attributes & {
+		tag?: TTag;
+		children: Snippet;
+		color?: ButtonColor;
+		size?: ButtonSize;
+		variant?: ButtonVariant;
+	};
 
 let {
 	children,
@@ -42,18 +43,22 @@ let {
 let element = $state<HTMLAnchorElement | HTMLButtonElement | undefined>();
 
 let has_icon_only = $derived(element?.innerText.length === 0);
-</script>
 
+const anchor_name_reference =
+	tag === "button" && rest_props?.popovertarget ? new Reference(rest_props.popovertarget) : undefined;
+</script>
 
 <svelte:element
 	this={tag}
 	bind:this={element}
+	{...rest_props as unknown as Attributes}
 	class={merge_classes(
 		"button",
 		color,
 		variant,
-		"inline-flex flex-row justify-center",
+		"w-fit size-min-[44px]",
 		...set_button_size_class_names(size, has_icon_only),
+		"inline-flex flex-row place-items-center place-content-center",
 		Color.class("background"),
 		...set_button_color_class_names(variant, color),
 		"border-solid",
@@ -67,16 +72,16 @@ let has_icon_only = $derived(element?.innerText.length === 0);
 		Elevation.get(1).class("box-shadow", { pseudo_class: "focus" }),
 		class_,
 	)}
-	{...rest_props as TTag extends "a" ? HTMLAttributes<HTMLAnchorElement> : HTMLAttributes<HTMLButtonElement>}
+	style:anchor-name={anchor_name_reference?.toString()}
 >
 	<Text
 		color={set_button_text_color(variant, color)}
-		size={set_button_text_size(size)}
+		size={set_button_text_size(size, has_icon_only)}
 		mode={"solid"}
 		class={merge_classes(
 			"inline-flex gap-x-[1ch]",
 			{
-				["min-w-[1ch] min-h-[1ch] aspect-square"]: has_icon_only,
+				["aspect-square h[1em]"]: has_icon_only,
 			},
 		)}
 	>
