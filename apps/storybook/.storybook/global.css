@@ -1,2 +1,2 @@
-/* // FIXME: Temporary workaround, to ensure the order stays as intended. */
+/* FIXME: Temporary workaround, to ensure the order stays as intended. */
 @layer reset, framework, token, base, component, override;
