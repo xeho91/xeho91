@@ -9,9 +9,10 @@ export const decorators: Decorator[] = [
 	withThemeByDataAttribute({
 		themes: {
 			light: "light",
+			system: "system",
 			dark: "dark",
 		},
-		defaultTheme: "light",
+		defaultTheme: "system",
 		attributeName: "data-color-scheme",
 	}),
 	() => ({ Component: GlobalManagers }),
