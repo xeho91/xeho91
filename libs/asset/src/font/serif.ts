@@ -4,4 +4,5 @@
  * @module
  */
 
+export * from "@fontsource-variable/fraunces/full.css";
 export * from "@fontsource-variable/fraunces/full-italic.css";

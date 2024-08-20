@@ -4,4 +4,5 @@
  * @module
  */
 
+export * from "@fontsource-variable/jetbrains-mono/wght.css";
 export * from "@fontsource-variable/jetbrains-mono/wght-italic.css";
