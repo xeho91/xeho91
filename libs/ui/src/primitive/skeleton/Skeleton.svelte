@@ -83,8 +83,7 @@ $effect(() => {
 				90deg,
 				var(--color-1),
 				var(--color-2),
-				var(--color-1),
-				var(--color-2)
+				var(--color-1)
 			);
 
 			@media (prefers-reduced-motion: reduce) {
