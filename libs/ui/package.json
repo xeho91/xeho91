@@ -63,9 +63,9 @@
 		"@xeho91/lib-type": "workspace:*"
 	},
 	"devDependencies": {
-		"@storybook/addon-actions": "8.2.8",
+		"@storybook/addon-actions": "8.2.9",
 		"@storybook/addon-svelte-csf": "catalog:",
-		"@storybook/test": "8.2.8",
+		"@storybook/test": "8.2.9",
 		"@xeho91/lib-storybook": "workspace:*"
 	},
 	"peerDependencies": {
