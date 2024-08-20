@@ -131,14 +131,9 @@ const _selection_color = $derived.by(() => {
 <style>
 	@layer component {
 		.text {
-			transition:
-				font-size ease-in-out 250ms,
-				font-weight ease-in-out 250ms,
-				color ease-in-out 250ms;
-
-			& :global(.icon) {
-				margin-block-start: 0.25rex;
-			}
+			transition-duration: var(--transition-dur);
+			transition-timing-function: var(--transition-fn);
+			transition-property: color, font-size, font-weight;
 		}
 	}
 </style>

@@ -2,7 +2,6 @@
 import { action } from "@storybook/addon-actions";
 import { type Args, defineMeta, setTemplate } from "@storybook/addon-svelte-csf";
 import { expect, fireEvent, userEvent, waitFor, within } from "@storybook/test";
-import { unreachable } from "@xeho91/lib-error/unreachable";
 import { create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
 import { SHARED_META } from "@xeho91/lib-storybook/meta";
 import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
@@ -61,10 +60,11 @@ const { Story } = defineMeta({
 <Story
 	name="Default"
 	parameters={PARAMETERS.default}
-	play={async ({ args, canvasElement }) => {
+	play={async (context) => {
+		const { args, canvasElement } = context;
+		const { onblur, onclick, onfocus, onmouseover, onmouseout } = args;
 		const canvas = within(canvasElement);
-		const button = canvas.getAllByRole("button")[0];
-		if (!button) throw unreachable();
+		const button = canvas.getByRole("button");
 		await Promise.all([
 			fireEvent.blur(button),
 			userEvent.click(button),
@@ -73,11 +73,11 @@ const { Story } = defineMeta({
 			userEvent.unhover(button),
 		]);
 		await Promise.all([
-			waitFor(() => expect(args.onblur).toHaveBeenCalled()),
-			waitFor(() => expect(args.onclick).toHaveBeenCalled()),
-			waitFor(() => expect(args.onfocus).toHaveBeenCalled()),
-			waitFor(() => expect(args.onmouseout).toHaveBeenCalled()),
-			waitFor(() => expect(args.onmouseover).toHaveBeenCalled()),
+			waitFor(() => expect(onblur).toHaveBeenCalled()),
+			waitFor(() => expect(onclick).toHaveBeenCalled()),
+			waitFor(() => expect(onfocus).toHaveBeenCalled()),
+			waitFor(() => expect(onmouseout).toHaveBeenCalled()),
+			waitFor(() => expect(onmouseover).toHaveBeenCalled()),
 		]);
 	}}
 />
