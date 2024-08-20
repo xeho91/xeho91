@@ -46,11 +46,21 @@ import "virtual:uno.css";
 	@import "@unocss/reset/tailwind-compat.css" layer(reset);
 
 	@layer base.default {
-		:global(html[data-color-scheme="light"]) {
+		:root:where(:global(html[data-color-scheme="light"])) {
 			color-scheme: light;
 		}
-		:global(html[data-color-scheme="dark"]) {
+		:root:where(:global(html[data-color-scheme="system"])) {
+			color-scheme: light dark;
+		}
+		:root:where(:global(html[data-color-scheme="dark"])) {
 			color-scheme: dark;
+		}
+	}
+
+	@layer override {
+		:global(*) {
+			--box-shadow-color-light-lightness: 21%;
+			--box-shadow-color-dark-lightness: 15%;
 		}
 	}
 
