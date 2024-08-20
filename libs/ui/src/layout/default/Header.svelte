@@ -8,10 +8,9 @@ import { fade } from "svelte/transition";
 
 import { LAYOUT_DEFAULT_FADE, LAYOUT_DEFAULT_SPACE_INLINE } from "./util";
 
+import { ButtonAppSettings } from "#organism/app-settings/mod";
 import { Container } from "#primitive/container/mod";
-import { Icon } from "#primitive/icon/mod";
 import { Skeleton } from "#primitive/skeleton/mod";
-import { Button } from "#semantic/button/mod";
 
 interface Props extends WithClass {
 	loading?: boolean;
@@ -75,16 +74,8 @@ $effect(() => {
 				"self-center",
 			)}
 		/>
-		<div
-			class={merge_classes(
-				//
-				"actions",
-				"self-center justify-self-end",
-			)}
-		>
-			<Button color="primary" size="small">
-				<Icon name="settings" />
-			</Button>
+		<div class={merge_classes("actions", "justify-self-end")}>
+			<ButtonAppSettings />
 		</div>
 	</Container>
 </header>
