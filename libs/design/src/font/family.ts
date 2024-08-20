@@ -139,7 +139,7 @@ if (import.meta.vitest) {
 			it("returns default when no name provided", ({ expect }) => {
 				const font_family = FontFamily.default();
 				expect(font_family).toBeInstanceOf(FontFamily);
-				expectTypeOf(font_family).toMatchTypeOf<FontFamily<typeof FontFamily.DEFAULT, "Nunito Sans">>();
+				expectTypeOf(font_family).toMatchTypeOf<FontFamily<typeof FontFamily.DEFAULT, "Work Sans Variable">>();
 			});
 
 			it("on constructed instance subscriber receive instance", ({ expect }) => {
@@ -159,9 +159,9 @@ if (import.meta.vitest) {
 					expect(instance).toBeInstanceOf(FontFamily);
 					expectTypeOf(instance).toMatchTypeOf<FontFamily<FontFamilyName, string>>();
 				}
-				expectTypeOf(FontFamily.get("mono")).toEqualTypeOf<FontFamily<"mono", "Jetbrains Mono">>();
-				expectTypeOf(FontFamily.get("sans")).toEqualTypeOf<FontFamily<"sans", "Nunito Sans">>();
-				expectTypeOf(FontFamily.get("serif")).toEqualTypeOf<FontFamily<"serif", "Fraunces">>();
+				expectTypeOf(FontFamily.get("mono")).toEqualTypeOf<FontFamily<"mono", "JetBrains Mono Variable">>();
+				expectTypeOf(FontFamily.get("sans")).toEqualTypeOf<FontFamily<"sans", "Work Sans Variable">>();
+				expectTypeOf(FontFamily.get("serif")).toEqualTypeOf<FontFamily<"serif", "Fraunces Variable">>();
 			});
 
 			it("it got cached in the CONSTRUCTED", ({ expect }) => {
