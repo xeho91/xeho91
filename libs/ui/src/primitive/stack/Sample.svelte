@@ -14,9 +14,3 @@ import { merge_classes } from "@xeho91/lib-feature/css/util";
 		)}
 	></div>
 {/each}
-
-<style>
-	:global(.stack) {
-		background-color: light-dark(peachpuff, sandybrown);
-	}
-</style>
