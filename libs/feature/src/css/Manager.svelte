@@ -1,4 +1,8 @@
 <script lang="ts">
+import "@xeho91/lib-asset/font/sans";
+import "@xeho91/lib-asset/font/serif";
+import "@xeho91/lib-asset/font/mono";
+
 import { AtLayer } from "@xeho91/lib-css/at-rule/layer";
 import { Color } from "@xeho91/lib-design/color";
 import { Font } from "@xeho91/lib-design/font";
@@ -9,8 +13,6 @@ import { state_css } from "./state.svelte";
 import { classes } from "./util";
 
 import "virtual:uno.css";
-
-const font_family = Font.family.default();
 </script>
 
 <svelte:head>
@@ -29,14 +31,13 @@ const font_family = Font.family.default();
 
 <svelte:body
 	use:classes={[
-		"w[100lvw]",
-		"h[100lvh]",
+		"w[100lvw] h[100lvh]",
 		Color.class("background"),
 		Color.get("secondary", "solid", 1).class("background"),
 		Color.class("text"),
 		Color.get("secondary", "solid", 11).class("text"),
-		font_family.class(),
-		font_family.weight.default().class(),
+		Font.family.default().class(),
+		Font.family.default().weight.default().class(),
 		Font.size.default().class(),
 	]}
 />
@@ -139,8 +140,8 @@ const font_family = Font.family.default();
 	@layer base.default {
 		:global(body) {
 			transition-duration: var(--transition-dur);
-			transition-timing-function: var(--transition-fn);
 			transition-property: var(--transition-props-color);
+			transition-timing-function: var(--transition-fn);
 		}
 	}
 </style>

@@ -4,4 +4,5 @@
  * @module
  */
 
+export * from "@fontsource-variable/work-sans/wght.css";
 export * from "@fontsource-variable/work-sans/wght-italic.css";

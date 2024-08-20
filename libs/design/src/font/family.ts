@@ -31,9 +31,9 @@ export class FontFamily<
 	public static readonly PROPERTY = new Property("font-family");
 
 	public static readonly VALUE = readonly_object({
-		mono: "Jetbrains Mono",
-		sans: "Work Sans",
-		serif: "Fraunces",
+		mono: "JetBrains Mono Variable",
+		sans: "Work Sans Variable",
+		serif: "Fraunces Variable",
 	});
 
 	/**
@@ -139,7 +139,7 @@ if (import.meta.vitest) {
 			it("returns default when no name provided", ({ expect }) => {
 				const font_family = FontFamily.default();
 				expect(font_family).toBeInstanceOf(FontFamily);
-				expectTypeOf(font_family).toMatchTypeOf<FontFamily<typeof FontFamily.DEFAULT, "Work Sans">>();
+				expectTypeOf(font_family).toMatchTypeOf<FontFamily<typeof FontFamily.DEFAULT, "Nunito Sans">>();
 			});
 
 			it("on constructed instance subscriber receive instance", ({ expect }) => {
@@ -160,7 +160,7 @@ if (import.meta.vitest) {
 					expectTypeOf(instance).toMatchTypeOf<FontFamily<FontFamilyName, string>>();
 				}
 				expectTypeOf(FontFamily.get("mono")).toEqualTypeOf<FontFamily<"mono", "Jetbrains Mono">>();
-				expectTypeOf(FontFamily.get("sans")).toEqualTypeOf<FontFamily<"sans", "Work Sans">>();
+				expectTypeOf(FontFamily.get("sans")).toEqualTypeOf<FontFamily<"sans", "Nunito Sans">>();
 				expectTypeOf(FontFamily.get("serif")).toEqualTypeOf<FontFamily<"serif", "Fraunces">>();
 			});
 
@@ -176,7 +176,7 @@ if (import.meta.vitest) {
 				const font_family = FontFamily.default();
 				const global = font_family.create_global_ruleset();
 				const stringified = global.toString();
-				expect(stringified).toMatchInlineSnapshot(`":root{--font-sans:"Work Sans";}"`);
+				expect(stringified).toMatchInlineSnapshot(`":root{--font-sans:"Work Sans Variable";}"`);
 			});
 
 			it("created rulesets in FontFamily.GLOBAL_RULESETS", ({ expect }) => {
@@ -191,7 +191,9 @@ if (import.meta.vitest) {
 				const observer = vi.fn((tuple) => {
 					expect(tuple[0]).toBe("font-mono");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
-					expect(tuple[1].toString()).toMatchInlineSnapshot(`":root{--font-mono:"Jetbrains Mono";}"`);
+					expect(tuple[1].toString()).toMatchInlineSnapshot(
+						`":root{--font-mono:"JetBrains Mono Variable";}"`,
+					);
 				});
 				FontFamily.on("create-global-ruleset").subscribe({
 					next: observer,
