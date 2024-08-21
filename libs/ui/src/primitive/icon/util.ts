@@ -10,10 +10,13 @@ export const ICONS_MAP = new Map([
 	["info", "info"],
 	["legal", "scales"],
 	["mobile", "device-mobile"],
+	["moon", "moon"],
+	["monitor", "monitor"],
 	["placeholder", "placeholder"],
 	["settings", "gear"],
 	["shield", "shield-star"],
 	["success", "check-circle"],
+	["sun", "sun"],
 	["tablet", "device-tablet"],
 	["warning", "warning"],
 ] as const);

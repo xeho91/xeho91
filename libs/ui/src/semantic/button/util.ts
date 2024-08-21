@@ -21,23 +21,23 @@ export type ButtonSize = IterableElement<typeof BUTTON_SIZES>;
 export const BUTTON_VARIANTS = readonly_set(["filled", "outlined", "transparent"]);
 export type ButtonVariant = IterableElement<typeof BUTTON_VARIANTS>;
 
-export function set_button_size_class_names<Size extends ButtonSize>(size: Size, is_rounded: boolean): SelectorClass[] {
+export function set_button_size_class_names<Size extends ButtonSize>(size: Size, is_icon: boolean): SelectorClass[] {
 	// biome-ignore format: Prettier
 	switch (size) {
 		case "small": return [
-			Space.get(is_rounded ? "2xs" : "xs").class("padding-inline"),
+			Space.get(is_icon ? "2xs" : "s").class("padding-inline"),
 			Space.get("2xs").class("padding-block"),
-			Radius.get(is_rounded ? "circle" : "s").class(),
+			Radius.get(is_icon ? "circle" : "s").class(),
 		] as const;
 		case "medium": return [
-			Space.get(is_rounded ? "2xs" : "s").class("padding-inline"),
-			Space.get("2xs").class("padding-block"),
-			Radius.get(is_rounded ? "circle" : "m").class(),
+			Space.get(is_icon ? "xs" : "m").class("padding-inline"),
+			Space.get("xs").class("padding-block"),
+			Radius.get(is_icon ? "circle" : "m").class(),
 		] as const;
 		case "large": return [
-			Space.get(is_rounded ? "xs" : "m").class("padding-inline"),
-			Space.get("xs").class("padding-block"),
-			Radius.get(is_rounded ? "circle" : "l").class(),
+			Space.get(is_icon ? "s" : "l").class("padding-inline"),
+			Space.get("s").class("padding-block"),
+			Radius.get(is_icon ? "circle" : "l").class(),
 		] as const;
 		default: throw unrecognized(size);
 	}
@@ -92,11 +92,11 @@ export function set_button_text_color<TVariant extends ButtonVariant, TColor ext
 	}
 }
 
-export function set_button_text_size<TSize extends ButtonSize>(size: TSize): FontSizeKey {
+export function set_button_text_size<TSize extends ButtonSize>(size: TSize, is_icon: boolean): FontSizeKey {
 	// biome-ignore format: Prettier
 	switch (size) {
-		case "small": return "m";
-		case "medium": return "l";
+		case "small": return is_icon ? "m" : "s";
+		case "medium": return is_icon ? "l" : "m";
 		case "large": return "xl";
 		default: throw unrecognized(size);
 	}

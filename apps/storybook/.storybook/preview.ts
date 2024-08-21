@@ -1,17 +1,18 @@
+/* FIXME: Temporary workaround, to ensure the order stays as intended. */
+import "./global.css";
+
 import { withThemeByDataAttribute } from "@storybook/addon-themes";
 import type { Decorator, Parameters } from "@storybook/svelte";
 import { GlobalManagers } from "@xeho91/lib-feature/global";
-
-/*  FIXME: Temporary workaround, to ensure the order stays as intended. */
-import "./global.css";
 
 export const decorators: Decorator[] = [
 	withThemeByDataAttribute({
 		themes: {
 			light: "light",
+			system: "system",
 			dark: "dark",
 		},
-		defaultTheme: "light",
+		defaultTheme: "system",
 		attributeName: "data-color-scheme",
 	}),
 	() => ({ Component: GlobalManagers }),
