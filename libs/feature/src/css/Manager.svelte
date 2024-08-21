@@ -1,4 +1,5 @@
 <script lang="ts">
+import "virtual:uno.css";
 import "@xeho91/lib-asset/font/sans";
 import "@xeho91/lib-asset/font/serif";
 import "@xeho91/lib-asset/font/mono";
@@ -11,8 +12,6 @@ import LayerStyles from "./LayerStyles.svelte";
 
 import { state_css } from "./state.svelte";
 import { classes } from "./util";
-
-import "virtual:uno.css";
 </script>
 
 <svelte:head>
@@ -32,13 +31,17 @@ import "virtual:uno.css";
 <svelte:body
 	use:classes={[
 		"w[100lvw] h[100lvh]",
+		// Background
 		Color.class("background"),
 		Color.get("secondary", "solid", 1).class("background"),
-		Color.class("text"),
-		Color.get("secondary", "solid", 11).class("text"),
+		// Text
 		Font.family.default().class(),
 		Font.family.default().weight.default().class(),
 		Font.size.default().class(),
+		Color.class("text"),
+		Color.get("secondary", "solid", 11).class("text"),
+		// Other
+		"overflow-hidden",
 	]}
 />
 
