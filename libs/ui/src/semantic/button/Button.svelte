@@ -1,16 +1,15 @@
-<script lang="ts" generics="TTag extends ButtonTag = 'button'">
+<script lang="ts">
 import { Reference } from "@xeho91/lib-css/reference";
 import { Color } from "@xeho91/lib-design/color";
 import { Elevation } from "@xeho91/lib-design/elevation";
 import { Stroke } from "@xeho91/lib-design/stroke";
 import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import type { Snippet } from "svelte";
-import type { HTMLAnchorAttributes, HTMLButtonAttributes } from "svelte/elements";
+import type { HTMLButtonAttributes } from "svelte/elements";
 
 import {
 	type ButtonColor,
 	type ButtonSize,
-	type ButtonTag,
 	type ButtonVariant,
 	set_button_color_class_names,
 	set_button_size_class_names,
@@ -20,11 +19,8 @@ import {
 
 import { Text } from "#primitive/text/mod";
 
-type Attributes = TTag extends "a" ? HTMLAnchorAttributes : TTag extends "button" ? HTMLButtonAttributes : never;
-
 type Props = WithClass &
-	Attributes & {
-		tag?: TTag;
+	HTMLButtonAttributes & {
 		children: Snippet;
 		color?: ButtonColor;
 		size?: ButtonSize;
@@ -34,24 +30,22 @@ type Props = WithClass &
 let {
 	children,
 	class: class_,
-	tag = "button" as TTag,
 	color = "secondary",
 	size = "medium",
 	variant = "filled",
 	...rest_props
 }: Props = $props();
-let element = $state<HTMLAnchorElement | HTMLButtonElement | undefined>();
+
+let element = $state<HTMLButtonElement>();
 
 let has_icon_only = $derived(element?.innerText.length === 0);
 
-const anchor_name_reference =
-	tag === "button" && rest_props?.popovertarget ? new Reference(rest_props.popovertarget) : undefined;
+const anchor_name_reference = rest_props.popovertarget ? new Reference(rest_props.popovertarget) : undefined;
 </script>
 
-<svelte:element
-	this={tag}
+<button
 	bind:this={element}
-	{...rest_props as unknown as Attributes}
+	{...rest_props}
 	class={merge_classes(
 		"button",
 		color,
@@ -87,7 +81,7 @@ const anchor_name_reference =
 	>
 		{@render children()}
 	</Text>
-</svelte:element>
+</button>
 
 <style>
 	@layer component {
