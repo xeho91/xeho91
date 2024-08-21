@@ -12,9 +12,15 @@ type ClassInput = ClassValue | SelectorClass;
 export function merge_classes(...args: ClassInput[]): string {
 	let results = "";
 	for (const input of args) {
-		if (results) results += " ";
-		if (input instanceof SelectorClass) results += input.name;
-		else results += clsx(input);
+		if (input instanceof SelectorClass) {
+			if (results) results += " ";
+			results += input.name;
+		} else {
+			const classes = clsx(input);
+			if (!classes) continue; // NOTE: Is an empty string, nothing to do
+			if (results) results += " ";
+			results += classes;
+		}
 	}
 	return results;
 }
