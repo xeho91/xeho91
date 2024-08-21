@@ -11,27 +11,15 @@ import { LAYOUT_DEFAULT_FADE, LAYOUT_DEFAULT_SPACE_INLINE } from "./util";
 
 import { Container } from "#primitive/container/mod";
 import { Icon } from "#primitive/icon/mod";
-import { Skeleton } from "#primitive/skeleton/mod";
 import { Text } from "#primitive/text/mod";
 import { Paragraph } from "#semantic/paragraph/mod";
 
-interface Props extends WithClass {
-	loading?: boolean;
-}
+interface Props extends WithClass {}
 
 let {
 	//
 	class: class_,
-	loading = false,
 }: Props = $props();
-
-let rendered = $state(false);
-
-$effect(() => {
-	setTimeout(() => {
-		rendered = true;
-	}, 350);
-});
 </script>
 
 <footer
@@ -65,17 +53,6 @@ $effect(() => {
 	)}
 	transition:fade={{ ...LAYOUT_DEFAULT_FADE, delay: 250 }}
 >
-	<Skeleton
-		color="secondary"
-		background_color="secondary"
-		hidden={rendered && !loading}
-		variant="rect"
-		class={merge_classes(
-			//
-			"absolute inset-0 z-10",
-			"h-full",
-		)}
-	/>
 	<Container>
 		<Paragraph
 			size="s"
