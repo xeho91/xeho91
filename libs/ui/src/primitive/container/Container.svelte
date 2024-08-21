@@ -6,7 +6,10 @@ import type { Snippet } from "svelte";
 
 interface Props extends WithClass {
 	children: Snippet;
+	// Grid
 	grid?: GridVariant;
+	min_width?: boolean;
+	max_width?: boolean;
 	// Gaps
 	gap?: SpaceSize | undefined;
 	gap_column?: SpaceSize | undefined;
@@ -25,7 +28,10 @@ let {
 	//
 	children,
 	class: class_,
+	// Grid
 	grid = "default",
+	min_width = false,
+	max_width = false,
 	// Gaps
 	gap,
 	gap_column,
@@ -59,7 +65,8 @@ let {
 			padding_y_start && Space.get(padding_y_start).class("padding-block-start"),
 			padding_y_end && Space.get(padding_y_end).class("padding-inline-end"),
 			"grid",
-			Grid.max.get(grid).class("max-width"),
+			min_width && Grid.min.get(grid).class("min-width"),
+			max_width && Grid.max.get(grid).class("max-width"),
 			class_,
 		)}
 	>
