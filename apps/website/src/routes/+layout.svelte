@@ -1,7 +1,11 @@
 <script lang="ts">
-import "@xeho91/lib-asset/font/sans";
-import "@xeho91/lib-asset/font/serif";
-import "@xeho91/lib-asset/font/mono";
+// FIXME: Workaround because at build time Vite's optimization removes the fonts-related css import
+import "@fontsource-variable/work-sans/wght.css";
+import "@fontsource-variable/work-sans/wght-italic.css";
+import "@fontsource-variable/fraunces/full.css";
+import "@fontsource-variable/fraunces/full-italic.css";
+import "@fontsource-variable/jetbrains-mono/wght.css";
+import "@fontsource-variable/jetbrains-mono/wght-italic.css";
 
 import { Color } from "@xeho91/lib-design/color";
 import { GlobalManagers } from "@xeho91/lib-feature/global";

@@ -58,7 +58,7 @@ importers:
         version: 2.27.7
       '@vitest/coverage-v8':
         specifier: 2.0.5
-        version: 2.0.5(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5))
+        version: 2.0.5(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0))
       '@vitest/ui':
         specifier: 2.0.5
         version: 2.0.5(vitest@2.0.5)
@@ -91,10 +91,10 @@ importers:
         version: 3.2.7(typedoc@0.26.5(typescript@5.5.4))
       vite:
         specifier: 5.4.0
-        version: 5.4.0(@types/node@22.2.0)
+        version: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
       vitest:
         specifier: 2.0.5
-        version: 2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)
+        version: 2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0)
     devDependencies:
       tslib:
         specifier: 2.6.3
@@ -129,10 +129,10 @@ importers:
         version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@storybook/addon-interactions':
         specifier: 8.2.9
-        version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5))
+        version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0))
       '@storybook/addon-svelte-csf':
         specifier: 'catalog:'
-        version: 5.0.0-next.1(@storybook/svelte@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218))(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+        version: 5.0.0-next.1(@storybook/svelte@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218))(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       '@storybook/addon-themes':
         specifier: 8.2.9
         version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
@@ -147,10 +147,10 @@ importers:
         version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)
       '@storybook/svelte-vite':
         specifier: 8.2.9
-        version: 8.2.9(@babel/core@7.25.2)(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(postcss@8.4.41)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(typescript@5.5.4)(vite@5.4.0(@types/node@22.2.0))
+        version: 8.2.9(@babel/core@7.25.2)(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(postcss@8.4.41)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(typescript@5.5.4)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       '@sveltejs/vite-plugin-svelte':
         specifier: 'catalog:'
-        version: 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+        version: 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
         version: 1.0.4
@@ -180,9 +180,19 @@ importers:
         version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.5.4)
       unocss:
         specifier: 'catalog:'
-        version: 0.61.9(postcss@8.4.41)(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0))
+        version: 0.61.9(postcss@8.4.41)(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
 
   apps/website:
+    dependencies:
+      '@fontsource-variable/fraunces':
+        specifier: 5.0.21
+        version: 5.0.21
+      '@fontsource-variable/jetbrains-mono':
+        specifier: 5.0.21
+        version: 5.0.21
+      '@fontsource-variable/work-sans':
+        specifier: 5.0.19
+        version: 5.0.19
     optionalDependencies:
       vite-bundle-visualizer:
         specifier: 1.2.1
@@ -190,13 +200,13 @@ importers:
     devDependencies:
       '@sveltejs/adapter-static':
         specifier: 3.0.4
-        version: 3.0.4(@sveltejs/kit@2.5.22(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))
+        version: 3.0.4(@sveltejs/kit@2.5.22(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))
       '@sveltejs/kit':
         specifier: 2.5.22
-        version: 2.5.22(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+        version: 2.5.22(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       '@sveltejs/vite-plugin-svelte':
         specifier: 'catalog:'
-        version: 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+        version: 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
         version: 1.0.4
@@ -218,6 +228,9 @@ importers:
       '@xeho91/lib-ui':
         specifier: workspace:*
         version: link:../../libs/ui
+      lightningcss:
+        specifier: 1.26.0
+        version: 1.26.0
       svelte:
         specifier: 'catalog:'
         version: 5.0.0-next.218
@@ -226,7 +239,7 @@ importers:
         version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.5.4)
       unocss:
         specifier: 'catalog:'
-        version: 0.61.9(postcss@8.4.41)(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0))
+        version: 0.61.9(postcss@8.4.41)(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
 
   libs/asset:
     dependencies:
@@ -293,7 +306,7 @@ importers:
     devDependencies:
       '@storybook/addon-svelte-csf':
         specifier: 'catalog:'
-        version: 5.0.0-next.1(@storybook/svelte@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218))(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+        version: 5.0.0-next.1(@storybook/svelte@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218))(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       svelte:
         specifier: 'catalog:'
         version: 5.0.0-next.218
@@ -351,7 +364,7 @@ importers:
         version: 0.3.2(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.218))(svelte@5.0.0-next.218)
       '@sveltejs/vite-plugin-svelte':
         specifier: 'catalog:'
-        version: 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+        version: 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
         version: 1.0.4
@@ -372,7 +385,7 @@ importers:
         version: 5.5.4
       unocss:
         specifier: 'catalog:'
-        version: 0.61.9(postcss@8.4.41)(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0))
+        version: 0.61.9(postcss@8.4.41)(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
 
   libs/css:
     dependencies:
@@ -495,7 +508,7 @@ importers:
         version: 5.5.4
       unocss:
         specifier: 'catalog:'
-        version: 0.61.9(postcss@8.4.41)(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0))
+        version: 0.61.9(postcss@8.4.41)(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
     devDependencies:
       svelte:
         specifier: 'catalog:'
@@ -726,10 +739,10 @@ importers:
         version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@storybook/addon-svelte-csf':
         specifier: 'catalog:'
-        version: 5.0.0-next.1(@storybook/svelte@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218))(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+        version: 5.0.0-next.1(@storybook/svelte@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218))(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       '@storybook/test':
         specifier: 8.2.9
-        version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5))
+        version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0))
       '@xeho91/lib-storybook':
         specifier: workspace:*
         version: link:../storybook
@@ -3016,6 +3029,11 @@ packages:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
     engines: {node: '>=8'}
 
+  detect-libc@1.0.3:
+    resolution: {integrity: sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==}
+    engines: {node: '>=0.10'}
+    hasBin: true
+
   devalue@5.0.0:
     resolution: {integrity: sha512-gO+/OMXF7488D+u3ue+G7Y4AA3ZmUnB3eHJXmBTgNHvr4ZNzl36A0ZtG+XCRNYCkYx/bFmw4qtkoFLa+wSrwAA==}
 
@@ -3867,6 +3885,70 @@ packages:
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
+
+  lightningcss-darwin-arm64@1.26.0:
+    resolution: {integrity: sha512-n4TIvHO1NY1ondKFYpL2ZX0bcC2y6yjXMD6JfyizgR8BCFNEeArINDzEaeqlfX9bXz73Bpz/Ow0nu+1qiDrBKg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [darwin]
+
+  lightningcss-darwin-x64@1.26.0:
+    resolution: {integrity: sha512-Rf9HuHIDi1R6/zgBkJh25SiJHF+dm9axUZW/0UoYCW1/8HV0gMI0blARhH4z+REmWiU1yYT/KyNF3h7tHyRXUg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [darwin]
+
+  lightningcss-freebsd-x64@1.26.0:
+    resolution: {integrity: sha512-C/io7POAxp6sZxFSVGezjajMlCKQ8KSwISLLGRq8xLQpQMokYrUoqYEwmIX8mLmF6C/CZPk0gFmRSzd8biWM0g==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [freebsd]
+
+  lightningcss-linux-arm-gnueabihf@1.26.0:
+    resolution: {integrity: sha512-Aag9kqXqkyPSW+dXMgyWk66C984Nay2pY8Nws+67gHlDzV3cWh7TvFlzuaTaVFMVqdDTzN484LSK3u39zFBnzg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm]
+    os: [linux]
+
+  lightningcss-linux-arm64-gnu@1.26.0:
+    resolution: {integrity: sha512-iJmZM7fUyVjH+POtdiCtExG+67TtPUTer7K/5A8DIfmPfrmeGvzfRyBltGhQz13Wi15K1lf2cPYoRaRh6vcwNA==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [linux]
+
+  lightningcss-linux-arm64-musl@1.26.0:
+    resolution: {integrity: sha512-XxoEL++tTkyuvu+wq/QS8bwyTXZv2y5XYCMcWL45b8XwkiS8eEEEej9BkMGSRwxa5J4K+LDeIhLrS23CpQyfig==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [linux]
+
+  lightningcss-linux-x64-gnu@1.26.0:
+    resolution: {integrity: sha512-1dkTfZQAYLj8MUSkd6L/+TWTG8V6Kfrzfa0T1fSlXCXQHrt1HC1/UepXHtKHDt/9yFwyoeayivxXAsApVxn6zA==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [linux]
+
+  lightningcss-linux-x64-musl@1.26.0:
+    resolution: {integrity: sha512-yX3Rk9m00JGCUzuUhFEojY+jf/6zHs3XU8S8Vk+FRbnr4St7cjyMXdNjuA2LjiT8e7j8xHRCH8hyZ4H/btRE4A==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [linux]
+
+  lightningcss-win32-arm64-msvc@1.26.0:
+    resolution: {integrity: sha512-X/597/cFnCogy9VItj/+7Tgu5VLbAtDF7KZDPdSw0MaL6FL940th1y3HiOzFIlziVvAtbo0RB3NAae1Oofr+Tw==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [win32]
+
+  lightningcss-win32-x64-msvc@1.26.0:
+    resolution: {integrity: sha512-pYS3EyGP3JRhfqEFYmfFDiZ9/pVNfy8jVIYtrx9TVNusVyDK3gpW1w/rbvroQ4bDJi7grdUtyrYU6V2xkY/bBw==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [win32]
+
+  lightningcss@1.26.0:
+    resolution: {integrity: sha512-a/XZ5hdgifrofQJUArr5AiJjx26SwMam3SJUSMjgebZbESZ96i+6Qsl8tLi0kaUsdMzBWXh9sN1Oe6hp2/dkQw==}
+    engines: {node: '>= 12.0.0'}
 
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
@@ -7065,11 +7147,11 @@ snapshots:
       '@storybook/global': 5.0.0
       storybook: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
 
-  '@storybook/addon-interactions@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5))':
+  '@storybook/addon-interactions@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0))':
     dependencies:
       '@storybook/global': 5.0.0
       '@storybook/instrumenter': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
-      '@storybook/test': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5))
+      '@storybook/test': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0))
       polished: 4.3.1
       storybook: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
       ts-dedent: 2.2.0
@@ -7092,20 +7174,20 @@ snapshots:
       storybook: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
       ts-dedent: 2.2.0
 
-  '@storybook/addon-svelte-csf@5.0.0-next.1(@storybook/svelte@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218))(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))':
+  '@storybook/addon-svelte-csf@5.0.0-next.1(@storybook/svelte@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218))(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))':
     dependencies:
       '@storybook/csf': 0.1.11
       '@storybook/docs-tools': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@storybook/node-logger': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@storybook/svelte': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)
       '@storybook/types': 8.2.4(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
-      '@sveltejs/vite-plugin-svelte': 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+      '@sveltejs/vite-plugin-svelte': 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       dedent: 1.5.3
       esrap: 1.2.2
       lodash-es: 4.17.21
       magic-string: 0.30.11
       svelte: 5.0.0-next.218
-      vite: 5.4.0(@types/node@22.2.0)
+      vite: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
       zimmerframe: 1.1.2
     transitivePeerDependencies:
       - babel-plugin-macros
@@ -7146,7 +7228,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@storybook/builder-vite@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)(vite@5.4.0(@types/node@22.2.0))':
+  '@storybook/builder-vite@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))':
     dependencies:
       '@storybook/csf-plugin': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@types/find-cache-dir': 3.2.1
@@ -7158,7 +7240,7 @@ snapshots:
       magic-string: 0.30.11
       storybook: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
       ts-dedent: 2.2.0
-      vite: 5.4.0(@types/node@22.2.0)
+      vite: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
     optionalDependencies:
       typescript: 5.5.4
     transitivePeerDependencies:
@@ -7251,18 +7333,18 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       storybook: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
 
-  '@storybook/svelte-vite@8.2.9(@babel/core@7.25.2)(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(postcss@8.4.41)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(typescript@5.5.4)(vite@5.4.0(@types/node@22.2.0))':
+  '@storybook/svelte-vite@8.2.9(@babel/core@7.25.2)(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(postcss@8.4.41)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(typescript@5.5.4)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))':
     dependencies:
-      '@storybook/builder-vite': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)(vite@5.4.0(@types/node@22.2.0))
+      '@storybook/builder-vite': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       '@storybook/svelte': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)
-      '@sveltejs/vite-plugin-svelte': 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+      '@sveltejs/vite-plugin-svelte': 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       magic-string: 0.30.11
       storybook: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
       svelte: 5.0.0-next.218
       svelte-preprocess: 5.1.4(@babel/core@7.25.2)(postcss@8.4.41)(svelte@5.0.0-next.218)(typescript@5.5.4)
       sveltedoc-parser: 4.2.1
       ts-dedent: 2.2.0
-      vite: 5.4.0(@types/node@22.2.0)
+      vite: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
     transitivePeerDependencies:
       - '@babel/core'
       - '@preact/preset-vite'
@@ -7293,12 +7375,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@storybook/test@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5))':
+  '@storybook/test@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0))':
     dependencies:
       '@storybook/csf': 0.1.11
       '@storybook/instrumenter': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@testing-library/dom': 10.1.0
-      '@testing-library/jest-dom': 6.4.5(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5))
+      '@testing-library/jest-dom': 6.4.5(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0))
       '@testing-library/user-event': 14.5.2(@testing-library/dom@10.1.0)
       '@vitest/expect': 1.6.0
       '@vitest/spy': 1.6.0
@@ -7319,13 +7401,13 @@ snapshots:
     dependencies:
       storybook: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
 
-  '@sveltejs/adapter-static@3.0.4(@sveltejs/kit@2.5.22(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))':
+  '@sveltejs/adapter-static@3.0.4(@sveltejs/kit@2.5.22(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))':
     dependencies:
-      '@sveltejs/kit': 2.5.22(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+      '@sveltejs/kit': 2.5.22(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
 
-  '@sveltejs/kit@2.5.22(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))':
+  '@sveltejs/kit@2.5.22(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+      '@sveltejs/vite-plugin-svelte': 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       '@types/cookie': 0.6.0
       cookie: 0.6.0
       devalue: 5.0.0
@@ -7339,27 +7421,27 @@ snapshots:
       sirv: 2.0.4
       svelte: 5.0.0-next.218
       tiny-glob: 0.2.9
-      vite: 5.4.0(@types/node@22.2.0)
+      vite: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
 
-  '@sveltejs/vite-plugin-svelte-inspector@3.0.0-next.3(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))':
+  '@sveltejs/vite-plugin-svelte-inspector@3.0.0-next.3(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+      '@sveltejs/vite-plugin-svelte': 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       debug: 4.3.6
       svelte: 5.0.0-next.218
-      vite: 5.4.0(@types/node@22.2.0)
+      vite: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))':
+  '@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 3.0.0-next.3(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0))
+      '@sveltejs/vite-plugin-svelte-inspector': 3.0.0-next.3(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)))(svelte@5.0.0-next.218)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       debug: 4.3.6
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.11
       svelte: 5.0.0-next.218
-      vite: 5.4.0(@types/node@22.2.0)
-      vitefu: 0.2.5(vite@5.4.0(@types/node@22.2.0))
+      vite: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
+      vitefu: 0.2.5(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
     transitivePeerDependencies:
       - supports-color
 
@@ -7378,7 +7460,7 @@ snapshots:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  '@testing-library/jest-dom@6.4.5(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5))':
+  '@testing-library/jest-dom@6.4.5(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0))':
     dependencies:
       '@adobe/css-tools': 4.4.0
       '@babel/runtime': 7.25.0
@@ -7389,7 +7471,7 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
     optionalDependencies:
-      vitest: 2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)
+      vitest: 2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0)
 
   '@testing-library/user-event@14.5.2(@testing-library/dom@10.1.0)':
     dependencies:
@@ -7501,13 +7583,13 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@unocss/astro@0.61.9(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0))':
+  '@unocss/astro@0.61.9(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))':
     dependencies:
       '@unocss/core': 0.61.9
       '@unocss/reset': 0.61.9
-      '@unocss/vite': 0.61.9(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0))
+      '@unocss/vite': 0.61.9(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
     optionalDependencies:
-      vite: 5.4.0(@types/node@22.2.0)
+      vite: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -7646,7 +7728,7 @@ snapshots:
     dependencies:
       '@unocss/core': 0.61.9
 
-  '@unocss/vite@0.61.9(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0))':
+  '@unocss/vite@0.61.9(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@rollup/pluginutils': 5.1.0(rollup@4.20.0)
@@ -7658,12 +7740,12 @@ snapshots:
       chokidar: 3.6.0
       fast-glob: 3.3.2
       magic-string: 0.30.11
-      vite: 5.4.0(@types/node@22.2.0)
+      vite: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
     transitivePeerDependencies:
       - rollup
       - supports-color
 
-  '@vitest/coverage-v8@2.0.5(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5))':
+  '@vitest/coverage-v8@2.0.5(vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -7677,7 +7759,7 @@ snapshots:
       std-env: 3.7.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)
+      vitest: 2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0)
     transitivePeerDependencies:
       - supports-color
     optional: true
@@ -7732,7 +7814,7 @@ snapshots:
       pathe: 1.1.2
       sirv: 2.0.4
       tinyrainbow: 1.2.0
-      vitest: 2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)
+      vitest: 2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0)
     optional: true
 
   '@vitest/utils@1.6.0':
@@ -8313,6 +8395,8 @@ snapshots:
   destroy@1.2.0: {}
 
   detect-indent@6.1.0: {}
+
+  detect-libc@1.0.3: {}
 
   devalue@5.0.0: {}
 
@@ -9308,6 +9392,51 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
       type-check: 0.4.0
+
+  lightningcss-darwin-arm64@1.26.0:
+    optional: true
+
+  lightningcss-darwin-x64@1.26.0:
+    optional: true
+
+  lightningcss-freebsd-x64@1.26.0:
+    optional: true
+
+  lightningcss-linux-arm-gnueabihf@1.26.0:
+    optional: true
+
+  lightningcss-linux-arm64-gnu@1.26.0:
+    optional: true
+
+  lightningcss-linux-arm64-musl@1.26.0:
+    optional: true
+
+  lightningcss-linux-x64-gnu@1.26.0:
+    optional: true
+
+  lightningcss-linux-x64-musl@1.26.0:
+    optional: true
+
+  lightningcss-win32-arm64-msvc@1.26.0:
+    optional: true
+
+  lightningcss-win32-x64-msvc@1.26.0:
+    optional: true
+
+  lightningcss@1.26.0:
+    dependencies:
+      detect-libc: 1.0.3
+    optionalDependencies:
+      lightningcss-darwin-arm64: 1.26.0
+      lightningcss-darwin-x64: 1.26.0
+      lightningcss-freebsd-x64: 1.26.0
+      lightningcss-linux-arm-gnueabihf: 1.26.0
+      lightningcss-linux-arm64-gnu: 1.26.0
+      lightningcss-linux-arm64-musl: 1.26.0
+      lightningcss-linux-x64-gnu: 1.26.0
+      lightningcss-linux-x64-musl: 1.26.0
+      lightningcss-win32-arm64-msvc: 1.26.0
+      lightningcss-win32-x64-msvc: 1.26.0
 
   lines-and-columns@1.2.4:
     optional: true
@@ -10838,9 +10967,9 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unocss@0.61.9(postcss@8.4.41)(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0)):
+  unocss@0.61.9(postcss@8.4.41)(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)):
     dependencies:
-      '@unocss/astro': 0.61.9(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0))
+      '@unocss/astro': 0.61.9(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
       '@unocss/cli': 0.61.9(rollup@4.20.0)
       '@unocss/core': 0.61.9
       '@unocss/extractor-arbitrary-variants': 0.61.9
@@ -10859,9 +10988,9 @@ snapshots:
       '@unocss/transformer-compile-class': 0.61.9
       '@unocss/transformer-directives': 0.61.9
       '@unocss/transformer-variant-group': 0.61.9
-      '@unocss/vite': 0.61.9(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0))
+      '@unocss/vite': 0.61.9(rollup@4.20.0)(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0))
     optionalDependencies:
-      vite: 5.4.0(@types/node@22.2.0)
+      vite: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
     transitivePeerDependencies:
       - postcss
       - rollup
@@ -10931,13 +11060,13 @@ snapshots:
       - supports-color
     optional: true
 
-  vite-node@2.0.5(@types/node@22.2.0):
+  vite-node@2.0.5(@types/node@22.2.0)(lightningcss@1.26.0):
     dependencies:
       cac: 6.7.14
       debug: 4.3.6
       pathe: 1.1.2
       tinyrainbow: 1.2.0
-      vite: 5.4.0(@types/node@22.2.0)
+      vite: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -10950,7 +11079,7 @@ snapshots:
       - terser
     optional: true
 
-  vite@5.4.0(@types/node@22.2.0):
+  vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.41
@@ -10958,12 +11087,13 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.2.0
       fsevents: 2.3.3
+      lightningcss: 1.26.0
 
-  vitefu@0.2.5(vite@5.4.0(@types/node@22.2.0)):
+  vitefu@0.2.5(vite@5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)):
     optionalDependencies:
-      vite: 5.4.0(@types/node@22.2.0)
+      vite: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
 
-  vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5):
+  vitest@2.0.5(@types/node@22.2.0)(@vitest/ui@2.0.5)(lightningcss@1.26.0):
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@vitest/expect': 2.0.5
@@ -10981,8 +11111,8 @@ snapshots:
       tinybench: 2.9.0
       tinypool: 1.0.0
       tinyrainbow: 1.2.0
-      vite: 5.4.0(@types/node@22.2.0)
-      vite-node: 2.0.5(@types/node@22.2.0)
+      vite: 5.4.0(@types/node@22.2.0)(lightningcss@1.26.0)
+      vite-node: 2.0.5(@types/node@22.2.0)(lightningcss@1.26.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 22.2.0

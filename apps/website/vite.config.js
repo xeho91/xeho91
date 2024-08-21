@@ -8,6 +8,9 @@ const config = defineConfig({
 			treeshake: "smallest",
 		},
 	},
+	css: {
+		transformer: "lightningcss",
+	},
 	define: {
 		"import.meta.vitest": "undefined",
 	},
