@@ -10,9 +10,6 @@ const { Story } = defineMeta({
 	...SHARED_META,
 	component: Footer,
 	tags: ["autodocs"],
-	args: {
-		loading: false,
-	},
 	parameters: {
 		layout: "fullscreen",
 	},

@@ -35,6 +35,8 @@ const color = "primary";
 		Space.get("3xs").class("margin-inline-end", {
 			pseudo_element: "before",
 		}),
+		// before
+		"before:absolute",
 		class_,
 	)}
 >
@@ -56,12 +58,20 @@ const color = "primary";
 </Popover>
 
 <style>
+	@layer reset {
+		:global(.button-app-settings::before) {
+			/*
+			* WARN: Do not remove.
+			* This is a a workaround to prevent appearance on initial page rendering
+			*/
+			color: transparent;
+		}
+	}
 	@layer component {
 		:global(.button-app-settings) {
 			:global(&::before) {
 				content: attr(data-label);
 
-				position: absolute;
 				position-anchor: --app-settings;
 				inset-area: inline-start center;
 

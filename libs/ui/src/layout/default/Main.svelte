@@ -28,9 +28,9 @@ $effect(() => {
 </script>
 
 <main
-		class={merge_classes(
+	class={merge_classes(
 		//
-			"overflow-hidden",
+		"overflow-auto",
 		"w[100lvw] h[100lvh]",
 		"grid",
 		class_,
@@ -51,10 +51,14 @@ $effect(() => {
 @layer component {
 	main {
 		grid-template-areas:
-			"header"
-			"content"
-			"footer";
-		grid-template-rows: auto 1fr auto;
+			"...     header  ..."
+			"content content content"
+			"...     footer  ...";
+		grid-template-rows: 0 1fr auto;
+		grid-template-columns: auto 1fr auto;
+
+		scroll-behavior: smooth;
+		scroll-snap-type: y mandatory;
 
 		--radial-gradient-color-1: light-dark(var(--radial-gradient-color-1-light), var(--radial-gradient-color-1-dark));
 		--radial-gradient-color-2: light-dark(var(--radial-gradient-color-2-light), var(--radial-gradient-color-2-dark));

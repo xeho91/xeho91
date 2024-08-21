@@ -31,16 +31,16 @@ let { children }: Props = $props();
 
 <GlobalManagers>
 	<Main>
-		{#snippet header(loading)}
-			<Header {loading} />
+		{#snippet header()}
+			<Header />
 		{/snippet}
-		{#snippet content(loading)}
-			<Content {loading}>
+		{#snippet content()}
+			<Content>
 				{@render children()}
 			</Content>
 		{/snippet}
-		{#snippet footer(loading)}
-			<Footer {loading} />
+		{#snippet footer()}
+			<Footer />
 		{/snippet}
 	</Main>
 </GlobalManagers>
