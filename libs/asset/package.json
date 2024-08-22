@@ -55,7 +55,8 @@
 	"dependencies": {
 		"@fontsource-variable/fraunces": "5.0.21",
 		"@fontsource-variable/jetbrains-mono": "5.0.21",
-		"@fontsource-variable/work-sans": "5.0.19"
+		"@fontsource-variable/work-sans": "5.0.19",
+		"@xeho91/lib-snippet": "workspace:*"
 	},
 	"peerDependencies": {
 		"@total-typescript/tsconfig": "catalog:",

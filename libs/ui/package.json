@@ -26,9 +26,14 @@
 		"#*": "./src/*.ts"
 	},
 	"exports": {
+		"./atom/*": "./src/layout/*/mod.ts",
 		"./layout/*": "./src/layout/*/mod.ts",
+		"./molecule/*": "./src/primitive/*/mod.ts",
+		"./organism/*": "./src/organism/*/mod.ts",
+		"./page/*": "./src/page/*/mod.ts",
 		"./primitive/*": "./src/primitive/*/mod.ts",
-		"./semantic/*": "./src/semantic/*/mod.ts"
+		"./semantic/*": "./src/semantic/*/mod.ts",
+		"./template/*": "./src/template/*/mod.ts"
 	},
 	"scripts": {
 		"clean": "pnpm run \"/^clean:.*/\" ",
@@ -54,6 +59,7 @@
 	},
 	"dependencies": {
 		"@iconify/svelte": "4.0.2",
+		"@xeho91/lib-asset": "workspace:*",
 		"@xeho91/lib-brand": "workspace:*",
 		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-design": "workspace:*",
