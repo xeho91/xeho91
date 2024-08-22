@@ -1,3 +1,4 @@
+import type { Reference } from "@xeho91/lib-css/reference";
 import { SelectorClass } from "@xeho91/lib-css/selector/class";
 import { type ClassValue, clsx } from "clsx";
 import type { Action } from "svelte/action";
@@ -70,4 +71,9 @@ export const classes: Action<Element, Array<ClassInput | ClassInput[]>> = (node,
 
 export interface WithClass {
 	class?: ReturnType<typeof merge_classes>;
+}
+
+export interface WithAnchor {
+	anchor_name?: Reference;
+	anchor?: Reference;
 }
