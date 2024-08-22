@@ -1,11 +1,10 @@
 <script lang="ts">
 import { Grid, type GridVariant } from "@xeho91/lib-design/grid";
 import { Space, type SpaceSize } from "@xeho91/lib-design/space";
-import { type WithClass, merge_classes } from "@xeho91/lib-feature/css/util";
-import type { Snippet } from "svelte";
+import type { WithChildren } from "@xeho91/lib-feature/component";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 
-interface Props extends WithClass {
-	children: Snippet;
+interface Props extends WithChildren, WithClass {
 	// Grid
 	grid?: GridVariant;
 	min_width?: boolean;

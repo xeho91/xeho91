@@ -4,16 +4,19 @@ import { Elevation, type ElevationLevel } from "@xeho91/lib-design/elevation";
 import { Font } from "@xeho91/lib-design/font";
 import type { FontFamilyName } from "@xeho91/lib-design/font/family";
 import type { FontSizeKey } from "@xeho91/lib-design/font/size";
+import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 
 import type { TextColor, TextHTMLTag, TextWeight } from "./util";
 
 import { Skeleton, set_skeleton_color } from "#primitive/skeleton/mod";
 
-interface Props extends Omit<HTMLAttributes<HTMLElementTagNameMap[TextHTMLTag]>, "class">, WithAnchor, WithClass {
-	children: Snippet;
+interface Props
+	extends WithAnchor,
+		WithChildren,
+		WithClass,
+		Omit<HTMLAttributes<HTMLElementTagNameMap[TextHTMLTag]>, "children" | "class"> {
 	/**
 	 * HTML element tag for [text content](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#text_content).
 	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element#text_content}

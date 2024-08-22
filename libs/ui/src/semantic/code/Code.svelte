@@ -4,14 +4,16 @@ import type { FontSizeKey } from "@xeho91/lib-design/font/size";
 import type { FontWeightMonoKey } from "@xeho91/lib-design/font/weight";
 import { Radius } from "@xeho91/lib-design/radius";
 import { Space } from "@xeho91/lib-design/space";
-import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+import { merge_classes } from "@xeho91/lib-feature/css";
 import type { ComponentProps } from "svelte";
 
 import type { CodeWeight } from "./util";
 
 import { Text } from "#primitive/text/mod";
 
-interface Props extends WithClass {
+type TextProps = Omit<ComponentProps<Text<"code", "mono", FontWeightMonoKey>>, "tag" | "family">;
+
+interface Props extends TextProps {
 	/**
 	 * Font's **size** from [design tokens](https://shan-shan.gitbook.io/handbook/design/brandbook/broom#typography)
 	 */
@@ -21,8 +23,6 @@ interface Props extends WithClass {
 	 */
 	weight?: CodeWeight;
 }
-
-type TextProps = Omit<ComponentProps<Text<"code", "mono", FontWeightMonoKey>>, "tag" | "class" | "family">;
 
 const {
 	//

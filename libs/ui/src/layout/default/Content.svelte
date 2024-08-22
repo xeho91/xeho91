@@ -1,18 +1,16 @@
 <script lang="ts">
+import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-import type { Snippet } from "svelte";
 import { fade } from "svelte/transition";
 
 import { LAYOUT_DEFAULT_FADE } from "./util";
 
-interface Props extends WithClass {
-	children: Snippet;
-}
+interface Props extends WithChildren, WithClass {}
 
 let {
 	//
-	class: class_,
 	children,
+	class: class_,
 }: Props = $props();
 
 $effect(() => {});

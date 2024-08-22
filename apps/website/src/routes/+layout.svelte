@@ -8,13 +8,11 @@ import "@fontsource-variable/jetbrains-mono/wght.css";
 import "@fontsource-variable/jetbrains-mono/wght-italic.css";
 
 import { Color } from "@xeho91/lib-design/color";
+import type { WithChildren } from "@xeho91/lib-feature/component";
 import { GlobalManagers } from "@xeho91/lib-feature/global";
 import { Content, Footer, Header, Main } from "@xeho91/lib-ui/layout/default";
-import type { Snippet } from "svelte";
 
-interface Props {
-	children: Snippet;
-}
+interface Props extends WithChildren {}
 
 let { children }: Props = $props();
 </script>

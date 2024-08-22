@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Color } from "@xeho91/lib-design/color";
 import { Space } from "@xeho91/lib-design/space";
-import { type WithClass, merge_classes } from "@xeho91/lib-feature/css/util";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 
 import ColorScheme from "./ColorScheme.svelte";
 

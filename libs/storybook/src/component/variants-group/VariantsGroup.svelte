@@ -2,6 +2,7 @@
 import { Color } from "@xeho91/lib-design/color";
 import { Space } from "@xeho91/lib-design/space";
 import { Stroke } from "@xeho91/lib-design/stroke";
+import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import type { Component, ComponentProps, Snippet } from "svelte";
 
@@ -10,9 +11,9 @@ import Variant from "./Variant.svelte";
 type OmittedComponentProps = Omit<ComponentProps<TComponent>, TPropName | "children" | "class">;
 
 type Props = OmittedComponentProps &
+	WithChildren<[ComponentProps<TComponent>]> &
 	WithClass & {
 		component?: TComponent;
-		children?: Snippet<[ComponentProps<TComponent>]>;
 		prop: TPropName;
 		values: Iterable<TValue>;
 		header?: Snippet;

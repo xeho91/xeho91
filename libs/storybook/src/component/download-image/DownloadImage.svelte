@@ -4,13 +4,12 @@ export * from "./manager.svelte";
 
 <script lang="ts" generics="TWidth extends number = number, THeight extends number = number">
 import type { Rectangle } from "@xeho91/lib-geometry/two-dimension/rectangle";
+import type { WithChildren } from "@xeho91/lib-feature/component";
 import { Square } from "@xeho91/lib-geometry/two-dimension/square";
-import type { Snippet } from "svelte";
 
 import { DownloadImageManager, type ImageFormat } from "./manager.svelte";
 
-interface Props {
-	children: Snippet;
+interface Props extends WithChildren {
 	dimensions: Rectangle<TWidth, THeight> | Square<TWidth>;
 	svg: SVGElement | undefined;
 	format?: ImageFormat;

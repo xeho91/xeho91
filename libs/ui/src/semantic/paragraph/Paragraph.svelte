@@ -1,13 +1,12 @@
 <script lang="ts">
-import { merge_classes } from "@xeho91/lib-feature/css/util";
-import type { ComponentProps, Snippet } from "svelte";
+import { merge_classes } from "@xeho91/lib-feature/css";
+import type { ComponentProps } from "svelte";
 
 import type { ParagraphgWeight } from "./util";
 
 import { Text } from "#primitive/text/mod";
 
 interface Props extends Omit<ComponentProps<Text>, "family"> {
-	children: Snippet;
 	size?: ComponentProps<Text>["size"];
 	weight?: ParagraphgWeight;
 }

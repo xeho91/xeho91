@@ -4,8 +4,8 @@ import { Color } from "@xeho91/lib-design/color";
 import { Elevation } from "@xeho91/lib-design/elevation";
 import { Radius } from "@xeho91/lib-design/radius";
 import { Stroke } from "@xeho91/lib-design/stroke";
+import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 
 import type { PopoverColor } from "./util";
@@ -18,9 +18,8 @@ type Attributes = HTMLAttributes<HTMLDivElement>;
 type ExtendedAttributes = Omit<HTMLAttributes<HTMLDivElement>, "id" | "class" | "children" | "popover"> & {
 	type?: NonNullable<Attributes["popover"]>;
 };
-interface Props extends WithClass, ExtendedAttributes {
+interface Props extends WithChildren<[PopoverColor]>, WithClass, ExtendedAttributes {
 	id: NonNullable<HTMLAttributes<HTMLDivElement>["id"]>;
-	children: Snippet<[PopoverColor?]>;
 	element?: HTMLDivElement | undefined;
 	backdropped?: boolean;
 	color?: PopoverColor;
