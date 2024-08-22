@@ -258,6 +258,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.2.0
+      '@xeho91/lib-snippet':
+        specifier: workspace:*
+        version: link:../snippet
       typescript:
         specifier: 'catalog:'
         version: 5.5.4
@@ -703,6 +706,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.2.0
+      '@xeho91/lib-asset':
+        specifier: workspace:*
+        version: link:../asset
       '@xeho91/lib-brand':
         specifier: workspace:*
         version: link:../brand
