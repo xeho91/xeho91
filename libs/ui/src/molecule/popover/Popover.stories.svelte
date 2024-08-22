@@ -16,6 +16,7 @@ const { Story } = defineMeta({
 	tags: ["autodocs"],
 	args: {
 		id: "example-popover",
+		// @ts-expect-error FIXME: Upstream issue
 		children: "Popover content",
 	},
 	parameters: {

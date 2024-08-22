@@ -4,16 +4,19 @@ import { Elevation, type ElevationLevel } from "@xeho91/lib-design/elevation";
 import { Font } from "@xeho91/lib-design/font";
 import type { FontFamilyName } from "@xeho91/lib-design/font/family";
 import type { FontSizeKey } from "@xeho91/lib-design/font/size";
-import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-import type { Snippet } from "svelte";
+import type { WithChildren } from "@xeho91/lib-feature/component";
+import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import type { HTMLAttributes } from "svelte/elements";
 
 import type { TextColor, TextHTMLTag, TextWeight } from "./util";
 
 import { Skeleton, set_skeleton_color } from "#primitive/skeleton/mod";
 
-interface Props extends Omit<HTMLAttributes<HTMLElementTagNameMap[TextHTMLTag]>, "class">, WithClass {
-	children: Snippet;
+interface Props
+	extends WithAnchor,
+		WithChildren,
+		WithClass,
+		Omit<HTMLAttributes<HTMLElementTagNameMap[TextHTMLTag]>, "children" | "class"> {
 	/**
 	 * HTML element tag for [text content](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#text_content).
 	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element#text_content}
@@ -69,6 +72,7 @@ const {
 	children,
 	class: class_,
 	tag = "span" as TTag,
+	anchor,
 	color,
 	mode = "solid",
 	family,
@@ -97,10 +101,9 @@ const _selection_color = $derived.by(() => {
 
 <svelte:element
 	this={tag}
+	style:position-anchor={anchor?.toString()}
 	class={merge_classes(
 		"text",
-		// Flex
-		"inline-flex items-center gap-x-[0.5rex]",
 		// Typography
 		_family?.class(),
 		_weight?.class(),

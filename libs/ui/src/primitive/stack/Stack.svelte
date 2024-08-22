@@ -1,14 +1,16 @@
 <script lang="ts" generics="TTag extends StackHtmlTag = 'div'">
 import { Space, type SpaceSize } from "@xeho91/lib-design/space";
-import { merge_classes } from "@xeho91/lib-feature/css";
-import type { Snippet } from "svelte";
+import type { WithChildren } from "@xeho91/lib-feature/component";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import type { HTMLAttributes } from "svelte/elements";
 
 import type { StackDirection, StackHtmlTag } from "./util";
 
-interface Props extends HTMLAttributes<HTMLElementTagNameMap[TTag]> {
+interface Props
+	extends WithChildren,
+		WithClass,
+		Omit<HTMLAttributes<HTMLElementTagNameMap[TTag]>, "children" | "class"> {
 	tag?: TTag;
-	children: Snippet;
 	// Flex
 	direction?: StackDirection;
 	align_items?: "center" | "start" | "end" | "baseline" | "stretch" | undefined;

@@ -12,9 +12,7 @@
 		"#*": "./src/*.ts"
 	},
 	"exports": {
-		"./css": "./src/css/mod.ts",
-		"./global": "./src/global/mod.ts",
-		"./*": "./src/*.ts"
+		"./*": "./src/*/mod.ts"
 	},
 	"scripts": {
 		"clean": "pnpm run \"/^clean:.*/\" ",

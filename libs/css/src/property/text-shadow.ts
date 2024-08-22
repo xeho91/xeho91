@@ -34,7 +34,7 @@ export class TextShadowLayer<
 	}
 
 	public static create_reference = <TNumber extends number>(number: TNumber) =>
-		new Reference(`${TextShadowLayer.NAME}-layer-${number}`);
+		new Reference(`${TextShadowLayer.NAME}-${number}`);
 
 	public static create_atomized_layer = <TNumber extends number>(number: TNumber) => {
 		const prefix = `${TextShadowLayer.NAME}-${number}`;

@@ -1,13 +1,14 @@
 <script lang="ts">
 import { merge_classes } from "@xeho91/lib-feature/css";
-import type { ComponentProps, Snippet } from "svelte";
+import type { ComponentProps } from "svelte";
 
 import type { HeadingLevel, HeadingWeight } from "./util";
 
 import { Text } from "#primitive/text/mod";
 
-interface Props extends Omit<ComponentProps<Text<"h1", "sans", HeadingWeight>>, "tag" | "family"> {
-	children: Snippet;
+type TextProps = Omit<ComponentProps<Text<"h1", "sans", HeadingWeight>>, "tag" | "family">;
+
+interface Props extends TextProps {
 	level: HeadingLevel;
 	weight?: HeadingWeight | undefined;
 }

@@ -5,10 +5,15 @@ export const ICONS_MAP = new Map([
 	["check", "check-fat"],
 	["close", "x"],
 	["desktop", "desktop"],
+	["discord", "discord-logo"],
 	["error", "warning-octagon"],
+	["github", "github-logo"],
 	["heart", "heart"],
 	["info", "info"],
 	["legal", "scales"],
+	["linkedin", "linkedin-logo"],
+	["email", "envelope-simple"],
+	["matrix", "matrix-logo"],
 	["mobile", "device-mobile"],
 	["moon", "moon"],
 	["monitor", "monitor"],
@@ -19,6 +24,7 @@ export const ICONS_MAP = new Map([
 	["sun", "sun"],
 	["tablet", "device-tablet"],
 	["warning", "warning"],
+	["twitter", "twitter-logo"],
 ] as const);
 
 export type IconEntry = IterableElement<typeof ICONS_MAP>;

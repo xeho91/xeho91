@@ -3,8 +3,8 @@ import { Reference } from "@xeho91/lib-css/reference";
 import { Color } from "@xeho91/lib-design/color";
 import { Elevation } from "@xeho91/lib-design/elevation";
 import { Stroke } from "@xeho91/lib-design/stroke";
+import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-import type { Snippet } from "svelte";
 import type { HTMLButtonAttributes } from "svelte/elements";
 
 import {
@@ -19,9 +19,9 @@ import {
 
 import { Text } from "#primitive/text/mod";
 
-type Props = WithClass &
+type Props = WithChildren &
+	WithClass &
 	HTMLButtonAttributes & {
-		children: Snippet;
 		color?: ButtonColor;
 		size?: ButtonSize;
 		variant?: ButtonVariant;
