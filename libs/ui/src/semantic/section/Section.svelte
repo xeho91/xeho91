@@ -1,6 +1,6 @@
 <script lang="ts">
-import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import type { WithChildren } from "@xeho91/lib-feature/component";
+import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import type { HTMLAttributes } from "svelte/elements";
 
 interface Props extends WithAnchor, WithChildren, WithClass, Omit<HTMLAttributes<HTMLElement>, "class" | "children"> {}
