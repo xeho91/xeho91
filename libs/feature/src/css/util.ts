@@ -69,6 +69,11 @@ export const classes: Action<Element, Array<ClassInput | ClassInput[]>> = (node,
 	};
 };
 
+export interface WithAnchor {
+	anchor_name?: Reference;
+	anchor?: Reference;
+}
+
 export interface WithClass {
 	class?: ReturnType<typeof merge_classes>;
 }

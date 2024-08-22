@@ -1,11 +1,11 @@
 <script lang="ts" generics="TComponent extends Component<any>, TPropName extends keyof ComponentProps<TComponent>, TValue extends ComponentProps<TComponent>[TPropName]">
 import { Font } from "@xeho91/lib-design/font";
 import { Space } from "@xeho91/lib-design/space";
+import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-import type { Component, ComponentProps, Snippet } from "svelte";
+import type { Component, ComponentProps } from "svelte";
 
-interface Props extends WithClass {
-	children: Snippet;
+interface Props extends WithChildren, WithClass {
 	prop: TPropName;
 	value: TValue;
 }

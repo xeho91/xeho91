@@ -1,11 +1,8 @@
 <script lang="ts">
-import type { Snippet } from "svelte";
-
+import type { WithChildren } from "#component/mod";
 import { ManagerCSS } from "#css/mod";
 
-interface Props {
-	children: Snippet;
-}
+interface Props extends WithChildren {}
 
 let { children }: Props = $props();
 </script>

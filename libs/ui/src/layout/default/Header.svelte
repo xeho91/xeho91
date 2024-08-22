@@ -5,7 +5,7 @@ import { Elevation } from "@xeho91/lib-design/elevation";
 import { Radius } from "@xeho91/lib-design/radius";
 import { Space } from "@xeho91/lib-design/space";
 import { Stroke } from "@xeho91/lib-design/stroke";
-import { type WithClass, merge_classes } from "@xeho91/lib-feature/css/util";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import { fade } from "svelte/transition";
 
 import { LAYOUT_DEFAULT_FADE, LAYOUT_DEFAULT_SPACE_INLINE } from "./util";

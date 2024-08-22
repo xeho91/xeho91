@@ -12,8 +12,11 @@ import type { TextColor, TextHTMLTag, TextWeight } from "./util";
 
 import { Skeleton, set_skeleton_color } from "#primitive/skeleton/mod";
 
-interface Props extends Omit<HTMLAttributes<HTMLElementTagNameMap[TextHTMLTag]>, "class">, WithAnchor, WithClass {
-	children: Snippet;
+interface Props
+	extends WithAnchor,
+		WithChildren,
+		WithClass,
+		Omit<HTMLAttributes<HTMLElementTagNameMap[TextHTMLTag]>, "children" | "class"> {
 	/**
 	 * HTML element tag for [text content](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#text_content).
 	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element#text_content}

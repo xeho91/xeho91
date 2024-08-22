@@ -1,11 +1,11 @@
 <script lang="ts">
 import { Space, type SpaceSize } from "@xeho91/lib-design/space";
-import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-import type { Snippet } from "svelte";
+import type { WithChildren } from "@xeho91/lib-feature/component";
+import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+import type { HTMLLiAttributes } from "svelte/elements";
 import type { TransitionConfig } from "svelte/transition";
 
-interface Props extends WithClass {
-	children: Snippet;
+interface Props extends WithChildren, WithAnchor, WithClass, Omit<HTMLLiAttributes, "children" | "class"> {
 	// Paddings
 	padding?: SpaceSize | undefined;
 	padding_x?: SpaceSize | undefined;
@@ -32,6 +32,9 @@ const noop = () => ({});
 let {
 	children,
 	class: class_,
+	// Anchor
+	anchor,
+	anchor_name,
 	// Paddings
 	padding,
 	padding_x,
@@ -57,6 +60,8 @@ let {
 <li
 	in:in_
 	out:out_
+	style:anchor-name={anchor_name?.toString()}
+	style:position-anchor={anchor?.toString()}
 	class={merge_classes(
 		"item",
 		// Paddings
