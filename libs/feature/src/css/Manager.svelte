@@ -64,6 +64,8 @@ import { classes } from "./util";
 		:global(*) {
 			--box-shadow-color-light-lightness: 21%;
 			--box-shadow-color-dark-lightness: 15%;
+			--text-shadow-color-light-lightness: 21%;
+			--text-shadow-color-dark-lightness: 15%;
 		}
 	}
 
