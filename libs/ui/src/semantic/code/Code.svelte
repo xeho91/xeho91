@@ -38,6 +38,10 @@ const {
 <Text
 	{...text_props}
 	tag="code"
+	{color}
+	family="mono"
+	{weight}
+	{size}
 	nowrap
 	class={merge_classes(
 		"code",
@@ -47,9 +51,6 @@ const {
 		Color.get(color ?? "primary", "blend", 3).class("background"),
 		class_,
 	)}
-	family="mono"
-	{weight}
-	{size}
 >
 	{@render children()}
 </Text>
