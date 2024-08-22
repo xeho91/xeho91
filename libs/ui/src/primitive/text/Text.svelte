@@ -4,8 +4,8 @@ import { Elevation, type ElevationLevel } from "@xeho91/lib-design/elevation";
 import { Font } from "@xeho91/lib-design/font";
 import type { FontFamilyName } from "@xeho91/lib-design/font/family";
 import type { FontSizeKey } from "@xeho91/lib-design/font/size";
+import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 
 import type { TextColor, TextHTMLTag, TextWeight } from "./util";

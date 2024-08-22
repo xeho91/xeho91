@@ -1,5 +1,5 @@
 <script lang="ts">
-import { type WithClass, merge_classes } from "@xeho91/lib-feature/css/util";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 
