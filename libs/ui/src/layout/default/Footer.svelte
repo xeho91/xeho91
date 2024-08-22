@@ -54,17 +54,15 @@ let {
 	transition:fade={{ ...LAYOUT_DEFAULT_FADE, delay: 250 }}
 >
 	<Container>
-		<Paragraph
-			size="s"
-			class={merge_classes("flex-wrap place-content-center")}
-		>
+		<Paragraph size="s" class={merge_classes("text-center")}>
 			<Text nowrap>
 				<Icon name="legal" />
 				{"CC BY-NC-SA 4.0 | 2016—present"}
 			</Text>
+			<br />
 			<Text nowrap>
 				{"© Mateusz '"}
-				<Logo animated class="h[1em]" />
+				<Logo animated class="inline h[1em]" />
 				{"' Kadlubowski"}
 			</Text>
 		</Paragraph>

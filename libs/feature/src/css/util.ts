@@ -77,3 +77,8 @@ export interface WithAnchor {
 export interface WithClass {
 	class?: ReturnType<typeof merge_classes>;
 }
+
+export interface WithAnchor {
+	anchor_name?: Reference;
+	anchor?: Reference;
+}
