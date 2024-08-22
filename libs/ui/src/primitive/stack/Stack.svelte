@@ -1,7 +1,7 @@
 <script lang="ts" generics="TTag extends StackHtmlTag = 'div'">
 import { Space, type SpaceSize } from "@xeho91/lib-design/space";
 import type { WithChildren } from "@xeho91/lib-feature/component";
-import { merge_classes, type WithClass } from "@xeho91/lib-feature/css";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import type { HTMLAttributes } from "svelte/elements";
 
 import type { StackDirection, StackHtmlTag } from "./util";
