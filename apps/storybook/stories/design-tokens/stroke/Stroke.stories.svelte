@@ -26,8 +26,11 @@ export const { Story, meta } = defineMeta({
 });
 </script>
 
-
-<Story name="Playground" parameters={PARAMETERS.playground}>
+<Story
+	name="Playground"
+	parameters={PARAMETERS.playground}
+	tags={["!autodocs", "!dev"]}
+>
 	{#snippet children(args)}
 		<Sample {...args} />
 	{/snippet}
@@ -36,6 +39,7 @@ export const { Story, meta } = defineMeta({
 <Story
 	name="Sizes"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="size" values={Stroke}>
 		{#snippet children({ size })}

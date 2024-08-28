@@ -4,8 +4,7 @@ import type { ElevationLevel } from "@xeho91/lib-design/elevation";
 import { Elevation } from "@xeho91/lib-design/elevation";
 import { Radius } from "@xeho91/lib-design/radius";
 import { Space } from "@xeho91/lib-design/space";
-import type { WithClass } from "@xeho91/lib-feature/css/mod";
-import { merge_classes } from "@xeho91/lib-feature/css/util";
+import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 
 interface Props extends WithClass {
 	level: ElevationLevel;
