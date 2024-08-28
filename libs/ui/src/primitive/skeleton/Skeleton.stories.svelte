@@ -12,7 +12,6 @@ import Skeleton from "./Skeleton.svelte";
 const { Story } = defineMeta({
 	...SHARED_META,
 	component: Skeleton,
-	tags: ["autodocs"],
 	argTypes: {
 		color: create_control_from_iterable(SKELETON_COLORS, {
 			summary: "SkeletonColor",
@@ -27,13 +26,22 @@ const { Story } = defineMeta({
 });
 </script>
 
-<Story name="Playground" parameters={PARAMETERS.playground} />
+<Story
+	name="Playground"
+	parameters={PARAMETERS.playground}
+	tags={["!autodocs", "!dev"]}
+/>
 
-<Story name="Default" parameters={PARAMETERS.default} />
+<Story
+	name="Default"
+	parameters={PARAMETERS.default}
+	tags={["!dev"]}
+/>
 
 <Story
 	name="Colors"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="color" values={SKELETON_COLORS}>
 		{#snippet children({ color })}
@@ -45,6 +53,7 @@ const { Story } = defineMeta({
 <Story
 	name="Variants"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="variant" values={SKELETON_VARIANTS}>
 		{#snippet children({ variant })}
