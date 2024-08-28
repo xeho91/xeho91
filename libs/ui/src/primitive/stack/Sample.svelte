@@ -1,7 +1,7 @@
 <script>
 import { Color } from "@xeho91/lib-design/color";
 import { Radius } from "@xeho91/lib-design/radius";
-import { merge_classes } from "@xeho91/lib-feature/css/util";
+import { merge_classes } from "@xeho91/lib-feature/css";
 </script>
 
 {#each { length: 3 } as _}
