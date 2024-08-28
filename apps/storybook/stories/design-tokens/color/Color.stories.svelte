@@ -13,7 +13,7 @@ import Sample from "./Sample.svelte";
 const { Story } = defineMeta({
 	...SHARED_META,
 	component: Sample,
-	title: "Design tokens/Color",
+	title: "design token/Color",
 	tags: ["autodocs"],
 	args: {
 		name: "primary",

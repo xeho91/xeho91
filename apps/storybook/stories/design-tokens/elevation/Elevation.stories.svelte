@@ -10,7 +10,7 @@ import Sample from "./Sample.svelte";
 
 export const { Story, meta } = defineMeta({
 	...SHARED_META,
-	title: "Design tokens/Elevation",
+	title: "design token/Elevation",
 	component: Sample,
 	tags: ["autodocs"],
 	args: {},

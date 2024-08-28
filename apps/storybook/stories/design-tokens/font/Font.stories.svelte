@@ -11,7 +11,7 @@ import { Code } from "@xeho91/lib-ui/semantic/code";
 export const { Story, meta } = defineMeta({
 	...SHARED_META,
 	component: Text,
-	title: "Design tokens/Font",
+	title: "design token/Font",
 	tags: ["autodocs"],
 	args: {
 		children: "Typography",
