@@ -3,7 +3,8 @@ import "./global.css";
 
 import { withThemeByDataAttribute } from "@storybook/addon-themes";
 import type { Decorator, Parameters } from "@storybook/svelte";
-import { GlobalManagers } from "@xeho91/lib-feature/global";
+
+import GlobalDecorator from "./GlobalDecorator.svelte";
 
 export const decorators: Decorator[] = [
 	withThemeByDataAttribute({
@@ -15,9 +16,9 @@ export const decorators: Decorator[] = [
 		defaultTheme: "system",
 		attributeName: "data-color-scheme",
 	}),
-	() => ({ Component: GlobalManagers }),
+	() => ({ Component: GlobalDecorator }),
 ];
 
 export const parameters: Parameters = {
-	options: { showPanel: true },
+	options: { showPanel: false },
 };
