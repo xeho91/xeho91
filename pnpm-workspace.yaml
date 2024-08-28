@@ -6,7 +6,7 @@ packages:
 
 # https://pnpm.io/catalogs
 catalog:
-    "@storybook/addon-svelte-csf": "5.0.0-next.1"
+    "@storybook/addon-svelte-csf": "5.0.0-next.3"
     "@storybook/svelte": "8.2.9"
     "@sveltejs/vite-plugin-svelte": "4.0.0-next.6"
     "@total-typescript/tsconfig": "1.0.4"
