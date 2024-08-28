@@ -6,7 +6,7 @@ App for the project's Storybook.
 
 ## Resources
 
--   [Storybook]
+- [Storybook]
 
 <!-- LINKS -->
 
