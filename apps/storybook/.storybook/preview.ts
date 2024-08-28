@@ -8,17 +8,33 @@ import GlobalDecorator from "./GlobalDecorator.svelte";
 
 export const decorators: Decorator[] = [
 	withThemeByDataAttribute({
+		attributeName: "data-color-scheme",
+		defaultTheme: "system",
 		themes: {
 			light: "light",
 			system: "system",
 			dark: "dark",
 		},
-		defaultTheme: "system",
-		attributeName: "data-color-scheme",
 	}),
 	() => ({ Component: GlobalDecorator }),
 ];
 
 export const parameters: Parameters = {
-	options: { showPanel: false },
+	options: {
+		showPanel: false,
+		storySort: {
+			order: [
+				"design token",
+				"brand",
+				"primitive",
+				"semantic",
+				"layout",
+				"atom",
+				"molecule",
+				"organism",
+				"template",
+				"page",
+			],
+		},
+	},
 };
