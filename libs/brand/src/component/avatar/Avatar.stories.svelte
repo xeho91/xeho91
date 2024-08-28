@@ -18,7 +18,7 @@ import { BrandAssetTheme } from "#design";
 const { Story } = defineMeta({
 	...SHARED_META,
 	component: Avatar,
-	title: "Brand/Avatar",
+	title: "brand/Avatar",
 	argTypes: {
 		...SHARED_ARG_TYPES,
 		id: create_control_from_string(AVATAR_DEFAULT_ID, {
