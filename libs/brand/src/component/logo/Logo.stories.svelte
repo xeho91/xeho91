@@ -28,7 +28,6 @@ const { Story } = defineMeta({
 			category: "design",
 		}),
 	},
-	tags: ["!dev"],
 	parameters: {
 		layout: "centered",
 	},
@@ -55,11 +54,23 @@ const classes = merge_classes(
 	<Logo {...args} class={classes} />
 {/snippet}
 
-<Story name="Playground" parameters={PARAMETERS.playground} />
+<Story
+	name="Playground"
+	parameters={PARAMETERS.playground}
+	tags={["!autodocs", "!dev"]}
+/>
 
-<Story name="Default" parameters={PARAMETERS.default} />
+<Story
+	name="Default"
+	parameters={PARAMETERS.default}
+	tags={["!dev"]}
+/>
 
-<Story name="Backgrounded" parameters={PARAMETERS.variants}>
+<Story
+	name="Backgrounded"
+	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
+>
 	<VariantsGroup prop="backgrounded" values={[false, true]}>
 		{#snippet children( { backgrounded })}
 			<Logo id={`backgrounded-${backgrounded}`} {backgrounded} class={classes} />
@@ -67,7 +78,11 @@ const classes = merge_classes(
 	</VariantsGroup>
 </Story>
 
-<Story name="Animated" parameters={PARAMETERS.variants}>
+<Story
+	name="Animated"
+	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
+>
 	<VariantsGroup prop="animated" values={[false, true]}>
 		{#snippet children( { animated })}
 			<Logo id={`animated-${animated}`} {animated} class={classes} />
@@ -75,7 +90,11 @@ const classes = merge_classes(
 	</VariantsGroup>
 </Story>
 
-<Story name="Themes" parameters={PARAMETERS.variants}>
+<Story
+	name="Themes"
+	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
+>
 	<VariantsGroup prop="theme" values={BrandAssetTheme}>
 		{#snippet header()}
 			<code>{`background="false"`}</code>
@@ -96,6 +115,7 @@ const classes = merge_classes(
 
 <Story
 	name="Download"
+	tags={["!autodocs"]}
 	argTypes={{
 		format: create_control_from_iterable(DownloadImageManager, {
 			default: "svg",
