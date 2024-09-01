@@ -10,7 +10,7 @@ import "@fontsource-variable/jetbrains-mono/wght-italic.css";
 import { Color } from "@xeho91/lib-design/color";
 import type { WithChildren } from "@xeho91/lib-feature/component";
 import { GlobalManagers } from "@xeho91/lib-feature/global";
-import { Content, Footer, Header, Main } from "@xeho91/lib-ui/layout/default";
+import { LayoutDefault } from "@xeho91/lib-ui/layout/default";
 
 interface Props extends WithChildren {}
 
@@ -28,17 +28,7 @@ let { children }: Props = $props();
 </svelte:head>
 
 <GlobalManagers>
-	<Main>
-		{#snippet header()}
-			<Header />
-		{/snippet}
-		{#snippet content()}
-			<Content>
-				{@render children()}
-			</Content>
-		{/snippet}
-		{#snippet footer()}
-			<Footer />
-		{/snippet}
-	</Main>
+	<LayoutDefault>
+		{@render children()}
+	</LayoutDefault>
 </GlobalManagers>

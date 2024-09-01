@@ -1,83 +1,47 @@
 <script lang="ts">
-import { Color } from "@xeho91/lib-design/color";
+import { Reference } from "@xeho91/lib-css/reference";
+import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-import type { Snippet } from "svelte";
+import { fade } from "svelte/transition";
 
-interface Props extends WithClass {
-	header: Snippet<[boolean]>;
-	content: Snippet<[boolean]>;
-	footer: Snippet<[boolean]>;
-}
+import { LAYOUT_DEFAULT_FADE, LAYOUT_DEFAULT_GRID_GUTTER, LAYOUT_DEFAULT_HEADER_MAIN_HEIGHT_REFERENCE } from "./util";
+
+interface Props extends WithChildren<[boolean]>, WithClass {}
 
 let {
 	//
 	class: class_,
-	header,
-	content,
-	footer,
+	children,
 }: Props = $props();
 
 let rendered = $state(false);
 
-const color_1 = Color.get("secondary", "blend", 2);
-const color_2 = Color.get("primary", "blend", 3);
-
 $effect(() => {
 	rendered = true;
 });
+
+const min_height = `calc(100lvh - ${LAYOUT_DEFAULT_HEADER_MAIN_HEIGHT_REFERENCE.to_var()} - (2 * ${LAYOUT_DEFAULT_GRID_GUTTER.reference.to_var()}))`;
+const reference = new Reference("layout-default-main-min-height");
 </script>
 
 <main
+	style:--layout-default-main-min-height={min_height}
+	style:min-height={reference.to_var().toString()}
 	class={merge_classes(
-		//
-		"overflow-auto",
-		"w[100lvw] h[100lvh]",
 		"grid",
 		class_,
 	)}
-	style:--radial-gradient-color-1-light={color_1.light_dark.light.oklch.toString()}
-	style:--radial-gradient-color-1-dark={color_1.light_dark.dark.oklch.toString()}
-	style:--radial-gradient-color-2-light={color_2.light_dark.light.oklch.toString()}
-	style:--radial-gradient-color-2-dark={color_2.light_dark.dark.oklch.toString()}
+	transition:fade={{...LAYOUT_DEFAULT_FADE, delay: 250 }}
 >
 	{#if rendered}
-		{@render header(!rendered)}
-		{@render content(!rendered)}
-		{@render footer(!rendered)}
+		{@render children(rendered)}
 	{/if}
 </main>
 
 <style>
 @layer component {
 	main {
-		grid-template-areas:
-			"...     header  ..."
-			"content content content"
-			"...     footer  ...";
-		grid-template-rows: 0 1fr auto;
-		grid-template-columns: auto 1fr auto;
-
-		scroll-behavior: smooth;
-		scroll-snap-type: y mandatory;
-
-		--radial-gradient-color-1: light-dark(var(--radial-gradient-color-1-light), var(--radial-gradient-color-1-dark));
-		--radial-gradient-color-2: light-dark(var(--radial-gradient-color-2-light), var(--radial-gradient-color-2-dark));
-		background-image:
-			radial-gradient(at 25% 25%, var(--radial-gradient-color-1) 0px, transparent 50%),
-			radial-gradient(at 25% 75%, var(--radial-gradient-color-2) 0px, transparent 50%),
-			radial-gradient(at 50% 50%, var(--radial-gradient-color-1) 0px, transparent 50%),
-			radial-gradient(at 75% 25%, var(--radial-gradient-color-2) 0px, transparent 50%),
-			radial-gradient(at 75% 75%, var(--radial-gradient-color-1) 0px, transparent 50%);
-
-		& > :global(.header-main) {
-			grid-area: header;
-		}
-		& > :global(.content-main) {
-			grid-area: content;
-		}
-		& > :global(.footer-main) {
-			grid-area: footer;
-		}
+		grid-template-columns: subgrid;
 	}
 }
 </style>

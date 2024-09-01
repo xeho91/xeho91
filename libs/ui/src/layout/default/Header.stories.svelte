@@ -9,37 +9,10 @@ import Header from "./Header.svelte";
 const { Story } = defineMeta({
 	...SHARED_META,
 	component: Header,
-	tags: ["autodocs"],
 	parameters: {
 		layout: "fullscreen",
 	},
 });
 </script>
 
-<Story name="Playground" parameters={PARAMETERS.playground} />
-
-<Story
-	name="Loading"
-	args={{ loading: true }}
-	parameters={PARAMETERS.sample}
-	play={async (context) => {
-		const { canvasElement } = context;
-		const canvas = within(canvasElement);
-		const skeleton = canvas.getByRole("progressbar");
-		expect(skeleton).toBeVisible();
-	}}
-/>
-
-<Story
-	name="Loaded"
-	args={{ loading: false }}
-	parameters={PARAMETERS.sample}
-	play={async (context) => {
-		const { canvasElement } = context;
-		const canvas = within(canvasElement);
-		const skeleton = canvas.getByRole("progressbar");
-		await waitFor(() => {
-			expect(skeleton).not.toBeVisible();
-		});
-	}}
-/>
+<Story name="Default" parameters={PARAMETERS.default} tags={["!dev"]} />

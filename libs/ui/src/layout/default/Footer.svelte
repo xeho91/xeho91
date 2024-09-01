@@ -2,12 +2,11 @@
 import { Logo } from "@xeho91/lib-brand/logo";
 import { Color } from "@xeho91/lib-design/color";
 import { Radius } from "@xeho91/lib-design/radius";
-import { Space } from "@xeho91/lib-design/space";
 import { Stroke } from "@xeho91/lib-design/stroke";
 import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import { fade } from "svelte/transition";
 
-import { LAYOUT_DEFAULT_FADE, LAYOUT_DEFAULT_SPACE_INLINE } from "./util";
+import { LAYOUT_DEFAULT_FADE, LAYOUT_DEFAULT_GRID_GUTTER } from "./util";
 
 import { Container } from "#primitive/container/mod";
 import { Icon } from "#primitive/icon/mod";
@@ -22,49 +21,42 @@ let {
 }: Props = $props();
 </script>
 
-<footer
+<Container
+	tag="footer"
+	name="footer-main"
+	grid
 	class={merge_classes(
 		//
 		"footer-main",
-		// Layout
-		"relative",
-		"snap-start",
-		"w-fit",
-		Space.get("xs").class("margin-inline"),
-		LAYOUT_DEFAULT_SPACE_INLINE.class("padding-inline"),
-		Space.get("3xs").class("padding-block"),
-		// Flex
-		"flex place-content-center justify-self-center",
+		"relative inset-x-1/2",
+		"w-[100dvw] mx-[-50dvw]",
+		"snap-end",
+		LAYOUT_DEFAULT_GRID_GUTTER.class("padding-block"),
 		// Background
 		Color.class("background"),
 		Color.get("secondary", "blend", 3).class("background"),
 		// Border
 		Color.class("border-top"),
-		Color.class("border-inline"),
 		Color.get("secondary", "blend", 6).class("border-top"),
-		Color.get("secondary", "blend", 6).class("border-inline"),
 		"border-solid",
 		Stroke.get("s").class("top"),
-		Stroke.get("s").class("inline"),
-		Radius.get("m").class("start-start"),
-		Radius.get("m").class("start-end"),
+		Radius.get("xl").class("start-start"),
+		Radius.get("xl").class("start-end"),
 		// Other
 		class_,
 	)}
-	transition:fade={{ ...LAYOUT_DEFAULT_FADE, delay: 250 }}
+	in={(node) => fade(node, { ...LAYOUT_DEFAULT_FADE, delay: 250 })}
 >
-	<Container>
-		<Paragraph size="s" class={merge_classes("text-center")}>
-			<Text nowrap>
-				<Icon name="legal" />
-				{"CC BY-NC-SA 4.0 | 2016—present"}
-			</Text>
-			<br />
-			<Text nowrap>
-				{"© Mateusz '"}
-				<Logo animated class="inline h[1em]" />
-				{"' Kadlubowski"}
-			</Text>
-		</Paragraph>
-	</Container>
-</footer>
+	<Paragraph align="center" size="l">
+		<Text nowrap>
+			<Icon name="legal" />
+			{"CC BY-NC-SA 4.0 | 2016—present"}
+		</Text>
+		<br />
+		<Text nowrap>
+			{"© Mateusz '"}
+			<Logo animated class="inline h[1em]" />
+			{"' Kadlubowski"}
+		</Text>
+	</Paragraph>
+</Container>

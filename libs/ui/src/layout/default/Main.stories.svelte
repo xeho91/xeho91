@@ -8,14 +8,10 @@ import Main from "./Main.svelte";
 const { Story } = defineMeta({
 	...SHARED_META,
 	component: Main,
-	tags: ["autodocs"],
-	argTypes: {},
 	parameters: {
 		layout: "full-screen",
 	},
 });
 </script>
 
-<Story name="Playground" parameters={PARAMETERS.playground} />
-
-<Story name="Default" parameters={PARAMETERS.default} />
+<Story name="Default" parameters={PARAMETERS.default} tags={["!dev"]} />
