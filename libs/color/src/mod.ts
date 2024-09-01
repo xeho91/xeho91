@@ -3,7 +3,6 @@ import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 
 import type { AtomicColor } from "#atomic";
-import { LightDark } from "#light-dark";
 import * as accent from "#palette/brand/accent";
 import * as primary from "#palette/brand/primary";
 import * as secondary from "#palette/brand/secondary";
@@ -112,16 +111,6 @@ export class Color {
 	/**
 	 * The idea is that the solid and blend scales are interchangeable, since they match almost perfectly.
 	 * Sometimes you need a color to be transparent, so it works well on coloured backgrounds for example.
-	 * Let's say you have a text field with a light gray border,
-	 *
-	 * we'll use Mauve for this example.
-	 * You use step mauve7 here for the border.
-	 * That border will work well on a white background in light mode, or a dark background in dark mode.
-	 * But the border won't look great on a purple background for example.
-	 * So you can use mauveA7, which is transparent.
-	 * Now your text field border will work well on any background because it blends in,
-	 * but it still looks the same as mauve7 on white/dark backgrounds.
-	 *
 	 * Sometimes you need opaque colors, sometimes transparent. Now you have the option.
 	 *
 	 * @see {@link https://github.com/radix-ui/colors/issues/9#issuecomment-876643069}
@@ -177,29 +166,18 @@ export class Color {
 		name: TName,
 		type = "blend" as TType,
 		step = 8 as TStep,
-	): LightDark<
-		"brand",
-		TName extends ColorName ? TName : never,
-		TType,
-		TStep,
-		ImportedColor<TCategory, TName extends ColorName ? TName : never, TType, TStep, "light">,
-		ImportedColor<TCategory, TName extends ColorName ? TName : never, TType, TStep, "dark">
-	> => {
+	): {
+		light: AtomicColor<TCategory, TName, TType, TStep, "light">;
+		dark: AtomicColor<TCategory, TName, TType, TStep, "dark">;
+	} => {
 		const by_category_and_name = Color.#get_identifiers(category, name as ColorName);
 		const light = by_category_and_name[
 			Color.#variable_identifier(name as ColorName, type, step, "light") as keyof typeof by_category_and_name
-		] as AtomicColor;
+		] as AtomicColor<TCategory, TName, TType, TStep, "light">;
 		const dark = by_category_and_name[
 			Color.#variable_identifier(name as ColorName, type, step, "dark") as keyof typeof by_category_and_name
-		] as AtomicColor;
-		return new LightDark({ category: "brand", name: name as ColorName, type, step, light, dark }) as LightDark<
-			"brand",
-			TName extends ColorName ? TName : never,
-			TType,
-			TStep,
-			ImportedColor<TCategory, TName extends ColorName ? TName : never, TType, TStep, "light">,
-			ImportedColor<TCategory, TName extends ColorName ? TName : never, TType, TStep, "dark">
-		>;
+		] as AtomicColor<TCategory, TName, TType, TStep, "dark">;
+		return { light, dark };
 	};
 }
 
@@ -239,18 +217,6 @@ type IdentifiersByCategory<
 	TCategory extends ColorCategory,
 	TName extends ColorName,
 > = TName extends keyof (typeof VARIABLE)[TCategory] ? (typeof VARIABLE)[TCategory][TName] : never;
-
-type ImportedColor<
-	TCategory extends ColorCategory,
-	TName extends ColorName,
-	TType extends ColorType,
-	TStep extends ColorStep,
-	TScheme extends ColorScheme,
-> = VariableIdentifier<TName, TType, TStep, TScheme> extends keyof IdentifiersByCategory<TCategory, TName>
-	? IdentifiersByCategory<TCategory, TName>[VariableIdentifier<TName, TType, TStep, TScheme>] extends AtomicColor
-		? IdentifiersByCategory<TCategory, TName>[VariableIdentifier<TName, TType, TStep, TScheme>]
-		: never
-	: never;
 
 export type ColorCategoryFromName<TName extends ColorName> = TName extends "primary" | "secondary" | "accent"
 	? "brand"
