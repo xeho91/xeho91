@@ -6,10 +6,12 @@ import type { FontFamilyName } from "@xeho91/lib-design/font/family";
 import type { FontSizeKey } from "@xeho91/lib-design/font/size";
 import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+import type { Properties } from "csstype";
 import type { HTMLAttributes } from "svelte/elements";
 
 import type { TextColor, TextHTMLTag, TextWeight } from "./util";
 
+import type { TransitionConfig } from "svelte/transition";
 import { Skeleton, set_skeleton_color } from "#primitive/skeleton/mod";
 
 interface Props
@@ -66,7 +68,14 @@ interface Props
 	 * TODO: Add desc
 	 */
 	nowrap?: boolean | undefined;
+	align?: Properties["textAlign"];
+	// Transitions
+	// Transitions
+	in?: (node: Element) => TransitionConfig;
+	out?: (node: Element) => TransitionConfig;
 }
+
+const noop = () => ({});
 
 const {
 	children,
@@ -84,6 +93,15 @@ const {
 	loading = false,
 	truncated = false,
 	nowrap = false,
+	align,
+	// Transition
+	in: in_ = noop,
+	out: out_ = noop,
+	onintrostart,
+	onintroend,
+	onoutrostart,
+	onoutroend,
+	...rest_props
 }: Props = $props();
 
 const _family = $derived(family && Font.family.get(family));
@@ -100,8 +118,12 @@ const _selection_color = $derived.by(() => {
 </script>
 
 <svelte:element
+	{...rest_props}
 	this={tag}
 	style:position-anchor={anchor?.toString()}
+	class:text-start={align === "start"}
+	class:text-center={align === "center"}
+	class:text-end={align === "end"}
 	class={merge_classes(
 		"text",
 		// Typography
@@ -123,6 +145,12 @@ const _selection_color = $derived.by(() => {
 	class:truncate={truncated}
 	class:uppercase={uppercased}
 	class:whitespace-nowrap={nowrap}
+	in:in_
+	out:out_
+	onintrostart={onintrostart}
+	onintroend={onintroend}
+	onoutrostart={onoutrostart}
+	onoutroend={onoutroend}
 >
 	{#if loading}
 		<Skeleton color={set_skeleton_color(color)} />
