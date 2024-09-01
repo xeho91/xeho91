@@ -60,7 +60,7 @@
 		"@xeho91/lib-struct": "workspace:*",
 		"@xeho91/lib-type": "workspace:*",
 		"css-tree": "2.3.1",
-		"csstype": "3.1.3",
+		"csstype": "catalog:",
 		"rxjs": "catalog:"
 	},
 	"peerDependencies": {
