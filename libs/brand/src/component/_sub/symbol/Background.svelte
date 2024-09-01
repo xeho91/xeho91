@@ -25,8 +25,8 @@ const cy = dimensions.half("height");
 
 <symbol
 	id={set_id(id, "background")}
-	style:--light={theme.light_background.oklch.toString()}
-	style:--dark={theme.dark_background.oklch.toString()}
+	style:--light={theme.background_color("light").oklch.toString()}
+	style:--dark={theme.background_color("dark").oklch.toString()}
 	style:transition-property="fill"
 	style:transition-duration="200ms"
 	style:transition-timing-function="ease-in-out"

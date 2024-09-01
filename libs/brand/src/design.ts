@@ -1,5 +1,7 @@
 import { Color, type ColorScheme } from "@xeho91/lib-color";
 import type { AtomicColor } from "@xeho91/lib-color/atomic";
+import { LightDark } from "@xeho91/lib-css/function/light-dark";
+import { Reference } from "@xeho91/lib-css/reference";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
@@ -28,7 +30,7 @@ export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetTheme
 		this.#name = name;
 	}
 
-	public get_color_foreground<TScheme extends ColorScheme>(scheme: TScheme): AtomicColor | undefined {
+	public foreground_color<TScheme extends ColorScheme>(scheme: TScheme): AtomicColor | undefined {
 		// biome-ignore format: Prettier
 		switch (this.#name) {
 			case "color": return;
@@ -37,26 +39,22 @@ export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetTheme
 		}
 	}
 
-	public get light_foreground(): ReturnType<typeof this.get_color_foreground<"light">> {
-		return this.get_color_foreground("light");
-	}
-
-	public get dark_foreground(): ReturnType<typeof this.get_color_foreground<"dark">> {
-		return this.get_color_foreground("dark");
-	}
-
 	public get_fill_foreground(id: string): string {
 		const name = this.#name;
 		// biome-ignore format: Prettier
 		switch (name) {
+			// TODO: Use css lib - when created `url` function
 			case "color": return `url(#${set_id(id, "gradient")})`;
 			case "black":
-			case "white": return "light-dark(var(--light), var(--dark))";
+			case "white": return new LightDark(
+				new Reference("light").to_var().to_value(),
+				new Reference("dark").to_var().to_value(),
+			);
 			default: throw unrecognized(name);
 		}
 	}
 
-	public get_color_background<TScheme extends ColorScheme>(scheme: TScheme): AtomicColor {
+	public background_color<TScheme extends ColorScheme>(scheme: TScheme): AtomicColor {
 		const name = this.#name;
 		// biome-ignore format: Prettier
 		switch (name) {
@@ -65,13 +63,5 @@ export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetTheme
 			case "white": return Color.get("grayscale", "gray", "blend", 9)[scheme];
 			default: throw unrecognized(name);
 		}
-	}
-
-	public get light_background(): ReturnType<typeof this.get_color_background<"light">> {
-		return this.get_color_background("light");
-	}
-
-	public get dark_background(): ReturnType<typeof this.get_color_background<"dark">> {
-		return this.get_color_background("dark");
 	}
 }

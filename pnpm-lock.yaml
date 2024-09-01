@@ -276,6 +276,9 @@ importers:
       '@xeho91/lib-color':
         specifier: workspace:*
         version: link:../color
+      '@xeho91/lib-css':
+        specifier: workspace:*
+        version: link:../css
       '@xeho91/lib-error':
         specifier: workspace:*
         version: link:../error
