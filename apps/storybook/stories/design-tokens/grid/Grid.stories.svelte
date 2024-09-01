@@ -1,31 +1,31 @@
 <script context="module" lang="ts">
 import { defineMeta } from "@storybook/addon-svelte-csf";
-import { Space } from "@xeho91/lib-design/space";
+import { Grid } from "@xeho91/lib-design/grid";
 import { create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
 import { SHARED_META } from "@xeho91/lib-storybook/meta";
 import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
-import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
 
 import Sample from "./Sample.svelte";
 
 export const { Story, meta } = defineMeta({
 	...SHARED_META,
-	title: "design token/Space",
+	title: "design token/Grid",
 	component: Sample,
 	tags: ["autodocs"],
-	args: {},
+	args: {
+		variant: "default",
+	},
 	argTypes: {
-		size: create_control_from_iterable(Space, {
-			summary: "SpaceSize",
+		variant: create_control_from_iterable(Grid, {
+			summary: "GridSize",
 		}),
 	},
 	parameters: {
 		actions: { disable: false },
-		layout: "centered",
+		layout: "fullscreen",
 	},
 });
 </script>
-
 
 <Story
 	name="Playground"
@@ -38,13 +38,21 @@ export const { Story, meta } = defineMeta({
 </Story>
 
 <Story
-	name="Sizes"
-	parameters={PARAMETERS.variants}
+	name="Default"
+	parameters={PARAMETERS.sample}
+	args={{ variant: "default" }}
 	tags={["!dev"]}
->
-	<VariantsGroup prop="size" values={Space}>
-		{#snippet children({ size })}
-			<Sample {size} />
-		{/snippet}
-	</VariantsGroup>
-</Story>
+/>
+
+<style>
+:global(.sb-show-main.sb-main-fullscreen) {
+	display: revert-layer;
+	padding: revert-layer;
+}
+
+@layer override {
+	:global(#storybook-root) {
+		display: contents;
+	}
+}
+</style>

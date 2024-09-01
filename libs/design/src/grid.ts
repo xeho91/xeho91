@@ -395,6 +395,8 @@ export class GridGutter<
 	TVariant extends GridVariant = GridVariant,
 	const TValue extends [GridMin, GridMax] = [GridMin, GridMax],
 > extends DesignToken<"grid-gutter", TVariant, TValue> {
+	static readonly #VALUE = [18, 40] as const;
+
 	public static readonly DEFAULT = "default" satisfies GridVariant;
 
 	public static default = () => GridGutter.get(Grid.DEFAULT);
@@ -402,30 +404,25 @@ export class GridGutter<
 	public static get = <TKey extends GridVariant>(key: TKey) =>
 		new GridGutter(key, [GridMin.get(key), GridMax.get(key)]);
 
-	private constructor(variant: TVariant, value: TValue) {
+	constructor(variant: TVariant, value: TValue) {
 		super({ name: "grid-gutter", variant, value });
 	}
 
-	get #clamp(): FluidClamp {
-		const { value } = this;
-		const [min, max] = value;
+	get clamp(): FluidClamp {
+		const [minSize, maxSize] = GridGutter.#VALUE;
 		return calculateClamp({
 			...FLUID_CONFIG,
-			minSize: min.value.value,
-			maxSize: max.value.value,
+			minSize,
+			maxSize,
 		}) as FluidClamp;
-	}
-
-	get #identifier(): Identifier<FluidClamp> {
-		return new Identifier(this.#clamp);
 	}
 
 	public create_global_ruleset(): Ruleset {
 		const { key, reference } = this;
-		const from_map = DesignToken.GLOBAL_RULESETS.get(key);
+		const from_map = GridGutter.GLOBAL_RULESETS.get(key);
 		if (from_map) return from_map;
 		const selector = Selector.pseudo.class("root");
-		const declaration = new Declaration(reference.to_property(), this.#identifier.to_value());
+		const declaration = new Declaration(reference.to_property(), new Identifier(this.clamp).to_value());
 		const ruleset = new Ruleset(selector.to_list(), declaration.to_block());
 		this.add_global_ruleset(ruleset);
 		return ruleset;

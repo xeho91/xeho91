@@ -9,11 +9,10 @@ const { Story } = defineMeta({
 	...SHARED_META,
 	component: ListSocialChannels,
 	title: "Molecule/ListSocialChannels",
-	tags: ["autodocs"],
 	parameters: {
 		layout: "centered",
 	},
 });
 </script>
 
-<Story name="Default" parameters={PARAMETERS.default} />
+<Story name="Default" parameters={PARAMETERS.default} tags={["!dev"]} />

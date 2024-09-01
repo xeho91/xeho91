@@ -13,7 +13,7 @@ import Sample from "./Sample.svelte";
 const { Story } = defineMeta({
 	...SHARED_META,
 	component: Sample,
-	title: "Design tokens/Color",
+	title: "design token/Color",
 	tags: ["autodocs"],
 	args: {
 		name: "primary",
@@ -37,7 +37,11 @@ const { Story } = defineMeta({
 </script>
 
 
-<Story name="Playground" parameters={PARAMETERS.playground}>
+<Story
+	name="Playground"
+	parameters={PARAMETERS.playground}
+	tags={["!autodocs", "!dev"]}
+>
 	{#snippet children(args)}
 		<Sample {...args} />
 	{/snippet}
@@ -46,6 +50,7 @@ const { Story } = defineMeta({
 <Story
 	name="Palette"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="name" values={Color.NAMES}>
 		{#snippet children({ name })}

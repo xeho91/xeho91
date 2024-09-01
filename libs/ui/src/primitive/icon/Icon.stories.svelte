@@ -12,7 +12,6 @@ import { ICONS_MAP } from "./util";
 const { Story } = defineMeta({
 	...SHARED_META,
 	component: Icon,
-	tags: ["autodocs"],
 	args: {
 		name: "heart",
 	},
@@ -28,11 +27,16 @@ const { Story } = defineMeta({
 });
 </script>
 
-<Story name="Playground" parameters={PARAMETERS.playground} />
+<Story
+	name="Playground"
+	parameters={PARAMETERS.playground}
+	tags={["!autodocs", "!dev"]}
+/>
 
 <Story
 	name="Names"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="name" values={ICONS_MAP.keys()}>
 		{#snippet children({ name })}

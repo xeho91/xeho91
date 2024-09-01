@@ -40,8 +40,6 @@ import { classes } from "./util";
 		Font.size.default().class(),
 		Color.class("text"),
 		Color.get("secondary", "solid", 11).class("text"),
-		// Other
-		"overflow-hidden",
 	]}
 />
 

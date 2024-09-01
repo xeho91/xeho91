@@ -16,7 +16,6 @@ import { TEXT_COLORS } from "#primitive/text/mod";
 const { Story } = defineMeta({
 	...SHARED_META,
 	component: Heading,
-	tags: ["autodocs"],
 	args: {
 		level: 1,
 		children: "Heading content",
@@ -35,11 +34,16 @@ const { Story } = defineMeta({
 });
 </script>
 
-<Story name="Playground" parameters={PARAMETERS.playground} />
+<Story
+	name="Playground"
+	parameters={PARAMETERS.playground}
+	tags={["!autodocs", "!dev"]}
+/>
 
 <Story
 	name="Colors"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="color" values={TEXT_COLORS}>
 		{#snippet children({ color, level })}
@@ -52,6 +56,7 @@ const { Story } = defineMeta({
 <Story
 	name="Weights"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="weight" values={Font.weight.keys("mono")}>
 		{#snippet children({ level, weight })}
@@ -64,6 +69,7 @@ const { Story } = defineMeta({
 <Story
 	name="Sizes"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="size" values={Font.size.KEYS}>
 		{#snippet children({ level, size })}
@@ -75,6 +81,7 @@ const { Story } = defineMeta({
 <Story
 	name="Contrasts"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	{#each TEXT_COLORS as color}
 		<VariantsGroup prop="contrasted" values={[false, true]}>
@@ -91,6 +98,7 @@ const { Story } = defineMeta({
 <Story
 	name="Shadows"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="shadow" values={Elevation.LEVELS}>
 		{#snippet children({ level, shadow })}
@@ -103,6 +111,7 @@ const { Story } = defineMeta({
 <Story
 	name="Uppercased"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="uppercased" values={[false, true]}>
 		{#snippet children({ level, uppercased })}
@@ -115,6 +124,7 @@ const { Story } = defineMeta({
 <Story
 	name="Loading"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="loading" values={[false, true]}>
 		{#snippet children({ level, loading })}

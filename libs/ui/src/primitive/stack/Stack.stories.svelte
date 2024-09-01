@@ -47,7 +47,6 @@ const margin_props = [
 const { Story } = defineMeta({
 	...SHARED_META,
 	component: Stack,
-	tags: ["autodocs"],
 	argTypes: {
 		tag: create_control_from_iterable(STACK_HTML_TAGS, {
 			summary: "StackHTMLTag",
@@ -69,7 +68,11 @@ const { Story } = defineMeta({
 });
 </script>
 
-<Story name="Playground" parameters={PARAMETERS.playground}>
+<Story
+	name="Playground"
+	parameters={PARAMETERS.playground}
+	tags={["!autodocs", "!dev"]}
+>
 	{#snippet children(args)}
 		<Stack {...args}>
 			<Sample />
@@ -80,6 +83,7 @@ const { Story } = defineMeta({
 <Story
 	name="Default"
 	parameters={PARAMETERS.default}
+	tags={["!dev"]}
 >
 	<Stack>
 		<Sample />
@@ -89,6 +93,7 @@ const { Story } = defineMeta({
 <Story
 	name="Directions"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="direction" values={STACK_DIRECTIONS}>
 		{#snippet children({ direction })}

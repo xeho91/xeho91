@@ -53,7 +53,11 @@ const { Story } = defineMeta({
 });
 </script>
 
-<Story name="Playground" parameters={PARAMETERS.playground}>
+<Story
+	name="Playground"
+	parameters={PARAMETERS.playground}
+	tags={["!autodocs", "!dev"]}
+>
 	{#snippet children(args)}
 		<Text {...args}>Text</Text>
 	{/snippet}
@@ -62,6 +66,7 @@ const { Story } = defineMeta({
 <Story
 	name="Default"
 	parameters={PARAMETERS.default}
+	tags={["!dev"]}
 >
 	<Text>Default text</Text>
 </Story>
@@ -69,6 +74,7 @@ const { Story } = defineMeta({
 <Story
 	name="Colors"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="color" values={TEXT_COLORS}>
 		{#snippet children({ color })}
@@ -80,6 +86,7 @@ const { Story } = defineMeta({
 <Story
 	name="Families"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="family" values={Font.family.NAMES}>
 		{#snippet children({ family })}
@@ -91,6 +98,7 @@ const { Story } = defineMeta({
 <Story
 	name="Weights"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	{#each Font.family.NAMES as family}
 		<VariantsGroup prop="weight" values={Font.weight.keys(family)}>
@@ -107,6 +115,7 @@ const { Story } = defineMeta({
 <Story
 	name="Sizes"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="size" values={Font.size.KEYS}>
 		{#snippet children({ size })}
@@ -118,6 +127,7 @@ const { Story } = defineMeta({
 <Story
 	name="Contrasts"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	{#each TEXT_COLORS as color}
 		<VariantsGroup prop="contrasted" values={[false, true]}>
@@ -134,6 +144,7 @@ const { Story } = defineMeta({
 <Story
 	name="Shadows"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="shadow" values={Elevation.LEVELS}>
 		{#snippet children({ shadow })}
@@ -145,6 +156,7 @@ const { Story } = defineMeta({
 <Story
 	name="Uppercased"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="uppercased" values={[false, true]}>
 		{#snippet children({ uppercased })}
@@ -156,6 +168,7 @@ const { Story } = defineMeta({
 <Story
 	name="Loading"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="loading" values={[false, true]}>
 		{#snippet children({ loading })}

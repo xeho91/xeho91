@@ -61,6 +61,7 @@ export const AVATAR_DEFAULT_BACKGROUNDED = false;
 	description={AVATAR_DESCRIPTION}
 	dimensions={AVATAR_DIMENSIONS.to_rectangle()}
 	{theme}
+	style={"aspect-ratio:1;width:fit-content"}
 	class={class_}
 >
 	<defs>

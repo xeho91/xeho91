@@ -11,7 +11,7 @@ import { Code } from "@xeho91/lib-ui/semantic/code";
 export const { Story, meta } = defineMeta({
 	...SHARED_META,
 	component: Text,
-	title: "Design tokens/Font",
+	title: "design token/Font",
 	tags: ["autodocs"],
 	args: {
 		children: "Typography",
@@ -42,7 +42,11 @@ export const { Story, meta } = defineMeta({
 });
 </script>
 
-<Story name="Playground" parameters={PARAMETERS.playground}>
+<Story
+	name="Playground"
+	parameters={PARAMETERS.playground}
+	tags={["!autodocs", "!dev"]}
+>
 	{#snippet children({ args })}
 		<Text {...args}>Typography</Text>
 	{/snippet}
@@ -51,6 +55,7 @@ export const { Story, meta } = defineMeta({
 <Story
 	name="Families"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="family" values={Font.family.NAMES}>
 		{#snippet children({ family })}
@@ -62,6 +67,7 @@ export const { Story, meta } = defineMeta({
 <Story
 	name="Weights"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	{#each Font.family.NAMES as family}
 		<VariantsGroup prop="weight" values={Font.weight.keys(family)}>
@@ -78,6 +84,7 @@ export const { Story, meta } = defineMeta({
 <Story
 	name="Sizes"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="size" values={Font.size.KEYS}>
 		{#snippet children({ size })}

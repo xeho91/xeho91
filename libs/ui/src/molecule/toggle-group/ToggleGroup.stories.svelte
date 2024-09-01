@@ -16,7 +16,6 @@ const { Story } = defineMeta({
 	...SHARED_META,
 	component: ToggleGroup,
 	title: "Molecule/ToggleGroup",
-	tags: ["autodocs"],
 	args: {
 		entries: [
 			{ label: "light", value: "light" },
@@ -54,11 +53,16 @@ const { Story } = defineMeta({
 	</ToggleGroup>
 {/snippet}
 
-<Story name="Playground" parameters={PARAMETERS.playground} />
+<Story
+	name="Playground"
+	parameters={PARAMETERS.playground}
+	tags={["!autodocs", "!dev"]}
+/>
 
 <Story
 	name="Colors"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="color" values={TOGGLE_GROUP_COLORS}>
 		{#snippet children({ color })}
