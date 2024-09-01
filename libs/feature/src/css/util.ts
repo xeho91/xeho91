@@ -1,5 +1,7 @@
-import type { Reference } from "@xeho91/lib-css/reference";
+import type { PropertyName } from "@xeho91/lib-css/property";
+import { Reference } from "@xeho91/lib-css/reference";
 import { SelectorClass } from "@xeho91/lib-css/selector/class";
+import type { Display } from "@xeho91/lib-type/trait/display";
 import { type ClassValue, clsx } from "clsx";
 import type { Action } from "svelte/action";
 
@@ -68,6 +70,36 @@ export const classes: Action<Element, Array<ClassInput | ClassInput[]>> = (node,
 		},
 	};
 };
+
+export function merge_styles(
+	...styles: Array<[PropertyName | Reference, number | string | Display] | null | undefined | false>
+): string {
+	let results = "";
+	for (const style of styles) {
+		if (style) {
+			const [property, value] = style;
+			if (results) results += ";";
+			results += `${property}:${value}`;
+		}
+	}
+	return results;
+}
+
+if (import.meta.vitest) {
+	const { describe, it } = import.meta.vitest;
+
+	describe(merge_styles.name, () => {
+		it("returns single style stringified", ({ expect }) => {
+			expect(merge_styles(["all", "unset"])).toBe("all:unset");
+		});
+
+		it("returns multiple styles stringified", ({ expect }) => {
+			expect(merge_styles([new Reference("custom"), "unset"], ["display", new Reference("x").to_var()])).toBe(
+				"--custom:unset;display:var(--x)",
+			);
+		});
+	});
+}
 
 export interface WithAnchor {
 	anchor_name?: Reference;
