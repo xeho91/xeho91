@@ -12,6 +12,16 @@ import LayerStyles from "./LayerStyles.svelte";
 
 import { state_css } from "./state.svelte";
 import { classes } from "./util";
+
+$effect(() => {
+	const radial_color = Color.get("secondary", "blend", 2);
+	for (const scheme of Color.SCHEMES) {
+		window.document.body.style.setProperty(
+			`--radial-gradient-color-${scheme}`,
+			radial_color.light_dark[scheme].atomized_oklch.toString(),
+		);
+	}
+});
 </script>
 
 <svelte:head>
@@ -30,7 +40,8 @@ import { classes } from "./util";
 
 <svelte:body
 	use:classes={[
-		"w[100lvw] h[100lvh]",
+		"w[100lvw] min-h-[100lvh]",
+		"grid",
 		// Background
 		Color.class("background"),
 		Color.get("secondary", "solid", 1).class("background"),
@@ -60,9 +71,9 @@ import { classes } from "./util";
 
 	@layer override {
 		:global(*) {
-			--box-shadow-color-light-lightness: 21%;
+			--box-shadow-color-light-lightness: 65%;
 			--box-shadow-color-dark-lightness: 15%;
-			--text-shadow-color-light-lightness: 21%;
+			--text-shadow-color-light-lightness: 65%;
 			--text-shadow-color-dark-lightness: 15%;
 		}
 	}
@@ -151,7 +162,22 @@ import { classes } from "./util";
 	}
 
 	@layer base.default {
+		:global(html) {
+			scroll-behavior: smooth;
+			scroll-snap-type: y mandatory;
+		}
+
 		:global(body) {
+			/* prettier-ignore */
+			--radial-gradient-color-1: light-dark(var(--radial-gradient-color-light), var(--radial-gradient-color-dark));
+			/* prettier-ignore */
+			background-image:
+				radial-gradient(at 25% 25%, var(--radial-gradient-color-1) 0px, transparent 50%),
+				radial-gradient(at 25% 75%, transparent 0px, transparent 50%),
+				radial-gradient(at 50% 50%, var(--radial-gradient-color-1) 0px, transparent 50%),
+				radial-gradient(at 75% 25%, transparent 0px, transparent 50%),
+				radial-gradient(at 75% 75%, var(--radial-gradient-color-1) 0px, transparent 50%);
+
 			transition-duration: var(--transition-dur);
 			transition-property: var(--transition-props-color);
 			transition-timing-function: var(--transition-fn);
