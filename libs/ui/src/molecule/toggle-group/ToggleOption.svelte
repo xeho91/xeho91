@@ -71,11 +71,11 @@ function handle_click() {
 		value={entry.value}
 		class={merge_classes(
 			"appearance-none",
-			"absolute inset-0 z--1",
+			"absolute inset-0",
 			Color.class("background"),
 			Color.get(color, "solid", 4).class("background"),
-			Color.get(color, "solid", 5).class("background", { pseudo_class: "checked" }),
 			Color.get(color, "solid", 5).class("background", { pseudo_class: "hover" }),
+			Color.get(color, "solid", 5).class("background", { pseudo_class: "checked" }),
 		)}
 	>
 	{@render children()}
@@ -103,6 +103,10 @@ function handle_click() {
 			transition-timing-function: inherit;
 
 			outline-offset: -2px;
+
+			:global(~ *) {
+				z-index: 1;
+			}
 		}
 	}
 }
