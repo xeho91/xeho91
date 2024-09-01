@@ -17,7 +17,6 @@ import { Stack } from "#primitive/stack/mod";
 const { Story } = defineMeta({
 	...SHARED_META,
 	component: Button,
-	tags: ["autodocs"],
 	args: {
 		onblur: action("onblur"),
 		onclick: action("onclick"),
@@ -55,11 +54,16 @@ const { Story } = defineMeta({
 	<Button {...args}>{"Button"}</Button>
 {/snippet}
 
-<Story name="Playground" parameters={PARAMETERS.playground} />
+<Story
+	name="Playground"
+	parameters={PARAMETERS.playground}
+	tags={["!autodocs", "!dev"]}
+/>
 
 <Story
 	name="Default"
 	parameters={PARAMETERS.default}
+	tags={["!dev"]}
 	play={async (context) => {
 		const { args, canvasElement } = context;
 		const { onblur, onclick, onfocus, onmouseover, onmouseout } = args;
@@ -85,6 +89,7 @@ const { Story } = defineMeta({
 <Story
 	name="Variants"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup component={Button} prop="variant" values={BUTTON_VARIANTS}>
 		{#snippet children({ variant })}
@@ -98,6 +103,7 @@ const { Story } = defineMeta({
 <Story
 	name="Colors"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="color" values={BUTTON_COLORS}>
 		{#snippet children({ color })}
@@ -113,6 +119,7 @@ const { Story } = defineMeta({
 <Story
 	name="Sizes"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<VariantsGroup prop="size" values={BUTTON_SIZES}>
 		{#snippet children({ size })}
@@ -124,6 +131,7 @@ const { Story } = defineMeta({
 <Story
 	name="Icon only"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 	<Stack direction="column" align_items="center" gap="2xs">
 		{#each BUTTON_SIZES as size}
@@ -141,6 +149,7 @@ const { Story } = defineMeta({
 <Story
 	name="With Icon"
 	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
 >
 <Stack direction="column" gap_row="s">
 	<Button>
