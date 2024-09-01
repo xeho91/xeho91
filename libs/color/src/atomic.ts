@@ -106,13 +106,17 @@ export class AtomicColor<
 		});
 	}
 
+	public get reference(): Reference<Name<TCategory, TName, TType, TStep, TScheme>> {
+		return new Reference(this.toString());
+	}
+
 	public get atomized_oklch(): Oklch<
 		Lightness<Var<Reference<`${Name<TCategory, TName, TType, TStep, TScheme>}-lightness`>>>,
 		Chroma<Var<Reference<`${Name<TCategory, TName, TType, TStep, TScheme>}-chroma`>>>,
 		Hue<Var<Reference<`${Name<TCategory, TName, TType, TStep, TScheme>}-hue`>>>,
 		Alpha<Var<Reference<`${Name<TCategory, TName, TType, TStep, TScheme>}-alpha`>>>
 	> {
-		const reference = new Reference(this.toString());
+		const { reference } = this;
 		return new Oklch({
 			lightness: Lightness.from_reference(reference),
 			chroma: Chroma.from_reference(reference),
