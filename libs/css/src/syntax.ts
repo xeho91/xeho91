@@ -21,7 +21,21 @@ export class Syntax<TName extends SyntaxName = SyntaxName> implements Display, T
 	public static readonly UNITS = readonly_object({
 		angle: readonly_set(["deg", "turn"]),
 		color: undefined,
-		length: readonly_set(["px", "vw", "vh"]),
+		length: readonly_set([
+			"px",
+			"vw",
+			"vh",
+			"dvw",
+			"dvh",
+			"lvw",
+			"lvh",
+			"cqw",
+			"cqh",
+			"cqi",
+			"cqb",
+			"cqmin",
+			"cqmax",
+		]),
 		number: undefined,
 		percentage: readonly_set(["%"]),
 	} satisfies Record<SyntaxName, ReadonlySet<string> | undefined>);
