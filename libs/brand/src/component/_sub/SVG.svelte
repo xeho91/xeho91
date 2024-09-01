@@ -1,5 +1,5 @@
 <script lang="ts" generics="TWidth extends number = number, THeight extends number = number">
-import type { WithClass } from "@xeho91/lib-feature/css";
+import type { WithAnchor, WithClass } from "@xeho91/lib-feature/css";
 import type { Rectangle } from "@xeho91/lib-geometry/two-dimension/rectangle";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
@@ -7,7 +7,7 @@ import type { HTMLAttributes } from "svelte/elements";
 import type { BrandAssetTheme } from "#design";
 import { set_id } from "#id";
 
-interface Props extends WithClass, Omit<HTMLAttributes<SVGElement>, "class"> {
+interface Props extends WithAnchor, WithClass, Omit<HTMLAttributes<SVGElement>, "class"> {
 	children: Snippet;
 	// Meta
 	id: string;
@@ -24,6 +24,8 @@ let {
 	//
 	children,
 	class: class_,
+	anchor,
+	anchor_name,
 	id,
 	title,
 	description,
@@ -49,8 +51,10 @@ const id_description = set_id(id, "description");
 	xmlns="http://www.w3.org/2000/svg"
 	viewBox={`0 0 ${width} ${height}`}
 	preserveAspectRatio="xMinYMin meet"
-	style:--light={theme.foreground_color("light")?.oklch.toString()}
-	style:--dark={theme.foreground_color("dark")?.oklch.toString()}
+	style:anchor-name={anchor_name?.toString()}
+	style:position-anchor={anchor?.toString()}
+	style:--light={theme.light_foreground?.oklch.toString()}
+	style:--dark={theme.dark_foreground?.oklch.toString()}
 	class={class_}
 >
 	<title id={id_title}>{title}</title>
