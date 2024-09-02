@@ -50,15 +50,16 @@
 		"lint:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
 		"lint:ts": "tsc --noEmit",
 		"lint:typos": "typos --verbose",
+		"prepare": "tsx \"./hooks/prepare.ts\" && biome format \"./src/color/palette\" --verbose --write ",
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-design\" "
 	},
 	"dependencies": {
-		"@xeho91/lib-color": "workspace:*",
 		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",
 		"@xeho91/lib-snippet": "workspace:*",
 		"@xeho91/lib-struct": "workspace:*",
 		"@xeho91/lib-type": "workspace:*",
+		"culori": "4.0.1",
 		"rxjs": "catalog:",
 		"utopia-core": "1.3.0"
 	},
@@ -66,5 +67,11 @@
 		"@total-typescript/tsconfig": "catalog:",
 		"@types/node": "catalog:",
 		"typescript": "catalog:"
+	},
+	"devDependencies": {
+		"@radix-ui/colors": "3.0.0",
+		"@types/culori": "2.1.0",
+		"@xeho91/lib-logger": "workspace:*",
+		"handlebars": "4.7.8"
 	}
 }

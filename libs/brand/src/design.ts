@@ -1,7 +1,7 @@
-import { Color, type ColorScheme } from "@xeho91/lib-color";
 import type { AtomicColor } from "@xeho91/lib-color/atomic";
 import { LightDark } from "@xeho91/lib-css/function/light-dark";
 import { Reference } from "@xeho91/lib-css/reference";
+import { Color, type ColorScheme } from "@xeho91/lib-design/color";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";

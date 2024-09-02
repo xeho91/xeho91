@@ -10,17 +10,17 @@
 import { Dimension } from "@xeho91/lib-css/value/dimension";
 import { Percentage } from "@xeho91/lib-css/value/percentage";
 
-import { AtomicColor } from "#atomic";
-import type { ColorCategory, ColorName } from "#mod";
+import type { ColorCategory, ColorName } from "#color";
+import { AtomicColor } from "#color/atomic";
 
 const category = "brand" satisfies ColorCategory;
 const name = "primary" satisfies ColorName;
 
-export const PRIMARY_SOLID_1_LIGHT = new AtomicColor({
+export const PRIMARY_OPAQUE_1_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
+	type: "opaque",
 	step: 1,
 	oklch: {
 		lightness: new Percentage(99.32),
@@ -30,11 +30,11 @@ export const PRIMARY_SOLID_1_LIGHT = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_2_LIGHT = new AtomicColor({
+export const PRIMARY_OPAQUE_2_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
+	type: "opaque",
 	step: 2,
 	oklch: {
 		lightness: new Percentage(98.12),
@@ -44,11 +44,11 @@ export const PRIMARY_SOLID_2_LIGHT = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_3_LIGHT = new AtomicColor({
+export const PRIMARY_OPAQUE_3_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
+	type: "opaque",
 	step: 3,
 	oklch: {
 		lightness: new Percentage(95.88),
@@ -58,11 +58,11 @@ export const PRIMARY_SOLID_3_LIGHT = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_4_LIGHT = new AtomicColor({
+export const PRIMARY_OPAQUE_4_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
+	type: "opaque",
 	step: 4,
 	oklch: {
 		lightness: new Percentage(93.33),
@@ -72,11 +72,11 @@ export const PRIMARY_SOLID_4_LIGHT = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_5_LIGHT = new AtomicColor({
+export const PRIMARY_OPAQUE_5_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
+	type: "opaque",
 	step: 5,
 	oklch: {
 		lightness: new Percentage(90.12),
@@ -86,11 +86,11 @@ export const PRIMARY_SOLID_5_LIGHT = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_6_LIGHT = new AtomicColor({
+export const PRIMARY_OPAQUE_6_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
+	type: "opaque",
 	step: 6,
 	oklch: {
 		lightness: new Percentage(85.92),
@@ -100,11 +100,11 @@ export const PRIMARY_SOLID_6_LIGHT = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_7_LIGHT = new AtomicColor({
+export const PRIMARY_OPAQUE_7_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
+	type: "opaque",
 	step: 7,
 	oklch: {
 		lightness: new Percentage(80.43),
@@ -114,11 +114,11 @@ export const PRIMARY_SOLID_7_LIGHT = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_8_LIGHT = new AtomicColor({
+export const PRIMARY_OPAQUE_8_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
+	type: "opaque",
 	step: 8,
 	oklch: {
 		lightness: new Percentage(73.31),
@@ -128,11 +128,11 @@ export const PRIMARY_SOLID_8_LIGHT = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_9_LIGHT = new AtomicColor({
+export const PRIMARY_OPAQUE_9_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
+	type: "opaque",
 	step: 9,
 	oklch: {
 		lightness: new Percentage(55.56),
@@ -142,11 +142,11 @@ export const PRIMARY_SOLID_9_LIGHT = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_10_LIGHT = new AtomicColor({
+export const PRIMARY_OPAQUE_10_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
+	type: "opaque",
 	step: 10,
 	oklch: {
 		lightness: new Percentage(52.46),
@@ -156,11 +156,11 @@ export const PRIMARY_SOLID_10_LIGHT = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_11_LIGHT = new AtomicColor({
+export const PRIMARY_OPAQUE_11_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
+	type: "opaque",
 	step: 11,
 	oklch: {
 		lightness: new Percentage(51.68),
@@ -170,11 +170,11 @@ export const PRIMARY_SOLID_11_LIGHT = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_12_LIGHT = new AtomicColor({
+export const PRIMARY_OPAQUE_12_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
+	type: "opaque",
 	step: 12,
 	oklch: {
 		lightness: new Percentage(32.22),
@@ -184,11 +184,11 @@ export const PRIMARY_SOLID_12_LIGHT = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_1_DARK = new AtomicColor({
+export const PRIMARY_OPAQUE_1_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 1,
 	oklch: {
 		lightness: new Percentage(19.13),
@@ -198,11 +198,11 @@ export const PRIMARY_SOLID_1_DARK = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_2_DARK = new AtomicColor({
+export const PRIMARY_OPAQUE_2_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 2,
 	oklch: {
 		lightness: new Percentage(21.37),
@@ -212,11 +212,11 @@ export const PRIMARY_SOLID_2_DARK = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_3_DARK = new AtomicColor({
+export const PRIMARY_OPAQUE_3_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 3,
 	oklch: {
 		lightness: new Percentage(26.77),
@@ -226,11 +226,11 @@ export const PRIMARY_SOLID_3_DARK = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_4_DARK = new AtomicColor({
+export const PRIMARY_OPAQUE_4_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 4,
 	oklch: {
 		lightness: new Percentage(30.88),
@@ -240,11 +240,11 @@ export const PRIMARY_SOLID_4_DARK = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_5_DARK = new AtomicColor({
+export const PRIMARY_OPAQUE_5_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 5,
 	oklch: {
 		lightness: new Percentage(34.47),
@@ -254,11 +254,11 @@ export const PRIMARY_SOLID_5_DARK = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_6_DARK = new AtomicColor({
+export const PRIMARY_OPAQUE_6_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 6,
 	oklch: {
 		lightness: new Percentage(38.87),
@@ -268,11 +268,11 @@ export const PRIMARY_SOLID_6_DARK = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_7_DARK = new AtomicColor({
+export const PRIMARY_OPAQUE_7_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 7,
 	oklch: {
 		lightness: new Percentage(44.86),
@@ -282,11 +282,11 @@ export const PRIMARY_SOLID_7_DARK = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_8_DARK = new AtomicColor({
+export const PRIMARY_OPAQUE_8_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 8,
 	oklch: {
 		lightness: new Percentage(54.12),
@@ -296,11 +296,11 @@ export const PRIMARY_SOLID_8_DARK = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_9_DARK = new AtomicColor({
+export const PRIMARY_OPAQUE_9_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 9,
 	oklch: {
 		lightness: new Percentage(55.56),
@@ -310,11 +310,11 @@ export const PRIMARY_SOLID_9_DARK = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_10_DARK = new AtomicColor({
+export const PRIMARY_OPAQUE_10_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 10,
 	oklch: {
 		lightness: new Percentage(59.55),
@@ -324,11 +324,11 @@ export const PRIMARY_SOLID_10_DARK = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_11_DARK = new AtomicColor({
+export const PRIMARY_OPAQUE_11_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 11,
 	oklch: {
 		lightness: new Percentage(78.07),
@@ -338,11 +338,11 @@ export const PRIMARY_SOLID_11_DARK = new AtomicColor({
 	},
 });
 
-export const PRIMARY_SOLID_12_DARK = new AtomicColor({
+export const PRIMARY_OPAQUE_12_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 12,
 	oklch: {
 		lightness: new Percentage(91.07),

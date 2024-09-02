@@ -2,17 +2,17 @@ import { object_keys, readonly_object } from "@xeho91/lib-snippet/object";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 
-import type { AtomicColor } from "#atomic";
-import * as accent from "#palette/brand/accent";
-import * as primary from "#palette/brand/primary";
-import * as secondary from "#palette/brand/secondary";
-import * as black from "#palette/grayscale/black";
-import * as gray from "#palette/grayscale/gray";
-import * as white from "#palette/grayscale/white";
-import * as error from "#palette/semantic/error";
-import * as info from "#palette/semantic/info";
-import * as success from "#palette/semantic/success";
-import * as warning from "#palette/semantic/warning";
+import * as accent from "#color/palette/brand/accent";
+import * as primary from "#color/palette/brand/primary";
+import * as secondary from "#color/palette/brand/secondary";
+import * as black from "#color/palette/grayscale/black";
+import * as gray from "#color/palette/grayscale/gray";
+import * as white from "#color/palette/grayscale/white";
+import * as error from "#color/palette/semantic/error";
+import * as info from "#color/palette/semantic/info";
+import * as success from "#color/palette/semantic/success";
+import * as warning from "#color/palette/semantic/warning";
+import type { AtomicColor } from "./atomic";
 
 const VARIABLE = readonly_object({
 	brand: {
@@ -71,64 +71,6 @@ export class Color {
 	public static brand = ColorBrand;
 	public static grayscale = ColorGrayscale;
 	public static semantic = ColorSemantic;
-
-	/**
-	 * Supported color schemes set.
-	 * @see {@link https://drafts.csswg.org/css-color-adjust/#color-scheme-prop}
-	 */
-	public static readonly SCHEMES = readonly_set(["light", "dark"]);
-
-	/**
-	 * Color steps set.
-	 * **There are 12 steps in each scale**.
-	 * Each step was designed for at least one specific use case.
-	 * This table is a simple overview of the most common use case for each step.
-	 *
-	 * | Step | Use Case                                |
-	 * | ---- | --------------------------------------- |
-	 * | 1    | App background                          |
-	 * | 2    | Subtle background                       |
-	 * | 3    | UI element background                   |
-	 * | 4    | Hovered UI element background           |
-	 * | 5    | Active / Selected UI element background |
-	 * | 6    | Subtle borders and separators           |
-	 * | 7    | UI element border and focus rings       |
-	 * | 8    | Hovered UI element border               |
-	 * | 9    | Solid backgrounds                       |
-	 * | 10   | Hovered solid backgrounds               |
-	 * | 11   | Low-contrast text                       |
-	 * | 12   | High-contrast text                      |
-	 *
-	 * @see {@link https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale#use-cases}
-	 */
-	public static readonly STEPS = readonly_set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
-
-	/**
-	 * Available color categories set, for grouping purposes.
-	 */
-	public static readonly CATEGORIES = readonly_set(["brand", "semantic", "grayscale"]);
-
-	/**
-	 * The idea is that the solid and blend scales are interchangeable, since they match almost perfectly.
-	 * Sometimes you need a color to be transparent, so it works well on coloured backgrounds for example.
-	 * Sometimes you need opaque colors, sometimes transparent. Now you have the option.
-	 *
-	 * @see {@link https://github.com/radix-ui/colors/issues/9#issuecomment-876643069}
-	 */
-	public static readonly TYPES = readonly_set(["solid", "blend"]);
-
-	public static readonly NAMES = readonly_set([
-		"primary",
-		"secondary",
-		"accent",
-		"error",
-		"info",
-		"success",
-		"warning",
-		"black",
-		"gray",
-		"white",
-	]);
 
 	static #variable_identifier = <
 		TName extends ColorName,

@@ -9,7 +9,7 @@ import { Range } from "@xeho91/lib-struct/range";
 import type { ReadonlyTuple } from "@xeho91/lib-type/tuple";
 import { type Oklch as OklchCulori, interpolate, samples } from "culori";
 
-import type { AtomicColor } from "#atomic";
+import type { AtomicColor } from "./atomic";
 
 export class ColorGradient<TFrom extends AtomicColor = AtomicColor, TTo extends AtomicColor = AtomicColor> {
 	public static readonly STOPS = new Range(1, 5, 1);

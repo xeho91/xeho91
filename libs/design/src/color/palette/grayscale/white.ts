@@ -3,192 +3,24 @@
  * > **Do not edit manually!**
  * > This file is generated automatically via `prepare` hook.
  *
- * Color `black` related variables.
+ * Color `white` related variables.
  * @module
  */
 
 import { Dimension } from "@xeho91/lib-css/value/dimension";
 import { Percentage } from "@xeho91/lib-css/value/percentage";
 
-import { AtomicColor } from "#atomic";
-import type { ColorCategory, ColorName } from "#mod";
+import type { ColorCategory, ColorName } from "#color";
+import { AtomicColor } from "#color/atomic";
 
 const category = "grayscale" satisfies ColorCategory;
-const name = "black" satisfies ColorName;
+const name = "white" satisfies ColorName;
 
-export const BLACK_SOLID_1_LIGHT = new AtomicColor({
+export const WHITE_OPAQUE_1_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
-	type: "solid",
-	step: 1,
-	oklch: {
-		lightness: new Percentage(0),
-		chroma: new Percentage(0),
-		hue: new Dimension(0, "deg"),
-		alpha: new Percentage(100),
-	},
-});
-
-export const BLACK_SOLID_2_LIGHT = new AtomicColor({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 2,
-	oklch: {
-		lightness: new Percentage(0),
-		chroma: new Percentage(0),
-		hue: new Dimension(0, "deg"),
-		alpha: new Percentage(100),
-	},
-});
-
-export const BLACK_SOLID_3_LIGHT = new AtomicColor({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 3,
-	oklch: {
-		lightness: new Percentage(0),
-		chroma: new Percentage(0),
-		hue: new Dimension(0, "deg"),
-		alpha: new Percentage(100),
-	},
-});
-
-export const BLACK_SOLID_4_LIGHT = new AtomicColor({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 4,
-	oklch: {
-		lightness: new Percentage(0),
-		chroma: new Percentage(0),
-		hue: new Dimension(0, "deg"),
-		alpha: new Percentage(100),
-	},
-});
-
-export const BLACK_SOLID_5_LIGHT = new AtomicColor({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 5,
-	oklch: {
-		lightness: new Percentage(0),
-		chroma: new Percentage(0),
-		hue: new Dimension(0, "deg"),
-		alpha: new Percentage(100),
-	},
-});
-
-export const BLACK_SOLID_6_LIGHT = new AtomicColor({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 6,
-	oklch: {
-		lightness: new Percentage(0),
-		chroma: new Percentage(0),
-		hue: new Dimension(0, "deg"),
-		alpha: new Percentage(100),
-	},
-});
-
-export const BLACK_SOLID_7_LIGHT = new AtomicColor({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 7,
-	oklch: {
-		lightness: new Percentage(0),
-		chroma: new Percentage(0),
-		hue: new Dimension(0, "deg"),
-		alpha: new Percentage(100),
-	},
-});
-
-export const BLACK_SOLID_8_LIGHT = new AtomicColor({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 8,
-	oklch: {
-		lightness: new Percentage(0),
-		chroma: new Percentage(0),
-		hue: new Dimension(0, "deg"),
-		alpha: new Percentage(100),
-	},
-});
-
-export const BLACK_SOLID_9_LIGHT = new AtomicColor({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 9,
-	oklch: {
-		lightness: new Percentage(0),
-		chroma: new Percentage(0),
-		hue: new Dimension(0, "deg"),
-		alpha: new Percentage(100),
-	},
-});
-
-export const BLACK_SOLID_10_LIGHT = new AtomicColor({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 10,
-	oklch: {
-		lightness: new Percentage(0),
-		chroma: new Percentage(0),
-		hue: new Dimension(0, "deg"),
-		alpha: new Percentage(100),
-	},
-});
-
-export const BLACK_SOLID_11_LIGHT = new AtomicColor({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 11,
-	oklch: {
-		lightness: new Percentage(0),
-		chroma: new Percentage(0),
-		hue: new Dimension(0, "deg"),
-		alpha: new Percentage(100),
-	},
-});
-
-export const BLACK_SOLID_12_LIGHT = new AtomicColor({
-	category,
-	name,
-	scheme: "light",
-	type: "solid",
-	step: 12,
-	oklch: {
-		lightness: new Percentage(0),
-		chroma: new Percentage(0),
-		hue: new Dimension(0, "deg"),
-		alpha: new Percentage(100),
-	},
-});
-
-export const BLACK_SOLID_1_DARK = new AtomicColor({
-	category,
-	name,
-	scheme: "dark",
-	type: "solid",
+	type: "opaque",
 	step: 1,
 	oklch: {
 		lightness: new Percentage(100),
@@ -198,11 +30,11 @@ export const BLACK_SOLID_1_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_SOLID_2_DARK = new AtomicColor({
+export const WHITE_OPAQUE_2_LIGHT = new AtomicColor({
 	category,
 	name,
-	scheme: "dark",
-	type: "solid",
+	scheme: "light",
+	type: "opaque",
 	step: 2,
 	oklch: {
 		lightness: new Percentage(100),
@@ -212,11 +44,11 @@ export const BLACK_SOLID_2_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_SOLID_3_DARK = new AtomicColor({
+export const WHITE_OPAQUE_3_LIGHT = new AtomicColor({
 	category,
 	name,
-	scheme: "dark",
-	type: "solid",
+	scheme: "light",
+	type: "opaque",
 	step: 3,
 	oklch: {
 		lightness: new Percentage(100),
@@ -226,11 +58,11 @@ export const BLACK_SOLID_3_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_SOLID_4_DARK = new AtomicColor({
+export const WHITE_OPAQUE_4_LIGHT = new AtomicColor({
 	category,
 	name,
-	scheme: "dark",
-	type: "solid",
+	scheme: "light",
+	type: "opaque",
 	step: 4,
 	oklch: {
 		lightness: new Percentage(100),
@@ -240,11 +72,11 @@ export const BLACK_SOLID_4_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_SOLID_5_DARK = new AtomicColor({
+export const WHITE_OPAQUE_5_LIGHT = new AtomicColor({
 	category,
 	name,
-	scheme: "dark",
-	type: "solid",
+	scheme: "light",
+	type: "opaque",
 	step: 5,
 	oklch: {
 		lightness: new Percentage(100),
@@ -254,11 +86,11 @@ export const BLACK_SOLID_5_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_SOLID_6_DARK = new AtomicColor({
+export const WHITE_OPAQUE_6_LIGHT = new AtomicColor({
 	category,
 	name,
-	scheme: "dark",
-	type: "solid",
+	scheme: "light",
+	type: "opaque",
 	step: 6,
 	oklch: {
 		lightness: new Percentage(100),
@@ -268,11 +100,11 @@ export const BLACK_SOLID_6_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_SOLID_7_DARK = new AtomicColor({
+export const WHITE_OPAQUE_7_LIGHT = new AtomicColor({
 	category,
 	name,
-	scheme: "dark",
-	type: "solid",
+	scheme: "light",
+	type: "opaque",
 	step: 7,
 	oklch: {
 		lightness: new Percentage(100),
@@ -282,11 +114,11 @@ export const BLACK_SOLID_7_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_SOLID_8_DARK = new AtomicColor({
+export const WHITE_OPAQUE_8_LIGHT = new AtomicColor({
 	category,
 	name,
-	scheme: "dark",
-	type: "solid",
+	scheme: "light",
+	type: "opaque",
 	step: 8,
 	oklch: {
 		lightness: new Percentage(100),
@@ -296,11 +128,11 @@ export const BLACK_SOLID_8_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_SOLID_9_DARK = new AtomicColor({
+export const WHITE_OPAQUE_9_LIGHT = new AtomicColor({
 	category,
 	name,
-	scheme: "dark",
-	type: "solid",
+	scheme: "light",
+	type: "opaque",
 	step: 9,
 	oklch: {
 		lightness: new Percentage(100),
@@ -310,11 +142,11 @@ export const BLACK_SOLID_9_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_SOLID_10_DARK = new AtomicColor({
+export const WHITE_OPAQUE_10_LIGHT = new AtomicColor({
 	category,
 	name,
-	scheme: "dark",
-	type: "solid",
+	scheme: "light",
+	type: "opaque",
 	step: 10,
 	oklch: {
 		lightness: new Percentage(100),
@@ -324,11 +156,11 @@ export const BLACK_SOLID_10_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_SOLID_11_DARK = new AtomicColor({
+export const WHITE_OPAQUE_11_LIGHT = new AtomicColor({
 	category,
 	name,
-	scheme: "dark",
-	type: "solid",
+	scheme: "light",
+	type: "opaque",
 	step: 11,
 	oklch: {
 		lightness: new Percentage(100),
@@ -338,11 +170,11 @@ export const BLACK_SOLID_11_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_SOLID_12_DARK = new AtomicColor({
+export const WHITE_OPAQUE_12_LIGHT = new AtomicColor({
 	category,
 	name,
-	scheme: "dark",
-	type: "solid",
+	scheme: "light",
+	type: "opaque",
 	step: 12,
 	oklch: {
 		lightness: new Percentage(100),
@@ -352,7 +184,175 @@ export const BLACK_SOLID_12_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_1_LIGHT = new AtomicColor({
+export const WHITE_OPAQUE_1_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "opaque",
+	step: 1,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_OPAQUE_2_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "opaque",
+	step: 2,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_OPAQUE_3_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "opaque",
+	step: 3,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_OPAQUE_4_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "opaque",
+	step: 4,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_OPAQUE_5_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "opaque",
+	step: 5,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_OPAQUE_6_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "opaque",
+	step: 6,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_OPAQUE_7_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "opaque",
+	step: 7,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_OPAQUE_8_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "opaque",
+	step: 8,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_OPAQUE_9_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "opaque",
+	step: 9,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_OPAQUE_10_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "opaque",
+	step: 10,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_OPAQUE_11_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "opaque",
+	step: 11,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_OPAQUE_12_DARK = new AtomicColor({
+	category,
+	name,
+	scheme: "dark",
+	type: "opaque",
+	step: 12,
+	oklch: {
+		lightness: new Percentage(0),
+		chroma: new Percentage(0),
+		hue: new Dimension(0, "deg"),
+		alpha: new Percentage(100),
+	},
+});
+
+export const WHITE_BLEND_1_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
@@ -366,7 +366,7 @@ export const BLACK_BLEND_1_LIGHT = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_2_LIGHT = new AtomicColor({
+export const WHITE_BLEND_2_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
@@ -380,7 +380,7 @@ export const BLACK_BLEND_2_LIGHT = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_3_LIGHT = new AtomicColor({
+export const WHITE_BLEND_3_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
@@ -394,7 +394,7 @@ export const BLACK_BLEND_3_LIGHT = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_4_LIGHT = new AtomicColor({
+export const WHITE_BLEND_4_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
@@ -408,7 +408,7 @@ export const BLACK_BLEND_4_LIGHT = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_5_LIGHT = new AtomicColor({
+export const WHITE_BLEND_5_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
@@ -422,7 +422,7 @@ export const BLACK_BLEND_5_LIGHT = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_6_LIGHT = new AtomicColor({
+export const WHITE_BLEND_6_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
@@ -436,7 +436,7 @@ export const BLACK_BLEND_6_LIGHT = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_7_LIGHT = new AtomicColor({
+export const WHITE_BLEND_7_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
@@ -450,7 +450,7 @@ export const BLACK_BLEND_7_LIGHT = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_8_LIGHT = new AtomicColor({
+export const WHITE_BLEND_8_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
@@ -464,7 +464,7 @@ export const BLACK_BLEND_8_LIGHT = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_9_LIGHT = new AtomicColor({
+export const WHITE_BLEND_9_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
@@ -478,7 +478,7 @@ export const BLACK_BLEND_9_LIGHT = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_10_LIGHT = new AtomicColor({
+export const WHITE_BLEND_10_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
@@ -492,7 +492,7 @@ export const BLACK_BLEND_10_LIGHT = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_11_LIGHT = new AtomicColor({
+export const WHITE_BLEND_11_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
@@ -506,7 +506,7 @@ export const BLACK_BLEND_11_LIGHT = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_12_LIGHT = new AtomicColor({
+export const WHITE_BLEND_12_LIGHT = new AtomicColor({
 	category,
 	name,
 	scheme: "light",
@@ -520,7 +520,7 @@ export const BLACK_BLEND_12_LIGHT = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_1_DARK = new AtomicColor({
+export const WHITE_BLEND_1_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
@@ -534,7 +534,7 @@ export const BLACK_BLEND_1_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_2_DARK = new AtomicColor({
+export const WHITE_BLEND_2_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
@@ -548,7 +548,7 @@ export const BLACK_BLEND_2_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_3_DARK = new AtomicColor({
+export const WHITE_BLEND_3_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
@@ -562,7 +562,7 @@ export const BLACK_BLEND_3_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_4_DARK = new AtomicColor({
+export const WHITE_BLEND_4_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
@@ -576,7 +576,7 @@ export const BLACK_BLEND_4_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_5_DARK = new AtomicColor({
+export const WHITE_BLEND_5_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
@@ -590,7 +590,7 @@ export const BLACK_BLEND_5_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_6_DARK = new AtomicColor({
+export const WHITE_BLEND_6_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
@@ -604,7 +604,7 @@ export const BLACK_BLEND_6_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_7_DARK = new AtomicColor({
+export const WHITE_BLEND_7_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
@@ -618,7 +618,7 @@ export const BLACK_BLEND_7_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_8_DARK = new AtomicColor({
+export const WHITE_BLEND_8_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
@@ -632,7 +632,7 @@ export const BLACK_BLEND_8_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_9_DARK = new AtomicColor({
+export const WHITE_BLEND_9_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
@@ -646,7 +646,7 @@ export const BLACK_BLEND_9_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_10_DARK = new AtomicColor({
+export const WHITE_BLEND_10_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
@@ -660,7 +660,7 @@ export const BLACK_BLEND_10_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_11_DARK = new AtomicColor({
+export const WHITE_BLEND_11_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",
@@ -674,7 +674,7 @@ export const BLACK_BLEND_11_DARK = new AtomicColor({
 	},
 });
 
-export const BLACK_BLEND_12_DARK = new AtomicColor({
+export const WHITE_BLEND_12_DARK = new AtomicColor({
 	category,
 	name,
 	scheme: "dark",

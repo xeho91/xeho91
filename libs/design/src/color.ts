@@ -1,12 +1,4 @@
-import {
-	type ColorCategory,
-	type ColorCategoryFromName,
-	Color as ColorInstance,
-	type ColorName,
-	type ColorScheme,
-	type ColorStep,
-	type ColorType,
-} from "@xeho91/lib-color";
+import { Color as ColorInstance } from "@xeho91/lib-color";
 import { Block } from "@xeho91/lib-css/block";
 import { Alpha } from "@xeho91/lib-css/data-type/alpha";
 import { Chroma } from "@xeho91/lib-css/data-type/chroma";
@@ -26,16 +18,9 @@ import { ColorTarget } from "@xeho91/lib-css/target/color";
 import type { Value } from "@xeho91/lib-css/value";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
 
+import { readonly_set } from "@xeho91/lib-snippet/set";
+import type { IterableElement } from "@xeho91/lib-type/iterable";
 import { DesignToken } from "#token";
-
-export type {
-	ColorCategory,
-	ColorCategoryFromName,
-	ColorName,
-	ColorStep,
-	ColorScheme,
-	ColorType,
-} from "@xeho91/lib-color";
 
 type Variant<
 	TCategory extends ColorCategory = ColorCategory,
@@ -60,11 +45,64 @@ export class Color<
 	}
 > {
 	public static readonly NAME = "color";
-	public static readonly CATEGORIES = ColorInstance.CATEGORIES;
-	public static readonly NAMES = ColorInstance.NAMES;
-	public static readonly TYPES = ColorInstance.TYPES;
-	public static readonly STEPS = ColorInstance.STEPS;
-	public static readonly SCHEMES = ColorInstance.SCHEMES;
+
+	/**
+	 * Supported color schemes set.
+	 * @see {@link https://drafts.csswg.org/css-color-adjust/#color-scheme-prop}
+	 */
+	public static readonly SCHEMES = readonly_set(["light", "dark"]);
+
+	/**
+	 * Color steps set.
+	 * **There are 12 steps in each scale**.
+	 * Each step was designed for at least one specific use case.
+	 * This table is a simple overview of the most common use case for each step.
+	 *
+	 * | Step | Use Case                                |
+	 * | ---- | --------------------------------------- |
+	 * | 1    | App background                          |
+	 * | 2    | Subtle background                       |
+	 * | 3    | UI element background                   |
+	 * | 4    | Hovered UI element background           |
+	 * | 5    | Active / Selected UI element background |
+	 * | 6    | Subtle borders and separators           |
+	 * | 7    | UI element border and focus rings       |
+	 * | 8    | Hovered UI element border               |
+	 * | 9    | Solid backgrounds                       |
+	 * | 10   | Hovered solid backgrounds               |
+	 * | 11   | Low-contrast text                       |
+	 * | 12   | High-contrast text                      |
+	 *
+	 * @see {@link https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale#use-cases}
+	 */
+	public static readonly STEPS = readonly_set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+
+	/**
+	 * Available color categories set, for grouping purposes.
+	 */
+	public static readonly CATEGORIES = readonly_set(["brand", "semantic", "grayscale"]);
+
+	/**
+	 * The idea is that the solid and blend scales are interchangeable, since they match almost perfectly.
+	 * Sometimes you need a color to be transparent, so it works well on coloured backgrounds for example.
+	 * Sometimes you need opaque colors, sometimes transparent. Now you have the option.
+	 *
+	 * @see {@link https://github.com/radix-ui/colors/issues/9#issuecomment-876643069}
+	 */
+	public static readonly TYPES = readonly_set(["opaque", "blend"]);
+
+	public static readonly NAMES = readonly_set([
+		"primary",
+		"secondary",
+		"accent",
+		"error",
+		"info",
+		"success",
+		"warning",
+		"black",
+		"gray",
+		"white",
+	]);
 
 	public static get_category_from_name = <TName extends ColorName>(name: TName): ColorCategoryFromName<TName> => {
 		// biome-ignore format: Prettier
@@ -292,16 +330,16 @@ if (import.meta.vitest) {
 				const global = color.create_global_ruleset();
 				const stringified = global.toString();
 				expect(stringified).toMatchInlineSnapshot(
-					`":root{--color-brand-accent-solid-8-light-lightness:74.5%;--color-brand-accent-solid-8-dark-lightness:54.06%;--color-brand-accent-solid-8-light-chroma:33.06%;--color-brand-accent-solid-8-dark-chroma:28.9%;--color-brand-accent-solid-8-light-hue:54.68deg;--color-brand-accent-solid-8-dark-hue:50.05deg;--color-brand-accent-solid-8-light-alpha:100%;--color-brand-accent-solid-8-dark-alpha:100%;}"`,
+					`":root{--color-brand-accent-opaque-8-light-lightness:74.5%;--color-brand-accent-opaque-8-dark-lightness:54.06%;--color-brand-accent-opaque-8-light-chroma:33.06%;--color-brand-accent-opaque-8-dark-chroma:28.9%;--color-brand-accent-opaque-8-light-hue:54.68deg;--color-brand-accent-opaque-8-dark-hue:50.05deg;--color-brand-accent-opaque-8-light-alpha:100%;--color-brand-accent-opaque-8-dark-alpha:100%;}"`,
 				);
 			});
 
 			it("on created global ruleset subscriber receive [key, ruleset] tuple", ({ expect }) => {
 				const observer = vi.fn((tuple) => {
-					expect(tuple[0]).toBe("color-grayscale-gray-solid-8");
+					expect(tuple[0]).toBe("color-grayscale-gray-opaque-8");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
 					expect(tuple[1].toString()).toMatchInlineSnapshot(
-						`":root{--color-grayscale-gray-solid-8-light-lightness:79.11%;--color-grayscale-gray-solid-8-dark-lightness:48.93%;--color-grayscale-gray-solid-8-light-chroma:2.11%;--color-grayscale-gray-solid-8-dark-chroma:2.06%;--color-grayscale-gray-solid-8-light-hue:98.91deg;--color-grayscale-gray-solid-8-dark-hue:88.7deg;--color-grayscale-gray-solid-8-light-alpha:100%;--color-grayscale-gray-solid-8-dark-alpha:100%;}"`,
+						`":root{--color-grayscale-gray-opaque-8-light-lightness:79.11%;--color-grayscale-gray-opaque-8-dark-lightness:48.93%;--color-grayscale-gray-opaque-8-light-chroma:2.11%;--color-grayscale-gray-opaque-8-dark-chroma:2.06%;--color-grayscale-gray-opaque-8-light-hue:98.91deg;--color-grayscale-gray-opaque-8-dark-hue:88.7deg;--color-grayscale-gray-opaque-8-light-alpha:100%;--color-grayscale-gray-opaque-8-dark-alpha:100%;}"`,
 					);
 				});
 				Color.on("create-global-ruleset").subscribe({
@@ -326,7 +364,7 @@ if (import.meta.vitest) {
 			it("returns correctly when provided pseudo class", ({ expect }) => {
 				const color = Color.get("warning");
 				const class_name = color.class("caret", { pseudo_class: "hover" });
-				const expected_name = "caret-color-semantic-warning-solid-8-hover";
+				const expected_name = "caret-color-semantic-warning-opaque-8-hover";
 				expect(class_name).toBeInstanceOf(SelectorClass);
 				expect(class_name.name).toBe(expected_name);
 				expectTypeOf(class_name).toEqualTypeOf<SelectorClass<typeof expected_name>>();
@@ -342,24 +380,24 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided both pseudos", ({ expect }) => {
-				const color = Color.get("secondary", "solid", 6);
+				const color = Color.get("secondary", "opaque", 6);
 				const class_name = color.class("text-decoration", {
 					pseudo_class: "checked",
 					pseudo_element: "before",
 				});
-				const expected_name = "text-decoration-color-brand-secondary-solid-6-checked-before";
+				const expected_name = "text-decoration-color-brand-secondary-opaque-6-checked-before";
 				expect(class_name).toBeInstanceOf(SelectorClass);
 				expect(class_name.name).toBe(expected_name);
 				expectTypeOf(class_name).toEqualTypeOf<SelectorClass<typeof expected_name>>();
 			});
 
 			it("created rulesets in Color.RULESETS", ({ expect }) => {
-				const color = Color.get("info", "solid", 4);
+				const color = Color.get("info", "opaque", 4);
 				const class_name = color.class("accent");
 				const ruleset = Color.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
 				expect(ruleset?.toString()).toMatchInlineSnapshot(
-					`".accent-color-semantic-info-solid-4{--accent-color-light-lightness:var(--color-semantic-info-solid-4-light-lightness);--accent-color-dark-lightness:var(--color-semantic-info-solid-4-dark-lightness);--accent-color-light-chroma:var(--color-semantic-info-solid-4-light-chroma);--accent-color-dark-chroma:var(--color-semantic-info-solid-4-dark-chroma);--accent-color-light-hue:var(--color-semantic-info-solid-4-light-hue);--accent-color-dark-hue:var(--color-semantic-info-solid-4-dark-hue);--accent-color-light-alpha:var(--color-semantic-info-solid-4-light-alpha);--accent-color-dark-alpha:var(--color-semantic-info-solid-4-dark-alpha);}"`,
+					`".accent-color-semantic-info-opaque-4{--accent-color-light-lightness:var(--color-semantic-info-opaque-4-light-lightness);--accent-color-dark-lightness:var(--color-semantic-info-opaque-4-dark-lightness);--accent-color-light-chroma:var(--color-semantic-info-opaque-4-light-chroma);--accent-color-dark-chroma:var(--color-semantic-info-opaque-4-dark-chroma);--accent-color-light-hue:var(--color-semantic-info-opaque-4-light-hue);--accent-color-dark-hue:var(--color-semantic-info-opaque-4-dark-hue);--accent-color-light-alpha:var(--color-semantic-info-opaque-4-light-alpha);--accent-color-dark-alpha:var(--color-semantic-info-opaque-4-dark-alpha);}"`,
 				);
 			});
 
@@ -381,3 +419,48 @@ if (import.meta.vitest) {
 		});
 	});
 }
+
+/**
+ * @see {@link Color.CATEGORIES}
+ */
+export type ColorCategory = IterableElement<typeof Color.CATEGORIES>;
+
+/**
+ * @see {@link Color.NAMES}
+ */
+export type ColorName = IterableElement<typeof Color.NAMES>;
+
+/**
+ * @see {@link Color.SCHEMES}
+ */
+export type ColorScheme = IterableElement<typeof Color.SCHEMES>;
+
+/**
+ * @see {@link Color.TYPES}
+ */
+export type ColorType = IterableElement<typeof Color.TYPES>;
+
+/**
+ * @see {@link Color.STEPS}
+ */
+export type ColorStep = IterableElement<typeof Color.STEPS>;
+
+// type VariableIdentifier<
+// 	TName extends ColorName,
+// 	TType extends ColorType,
+// 	TStep extends ColorStep,
+// 	TScheme extends ColorScheme,
+// > = `${Uppercase<TName>}_${Uppercase<TType>}_${TStep}_${Uppercase<TScheme>}`;
+
+// type IdentifiersByCategory<
+// 	TCategory extends ColorCategory,
+// 	TName extends ColorName,
+// > = TName extends keyof (typeof VARIABLE)[TCategory] ? (typeof VARIABLE)[TCategory][TName] : never;
+
+export type ColorCategoryFromName<TName extends ColorName> = TName extends "primary" | "secondary" | "accent"
+	? "brand"
+	: TName extends "error" | "info" | "success" | "warning"
+		? "semantic"
+		: TName extends "black" | "gray" | "white"
+			? "grayscale"
+			: never;
