@@ -36,13 +36,9 @@ if (import.meta.vitest) {
 			const to_extract = [4, 5, 6] as const;
 			extract_set_entries(new Set([1, 2] as const), [2]);
 			const extracted = extract_set_entries(set, to_extract);
-
 			expect(extracted).toHaveLength(to_extract.length);
 			expectTypeOf(extracted).toEqualTypeOf<Set<4 | 5 | 6>>();
-
-			for (const key of to_extract) {
-				expect(extracted).toContainEqual(key);
-			}
+			for (const key of to_extract) expect(extracted).toContainEqual(key);
 		});
 	});
 }
@@ -77,13 +73,9 @@ if (import.meta.vitest) {
 			const set = new Set([1, 2, 3, 4, 5, 6] as const);
 			const to_exclude = [4, 5, 6] as const;
 			const excluded = exclude_set(set, to_exclude);
-
 			expect(excluded).toHaveLength(to_exclude.length);
 			expectTypeOf(excluded).toEqualTypeOf<Set<1 | 2 | 3>>();
-
-			for (const key of to_exclude) {
-				expect(excluded).not.toContainEqual(key);
-			}
+			for (const key of to_exclude) expect(excluded).not.toContainEqual(key);
 		});
 	});
 }
@@ -112,10 +104,11 @@ if (import.meta.vitest) {
 
 /**
  * Create a single sets with unionized items from as many sets as you wish
- * @param sets sets to unionize
+ * @param sets to unionize
  */
 export function unionize_sets<T>(...sets: (Set<T> | ReadonlySet<T>)[]): Set<T> {
 	let first = sets[0] as Set<T>;
+	// @ts-ignore FIXME: `svelte-check` is not happy
 	for (let index = 1; index < sets.length; index++) first = first.union(sets[index] as Set<T>);
 	return first;
 }

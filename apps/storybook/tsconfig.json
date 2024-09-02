@@ -2,6 +2,7 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"extends": ["@total-typescript/tsconfig/bundler/dom/app"],
 	"compilerOptions": {
+		"lib": ["ESNext"],
 		"noImplicitAny": false, // TODO: Remove it once type issues from Storybook are fixed
 		"plugins": [
 			{
