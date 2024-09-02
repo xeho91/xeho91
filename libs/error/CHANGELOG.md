@@ -1,5 +1,19 @@
 # @xeho91/lib-error
 
+## 0.2.0
+
+### Minor Changes
+
+- [#13](https://github.com/xeho91/xeho91/pull/13) [`4a28da9`](https://github.com/xeho91/xeho91/commit/4a28da965662ac0696bf677df29cec500fa2b928) Thanks [@xeho91](https://github.com/xeho91)! - ✨ Add:
+
+  - class [`NotFoundError`](https://xeho91.github.io/xeho91/classes/_xeho91_lib_error.not_found.NotFoundError.html)
+  - function [`not_found`](https://xeho91.github.io/xeho91/functions/_xeho91_lib_error.not_found.not_found.html)
+
+### Patch Changes
+
+- Updated dependencies [[`7ad6306`](https://github.com/xeho91/xeho91/commit/7ad630660911a81a9d53c6932b796a8da49ed800), [`6394d61`](https://github.com/xeho91/xeho91/commit/6394d6172e17d0efbf87d7003085dde640a5addf)]:
+  - @xeho91/lib-type@0.2.0
+
 ## 0.1.0
 
 ### Minor Changes

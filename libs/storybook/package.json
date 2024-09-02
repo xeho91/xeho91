@@ -3,7 +3,7 @@
 	"private": true,
 	"type": "module",
 	"name": "@xeho91/lib-storybook",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"engines": {
 		"node": ">=20"
 	},

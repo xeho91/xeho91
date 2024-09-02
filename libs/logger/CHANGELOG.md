@@ -1,5 +1,12 @@
 # @xeho91/lib-logger
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`7ad6306`](https://github.com/xeho91/xeho91/commit/7ad630660911a81a9d53c6932b796a8da49ed800), [`6394d61`](https://github.com/xeho91/xeho91/commit/6394d6172e17d0efbf87d7003085dde640a5addf)]:
+  - @xeho91/lib-type@0.2.0
+
 ## 0.1.0
 
 ### Minor Changes
