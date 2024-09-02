@@ -9,11 +9,14 @@ const { Story } = defineMeta({
 	...SHARED_META,
 	component: ButtonAppSettings,
 	title: "Organism/AppSettings",
-	tags: ["autodocs"],
 	parameters: {
 		layout: "centered",
 	},
 });
 </script>
 
-<Story name="Default" parameters={PARAMETERS.default} />
+<Story
+	name="Default"
+	parameters={PARAMETERS.default}
+	tags={["autodocs", "!dev"]}
+/>
