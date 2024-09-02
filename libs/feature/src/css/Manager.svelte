@@ -20,7 +20,7 @@ $effect(() => {
 	for (const scheme of Color.SCHEMES) {
 		window.document.body.style.setProperty(
 			new Reference(`--radial-gradient-color-${scheme}`).toString(),
-			radial_color.light_dark[scheme].atomized_oklch.toString(),
+			radial_color[scheme].atomized_oklch.toString(),
 		);
 	}
 });

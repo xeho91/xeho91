@@ -15,7 +15,7 @@ import { Percentage } from "@xeho91/lib-css/value/percentage";
 import type { Display } from "@xeho91/lib-type/trait/display";
 import type { Oklch as CuloriOklch } from "culori/fn";
 
-import type { ColorCategory, ColorName, ColorScheme, ColorStep, ColorType } from "#mod";
+import type { ColorCategory, ColorName, ColorScheme, ColorStep, ColorType } from "#color";
 
 interface OklchProperties {
 	lightness: Percentage;
