@@ -57,7 +57,7 @@ export const LOGO_DEFAULT_BACKGROUNDED = false;
 	}: Props = $props();
 
 	let theme = $derived(new BrandAssetTheme(_theme));
-	let fill = $derived(theme.get_fill_foreground(id));
+	let fill = $derived(theme.fill_foreground(id).toString());
 	let dimensions = $derived(
 		new Rectangle(background_width, background_height),
 	);

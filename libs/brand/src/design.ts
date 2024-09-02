@@ -39,7 +39,8 @@ export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetTheme
 		}
 	}
 
-	public get_fill_foreground(id: string): string {
+	// TODO: Use css lib - when created `url` function
+	public fill_foreground(id: string): LightDark | string {
 		const name = this.#name;
 		// biome-ignore format: Prettier
 		switch (name) {

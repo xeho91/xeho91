@@ -42,7 +42,7 @@ export const AVATAR_DEFAULT_BACKGROUNDED = false;
 	}: Props = $props();
 
 	let theme = $derived(new BrandAssetTheme(_theme));
-	let fill = $derived(theme.get_fill_foreground(id));
+	let fill = $derived(theme.fill_foreground(id).toString());
 
 	const dimensions_rectangle = AVATAR_DIMENSIONS.to_rectangle();
 	const translate_x =

@@ -53,8 +53,8 @@ const id_description = set_id(id, "description");
 	preserveAspectRatio="xMinYMin meet"
 	style:anchor-name={anchor_name?.toString()}
 	style:position-anchor={anchor?.toString()}
-	style:--light={theme.light_foreground?.oklch.toString()}
-	style:--dark={theme.dark_foreground?.oklch.toString()}
+	style:--light={theme.foreground_color("light")?.oklch.toString()}
+	style:--dark={theme.foreground_color("dark")?.oklch.toString()}
 	class={class_}
 >
 	<title id={id_title}>{title}</title>
