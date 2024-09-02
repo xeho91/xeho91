@@ -24,17 +24,9 @@ export function extract_set_entries<
 	const TCurrentSet extends ReadonlySet<any> | Set<any>,
 	const TToExtract extends readonly IterableElement<TCurrentSet>[],
 >(current_set: TCurrentSet, to_extract: TToExtract): Set<Extract<IterableElement<TCurrentSet>, TToExtract[number]>> {
-	// TODO: Use `Set.difference()` when Node.js LTS is v22
-	const new_set = new Set<Extract<IterableElement<TCurrentSet>, TToExtract[number]>>();
-
-	for (const key of current_set) {
-		if (to_extract.includes(key)) {
-			new_set.add(key);
-		}
-	}
-
-	return new_set;
+	return current_set.intersection(new Set(to_extract));
 }
+
 if (import.meta.vitest) {
 	const { describe, expectTypeOf, it } = import.meta.vitest;
 
@@ -74,11 +66,7 @@ export function exclude_set<
 	const TCurrentSet extends Set<any> | ReadonlySet<any>,
 	const TToExclude extends readonly IterableElement<TCurrentSet>[],
 >(current_set: TCurrentSet, to_exclude: TToExclude): Set<Exclude<IterableElement<TCurrentSet>, TToExclude[number]>> {
-	// TODO: Use `Set.difference()` when Node.js LTS is v22
-	// return current_set.difference(new Set(to_exclude));
-	const new_set = current_set as Set<Exclude<IterableElement<TCurrentSet>, TToExclude[number]>>;
-	for (const item of to_exclude) new_set.delete(item as IterableElement<typeof new_set>);
-	return new_set;
+	return current_set.difference(new Set(to_exclude));
 }
 
 if (import.meta.vitest) {
@@ -127,12 +115,8 @@ if (import.meta.vitest) {
  * @param sets sets to unionize
  */
 export function unionize_sets<T>(...sets: (Set<T> | ReadonlySet<T>)[]): Set<T> {
-	const first = sets[0] as Set<T>;
-	// TODO: Use Set.prototype.union() once Node.js LTS is v22
-	for (let index = 1; index < sets.length; index++) {
-		const next_set = sets[index] as Set<T>;
-		for (const item of next_set) first.add(item);
-	}
+	let first = sets[0] as Set<T>;
+	for (let index = 1; index < sets.length; index++) first = first.union(sets[index] as Set<T>);
 	return first;
 }
 
