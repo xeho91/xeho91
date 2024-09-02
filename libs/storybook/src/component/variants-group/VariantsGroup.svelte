@@ -38,9 +38,9 @@ const {
 		"w-full min-h-[fit-content]",
 		Stroke.get("s").class(),
 		Color.class("background"),
-		Color.get("gray", "solid", 2).class("background"),
+		Color.get("gray", "opaque", 2).class("background"),
 		Color.class("border"),
-		Color.get("gray", "solid", 6).class("border"),
+		Color.get("gray", "opaque", 6).class("border"),
 		class_,
 	)}
 >
@@ -53,11 +53,11 @@ const {
 				Space.get("s").class("padding-inline"),
 				Space.get("3xs").class("padding-block"),
 				Color.class("background"),
-				Color.get("primary", "solid", 3).class("background"),
+				Color.get("primary", "opaque", 3).class("background"),
 				"border-solid",
 				Stroke.get("xs").class("bottom"),
 				Color.class("border-bottom"),
-				Color.get("gray", "solid", 6).class("border-bottom"),
+				Color.get("gray", "opaque", 6).class("border-bottom"),
 			)}
 		>
 			{@render header()}

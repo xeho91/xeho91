@@ -62,7 +62,7 @@ $effect(() => {
 		Stroke.default().class("inline-end"),
 		Radius.get("l").class(),
 		Color.class("border"),
-		Color.get(color, "solid", 6).class("border"),
+		Color.get(color, "opaque", 6).class("border"),
 		class_
 	)}
 >
@@ -80,7 +80,7 @@ $effect(() => {
 				"absolute z-100",
 				"size-[1ch]",
 				Color.class("background"),
-				Color.get(color, "solid", 11).class("background"),
+				Color.get(color, "opaque", 11).class("background"),
 				Radius.get("circle").class(),
 				"pointer-events-none",
 			)}

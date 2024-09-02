@@ -6,8 +6,8 @@ export const SHADOW_SIZE = SHADOW_OFFSET_X + SHADOW_OFFSET_Y + SHADOW_BLUR;
 </script>
 
 <script lang="ts">
-	import { Color } from "@xeho91/lib-color";
-	import type { AtomicColor } from "@xeho91/lib-color/atomic";
+	import { Color } from "@xeho91/lib-design/color";
+	import type { AtomicColor } from "@xeho91/lib-design/color/atomic";
 
 	import { set_id } from "#id";
 
@@ -21,7 +21,7 @@ export const SHADOW_SIZE = SHADOW_OFFSET_X + SHADOW_OFFSET_Y + SHADOW_BLUR;
 
 	let {
 		id,
-		color = Color.get("grayscale", "gray", "blend", 9).dark,
+		color = Color.get("gray", "blend", 9).dark,
 		offset_x = SHADOW_OFFSET_X,
 		offset_y = SHADOW_OFFSET_Y,
 		blur = SHADOW_BLUR,

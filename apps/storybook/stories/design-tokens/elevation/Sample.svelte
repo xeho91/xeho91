@@ -22,7 +22,7 @@ const {
 		"elevation",
 		Space.default().class("height"),
 		Space.default().class("width"),
-		Color.get("secondary", "solid", 3).class("background"),
+		Color.get("secondary", "opaque", 3).class("background"),
 		Color.class("background"),
 		Elevation.class("box-shadow"),
 		Elevation.get(level).class("box-shadow"),

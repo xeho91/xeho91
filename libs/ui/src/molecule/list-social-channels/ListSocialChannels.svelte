@@ -33,10 +33,10 @@ const color = "accent";
 				size="3xl"
 				class={merge_classes(
 					"contents",
-					Color.get(color, "solid", 12).class("text", {
+					Color.get(color, "opaque", 12).class("text", {
 						pseudo_class: "focus-within",
 					}),
-					Color.get(color, "solid", 12).class("text", {
+					Color.get(color, "opaque", 12).class("text", {
 						pseudo_class: "hover",
 					}),
 				)}

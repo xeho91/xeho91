@@ -55,7 +55,7 @@ function handle_click() {
 		"flex place-content-center place-items-center",
 		// Border
 		Color.class("border"),
-		Color.get(color, "solid", 6).class("border"),
+		Color.get(color, "opaque", 6).class("border"),
 		"border-solid",
 		Stroke.default().class("inline-end"),
 	)}
@@ -73,9 +73,9 @@ function handle_click() {
 			"appearance-none",
 			"absolute inset-0",
 			Color.class("background"),
-			Color.get(color, "solid", 4).class("background"),
-			Color.get(color, "solid", 5).class("background", { pseudo_class: "hover" }),
-			Color.get(color, "solid", 5).class("background", { pseudo_class: "checked" }),
+			Color.get(color, "opaque", 4).class("background"),
+			Color.get(color, "opaque", 5).class("background", { pseudo_class: "hover" }),
+			Color.get(color, "opaque", 5).class("background", { pseudo_class: "checked" }),
 		)}
 	>
 	{@render children()}

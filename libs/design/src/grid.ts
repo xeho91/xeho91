@@ -491,7 +491,7 @@ if (import.meta.vitest) {
 				const global = grid.create_global_ruleset();
 				const stringified = global.toString();
 				expect(stringified).toMatchInlineSnapshot(
-					`":root{--grid-gutter-default:clamp(20.625rem, 0rem + 100cqi, 77.5rem);}"`,
+					`":root{--grid-gutter-default:clamp(1.125rem, 0.6264rem + 2.4176cqi, 2.5rem);}"`,
 				);
 			});
 
@@ -508,7 +508,7 @@ if (import.meta.vitest) {
 					expect(tuple[0]).toBe("grid-gutter-default");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
 					expect(tuple[1].toString()).toMatchInlineSnapshot(
-						`":root{--grid-gutter-default:clamp(20.625rem, 0rem + 100cqi, 77.5rem);}"`,
+						`":root{--grid-gutter-default:clamp(1.125rem, 0.6264rem + 2.4176cqi, 2.5rem);}"`,
 					);
 				});
 				GridGutter.on("create-global-ruleset").subscribe({

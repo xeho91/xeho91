@@ -24,7 +24,7 @@ const {
 		Radius.get(size).class(),
 		Color.class("background"),
 		size !== "circle" &&
-			Color.get("primary", "solid", 3).class("background"),
+			Color.get("primary", "opaque", 3).class("background"),
 		size === "circle" && Color.get("secondary").class("background"),
 		class_,
 	)}

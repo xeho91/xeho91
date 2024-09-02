@@ -1,12 +1,3 @@
-import {
-	type ColorCategory,
-	type ColorCategoryFromName,
-	Color as ColorInstance,
-	type ColorName,
-	type ColorScheme,
-	type ColorStep,
-	type ColorType,
-} from "@xeho91/lib-color";
 import { Block } from "@xeho91/lib-css/block";
 import { Alpha } from "@xeho91/lib-css/data-type/alpha";
 import { Chroma } from "@xeho91/lib-css/data-type/chroma";
@@ -25,17 +16,71 @@ import { Syntax } from "@xeho91/lib-css/syntax";
 import { ColorTarget } from "@xeho91/lib-css/target/color";
 import type { Value } from "@xeho91/lib-css/value";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
+import { object_keys, readonly_object } from "@xeho91/lib-snippet/object";
+import { readonly_set } from "@xeho91/lib-snippet/set";
+import type { IterableElement } from "@xeho91/lib-type/iterable";
 
+import type { AtomicColor } from "#color/atomic";
+import * as accent from "#color/palette/brand/accent";
+import * as primary from "#color/palette/brand/primary";
+import * as secondary from "#color/palette/brand/secondary";
+import * as black from "#color/palette/grayscale/black";
+import * as gray from "#color/palette/grayscale/gray";
+import * as white from "#color/palette/grayscale/white";
+import * as error from "#color/palette/semantic/error";
+import * as info from "#color/palette/semantic/info";
+import * as success from "#color/palette/semantic/success";
+import * as warning from "#color/palette/semantic/warning";
 import { DesignToken } from "#token";
 
-export type {
-	ColorCategory,
-	ColorCategoryFromName,
-	ColorName,
-	ColorStep,
-	ColorScheme,
-	ColorType,
-} from "@xeho91/lib-color";
+const VARIABLE = readonly_object({
+	brand: {
+		accent,
+		primary,
+		secondary,
+	},
+	grayscale: {
+		black,
+		gray,
+		white,
+	},
+	semantic: {
+		error,
+		info,
+		success,
+		warning,
+	},
+});
+
+export type ColorBrandName = IterableElement<typeof ColorBrand.NAMES>;
+// biome-ignore lint/complexity/noStaticOnlyClass: FIXME: What's the alternative?
+export class ColorBrand {
+	public static readonly NAMES = readonly_set(object_keys(VARIABLE.brand));
+
+	public static [Symbol.iterator](): IterableIterator<ColorBrandName> {
+		return ColorBrand.NAMES[Symbol.iterator]();
+	}
+}
+
+export type ColorGrayscaleName = IterableElement<typeof ColorGrayscale.NAMES>;
+// biome-ignore lint/complexity/noStaticOnlyClass: FIXME: What's the alternative?
+export class ColorGrayscale {
+	public static readonly NAMES = readonly_set(object_keys(VARIABLE.grayscale));
+
+	public static [Symbol.iterator](): IterableIterator<ColorGrayscaleName> {
+		return ColorGrayscale.NAMES[Symbol.iterator]();
+	}
+}
+
+export type ColorSemanticName = IterableElement<typeof ColorSemantic.NAMES>;
+// biome-ignore lint/complexity/noStaticOnlyClass: FIXME: What's the alternative?
+export class ColorSemantic {
+	public static readonly NAMES = readonly_set(object_keys(VARIABLE.semantic));
+
+	public static [Symbol.iterator](): IterableIterator<ColorSemanticName> {
+		return ColorSemantic.NAMES[Symbol.iterator]();
+	}
+}
 
 type Variant<
 	TCategory extends ColorCategory = ColorCategory,
@@ -60,11 +105,68 @@ export class Color<
 	}
 > {
 	public static readonly NAME = "color";
-	public static readonly CATEGORIES = ColorInstance.CATEGORIES;
-	public static readonly NAMES = ColorInstance.NAMES;
-	public static readonly TYPES = ColorInstance.TYPES;
-	public static readonly STEPS = ColorInstance.STEPS;
-	public static readonly SCHEMES = ColorInstance.SCHEMES;
+
+	/**
+	 * Supported color schemes set.
+	 * @see {@link https://drafts.csswg.org/css-color-adjust/#color-scheme-prop}
+	 */
+	public static readonly SCHEMES = readonly_set(["light", "dark"]);
+
+	/**
+	 * Color steps set.
+	 * **There are 12 steps in each scale**.
+	 * Each step was designed for at least one specific use case.
+	 * This table is a simple overview of the most common use case for each step.
+	 *
+	 * | Step | Use Case                                |
+	 * | ---- | --------------------------------------- |
+	 * | 1    | App background                          |
+	 * | 2    | Subtle background                       |
+	 * | 3    | UI element background                   |
+	 * | 4    | Hovered UI element background           |
+	 * | 5    | Active / Selected UI element background |
+	 * | 6    | Subtle borders and separators           |
+	 * | 7    | UI element border and focus rings       |
+	 * | 8    | Hovered UI element border               |
+	 * | 9    | Solid backgrounds                       |
+	 * | 10   | Hovered solid backgrounds               |
+	 * | 11   | Low-contrast text                       |
+	 * | 12   | High-contrast text                      |
+	 *
+	 * @see {@link https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale#use-cases}
+	 */
+	public static readonly STEPS = readonly_set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+
+	/**
+	 * Available color categories set, for grouping purposes.
+	 */
+	public static readonly CATEGORIES = readonly_set(object_keys(VARIABLE));
+
+	/**
+	 * The idea is that the solid and blend scales are interchangeable, since they match almost perfectly.
+	 * Sometimes you need a color to be transparent, so it works well on coloured backgrounds for example.
+	 * Sometimes you need opaque colors, sometimes transparent. Now you have the option.
+	 *
+	 * @see {@link https://github.com/radix-ui/colors/issues/9#issuecomment-876643069}
+	 */
+	public static readonly TYPES = readonly_set(["opaque", "blend"]);
+
+	public static readonly NAMES = readonly_set([
+		"primary",
+		"secondary",
+		"accent",
+		"error",
+		"info",
+		"success",
+		"warning",
+		"black",
+		"gray",
+		"white",
+	]);
+
+	public static brand = ColorBrand;
+	public static grayscale = ColorGrayscale;
+	public static semantic = ColorSemantic;
 
 	public static get_category_from_name = <TName extends ColorName>(name: TName): ColorCategoryFromName<TName> => {
 		// biome-ignore format: Prettier
@@ -95,9 +197,9 @@ export class Color<
 		step: TStep,
 	): Variant<TCategory, TName, TType, TStep> => `${category}-${name}-${type}-${step}`;
 
-	public static get = <TName extends ColorName, TType extends ColorType = "solid", TStep extends ColorStep = 8>(
+	public static get = <TName extends ColorName, TType extends ColorType = "opaque", TStep extends ColorStep = 8>(
 		name: TName,
-		type = "solid" as TType,
+		type = "opaque" as TType,
 		step = 8 as TStep,
 	): Color<ColorCategoryFromName<TName>, TName, TType, TStep> => {
 		const category = Color.get_category_from_name(name);
@@ -165,6 +267,51 @@ export class Color<
 		return selector;
 	};
 
+	static #variable_identifier = <
+		TName extends ColorName,
+		TType extends ColorType,
+		TStep extends ColorStep,
+		TScheme extends ColorScheme,
+	>(
+		name: TName,
+		type: TType,
+		step: TStep,
+		scheme: TScheme,
+	): VariableIdentifier<TName, TType, TStep, TScheme> =>
+		`${name.toUpperCase()}_${type.toUpperCase() as Uppercase<TType>}_${step}_${scheme.toUpperCase()}` as VariableIdentifier<
+			TName,
+			TType,
+			TStep,
+			TScheme
+		>;
+
+	static #get_identifiers<TCategory extends ColorCategory, TName extends ColorName>(
+		category: TCategory,
+		name: TName,
+	): IdentifiersByCategory<TCategory, TName> {
+		const by_category = VARIABLE[category as keyof typeof VARIABLE];
+		return by_category[name as keyof typeof by_category];
+	}
+
+	static #get_by_scheme = <
+		TCategory extends ColorCategory,
+		TName extends ColorName,
+		TType extends ColorType,
+		TStep extends ColorStep,
+		TScheme extends ColorScheme,
+	>(
+		category: TCategory,
+		name: TName,
+		type: TType,
+		step: TStep,
+		scheme: TScheme,
+	): AtomicColor<TCategory, TName, TType, TStep, TScheme> => {
+		const by_category_and_name = Color.#get_identifiers(category, name as ColorName);
+		return by_category_and_name[
+			Color.#variable_identifier(name as ColorName, type, step, scheme) as keyof typeof by_category_and_name
+		] as AtomicColor<TCategory, TName, TType, TStep, TScheme>;
+	};
+
 	constructor(params: { category: TCategory; name: TName; type: TType; step: TStep }) {
 		const { category, name, type, step } = params;
 		super({
@@ -173,11 +320,16 @@ export class Color<
 			value: { category, name, type, step },
 		});
 	}
-
-	public get light_dark(): ReturnType<typeof ColorInstance.get<TCategory, TName, TType, TStep>> {
+	public get light() {
 		const { value } = this;
 		const { category, name, type, step } = value;
-		return ColorInstance.get(category, name, type, step);
+		return Color.#get_by_scheme(category, name, type, step, "light");
+	}
+
+	public get dark() {
+		const { value } = this;
+		const { category, name, type, step } = value;
+		return Color.#get_by_scheme(category, name, type, step, "dark");
 	}
 
 	public set_target<TTarget extends Target>(target: TTarget): ColorTarget<TTarget> {
@@ -212,8 +364,7 @@ export class Color<
 		const { key, reference } = this;
 		const from_map = Color.GLOBAL_RULESETS.get(key);
 		if (from_map) return from_map;
-		const { light_dark } = this;
-		const { light, dark } = light_dark;
+		const { light, dark } = this;
 		const selector = Selector.pseudo.class("root");
 		const block = new Block(
 			// lightness
@@ -250,6 +401,51 @@ export class Color<
 }
 
 type Target = ConstructorParameters<typeof ColorTarget>[0];
+
+/**
+ * @see {@link Color.CATEGORIES}
+ */
+export type ColorCategory = IterableElement<typeof Color.CATEGORIES>;
+
+/**
+ * @see {@link Color.NAMES}
+ */
+export type ColorName = IterableElement<typeof Color.NAMES>;
+
+/**
+ * @see {@link Color.SCHEMES}
+ */
+export type ColorScheme = IterableElement<typeof Color.SCHEMES>;
+
+/**
+ * @see {@link Color.TYPES}
+ */
+export type ColorType = IterableElement<typeof Color.TYPES>;
+
+/**
+ * @see {@link Color.STEPS}
+ */
+export type ColorStep = IterableElement<typeof Color.STEPS>;
+
+type VariableIdentifier<
+	TName extends ColorName,
+	TType extends ColorType,
+	TStep extends ColorStep,
+	TScheme extends ColorScheme,
+> = `${Uppercase<TName>}_${Uppercase<TType>}_${TStep}_${Uppercase<TScheme>}`;
+
+type IdentifiersByCategory<
+	TCategory extends ColorCategory,
+	TName extends ColorName,
+> = TName extends keyof (typeof VARIABLE)[TCategory] ? (typeof VARIABLE)[TCategory][TName] : never;
+
+export type ColorCategoryFromName<TName extends ColorName> = TName extends "primary" | "secondary" | "accent"
+	? "brand"
+	: TName extends "error" | "info" | "success" | "warning"
+		? "semantic"
+		: TName extends "black" | "gray" | "white"
+			? "grayscale"
+			: never;
 
 if (import.meta.vitest) {
 	const { describe, expectTypeOf, it, vi } = import.meta.vitest;
@@ -292,16 +488,16 @@ if (import.meta.vitest) {
 				const global = color.create_global_ruleset();
 				const stringified = global.toString();
 				expect(stringified).toMatchInlineSnapshot(
-					`":root{--color-brand-accent-solid-8-light-lightness:74.5%;--color-brand-accent-solid-8-dark-lightness:54.06%;--color-brand-accent-solid-8-light-chroma:33.06%;--color-brand-accent-solid-8-dark-chroma:28.9%;--color-brand-accent-solid-8-light-hue:54.68deg;--color-brand-accent-solid-8-dark-hue:50.05deg;--color-brand-accent-solid-8-light-alpha:100%;--color-brand-accent-solid-8-dark-alpha:100%;}"`,
+					`":root{--color-brand-accent-opaque-8-light-lightness:74.5%;--color-brand-accent-opaque-8-dark-lightness:54.06%;--color-brand-accent-opaque-8-light-chroma:33.06%;--color-brand-accent-opaque-8-dark-chroma:28.9%;--color-brand-accent-opaque-8-light-hue:54.68deg;--color-brand-accent-opaque-8-dark-hue:50.05deg;--color-brand-accent-opaque-8-light-alpha:100%;--color-brand-accent-opaque-8-dark-alpha:100%;}"`,
 				);
 			});
 
 			it("on created global ruleset subscriber receive [key, ruleset] tuple", ({ expect }) => {
 				const observer = vi.fn((tuple) => {
-					expect(tuple[0]).toBe("color-grayscale-gray-solid-8");
+					expect(tuple[0]).toBe("color-grayscale-gray-opaque-8");
 					expect(tuple[1]).toBeInstanceOf(Ruleset);
 					expect(tuple[1].toString()).toMatchInlineSnapshot(
-						`":root{--color-grayscale-gray-solid-8-light-lightness:79.11%;--color-grayscale-gray-solid-8-dark-lightness:48.93%;--color-grayscale-gray-solid-8-light-chroma:2.11%;--color-grayscale-gray-solid-8-dark-chroma:2.06%;--color-grayscale-gray-solid-8-light-hue:98.91deg;--color-grayscale-gray-solid-8-dark-hue:88.7deg;--color-grayscale-gray-solid-8-light-alpha:100%;--color-grayscale-gray-solid-8-dark-alpha:100%;}"`,
+						`":root{--color-grayscale-gray-opaque-8-light-lightness:79.11%;--color-grayscale-gray-opaque-8-dark-lightness:48.93%;--color-grayscale-gray-opaque-8-light-chroma:2.11%;--color-grayscale-gray-opaque-8-dark-chroma:2.06%;--color-grayscale-gray-opaque-8-light-hue:98.91deg;--color-grayscale-gray-opaque-8-dark-hue:88.7deg;--color-grayscale-gray-opaque-8-light-alpha:100%;--color-grayscale-gray-opaque-8-dark-alpha:100%;}"`,
 					);
 				});
 				Color.on("create-global-ruleset").subscribe({
@@ -326,7 +522,7 @@ if (import.meta.vitest) {
 			it("returns correctly when provided pseudo class", ({ expect }) => {
 				const color = Color.get("warning");
 				const class_name = color.class("caret", { pseudo_class: "hover" });
-				const expected_name = "caret-color-semantic-warning-solid-8-hover";
+				const expected_name = "caret-color-semantic-warning-opaque-8-hover";
 				expect(class_name).toBeInstanceOf(SelectorClass);
 				expect(class_name.name).toBe(expected_name);
 				expectTypeOf(class_name).toEqualTypeOf<SelectorClass<typeof expected_name>>();
@@ -342,24 +538,24 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided both pseudos", ({ expect }) => {
-				const color = Color.get("secondary", "solid", 6);
+				const color = Color.get("secondary", "opaque", 6);
 				const class_name = color.class("text-decoration", {
 					pseudo_class: "checked",
 					pseudo_element: "before",
 				});
-				const expected_name = "text-decoration-color-brand-secondary-solid-6-checked-before";
+				const expected_name = "text-decoration-color-brand-secondary-opaque-6-checked-before";
 				expect(class_name).toBeInstanceOf(SelectorClass);
 				expect(class_name.name).toBe(expected_name);
 				expectTypeOf(class_name).toEqualTypeOf<SelectorClass<typeof expected_name>>();
 			});
 
 			it("created rulesets in Color.RULESETS", ({ expect }) => {
-				const color = Color.get("info", "solid", 4);
+				const color = Color.get("info", "opaque", 4);
 				const class_name = color.class("accent");
 				const ruleset = Color.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
 				expect(ruleset?.toString()).toMatchInlineSnapshot(
-					`".accent-color-semantic-info-solid-4{--accent-color-light-lightness:var(--color-semantic-info-solid-4-light-lightness);--accent-color-dark-lightness:var(--color-semantic-info-solid-4-dark-lightness);--accent-color-light-chroma:var(--color-semantic-info-solid-4-light-chroma);--accent-color-dark-chroma:var(--color-semantic-info-solid-4-dark-chroma);--accent-color-light-hue:var(--color-semantic-info-solid-4-light-hue);--accent-color-dark-hue:var(--color-semantic-info-solid-4-dark-hue);--accent-color-light-alpha:var(--color-semantic-info-solid-4-light-alpha);--accent-color-dark-alpha:var(--color-semantic-info-solid-4-dark-alpha);}"`,
+					`".accent-color-semantic-info-opaque-4{--accent-color-light-lightness:var(--color-semantic-info-opaque-4-light-lightness);--accent-color-dark-lightness:var(--color-semantic-info-opaque-4-dark-lightness);--accent-color-light-chroma:var(--color-semantic-info-opaque-4-light-chroma);--accent-color-dark-chroma:var(--color-semantic-info-opaque-4-dark-chroma);--accent-color-light-hue:var(--color-semantic-info-opaque-4-light-hue);--accent-color-dark-hue:var(--color-semantic-info-opaque-4-dark-hue);--accent-color-light-alpha:var(--color-semantic-info-opaque-4-light-alpha);--accent-color-dark-alpha:var(--color-semantic-info-opaque-4-dark-alpha);}"`,
 				);
 			});
 

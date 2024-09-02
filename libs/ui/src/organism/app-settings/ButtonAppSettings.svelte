@@ -28,7 +28,7 @@ const color = "primary";
 	class={merge_classes(
 		"button-app-settings",
 		Color.class("text", { pseudo_element: "before" }),
-		Color.get("primary", "solid", 12).class("text", {
+		Color.get("primary", "opaque", 12).class("text", {
 			pseudo_element: "before",
 			pseudo_class: "hover",
 		}),

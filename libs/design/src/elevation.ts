@@ -1,4 +1,3 @@
-import { Color } from "@xeho91/lib-color";
 import { AtProperty } from "@xeho91/lib-css/at-rule/property";
 import { Block } from "@xeho91/lib-css/block";
 import { Alpha } from "@xeho91/lib-css/data-type/alpha";
@@ -25,7 +24,7 @@ import { object_keys, readonly_object } from "@xeho91/lib-snippet/object";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 
-import type { ColorScheme } from "#color";
+import { Color, type ColorScheme } from "#color";
 import { DesignToken } from "#token";
 
 export type ElevationLevel = IterableElement<typeof Elevation.LEVELS>;

@@ -41,7 +41,7 @@ export const PHOTO_AND_AVATAR_ANCHOR = new Reference("photo-and-avatar");
 			"flex",
 			// Background
 			Color.class("background"),
-			Color.get("accent", "solid", 8).class("background"),
+			Color.get("accent", "opaque", 8).class("background"),
 			// Border
 			radius.class(),
 			// Shadow

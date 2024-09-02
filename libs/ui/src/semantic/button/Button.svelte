@@ -71,7 +71,7 @@ const anchor_name_reference = rest_props.popovertarget ? new Reference(rest_prop
 	<Text
 		color={set_button_text_color(variant, color)}
 		size={set_button_text_size(size, has_icon_only)}
-		mode={"solid"}
+		mode={"opaque"}
 		class={merge_classes(
 			"inline-flex gap-x-[1ch]",
 			{

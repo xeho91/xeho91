@@ -1,7 +1,7 @@
-import { Color, type ColorScheme } from "@xeho91/lib-color";
-import type { AtomicColor } from "@xeho91/lib-color/atomic";
 import { LightDark } from "@xeho91/lib-css/function/light-dark";
 import { Reference } from "@xeho91/lib-css/reference";
+import { Color, type ColorScheme } from "@xeho91/lib-design/color";
+import type { AtomicColor } from "@xeho91/lib-design/color/atomic";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
@@ -34,8 +34,8 @@ export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetTheme
 		// biome-ignore format: Prettier
 		switch (this.#name) {
 			case "color": return;
-			case "black": return Color.get("grayscale", "gray", "solid", 12)[scheme];
-			case "white": return Color.get("grayscale", "gray", "solid", 1)[scheme];
+			case "black": return Color.get("gray", "opaque", 12)[scheme];
+			case "white": return Color.get("gray", "opaque", 1)[scheme];
 		}
 	}
 
@@ -59,9 +59,9 @@ export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetTheme
 		const name = this.#name;
 		// biome-ignore format: Prettier
 		switch (name) {
-			case "color": return Color.get("brand", "secondary", "blend", 2)[scheme];
-			case "black": return Color.get("grayscale", "gray", "blend", 2)[scheme];
-			case "white": return Color.get("grayscale", "gray", "blend", 9)[scheme];
+			case "color": return Color.get("secondary", "blend", 2)[scheme];
+			case "black": return Color.get("gray", "blend", 2)[scheme];
+			case "white": return Color.get("gray", "blend", 9)[scheme];
 			default: throw unrecognized(name);
 		}
 	}

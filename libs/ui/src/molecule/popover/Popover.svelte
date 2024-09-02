@@ -55,7 +55,7 @@ $effect(() => {
 		"popover",
 		// Background
 		Color.class("background"),
-		Color.get(color, "solid", 4).class("background"),
+		Color.get(color, "opaque", 4).class("background"),
 		// Background - backdrop
 		backdropped && Color.class("background", { pseudo_element: "backdrop" }),
 		backdropped && Color.get("gray", "blend", 5).class("background", { pseudo_element: "backdrop" }),
@@ -63,7 +63,7 @@ $effect(() => {
 		"border-solid",
 		Stroke.get("xs").class(),
 		Color.class("border"),
-		Color.get(color, "solid", 7).class("border"),
+		Color.get(color, "opaque", 7).class("border"),
 		Radius.get("m").class(),
 		// Shadow
 		Color.class("box-shadow"),

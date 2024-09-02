@@ -15,7 +15,7 @@ import { Percentage } from "@xeho91/lib-css/value/percentage";
 import type { Display } from "@xeho91/lib-type/trait/display";
 import type { Oklch as CuloriOklch } from "culori/fn";
 
-import type { ColorCategory, ColorName, ColorScheme, ColorStep, ColorType } from "#mod";
+import type { ColorCategory, ColorName, ColorScheme, ColorStep, ColorType } from "#color";
 
 interface OklchProperties {
 	lightness: Percentage;
@@ -152,7 +152,7 @@ if (import.meta.vitest) {
 		const atomized_color = new AtomicColor({
 			category: "brand",
 			name: "info",
-			type: "solid",
+			type: "opaque",
 			step: 9,
 			scheme: "dark",
 			oklch: {
@@ -166,8 +166,8 @@ if (import.meta.vitest) {
 		describe("toString()", () => {
 			it("returns stringified name", ({ expect }) => {
 				const stringified = atomized_color.toString();
-				expect(stringified).toMatchInlineSnapshot(`"color-brand-info-solid-9-dark"`);
-				expectTypeOf(stringified).toEqualTypeOf<Name<"brand", "info", "solid", 9, "dark">>();
+				expect(stringified).toMatchInlineSnapshot(`"color-brand-info-opaque-9-dark"`);
+				expectTypeOf(stringified).toEqualTypeOf<Name<"brand", "info", "opaque", 9, "dark">>();
 			});
 
 			it("stringified returns oklch with literal values", ({ expect }) => {
@@ -205,7 +205,7 @@ if (import.meta.vitest) {
 			it("returns correctly an instance", ({ expect }) => {
 				const { atomized_oklch } = atomized_color;
 				expect(atomized_oklch.toString()).toMatchInlineSnapshot(
-					`"oklch(var(--color-brand-info-solid-9-dark-lightness) var(--color-brand-info-solid-9-dark-chroma) var(--color-brand-info-solid-9-dark-hue) / var(--color-brand-info-solid-9-dark-alpha))"`,
+					`"oklch(var(--color-brand-info-opaque-9-dark-lightness) var(--color-brand-info-opaque-9-dark-chroma) var(--color-brand-info-opaque-9-dark-hue) / var(--color-brand-info-opaque-9-dark-alpha))"`,
 				);
 			});
 		});

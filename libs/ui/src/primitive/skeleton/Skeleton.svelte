@@ -41,13 +41,13 @@ $effect(() => {
 			"skeleton",
 			"inline-flex",
 			Color.class("background"),
-			Color.get(background_color, "solid", 3).class("background"),
+			Color.get(background_color, "opaque", 3).class("background"),
 			variant === "circle" && Radius.get("circle").class(),
 			variant === "text" && Radius.get("m").class(),
 			class_,
 		)}
-		style:--color-1={color_1.light_dark.light.atomized_oklch.toString()}
-		style:--color-2={color_2.light_dark.light.atomized_oklch.toString()}
+		style:--color-1={color_1.light.atomized_oklch.toString()}
+		style:--color-2={color_2.light.atomized_oklch.toString()}
 		in:fade|global={{ delay: 250, duration: rendered ? 250 : 0 }}
 		out:fade|global={{ delay: 250, duration: 250 }}
 	>
