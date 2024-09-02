@@ -2,7 +2,7 @@
 	"$schema": "https://json.schemastore.org/package",
 	"type": "module",
 	"name": "@xeho91/lib-struct",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Unofficial, custom, extensible structures.",
 	"keywords": ["struct"],
 	"license": "MIT",

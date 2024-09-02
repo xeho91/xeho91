@@ -2,7 +2,7 @@
 	"$schema": "https://json.schemastore.org/package",
 	"type": "module",
 	"name": "@xeho91/lib-type",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Reusable type aliases, helpers and interfaces",
 	"keywords": ["types", "interfaces", "traits"],
 	"license": "MIT",
