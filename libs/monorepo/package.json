@@ -37,8 +37,8 @@
 		"lint:md": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
 		"lint:ts": "tsc --noEmit",
 		"lint:typos": "typos --verbose",
-		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-monorepo\" ",
-		"prepare": "tsx \"./hooks/prepare.ts\" "
+		"prepare": "NODE_OPTIONS=\"--experimental-strip-types\" node \"./hooks/prepare.ts\" ",
+		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-monorepo\" "
 	},
 	"dependencies": {
 		"@xeho91/lib-error": "workspace:*",

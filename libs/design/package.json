@@ -50,7 +50,7 @@
 		"lint:md": "markdownlint-cli2 --config \"../../.markdownlint.json\" \"**/*.md\" \"#**/node_modules\" \"#./CHANGELOG.md\" ",
 		"lint:ts": "tsc --noEmit",
 		"lint:typos": "typos --verbose",
-		"prepare": "tsx \"./hooks/prepare.ts\" && biome format \"./src/color/palette\" --verbose --write ",
+		"prepare": "NODE_OPTIONS=\"--experimental-strip-types\" node \"./hooks/prepare.ts\"  && biome format \"./src/color/palette\" --verbose --write ",
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-design\" "
 	},
 	"dependencies": {
