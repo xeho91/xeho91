@@ -13,6 +13,7 @@ const { Story } = defineMeta({
 	parameters: {
 		layout: "fullscreen",
 	},
+	// @ts-expect-error: FIXME: Need to fix typings on addon
 	decorators: [() => ({ Component: LayoutDefault })],
 });
 </script>
