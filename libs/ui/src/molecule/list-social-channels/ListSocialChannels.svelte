@@ -17,7 +17,14 @@ let { class: class_ }: Props = $props();
 const color = "accent";
 </script>
 
-<List gap_column="xs" class={merge_classes("list-social-channels", class_)}>
+<List
+	gap_column="xs"
+	class={merge_classes(
+		//
+		"list-social-channels",
+		class_,
+	)}
+>
 	{#each object_entries(SOCIAL_CHANNELS) as [name, data]}
 		{@const anchor = new Reference(`icon-${name}`)}
 		<Item anchor_name={anchor}>
