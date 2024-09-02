@@ -25,7 +25,7 @@ $effect(() => {
 	{#each Color.SCHEMES as scheme}
 		<meta
 			name="theme-color"
-			content={Color.get("secondary", "opaque", 9).light_dark[scheme].oklch.toString()}
+			content={Color.get("secondary", "opaque", 9)[scheme].oklch.toString()}
 			media={`(prefers-color-scheme: ${scheme})`}
 		/>
 	{/each}
