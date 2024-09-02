@@ -13,7 +13,6 @@ import { Button } from "#semantic/button/mod";
 const { Story } = defineMeta({
 	...SHARED_META,
 	component: Popover,
-	tags: ["autodocs"],
 	args: {
 		id: "example-popover",
 		// @ts-expect-error FIXME: Upstream issue
@@ -29,11 +28,11 @@ const { Story } = defineMeta({
 setTemplate(template);
 </script>
 
-{#snippet template(args)}
-	<Button size="small" popovertarget={args.id}>
+{#snippet template(args, context)}
+	<Button size="small" popovertarget={context.name}>
 		{"Show popover"}
 	</Button>
-	<Popover  {...args} visible>
+	<Popover  {...args} id={context.name}>
 		{#snippet children(color)}
 			<Text {color}>
 				{args.children}
@@ -42,15 +41,38 @@ setTemplate(template);
 	</Popover>
 {/snippet}
 
-<Story name="Playground" parameters={PARAMETERS.playground} />
+<Story
+	name="Playground"
+	parameters={PARAMETERS.playground}
+	tags={["!autodocs", "!dev"]}
+/>
 
-<Story name="Auto" parameters={PARAMETERS.sample} />
+<Story
+	name="Auto"
+	parameters={PARAMETERS.sample}
+	tags={["autodocs", "!dev"]}
+	args={{ type: "auto" }}
+/>
 
-<Story name="Manual" args={{ type: "manual" }} parameters={PARAMETERS.sample} />
+<Story
+	name="Manual"
+	parameters={PARAMETERS.sample}
+	tags={["!dev"]}
+	args={{ type: "manual" }}
+/>
 
-<Story name="Backdropped" args={{ backdropped: true }} parameters={PARAMETERS.sample} />
+<Story
+	name="Backdropped"
+	parameters={PARAMETERS.sample}
+	tags={["!dev"]}
+	args={{ backdropped: true }}
+/>
 
-<Story name="Colors" parameters={PARAMETERS.variants}>
+<Story
+	name="Colors"
+	parameters={PARAMETERS.variants}
+	tags={["!dev"]}
+>
 	<VariantsGroup prop="color" values={POPOVER_COLORS}>
 		{#snippet children({ color })}
 			<Button {color} size="small" popovertarget={color}>

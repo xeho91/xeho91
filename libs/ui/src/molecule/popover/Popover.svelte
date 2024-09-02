@@ -75,6 +75,7 @@ $effect(() => {
 	)}
 >
 	<Container
+		name={id}
 		gap_column="2xs"
 		padding_x="s"
 		padding_y="xs"
