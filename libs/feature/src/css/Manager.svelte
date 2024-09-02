@@ -46,13 +46,13 @@ $effect(() => {
 		"grid",
 		// Background
 		Color.class("background"),
-		Color.get("secondary", "solid", 1).class("background"),
+		Color.get("secondary", "opaque", 1).class("background"),
 		// Text
 		Font.family.default().class(),
 		Font.family.default().weight.default().class(),
 		Font.size.default().class(),
 		Color.class("text"),
-		Color.get("secondary", "solid", 11).class("text"),
+		Color.get("secondary", "opaque", 11).class("text"),
 	]}
 />
 

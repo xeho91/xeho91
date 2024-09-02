@@ -133,9 +133,9 @@ export class Color<
 		step: TStep,
 	): Variant<TCategory, TName, TType, TStep> => `${category}-${name}-${type}-${step}`;
 
-	public static get = <TName extends ColorName, TType extends ColorType = "solid", TStep extends ColorStep = 8>(
+	public static get = <TName extends ColorName, TType extends ColorType = "opaque", TStep extends ColorStep = 8>(
 		name: TName,
-		type = "solid" as TType,
+		type = "opaque" as TType,
 		step = 8 as TStep,
 	): Color<ColorCategoryFromName<TName>, TName, TType, TStep> => {
 		const category = Color.get_category_from_name(name);

@@ -83,7 +83,7 @@ const {
 	tag = "span" as TTag,
 	anchor,
 	color,
-	mode = "solid",
+	mode = "opaque",
 	family,
 	size,
 	weight,

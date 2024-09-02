@@ -50,29 +50,29 @@ export function set_button_color_class_names<Variant extends ButtonVariant, Colo
 	// biome-ignore format: Prettier
 	switch (variant) {
 		case "filled": return [
-			Color.get(color, "solid", 9).class("background"),
-			Color.get(color, "solid", 10).class("background", { pseudo_class: "active" }),
-			Color.get(color, "solid", 10).class("background", { pseudo_class: "focus" }),
-			Color.get(color, "solid", 10).class("background", { pseudo_class: "hover" }),
-			Color.get(color, "solid", 9).class("border"),
-			Color.get(color, "solid", 10).class("border", { pseudo_class: "focus-within" }),
+			Color.get(color, "opaque", 9).class("background"),
+			Color.get(color, "opaque", 10).class("background", { pseudo_class: "active" }),
+			Color.get(color, "opaque", 10).class("background", { pseudo_class: "focus" }),
+			Color.get(color, "opaque", 10).class("background", { pseudo_class: "hover" }),
+			Color.get(color, "opaque", 9).class("border"),
+			Color.get(color, "opaque", 10).class("border", { pseudo_class: "focus-within" }),
 			Color.get(color, "blend", 9).class("box-shadow"),
 		];
 		case "outlined": return [
-			Color.get(color, "solid", 3).class("background"),
-			Color.get(color, "solid", 5).class("background", { pseudo_class: "active" }),
-			Color.get(color, "solid", 5).class("background", { pseudo_class: "focus" }),
-			Color.get(color, "solid", 4).class("background", { pseudo_class: "hover" }),
-			Color.get(color, "solid", 7).class("border"),
-			Color.get(color, "solid", 8).class("border", { pseudo_class: "focus-within" }),
+			Color.get(color, "opaque", 3).class("background"),
+			Color.get(color, "opaque", 5).class("background", { pseudo_class: "active" }),
+			Color.get(color, "opaque", 5).class("background", { pseudo_class: "focus" }),
+			Color.get(color, "opaque", 4).class("background", { pseudo_class: "hover" }),
+			Color.get(color, "opaque", 7).class("border"),
+			Color.get(color, "opaque", 8).class("border", { pseudo_class: "focus-within" }),
 			Color.get(color, "blend", 9).class("box-shadow"),
 		];
 		case "transparent": return [
 			Color.get(color, "blend", 5).class("background", { pseudo_class: "active" }),
 			Color.get(color, "blend", 5).class("background", { pseudo_class: "focus" }),
 			Color.get(color, "blend", 4).class("background", { pseudo_class: "hover" }),
-			Color.get(color, "solid", 7).class("border"),
-			Color.get(color, "solid", 8).class("border", { pseudo_class: "focus-within" }),
+			Color.get(color, "opaque", 7).class("border"),
+			Color.get(color, "opaque", 8).class("border", { pseudo_class: "focus-within" }),
 			Color.get(color, "blend", 9).class("box-shadow"),
 		];
 		default: throw unrecognized(variant);

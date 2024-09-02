@@ -41,7 +41,7 @@ $effect(() => {
 			"skeleton",
 			"inline-flex",
 			Color.class("background"),
-			Color.get(background_color, "solid", 3).class("background"),
+			Color.get(background_color, "opaque", 3).class("background"),
 			variant === "circle" && Radius.get("circle").class(),
 			variant === "text" && Radius.get("m").class(),
 			class_,

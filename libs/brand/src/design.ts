@@ -34,8 +34,8 @@ export class BrandAssetTheme<TName extends BrandAssetThemeName = BrandAssetTheme
 		// biome-ignore format: Prettier
 		switch (this.#name) {
 			case "color": return;
-			case "black": return Color.get("grayscale", "gray", "solid", 12)[scheme];
-			case "white": return Color.get("grayscale", "gray", "solid", 1)[scheme];
+			case "black": return Color.get("grayscale", "gray", "opaque", 12)[scheme];
+			case "white": return Color.get("grayscale", "gray", "opaque", 1)[scheme];
 		}
 	}
 

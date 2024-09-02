@@ -21,7 +21,7 @@ let { children }: Props = $props();
 	{#each Color.SCHEMES as scheme}
 		<meta
 			name="theme-color"
-			content={Color.get("secondary", "solid", 9).light_dark[
+			content={Color.get("secondary", "opaque", 9).light_dark[
 				scheme
 			].oklch.toString()}
 			media={`(prefers-color-scheme: ${scheme})`}

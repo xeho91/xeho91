@@ -17,7 +17,7 @@ const {
 	class: class_,
 	name = "primary",
 	step = 8,
-	type = "solid",
+	type = "opaque",
 }: Props = $props();
 </script>
 

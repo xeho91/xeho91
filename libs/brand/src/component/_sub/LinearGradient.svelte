@@ -17,12 +17,12 @@ export const GRADIENT_ROTATE = 90;
 	let { id, rotate = GRADIENT_ROTATE, animated }: Props = $props();
 
 	const gradient_light = new ColorGradient(
-		Color.get("brand", "primary", "solid", 9).light,
-		Color.get("brand", "accent", "solid", 9).light,
+		Color.get("brand", "primary", "opaque", 9).light,
+		Color.get("brand", "accent", "opaque", 9).light,
 	);
 	const gradient_dark = new ColorGradient(
-		Color.get("brand", "primary", "solid", 9).dark,
-		Color.get("brand", "accent", "solid", 9).dark,
+		Color.get("brand", "primary", "opaque", 9).dark,
+		Color.get("brand", "accent", "opaque", 9).dark,
 	);
 </script>
 

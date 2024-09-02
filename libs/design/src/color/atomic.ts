@@ -152,7 +152,7 @@ if (import.meta.vitest) {
 		const atomized_color = new AtomicColor({
 			category: "brand",
 			name: "info",
-			type: "solid",
+			type: "opaque",
 			step: 9,
 			scheme: "dark",
 			oklch: {
@@ -167,7 +167,7 @@ if (import.meta.vitest) {
 			it("returns stringified name", ({ expect }) => {
 				const stringified = atomized_color.toString();
 				expect(stringified).toMatchInlineSnapshot(`"color-brand-info-solid-9-dark"`);
-				expectTypeOf(stringified).toEqualTypeOf<Name<"brand", "info", "solid", 9, "dark">>();
+				expectTypeOf(stringified).toEqualTypeOf<Name<"brand", "info", "opaque", 9, "dark">>();
 			});
 
 			it("stringified returns oklch with literal values", ({ expect }) => {
