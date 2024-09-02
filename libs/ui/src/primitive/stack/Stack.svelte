@@ -1,19 +1,22 @@
 <script lang="ts" generics="TTag extends StackHtmlTag = 'div'">
 import { Space, type SpaceSize } from "@xeho91/lib-design/space";
 import type { WithChildren } from "@xeho91/lib-feature/component";
-import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+import type { Properties } from "csstype";
 import type { HTMLAttributes } from "svelte/elements";
 
 import type { StackDirection, StackHtmlTag } from "./util";
 
 interface Props
-	extends WithChildren,
+	extends WithAnchor,
+		WithChildren,
 		WithClass,
 		Omit<HTMLAttributes<HTMLElementTagNameMap[TTag]>, "children" | "class"> {
 	tag?: TTag;
 	// Flex
 	direction?: StackDirection;
-	align_items?: "center" | "start" | "end" | "baseline" | "stretch" | undefined;
+	align_items?: Properties["alignItems"];
+	justify_content?: Properties["justifyContent"];
 	// Gaps
 	gap?: SpaceSize | undefined;
 	gap_column?: SpaceSize | undefined;
@@ -38,11 +41,13 @@ interface Props
 
 let {
 	tag = "div" as TTag,
+	anchor,
 	children,
 	class: class_,
 	// Flex
 	direction = "row",
 	align_items,
+	justify_content,
 	// Gaps
 	gap,
 	gap_column,
@@ -69,6 +74,7 @@ let {
 </script>
 
 <svelte:element
+	{...rest_props}
 	this={tag as string}
 	class:flex-col={direction === "column"}
 	class:flex-row={direction === "row"}
@@ -77,6 +83,14 @@ let {
 	class:items-end={align_items === "end"}
 	class:items-stretch={align_items === "stretch"}
 	class:items-baseline={align_items === "baseline"}
+	class:justify-normal={justify_content === "normal"}
+	class:justify-start={justify_content === "start"}
+	class:justify-center={justify_content === "center"}
+	class:justify-end={justify_content === "end"}
+	class:justify-around={justify_content === "space-around"}
+	class:justify-between={justify_content === "space-between"}
+	class:justify-evenly={justify_content === "space-evenly"}
+	class:justify-stretch={justify_content === "stretch"}
 	class={merge_classes(
 		"stack",
 		"flex",
@@ -103,7 +117,6 @@ let {
 		// Other
 		class_,
 	)}
-	{...rest_props}
 >
 	{@render children()}
 </svelte:element>
