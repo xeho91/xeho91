@@ -43,8 +43,10 @@ export class Reference<TName extends string = string> implements Display, ToAST 
 		return new AtProperty(this, properties);
 	}
 
-	public to_var(): Var<typeof this> {
-		return new Var(this);
+	public to_var<TFallback extends ConstructorParameters<typeof Var>[1]>(
+		fallback?: TFallback,
+	): Var<typeof this, TFallback> {
+		return new Var(this, fallback);
 	}
 
 	public add_prefix<Prefix extends string | number>(prefix: Prefix) {

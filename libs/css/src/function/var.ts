@@ -1,9 +1,8 @@
 import { FunctionBase, FunctionChildren } from "#function";
-import type { Identifier } from "#identifier";
 import { Operator } from "#operator";
-import type { Reference } from "#reference";
-
-type Value = Identifier;
+import { Reference } from "#reference";
+import type { Value } from "#value";
+import { NumberCSS } from "#value/number";
 
 export class Var<
 	TReference extends Reference = Reference,
@@ -35,3 +34,25 @@ export class Var<
 type Children<TReference extends Reference, TFallback extends Value | undefined> = TFallback extends Value
 	? FunctionChildren<[TReference, Operator<",">, TFallback]>
 	: FunctionChildren<[TReference]>;
+
+if (import.meta.vitest) {
+	const { describe, expectTypeOf, it } = import.meta.vitest;
+
+	describe(Var.name, () => {
+		describe("constructor", () => {
+			it("allows constructing without fallback", ({ expect }) => {
+				const variable = new Var(new Reference("foo"));
+				expect(variable).toBeInstanceOf(Var);
+				expect(variable.fallback).toBeUndefined();
+				expectTypeOf(variable).toEqualTypeOf<Var<Reference<"foo">>>();
+			});
+
+			it("allows constructing with fallback", ({ expect }) => {
+				const variable = new Var(new Reference("foo"), new NumberCSS(0).to_value());
+				expect(variable).toBeInstanceOf(Var);
+				expect(variable.fallback).toBeInstanceOf(NumberCSS);
+				expectTypeOf(variable).toEqualTypeOf<Var<Reference<"foo">, Value<[NumberCSS<0>]>>>();
+			});
+		});
+	});
+}
