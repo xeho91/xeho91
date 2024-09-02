@@ -5,7 +5,7 @@
 	"name": "@xeho91/lib-storybook",
 	"version": "0.0.0",
 	"engines": {
-		"node": ">=20"
+		"node": ">=22"
 	},
 	"files": ["/src"],
 	"imports": {
