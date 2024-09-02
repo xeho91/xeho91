@@ -1,10 +1,21 @@
 <script context="module" lang="ts">
+export const GRADIENT_COLORS = readonly_object({
+	light: new ColorGradient(Color.get("primary", "opaque", 9).light, Color.get("accent", "opaque", 9).light),
+	dark: new ColorGradient(Color.get("primary", "opaque", 9).dark, Color.get("accent", "opaque", 9).dark),
+});
 export const GRADIENT_ROTATE = 90;
+export const GRADIENT_STOPS = new Range(1, 5, 1);
 </script>
 
 <script lang="ts">
-	import { Color } from "@xeho91/lib-color";
-	import { ColorGradient } from "@xeho91/lib-color/gradient";
+	import { LightDark } from "@xeho91/lib-css/function/light-dark";
+	import { Reference } from "@xeho91/lib-css/reference";
+	import { Color } from "@xeho91/lib-design/color";
+	import { ColorGradient } from "@xeho91/lib-design/color/gradient";
+	import { merge_styles } from "@xeho91/lib-feature/css";
+	import { Range } from "@xeho91/lib-struct/range";
+	import { readonly_object } from "@xeho91/lib-snippet/object";
+	import type { Display } from "@xeho91/lib-type/trait/display";
 
 	import { set_id } from "#id";
 
@@ -16,14 +27,23 @@ export const GRADIENT_ROTATE = 90;
 
 	let { id, rotate = GRADIENT_ROTATE, animated }: Props = $props();
 
-	const gradient_light = new ColorGradient(
-		Color.get("brand", "primary", "opaque", 9).light,
-		Color.get("brand", "accent", "opaque", 9).light,
-	);
-	const gradient_dark = new ColorGradient(
-		Color.get("brand", "primary", "opaque", 9).dark,
-		Color.get("brand", "accent", "opaque", 9).dark,
-	);
+	let styles: Array<[Reference, Display]> = [];
+
+	for (const stop of GRADIENT_STOPS) {
+		let reference_light = new Reference(`light-${stop}`);
+		let reference_dark = new Reference(`dark-${stop}`);
+		styles.push(
+			[reference_light, GRADIENT_COLORS.light.get_stop(stop)],
+			[reference_dark, GRADIENT_COLORS.dark.get_stop(stop)],
+			[
+				new Reference(`gradient-stop-${stop}`),
+				new LightDark(
+					reference_light.to_var(),
+					reference_dark.to_var(),
+				),
+			],
+		);
+	}
 </script>
 
 <linearGradient
@@ -31,21 +51,7 @@ export const GRADIENT_ROTATE = 90;
 	gradientTransform={`rotate(${rotate})`}
 	gradientUnits="objectBoundingBox"
 	spreadMethod="pad"
-	style:--light-1={gradient_light.get_stop(1).toString()}
-	style:--light-2={gradient_light.get_stop(2).toString()}
-	style:--light-3={gradient_light.get_stop(3).toString()}
-	style:--light-4={gradient_light.get_stop(4).toString()}
-	style:--light-5={gradient_light.get_stop(5).toString()}
-	style:--dark-1={gradient_dark.get_stop(1).toString()}
-	style:--dark-2={gradient_dark.get_stop(2).toString()}
-	style:--dark-3={gradient_dark.get_stop(3).toString()}
-	style:--dark-4={gradient_dark.get_stop(4).toString()}
-	style:--dark-5={gradient_dark.get_stop(5).toString()}
-	style:--gradient-stop-1="light-dark(var(--light-1), var(--dark-1))"
-	style:--gradient-stop-2="light-dark(var(--light-2), var(--dark-2))"
-	style:--gradient-stop-3="light-dark(var(--light-3), var(--dark-3))"
-	style:--gradient-stop-4="light-dark(var(--light-4), var(--dark-4))"
-	style:--gradient-stop-5="light-dark(var(--light-5), var(--dark-5))"
+	style={merge_styles(...styles)}
 >
 	{#each ColorGradient.STOPS as stop_position}
 		<stop
