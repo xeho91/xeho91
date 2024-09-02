@@ -37,9 +37,9 @@
 		"_version": "pnpm changeset version && pnpm fix:format"
 	},
 	"devDependencies": {
-		"tslib": "2.6.3",
-		"tsx": "4.16.5",
-		"turbo": "2.0.12"
+		"tslib": "2.7.0",
+		"tsx": "4.19.0",
+		"turbo": "2.1.1"
 	},
 	"optionalDependencies": {
 		"@biomejs/biome": "1.8.3",
@@ -49,14 +49,14 @@
 		"@vitest/ui": "2.0.5",
 		"@xeho91/lib-monorepo": "workspace:*",
 		"del-cli": "5.1.0",
-		"lefthook": "1.7.11",
+		"lefthook": "1.7.15",
 		"markdownlint-cli2": "0.13.0",
 		"serve": "14.2.3",
 		"svelte-check": "catalog:",
-		"typedoc": "0.26.5",
+		"typedoc": "0.26.6",
 		"typedoc-plugin-coverage": "3.3.0",
-		"typedoc-plugin-mdn-links": "3.2.7",
-		"vite": "5.4.0",
+		"typedoc-plugin-mdn-links": "3.2.11",
+		"vite": "5.4.2",
 		"vitest": "2.0.5"
 	}
 }
