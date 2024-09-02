@@ -1,7 +1,7 @@
 import { FunctionBase, FunctionChildren } from "#function";
 import { Operator } from "#operator";
 import { Reference } from "#reference";
-import type { Value } from "#value";
+import { Value } from "#value";
 import { NumberCSS } from "#value/number";
 
 export class Var<
@@ -50,7 +50,7 @@ if (import.meta.vitest) {
 			it("allows constructing with fallback", ({ expect }) => {
 				const variable = new Var(new Reference("foo"), new NumberCSS(0).to_value());
 				expect(variable).toBeInstanceOf(Var);
-				expect(variable.fallback).toBeInstanceOf(NumberCSS);
+				expect(variable.fallback).toBeInstanceOf(Value);
 				expectTypeOf(variable).toEqualTypeOf<Var<Reference<"foo">, Value<[NumberCSS<0>]>>>();
 			});
 		});
