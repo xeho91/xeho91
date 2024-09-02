@@ -1,4 +1,3 @@
-import { Color as ColorInstance } from "@xeho91/lib-color";
 import { Block } from "@xeho91/lib-css/block";
 import { Alpha } from "@xeho91/lib-css/data-type/alpha";
 import { Chroma } from "@xeho91/lib-css/data-type/chroma";
@@ -17,10 +16,71 @@ import { Syntax } from "@xeho91/lib-css/syntax";
 import { ColorTarget } from "@xeho91/lib-css/target/color";
 import type { Value } from "@xeho91/lib-css/value";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
-
+import { object_keys, readonly_object } from "@xeho91/lib-snippet/object";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
+
+import type { AtomicColor } from "#color/atomic";
+import * as accent from "#color/palette/brand/accent";
+import * as primary from "#color/palette/brand/primary";
+import * as secondary from "#color/palette/brand/secondary";
+import * as black from "#color/palette/grayscale/black";
+import * as gray from "#color/palette/grayscale/gray";
+import * as white from "#color/palette/grayscale/white";
+import * as error from "#color/palette/semantic/error";
+import * as info from "#color/palette/semantic/info";
+import * as success from "#color/palette/semantic/success";
+import * as warning from "#color/palette/semantic/warning";
 import { DesignToken } from "#token";
+
+const VARIABLE = readonly_object({
+	brand: {
+		accent,
+		primary,
+		secondary,
+	},
+	grayscale: {
+		black,
+		gray,
+		white,
+	},
+	semantic: {
+		error,
+		info,
+		success,
+		warning,
+	},
+});
+
+export type ColorBrandName = IterableElement<typeof ColorBrand.NAMES>;
+// biome-ignore lint/complexity/noStaticOnlyClass: FIXME: What's the alternative?
+export class ColorBrand {
+	public static readonly NAMES = readonly_set(object_keys(VARIABLE.brand));
+
+	public static [Symbol.iterator](): IterableIterator<ColorBrandName> {
+		return ColorBrand.NAMES[Symbol.iterator]();
+	}
+}
+
+export type ColorGrayscaleName = IterableElement<typeof ColorGrayscale.NAMES>;
+// biome-ignore lint/complexity/noStaticOnlyClass: FIXME: What's the alternative?
+export class ColorGrayscale {
+	public static readonly NAMES = readonly_set(object_keys(VARIABLE.grayscale));
+
+	public static [Symbol.iterator](): IterableIterator<ColorGrayscaleName> {
+		return ColorGrayscale.NAMES[Symbol.iterator]();
+	}
+}
+
+export type ColorSemanticName = IterableElement<typeof ColorSemantic.NAMES>;
+// biome-ignore lint/complexity/noStaticOnlyClass: FIXME: What's the alternative?
+export class ColorSemantic {
+	public static readonly NAMES = readonly_set(object_keys(VARIABLE.semantic));
+
+	public static [Symbol.iterator](): IterableIterator<ColorSemanticName> {
+		return ColorSemantic.NAMES[Symbol.iterator]();
+	}
+}
 
 type Variant<
 	TCategory extends ColorCategory = ColorCategory,
@@ -80,7 +140,7 @@ export class Color<
 	/**
 	 * Available color categories set, for grouping purposes.
 	 */
-	public static readonly CATEGORIES = readonly_set(["brand", "semantic", "grayscale"]);
+	public static readonly CATEGORIES = readonly_set(object_keys(VARIABLE));
 
 	/**
 	 * The idea is that the solid and blend scales are interchangeable, since they match almost perfectly.
@@ -103,6 +163,10 @@ export class Color<
 		"gray",
 		"white",
 	]);
+
+	public static brand = ColorBrand;
+	public static grayscale = ColorGrayscale;
+	public static semantic = ColorSemantic;
 
 	public static get_category_from_name = <TName extends ColorName>(name: TName): ColorCategoryFromName<TName> => {
 		// biome-ignore format: Prettier
@@ -203,6 +267,51 @@ export class Color<
 		return selector;
 	};
 
+	static #variable_identifier = <
+		TName extends ColorName,
+		TType extends ColorType,
+		TStep extends ColorStep,
+		TScheme extends ColorScheme,
+	>(
+		name: TName,
+		type: TType,
+		step: TStep,
+		scheme: TScheme,
+	): VariableIdentifier<TName, TType, TStep, TScheme> =>
+		`${name.toUpperCase()}_${type.toUpperCase() as Uppercase<TType>}_${step}_${scheme.toUpperCase()}` as VariableIdentifier<
+			TName,
+			TType,
+			TStep,
+			TScheme
+		>;
+
+	static #get_identifiers<TCategory extends ColorCategory, TName extends ColorName>(
+		category: TCategory,
+		name: TName,
+	): IdentifiersByCategory<TCategory, TName> {
+		const by_category = VARIABLE[category as keyof typeof VARIABLE];
+		return by_category[name as keyof typeof by_category];
+	}
+
+	static #get_by_scheme = <
+		TCategory extends ColorCategory,
+		TName extends ColorName,
+		TType extends ColorType,
+		TStep extends ColorStep,
+		TScheme extends ColorScheme,
+	>(
+		category: TCategory,
+		name: TName,
+		type: TType,
+		step: TStep,
+		scheme: TScheme,
+	): AtomicColor<TCategory, TName, TType, TStep, TScheme> => {
+		const by_category_and_name = Color.#get_identifiers(category, name as ColorName);
+		return by_category_and_name[
+			Color.#variable_identifier(name as ColorName, type, step, scheme) as keyof typeof by_category_and_name
+		] as AtomicColor<TCategory, TName, TType, TStep, TScheme>;
+	};
+
 	constructor(params: { category: TCategory; name: TName; type: TType; step: TStep }) {
 		const { category, name, type, step } = params;
 		super({
@@ -211,11 +320,16 @@ export class Color<
 			value: { category, name, type, step },
 		});
 	}
-
-	public get light_dark(): ReturnType<typeof ColorInstance.get<TCategory, TName, TType, TStep>> {
+	public get light() {
 		const { value } = this;
 		const { category, name, type, step } = value;
-		return ColorInstance.get(category, name, type, step);
+		return Color.#get_by_scheme(category, name, type, step, "light");
+	}
+
+	public get dark() {
+		const { value } = this;
+		const { category, name, type, step } = value;
+		return Color.#get_by_scheme(category, name, type, step, "dark");
 	}
 
 	public set_target<TTarget extends Target>(target: TTarget): ColorTarget<TTarget> {
@@ -250,8 +364,7 @@ export class Color<
 		const { key, reference } = this;
 		const from_map = Color.GLOBAL_RULESETS.get(key);
 		if (from_map) return from_map;
-		const { light_dark } = this;
-		const { light, dark } = light_dark;
+		const { light, dark } = this;
 		const selector = Selector.pseudo.class("root");
 		const block = new Block(
 			// lightness
@@ -288,6 +401,51 @@ export class Color<
 }
 
 type Target = ConstructorParameters<typeof ColorTarget>[0];
+
+/**
+ * @see {@link Color.CATEGORIES}
+ */
+export type ColorCategory = IterableElement<typeof Color.CATEGORIES>;
+
+/**
+ * @see {@link Color.NAMES}
+ */
+export type ColorName = IterableElement<typeof Color.NAMES>;
+
+/**
+ * @see {@link Color.SCHEMES}
+ */
+export type ColorScheme = IterableElement<typeof Color.SCHEMES>;
+
+/**
+ * @see {@link Color.TYPES}
+ */
+export type ColorType = IterableElement<typeof Color.TYPES>;
+
+/**
+ * @see {@link Color.STEPS}
+ */
+export type ColorStep = IterableElement<typeof Color.STEPS>;
+
+type VariableIdentifier<
+	TName extends ColorName,
+	TType extends ColorType,
+	TStep extends ColorStep,
+	TScheme extends ColorScheme,
+> = `${Uppercase<TName>}_${Uppercase<TType>}_${TStep}_${Uppercase<TScheme>}`;
+
+type IdentifiersByCategory<
+	TCategory extends ColorCategory,
+	TName extends ColorName,
+> = TName extends keyof (typeof VARIABLE)[TCategory] ? (typeof VARIABLE)[TCategory][TName] : never;
+
+export type ColorCategoryFromName<TName extends ColorName> = TName extends "primary" | "secondary" | "accent"
+	? "brand"
+	: TName extends "error" | "info" | "success" | "warning"
+		? "semantic"
+		: TName extends "black" | "gray" | "white"
+			? "grayscale"
+			: never;
 
 if (import.meta.vitest) {
 	const { describe, expectTypeOf, it, vi } = import.meta.vitest;
@@ -419,48 +577,3 @@ if (import.meta.vitest) {
 		});
 	});
 }
-
-/**
- * @see {@link Color.CATEGORIES}
- */
-export type ColorCategory = IterableElement<typeof Color.CATEGORIES>;
-
-/**
- * @see {@link Color.NAMES}
- */
-export type ColorName = IterableElement<typeof Color.NAMES>;
-
-/**
- * @see {@link Color.SCHEMES}
- */
-export type ColorScheme = IterableElement<typeof Color.SCHEMES>;
-
-/**
- * @see {@link Color.TYPES}
- */
-export type ColorType = IterableElement<typeof Color.TYPES>;
-
-/**
- * @see {@link Color.STEPS}
- */
-export type ColorStep = IterableElement<typeof Color.STEPS>;
-
-// type VariableIdentifier<
-// 	TName extends ColorName,
-// 	TType extends ColorType,
-// 	TStep extends ColorStep,
-// 	TScheme extends ColorScheme,
-// > = `${Uppercase<TName>}_${Uppercase<TType>}_${TStep}_${Uppercase<TScheme>}`;
-
-// type IdentifiersByCategory<
-// 	TCategory extends ColorCategory,
-// 	TName extends ColorName,
-// > = TName extends keyof (typeof VARIABLE)[TCategory] ? (typeof VARIABLE)[TCategory][TName] : never;
-
-export type ColorCategoryFromName<TName extends ColorName> = TName extends "primary" | "secondary" | "accent"
-	? "brand"
-	: TName extends "error" | "info" | "success" | "warning"
-		? "semantic"
-		: TName extends "black" | "gray" | "white"
-			? "grayscale"
-			: never;

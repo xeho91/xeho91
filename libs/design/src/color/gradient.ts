@@ -9,7 +9,7 @@ import { Range } from "@xeho91/lib-struct/range";
 import type { ReadonlyTuple } from "@xeho91/lib-type/tuple";
 import { type Oklch as OklchCulori, interpolate, samples } from "culori";
 
-import type { AtomicColor } from "./atomic";
+import type { AtomicColor } from "#color/atomic";
 
 export class ColorGradient<TFrom extends AtomicColor = AtomicColor, TTo extends AtomicColor = AtomicColor> {
 	public static readonly STOPS = new Range(1, 5, 1);
@@ -47,36 +47,36 @@ export class ColorGradient<TFrom extends AtomicColor = AtomicColor, TTo extends 
 type ColorSamplesTuple = ReadonlyTuple<OklchCulori, 5>;
 
 if (import.meta.vitest) {
-	const { PRIMARY_SOLID_1_LIGHT, PRIMARY_SOLID_12_LIGHT } = await import("#palette/brand/primary");
+	const { PRIMARY_OPAQUE_1_LIGHT, PRIMARY_OPAQUE_12_LIGHT } = await import("#color/palette/brand/primary");
 	const { describe, expectTypeOf, it } = import.meta.vitest;
 
 	describe(ColorGradient.name, () => {
 		it("constructor", ({ expect }) => {
-			const gradient = new ColorGradient(PRIMARY_SOLID_1_LIGHT, PRIMARY_SOLID_12_LIGHT);
+			const gradient = new ColorGradient(PRIMARY_OPAQUE_1_LIGHT, PRIMARY_OPAQUE_12_LIGHT);
 			expect(gradient).toBeInstanceOf(ColorGradient);
 			expectTypeOf(gradient).toEqualTypeOf<
-				ColorGradient<typeof PRIMARY_SOLID_1_LIGHT, typeof PRIMARY_SOLID_12_LIGHT>
+				ColorGradient<typeof PRIMARY_OPAQUE_1_LIGHT, typeof PRIMARY_OPAQUE_12_LIGHT>
 			>();
 		});
 
 		it("get stops", ({ expect }) => {
-			const { stops } = new ColorGradient(PRIMARY_SOLID_1_LIGHT, PRIMARY_SOLID_12_LIGHT);
+			const { stops } = new ColorGradient(PRIMARY_OPAQUE_1_LIGHT, PRIMARY_OPAQUE_12_LIGHT);
 			expect(stops).toBeInstanceOf(Array);
 			expectTypeOf(stops).toEqualTypeOf<
 				readonly [OklchCulori, OklchCulori, OklchCulori, OklchCulori, OklchCulori]
 			>();
-			expect(stops[0]).toStrictEqual(PRIMARY_SOLID_1_LIGHT.culori_oklch);
-			expect(stops[4]).toStrictEqual(PRIMARY_SOLID_12_LIGHT.culori_oklch);
+			expect(stops[0]).toStrictEqual(PRIMARY_OPAQUE_1_LIGHT.culori_oklch);
+			expect(stops[4]).toStrictEqual(PRIMARY_OPAQUE_12_LIGHT.culori_oklch);
 		});
 
 		it("get_stop(position)", ({ expect }) => {
-			const gradient = new ColorGradient(PRIMARY_SOLID_1_LIGHT, PRIMARY_SOLID_12_LIGHT);
+			const gradient = new ColorGradient(PRIMARY_OPAQUE_1_LIGHT, PRIMARY_OPAQUE_12_LIGHT);
 			const stop_1 = gradient.get_stop(1);
 			const stop_5 = gradient.get_stop(5);
 			expect(stop_1).toBeInstanceOf(Oklch);
-			expect(stop_1).toStrictEqual(PRIMARY_SOLID_1_LIGHT.oklch);
+			expect(stop_1).toStrictEqual(PRIMARY_OPAQUE_1_LIGHT.oklch);
 			expect(stop_5).toBeInstanceOf(Oklch);
-			expect(stop_5).toStrictEqual(PRIMARY_SOLID_12_LIGHT.oklch);
+			expect(stop_5).toStrictEqual(PRIMARY_OPAQUE_12_LIGHT.oklch);
 		});
 	});
 }

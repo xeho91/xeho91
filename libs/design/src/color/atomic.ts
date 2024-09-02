@@ -166,7 +166,7 @@ if (import.meta.vitest) {
 		describe("toString()", () => {
 			it("returns stringified name", ({ expect }) => {
 				const stringified = atomized_color.toString();
-				expect(stringified).toMatchInlineSnapshot(`"color-brand-info-solid-9-dark"`);
+				expect(stringified).toMatchInlineSnapshot(`"color-brand-info-opaque-9-dark"`);
 				expectTypeOf(stringified).toEqualTypeOf<Name<"brand", "info", "opaque", 9, "dark">>();
 			});
 
@@ -205,7 +205,7 @@ if (import.meta.vitest) {
 			it("returns correctly an instance", ({ expect }) => {
 				const { atomized_oklch } = atomized_color;
 				expect(atomized_oklch.toString()).toMatchInlineSnapshot(
-					`"oklch(var(--color-brand-info-solid-9-dark-lightness) var(--color-brand-info-solid-9-dark-chroma) var(--color-brand-info-solid-9-dark-hue) / var(--color-brand-info-solid-9-dark-alpha))"`,
+					`"oklch(var(--color-brand-info-opaque-9-dark-lightness) var(--color-brand-info-opaque-9-dark-chroma) var(--color-brand-info-opaque-9-dark-hue) / var(--color-brand-info-opaque-9-dark-alpha))"`,
 				);
 			});
 		});
