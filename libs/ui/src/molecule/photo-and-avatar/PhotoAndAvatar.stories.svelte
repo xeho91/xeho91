@@ -3,20 +3,16 @@ import { defineMeta } from "@storybook/addon-svelte-csf";
 import { SHARED_META } from "@xeho91/lib-storybook/meta";
 import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
 
-import ButtonAppSettings from "./ButtonAppSettings.svelte";
+import PhotoAndAvatar from "./PhotoAndAvatar.svelte";
 
 const { Story } = defineMeta({
 	...SHARED_META,
-	component: ButtonAppSettings,
-	title: "Organism/AppSettings",
+	component: PhotoAndAvatar,
+	title: "Molecule/PhotoAndAvatar",
 	parameters: {
 		layout: "centered",
 	},
 });
 </script>
 
-<Story
-	name="Default"
-	parameters={PARAMETERS.default}
-	tags={["autodocs", "!dev"]}
-/>
+<Story name="Default" parameters={PARAMETERS.default} tags={["!dev"]} />

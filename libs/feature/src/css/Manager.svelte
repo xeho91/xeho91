@@ -5,6 +5,7 @@ import "@xeho91/lib-asset/font/serif";
 import "@xeho91/lib-asset/font/mono";
 
 import { AtLayer } from "@xeho91/lib-css/at-rule/layer";
+import { Reference } from "@xeho91/lib-css/reference";
 import { Color } from "@xeho91/lib-design/color";
 import { Font } from "@xeho91/lib-design/font";
 
@@ -13,11 +14,12 @@ import LayerStyles from "./LayerStyles.svelte";
 import { state_css } from "./state.svelte";
 import { classes } from "./util";
 
+const radial_color = Color.get("secondary", "blend", 2);
+
 $effect(() => {
-	const radial_color = Color.get("secondary", "blend", 2);
 	for (const scheme of Color.SCHEMES) {
 		window.document.body.style.setProperty(
-			`--radial-gradient-color-${scheme}`,
+			new Reference(`--radial-gradient-color-${scheme}`).toString(),
 			radial_color.light_dark[scheme].atomized_oklch.toString(),
 		);
 	}
@@ -71,9 +73,9 @@ $effect(() => {
 
 	@layer override {
 		:global(*) {
-			--box-shadow-color-light-lightness: 65%;
+			--box-shadow-color-light-lightness: 21%;
 			--box-shadow-color-dark-lightness: 15%;
-			--text-shadow-color-light-lightness: 65%;
+			--text-shadow-color-light-lightness: 21%;
 			--text-shadow-color-dark-lightness: 15%;
 		}
 	}

@@ -8,10 +8,10 @@ import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import type { Properties } from "csstype";
 import type { HTMLAttributes } from "svelte/elements";
+import type { TransitionConfig } from "svelte/transition";
 
 import type { TextColor, TextHTMLTag, TextWeight } from "./util";
 
-import type { TransitionConfig } from "svelte/transition";
 import { Skeleton, set_skeleton_color } from "#primitive/skeleton/mod";
 
 interface Props

@@ -12,14 +12,13 @@ import type { CodeWeight } from "./util";
 import { Text } from "#primitive/text/mod";
 
 type TextProps = Omit<ComponentProps<Text<"code", "mono", FontWeightMonoKey>>, "tag" | "family">;
-
 interface Props extends TextProps {
 	/**
-	 * Font's **size** from [design tokens](https://shan-shan.gitbook.io/handbook/design/brandbook/broom#typography)
+	 * Font's **size** from design tokens
 	 */
 	size?: FontSizeKey;
 	/**
-	 * Font's **weight** from [design tokens](https://shan-shan.gitbook.io/handbook/design/brandbook/broom#typography)
+	 * Font's **weight** from design tokens
 	 */
 	weight?: CodeWeight;
 }
