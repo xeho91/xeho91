@@ -27,25 +27,14 @@ let {
 	class: class_,
 }: Props = $props();
 
-let resize_observer = $state<ResizeObserver>();
 let element = $state<HTMLElement>();
-let height = $state<number>();
-
-$effect(() => {
-	if (resize_observer && element) resize_observer.observe(element);
-});
-
-$effect(() => {
-	resize_observer = new ResizeObserver((entries) => {
-		height = entries[0]?.borderBoxSize[0]?.blockSize;
-	});
-	() => resize_observer?.disconnect();
-});
+let border_box_size = $state<ResizeObserverSize[]>();
+let height = $derived(border_box_size?.[0]?.blockSize);
+let parent = $derived(element?.parentNode as HTMLElement);
 
 $effect(() => {
 	if (height) {
-		const parent = element?.parentNode as HTMLElement;
-		parent.style.setProperty(
+		parent?.style.setProperty(
 			LAYOUT_DEFAULT_HEADER_MAIN_HEIGHT_REFERENCE.toString(),
 			new Dimension(height, "px").toString(),
 		);
@@ -57,16 +46,17 @@ $effect(() => {
 	tag="header"
 	name="header-main"
 	bind:element
+	bind:border_box_size
 	grid
 	class={merge_classes(
 		"header-main",
 		// Layout
 		"sticky z-10",
-		"w-[100lvw] h-fit",
-		LAYOUT_DEFAULT_GRID_GUTTER.class("margin-block-start"),
+		"h-fit",
 		Space.get("2xs").class("inset-block-start"),
 		Space.get("2xs").class("padding-block"),
 		"snap-start",
+		"self-start col-span-full",
 		// Background
 		Color.class("background"),
 		Color.get("secondary", "blend", 4).class("background"),

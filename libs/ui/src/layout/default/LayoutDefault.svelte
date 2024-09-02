@@ -35,23 +35,18 @@ $effect(() => {
 	{#if rendered}
 		<Header
 			class={merge_classes(
+				LAYOUT_DEFAULT_GRID_GUTTER.class("margin-block-start"),
 				LAYOUT_DEFAULT_GRID_GUTTER.class("scroll-margin-block-start"),
-				"col-span-full row-start-1"
+				"row-start-1"
 			)}
 		/>
 		<Main
-			class={merge_classes(
-				//
-				"col-span-full row-start-2"
-			)}
+			class={merge_classes("row-start-2")}
 		>
 			{@render children()}
 		</Main>
 		<Footer
-			class={merge_classes(
-				//
-				"col-span-full row-start-3"
-			)}
+			class={merge_classes("row-start-3")}
 		/>
 	{/if}
 </Container>
@@ -60,6 +55,17 @@ $effect(() => {
 @layer component {
 	:global(body:has(.layout-default)) {
 		padding-inline: var(--grid-gutter-default);
+	}
+}
+
+:global(.sb-show-main.sb-main-fullscreen) {
+	display: revert-layer;
+	padding: revert-layer;
+}
+
+@layer override {
+	:global(#storybook-root) {
+		display: contents;
 	}
 }
 </style>

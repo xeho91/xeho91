@@ -17,12 +17,7 @@ let {
 
 <article
 	{...rest_props}
-	class={merge_classes(
-		"article",
-		"min-w[100lvw] min-h[100lvh]",
-		"flex place-content-center place-items-center",
-		class_
-	)}
+	class={merge_classes("article", "contents", class_)}
 >
 	{@render children()}
 </article>

@@ -43,16 +43,3 @@ export const { Story, meta } = defineMeta({
 	args={{ variant: "default" }}
 	tags={["!dev"]}
 />
-
-<style>
-:global(.sb-show-main.sb-main-fullscreen) {
-	display: revert-layer;
-	padding: revert-layer;
-}
-
-@layer override {
-	:global(#storybook-root) {
-		display: contents;
-	}
-}
-</style>

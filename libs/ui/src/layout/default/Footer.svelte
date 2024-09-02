@@ -29,9 +29,10 @@ let {
 		//
 		"footer-main",
 		"relative inset-x-1/2",
-		"w-[100dvw] mx-[-50dvw]",
+		"w-[100dvw] mx-[-50dvw] h-fit",
 		"snap-end",
 		LAYOUT_DEFAULT_GRID_GUTTER.class("padding-block"),
+		"self-end col-span-full",
 		// Background
 		Color.class("background"),
 		Color.get("secondary", "blend", 3).class("background"),
