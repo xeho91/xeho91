@@ -5,15 +5,20 @@ import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
 
 import PageHome from "./PageHome.svelte";
 
+import { LayoutDefault } from "#layout/default/mod";
+
 const { Story } = defineMeta({
 	...SHARED_META,
 	component: PageHome,
-	tags: ["autodocs"],
-	argTypes: {},
 	parameters: {
 		layout: "fullscreen",
 	},
+	decorators: [() => ({ Component: LayoutDefault })],
 });
 </script>
 
-<Story name="Default" parameters={PARAMETERS.default} />
+<Story
+	name="Default"
+	parameters={PARAMETERS.default}
+	tags={["!autodocs", "dev"]}
+/>
