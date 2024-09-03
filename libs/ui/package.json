@@ -37,8 +37,8 @@
 	},
 	"scripts": {
 		"clean": "pnpm run \"/^clean:.*/\" ",
-		"clean:cache": "del \"./node_modules/.cache\" \"./.turbo\" ",
-		"clean:test": "del \"./coverage\" ",
+		"clean:cache": "rm -rf \"./node_modules/.cache\" \"./.turbo\" ",
+		"clean:test": "rm -rf \"./coverage\" ",
 		"dev": "pnpm run \"/^dev:.*/\" ",
 		"dev:doc": "pnpm run \"/^dev:doc:.*/\" ",
 		"dev:doc:watch": "typedoc --watch",
