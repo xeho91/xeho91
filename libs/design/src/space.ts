@@ -14,6 +14,7 @@ import { readonly_set } from "@xeho91/lib-snippet/set";
 import { Range } from "@xeho91/lib-struct/range";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 import { calculateClamp } from "utopia-core";
+import * as v from "valibot";
 
 import { FLUID_CONFIG, type FluidClamp } from "#fluid";
 import { DesignToken } from "#token";
@@ -30,6 +31,11 @@ export class Space<TSize extends SpaceSize = SpaceSize, TValue extends Range = R
 	TValue
 > {
 	public static readonly NAME = "space";
+
+	public static readonly SCHEMA = v.object({
+		min: v.pipe(v.number(), v.integer()),
+		max: v.pipe(v.number(), v.integer()),
+	});
 
 	public static readonly VALUE = readonly_object({
 		"3xs": new Range(4, 5),

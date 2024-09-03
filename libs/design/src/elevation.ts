@@ -23,8 +23,9 @@ import { Percentage } from "@xeho91/lib-css/value/percentage";
 import { object_keys, readonly_object } from "@xeho91/lib-snippet/object";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
+import * as v from "valibot";
 
-import { Color, type ColorScheme } from "#color";
+import { DesignColor, type ColorScheme } from "#color";
 import { DesignToken } from "#token";
 
 export type ElevationLevel = IterableElement<typeof Elevation.LEVELS>;
@@ -57,6 +58,14 @@ export class Elevation<
 	const TValue extends ElevationValue = ElevationValue,
 > extends DesignToken<Name, TLevel, TValue> {
 	public static readonly NAME = "elevation";
+
+	public static readonly LAYER_SCHEMA = v.object({
+		x: v.number(),
+		y: v.number(),
+		blur: v.number(),
+		spread: v.number(),
+		alpha: v.pipe(v.number(), v.minValue(0), v.maxValue(100)),
+	});
 
 	public static readonly VALUE = readonly_object({
 		0: {
@@ -181,7 +190,7 @@ export class Elevation<
 			const atomized = ShadowTarget.create_atomized_layer(target, layer_number);
 			const { color } = atomized;
 			const light_dark = Elevation.#create_color_light_dark(shadow_target, layer_number);
-			for (const scheme of Color.SCHEMES) {
+			for (const scheme of DesignColor.SCHEMES) {
 				block.children.push(
 					new Declaration(
 						light_dark[scheme].reference.to_property(),
@@ -272,7 +281,7 @@ export class Elevation<
 		// biome-ignore lint/style/useConst: Readability - mutation
 		let block = new Block<Declaration[]>();
 		for (const color_property of Oklch) {
-			for (const scheme of Color.SCHEMES) {
+			for (const scheme of DesignColor.SCHEMES) {
 				if (color_property === "alpha") {
 					block.children.push(
 						new Declaration(

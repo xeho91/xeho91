@@ -12,9 +12,12 @@ import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import { object_keys, readonly_object } from "@xeho91/lib-snippet/object";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
+import * as v from "valibot";
 
 import type { FontFamilyName } from "#font/family";
 import { DesignToken } from "#token";
+
+export type FontWeightAlias = keyof typeof FontWeight.MAP;
 
 export type FontWeightKey<TFamily extends FontFamilyName> = TFamily extends "mono"
 	? FontWeightMonoKey
@@ -35,6 +38,23 @@ export class FontWeight<
 > extends DesignToken<typeof FontWeight.NAME, TRawKey, TValue> {
 	public static readonly NAME = "font-weight";
 	public static readonly PROPERTY = new Property(FontWeight.NAME);
+
+	public static readonly MAP = readonly_object({
+		light: 300,
+		regular: 400,
+		medium: 500,
+		bold: 700,
+		semi_bold: 800,
+		black: 900,
+	});
+
+	public static readonly ALIASES = readonly_set(object_keys(FontWeight.MAP));
+
+	public static [Symbol.iterator](): IterableIterator<FontWeightAlias> {
+		return FontWeight.ALIASES[Symbol.iterator]();
+	}
+
+	public static readonly SCHEMA = v.picklist([...FontWeight.ALIASES]);
 
 	public static keys = <TFamily extends FontFamilyName>(family: TFamily) => {
 		// biome-ignore format: Prettier

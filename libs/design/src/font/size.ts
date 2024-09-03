@@ -13,6 +13,7 @@ import { readonly_set } from "@xeho91/lib-snippet/set";
 import { Range } from "@xeho91/lib-struct/range";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 import { calculateClamp } from "utopia-core";
+import * as v from "valibot";
 
 import { FLUID_CONFIG, type FluidClamp } from "#fluid";
 import { DesignToken } from "#token";
@@ -31,15 +32,20 @@ export class FontSize<TRawKey extends FontSizeKey = FontSizeKey, TValue extends 
 	public static readonly NAME = "font-size" as const;
 	public static readonly PROPERTY = new Property(FontSize.NAME);
 
+	public static readonly SCHEMA = v.object({
+		min: v.number(),
+		max: v.number(),
+	});
+
 	public static readonly VALUE = readonly_object({
-		"5xl": new Range(53.75, 76.29),
-		"4xl": new Range(44.79, 61.04),
-		"3xl": new Range(37.32, 48.83),
-		"2xl": new Range(31.1, 39.06),
-		xl: new Range(25.92, 31.25),
-		l: new Range(21.6, 25.0),
-		m: new Range(18.0, 20.0),
 		s: new Range(15.0, 16.0),
+		m: new Range(18.0, 20.0),
+		l: new Range(21.6, 25.0),
+		xl: new Range(25.92, 31.25),
+		"2xl": new Range(31.1, 39.06),
+		"3xl": new Range(37.32, 48.83),
+		"4xl": new Range(44.79, 61.04),
+		"5xl": new Range(53.75, 76.29),
 	});
 
 	/**

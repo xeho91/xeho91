@@ -12,6 +12,7 @@ import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import { object_keys, readonly_object } from "@xeho91/lib-snippet/object";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
+import * as v from "valibot";
 
 import { FontWeightMono, FontWeightSans, FontWeightSerif } from "#font/weight";
 import { DesignToken } from "#token";
@@ -29,6 +30,8 @@ export class FontFamily<
 	TValue extends string = string,
 > extends DesignToken<"font", TName, StringCSS<TValue>> {
 	public static readonly PROPERTY = new Property("font-family");
+
+	public static readonly SCHEMA = v.string();
 
 	public static readonly VALUE = readonly_object({
 		mono: "JetBrains Mono Variable",

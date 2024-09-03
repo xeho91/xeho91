@@ -1,8 +1,12 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": ["@total-typescript/tsconfig/bundler/dom/library-monorepo"],
+	"extends": [
+		"@total-typescript/tsconfig/bundler/dom/library-monorepo"
+	],
 	"compilerOptions": {
-		"lib": ["ESNext"],
+		"lib": [
+			"ESNext"
+		],
 		"noImplicitAny": false, // TODO: Remove it once type issues from Storybook are fixed
 		"plugins": [
 			{
@@ -11,6 +15,8 @@
 				"assumeIsSvelteProject": true
 			}
 		],
-		"types": ["vitest/importMeta"]
+		"types": [
+			"vitest/importMeta"
+		]
 	}
 }

@@ -1,12 +1,16 @@
 import { LightDark } from "@xeho91/lib-css/function/light-dark";
 import { Reference } from "@xeho91/lib-css/reference";
-import { Color, type ColorScheme } from "@xeho91/lib-design/color";
+import type { ColorScheme } from "@xeho91/lib-design/color";
 import type { AtomicColor } from "@xeho91/lib-design/color/atomic";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 
+import { Color } from "#design/color";
 import { set_id } from "#id";
+
+export { Color } from "#design/color";
+export { Radius } from "#design/radius";
 
 export type BrandAssetThemeName = IterableElement<typeof BrandAssetTheme.NAMES>;
 

@@ -17,10 +17,10 @@ import { ColorTarget } from "@xeho91/lib-css/target/color";
 import type { Value } from "@xeho91/lib-css/value";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import { object_keys, readonly_object } from "@xeho91/lib-snippet/object";
-import { readonly_set } from "@xeho91/lib-snippet/set";
+import { readonly_set, unionize_sets } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
+import * as v from "valibot";
 
-import type { AtomicColor } from "#color/atomic";
 import * as accent from "#color/palette/brand/accent";
 import * as primary from "#color/palette/brand/primary";
 import * as secondary from "#color/palette/brand/secondary";
@@ -32,6 +32,7 @@ import * as info from "#color/palette/semantic/info";
 import * as success from "#color/palette/semantic/success";
 import * as warning from "#color/palette/semantic/warning";
 import { DesignToken } from "#token";
+import type { AtomicColor } from "#color/atomic";
 
 const VARIABLE = readonly_object({
 	brand: {
@@ -89,7 +90,7 @@ type Variant<
 	TStep extends ColorStep = ColorStep,
 > = `${TCategory}-${TName}-${TType}-${TStep}`;
 
-export class Color<
+export abstract class DesignColor<
 	TCategory extends ColorCategory = ColorCategory,
 	TName extends ColorName = ColorName,
 	TType extends ColorType = ColorType,
@@ -111,6 +112,8 @@ export class Color<
 	 * @see {@link https://drafts.csswg.org/css-color-adjust/#color-scheme-prop}
 	 */
 	public static readonly SCHEMES = readonly_set(["light", "dark"]);
+
+	public static readonly SCHEMA = v.object(v.entriesFromList([...DesignColor.SCHEMES], v.string()));
 
 	/**
 	 * Color steps set.
@@ -151,18 +154,7 @@ export class Color<
 	 */
 	public static readonly TYPES = readonly_set(["opaque", "blend"]);
 
-	public static readonly NAMES = readonly_set([
-		"primary",
-		"secondary",
-		"accent",
-		"error",
-		"info",
-		"success",
-		"warning",
-		"black",
-		"gray",
-		"white",
-	]);
+	public static readonly NAMES = unionize_sets(ColorBrand.NAMES, ColorGrayscale.NAMES, ColorSemantic.NAMES);
 
 	public static brand = ColorBrand;
 	public static grayscale = ColorGrayscale;
@@ -185,7 +177,7 @@ export class Color<
 		}
 	};
 
-	static #create_variant = <
+	protected static create_variant = <
 		TCategory extends ColorCategory,
 		TName extends ColorName,
 		TType extends ColorType,
@@ -196,18 +188,6 @@ export class Color<
 		type: TType,
 		step: TStep,
 	): Variant<TCategory, TName, TType, TStep> => `${category}-${name}-${type}-${step}`;
-
-	public static get = <TName extends ColorName, TType extends ColorType = "opaque", TStep extends ColorStep = 8>(
-		name: TName,
-		type = "opaque" as TType,
-		step = 8 as TStep,
-	): Color<ColorCategoryFromName<TName>, TName, TType, TStep> => {
-		const category = Color.get_category_from_name(name);
-		const variant = this.#create_variant(category, name, type, step);
-		const cached = DesignToken.CONSTRUCTED.get(`${Color.NAME}-${variant}`);
-		if (cached) return cached as Color<ColorCategoryFromName<TName>, TName, TType, TStep>;
-		return new Color({ category, name, type, step });
-	};
 
 	static #create_reference = <TTarget extends ColorTarget, TScheme extends ColorScheme>(
 		target: TTarget,
@@ -249,14 +229,14 @@ export class Color<
 		let selector = Selector.class(color_target.toString());
 		if (pseudo_class) selector.add_suffix(pseudo_class);
 		if (pseudo_element) selector.add_suffix(pseudo_element);
-		if (Color.RULESETS.has(selector.name)) return selector;
-		const reference_light = Color.#create_reference(color_target, "light");
-		const reference_dark = Color.#create_reference(color_target, "dark");
+		if (DesignColor.RULESETS.has(selector.name)) return selector;
+		const reference_light = DesignColor.#create_reference(color_target, "light");
+		const reference_dark = DesignColor.#create_reference(color_target, "dark");
 		const ruleset = new Ruleset(
 			DesignToken.create_selector_joint(selector, options).to_list(),
 			new Block(
-				new Declaration(reference_light.to_property(), Color.#create_oklch(color_target, "light")),
-				new Declaration(reference_dark.to_property(), Color.#create_oklch(color_target, "dark")),
+				new Declaration(reference_light.to_property(), DesignColor.#create_oklch(color_target, "light")),
+				new Declaration(reference_dark.to_property(), DesignColor.#create_oklch(color_target, "dark")),
 				new Declaration(
 					color_target.to_property(),
 					new LightDark(reference_light.to_var(), reference_dark.to_var()).to_value(),
@@ -267,70 +247,17 @@ export class Color<
 		return selector;
 	};
 
-	static #variable_identifier = <
-		TName extends ColorName,
-		TType extends ColorType,
-		TStep extends ColorStep,
-		TScheme extends ColorScheme,
-	>(
-		name: TName,
-		type: TType,
-		step: TStep,
-		scheme: TScheme,
-	): VariableIdentifier<TName, TType, TStep, TScheme> =>
-		`${name.toUpperCase()}_${type.toUpperCase() as Uppercase<TType>}_${step}_${scheme.toUpperCase()}` as VariableIdentifier<
-			TName,
-			TType,
-			TStep,
-			TScheme
-		>;
-
-	static #get_identifiers<TCategory extends ColorCategory, TName extends ColorName>(
-		category: TCategory,
-		name: TName,
-	): IdentifiersByCategory<TCategory, TName> {
-		const by_category = VARIABLE[category as keyof typeof VARIABLE];
-		return by_category[name as keyof typeof by_category];
-	}
-
-	static #get_by_scheme = <
-		TCategory extends ColorCategory,
-		TName extends ColorName,
-		TType extends ColorType,
-		TStep extends ColorStep,
-		TScheme extends ColorScheme,
-	>(
-		category: TCategory,
-		name: TName,
-		type: TType,
-		step: TStep,
-		scheme: TScheme,
-	): AtomicColor<TCategory, TName, TType, TStep, TScheme> => {
-		const by_category_and_name = Color.#get_identifiers(category, name as ColorName);
-		return by_category_and_name[
-			Color.#variable_identifier(name as ColorName, type, step, scheme) as keyof typeof by_category_and_name
-		] as AtomicColor<TCategory, TName, TType, TStep, TScheme>;
-	};
-
 	constructor(params: { category: TCategory; name: TName; type: TType; step: TStep }) {
 		const { category, name, type, step } = params;
 		super({
-			name: Color.NAME,
-			variant: Color.#create_variant(category, name, type, step),
+			name: DesignColor.NAME,
+			variant: DesignColor.create_variant(category, name, type, step),
 			value: { category, name, type, step },
 		});
 	}
-	public get light() {
-		const { value } = this;
-		const { category, name, type, step } = value;
-		return Color.#get_by_scheme(category, name, type, step, "light");
-	}
 
-	public get dark() {
-		const { value } = this;
-		const { category, name, type, step } = value;
-		return Color.#get_by_scheme(category, name, type, step, "dark");
-	}
+	public abstract get light(): AtomicColor;
+	public abstract get dark(): AtomicColor;
 
 	public set_target<TTarget extends Target>(target: TTarget): ColorTarget<TTarget> {
 		return new ColorTarget(target);
@@ -362,7 +289,7 @@ export class Color<
 
 	public create_global_ruleset(): Ruleset {
 		const { key, reference } = this;
-		const from_map = Color.GLOBAL_RULESETS.get(key);
+		const from_map = DesignColor.GLOBAL_RULESETS.get(key);
 		if (from_map) return from_map;
 		const { light, dark } = this;
 		const selector = Selector.pseudo.class("root");
@@ -403,41 +330,29 @@ export class Color<
 type Target = ConstructorParameters<typeof ColorTarget>[0];
 
 /**
- * @see {@link Color.CATEGORIES}
+ * @see {@link DesignColor.CATEGORIES}
  */
-export type ColorCategory = IterableElement<typeof Color.CATEGORIES>;
+export type ColorCategory = IterableElement<typeof DesignColor.CATEGORIES>;
 
 /**
- * @see {@link Color.NAMES}
+ * @see {@link DesignColor.NAMES}
  */
-export type ColorName = IterableElement<typeof Color.NAMES>;
+export type ColorName = IterableElement<typeof DesignColor.NAMES>;
 
 /**
- * @see {@link Color.SCHEMES}
+ * @see {@link DesignColor.SCHEMES}
  */
-export type ColorScheme = IterableElement<typeof Color.SCHEMES>;
+export type ColorScheme = IterableElement<typeof DesignColor.SCHEMES>;
 
 /**
- * @see {@link Color.TYPES}
+ * @see {@link DesignColor.TYPES}
  */
-export type ColorType = IterableElement<typeof Color.TYPES>;
+export type ColorType = IterableElement<typeof DesignColor.TYPES>;
 
 /**
- * @see {@link Color.STEPS}
+ * @see {@link DesignColor.STEPS}
  */
-export type ColorStep = IterableElement<typeof Color.STEPS>;
-
-type VariableIdentifier<
-	TName extends ColorName,
-	TType extends ColorType,
-	TStep extends ColorStep,
-	TScheme extends ColorScheme,
-> = `${Uppercase<TName>}_${Uppercase<TType>}_${TStep}_${Uppercase<TScheme>}`;
-
-type IdentifiersByCategory<
-	TCategory extends ColorCategory,
-	TName extends ColorName,
-> = TName extends keyof (typeof VARIABLE)[TCategory] ? (typeof VARIABLE)[TCategory][TName] : never;
+export type ColorStep = IterableElement<typeof DesignColor.STEPS>;
 
 export type ColorCategoryFromName<TName extends ColorName> = TName extends "primary" | "secondary" | "accent"
 	? "brand"
@@ -450,16 +365,16 @@ export type ColorCategoryFromName<TName extends ColorName> = TName extends "prim
 if (import.meta.vitest) {
 	const { describe, expectTypeOf, it, vi } = import.meta.vitest;
 
-	describe(Color.name, () => {
+	describe(DesignColor.name, () => {
 		describe("static get(category, name, type?, step?)", () => {
 			it("on constructed instance subscriber receive instance", ({ expect }) => {
 				const observer = vi.fn((instance) => {
-					expect(instance).toBeInstanceOf(Color);
+					expect(instance).toBeInstanceOf(DesignColor);
 				});
-				Color.on("construct").subscribe({
+				DesignColor.on("construct").subscribe({
 					next: observer,
 				});
-				Color.get("error");
+				DesignColor.get("error");
 				expect(observer).toHaveBeenCalled();
 			});
 		});
@@ -473,18 +388,18 @@ if (import.meta.vitest) {
 						`".background-color{--background-color-light:oklch(var(--background-color-light-lightness) var(--background-color-light-chroma) var(--background-color-light-hue) / var(--background-color-light-alpha));--background-color-dark:oklch(var(--background-color-dark-lightness) var(--background-color-dark-chroma) var(--background-color-dark-hue) / var(--background-color-dark-alpha));background-color:light-dark(var(--background-color-light) , var(--background-color-dark));}"`,
 					);
 				});
-				Color.on("create-property-ruleset").subscribe({
+				DesignColor.on("create-property-ruleset").subscribe({
 					next: observer,
 				});
-				Color.class("background");
-				Color.class("background");
+				DesignColor.class("background");
+				DesignColor.class("background");
 				expect(observer).toHaveBeenCalledOnce();
 			});
 		});
 
 		describe("create_global_ruleset()", () => {
 			it("returns a ruleset", ({ expect }) => {
-				const color = Color.get("accent");
+				const color = DesignColor.get("accent");
 				const global = color.create_global_ruleset();
 				const stringified = global.toString();
 				expect(stringified).toMatchInlineSnapshot(
@@ -500,10 +415,10 @@ if (import.meta.vitest) {
 						`":root{--color-grayscale-gray-opaque-8-light-lightness:79.11%;--color-grayscale-gray-opaque-8-dark-lightness:48.93%;--color-grayscale-gray-opaque-8-light-chroma:2.11%;--color-grayscale-gray-opaque-8-dark-chroma:2.06%;--color-grayscale-gray-opaque-8-light-hue:98.91deg;--color-grayscale-gray-opaque-8-dark-hue:88.7deg;--color-grayscale-gray-opaque-8-light-alpha:100%;--color-grayscale-gray-opaque-8-dark-alpha:100%;}"`,
 					);
 				});
-				Color.on("create-global-ruleset").subscribe({
+				DesignColor.on("create-global-ruleset").subscribe({
 					next: observer,
 				});
-				const color = Color.get("gray");
+				const color = DesignColor.get("gray");
 				color.create_global_ruleset();
 				expect(observer).toHaveBeenCalled();
 			});
@@ -511,7 +426,7 @@ if (import.meta.vitest) {
 
 		describe("class(target, options?)", () => {
 			it("returns correctly when first argument target provided", ({ expect }) => {
-				const color = Color.get("success", "blend", 1);
+				const color = DesignColor.get("success", "blend", 1);
 				const class_name = color.class("border-block");
 				const expected_name = "border-block-color-semantic-success-blend-1";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -520,7 +435,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided pseudo class", ({ expect }) => {
-				const color = Color.get("warning");
+				const color = DesignColor.get("warning");
 				const class_name = color.class("caret", { pseudo_class: "hover" });
 				const expected_name = "caret-color-semantic-warning-opaque-8-hover";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -529,7 +444,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided pseudo element", ({ expect }) => {
-				const color = Color.get("primary", "blend", 2);
+				const color = DesignColor.get("primary", "blend", 2);
 				const class_name = color.class("border-right", { pseudo_element: "after" });
 				const expected_name = "border-right-color-brand-primary-blend-2-after";
 				expect(class_name).toBeInstanceOf(SelectorClass);
@@ -538,7 +453,7 @@ if (import.meta.vitest) {
 			});
 
 			it("returns correctly when provided both pseudos", ({ expect }) => {
-				const color = Color.get("secondary", "opaque", 6);
+				const color = DesignColor.get("secondary", "opaque", 6);
 				const class_name = color.class("text-decoration", {
 					pseudo_class: "checked",
 					pseudo_element: "before",
@@ -550,9 +465,9 @@ if (import.meta.vitest) {
 			});
 
 			it("created rulesets in Color.RULESETS", ({ expect }) => {
-				const color = Color.get("info", "opaque", 4);
+				const color = DesignColor.get("info", "opaque", 4);
 				const class_name = color.class("accent");
-				const ruleset = Color.RULESETS.get(class_name.name);
+				const ruleset = DesignColor.RULESETS.get(class_name.name);
 				expect(ruleset).toBeDefined();
 				expect(ruleset?.toString()).toMatchInlineSnapshot(
 					`".accent-color-semantic-info-opaque-4{--accent-color-light-lightness:var(--color-semantic-info-opaque-4-light-lightness);--accent-color-dark-lightness:var(--color-semantic-info-opaque-4-dark-lightness);--accent-color-light-chroma:var(--color-semantic-info-opaque-4-light-chroma);--accent-color-dark-chroma:var(--color-semantic-info-opaque-4-dark-chroma);--accent-color-light-hue:var(--color-semantic-info-opaque-4-light-hue);--accent-color-dark-hue:var(--color-semantic-info-opaque-4-dark-hue);--accent-color-light-alpha:var(--color-semantic-info-opaque-4-light-alpha);--accent-color-dark-alpha:var(--color-semantic-info-opaque-4-dark-alpha);}"`,
@@ -567,10 +482,10 @@ if (import.meta.vitest) {
 						`".outline-color-grayscale-black-blend-12{--outline-color-light-lightness:var(--color-grayscale-black-blend-12-light-lightness);--outline-color-dark-lightness:var(--color-grayscale-black-blend-12-dark-lightness);--outline-color-light-chroma:var(--color-grayscale-black-blend-12-light-chroma);--outline-color-dark-chroma:var(--color-grayscale-black-blend-12-dark-chroma);--outline-color-light-hue:var(--color-grayscale-black-blend-12-light-hue);--outline-color-dark-hue:var(--color-grayscale-black-blend-12-dark-hue);--outline-color-light-alpha:var(--color-grayscale-black-blend-12-light-alpha);--outline-color-dark-alpha:var(--color-grayscale-black-blend-12-dark-alpha);}"`,
 					);
 				});
-				Color.on("create-class-ruleset").subscribe({
+				DesignColor.on("create-class-ruleset").subscribe({
 					next: observer,
 				});
-				const color = Color.get("black", "blend", 12);
+				const color = DesignColor.get("black", "blend", 12);
 				color.class("outline");
 				expect(observer).toHaveBeenCalled();
 			});

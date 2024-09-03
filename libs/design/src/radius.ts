@@ -13,6 +13,7 @@ import { Dimension } from "@xeho91/lib-css/value/dimension";
 import { object_keys, readonly_object } from "@xeho91/lib-snippet/object";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
+import * as v from "valibot";
 
 import { DesignToken } from "#token";
 
@@ -29,6 +30,8 @@ export class Radius<TSize extends RadiusSize = RadiusSize, TValue extends Dimens
 	TValue
 > {
 	public static readonly NAME = "radius";
+
+	public static readonly SCHEMA = v.pipe(v.number(), v.integer());
 
 	public static readonly VALUE = readonly_object({
 		xs: new Dimension(1, "px"),

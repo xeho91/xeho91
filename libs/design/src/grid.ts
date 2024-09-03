@@ -1,5 +1,6 @@
 import type { Block } from "@xeho91/lib-css/block";
 import { Declaration } from "@xeho91/lib-css/declaration";
+import { Identifier } from "@xeho91/lib-css/identifier";
 import { Ruleset } from "@xeho91/lib-css/ruleset";
 import { Selector } from "@xeho91/lib-css/selector";
 import { SelectorClass } from "@xeho91/lib-css/selector/class";
@@ -11,9 +12,9 @@ import { readonly_object } from "@xeho91/lib-snippet/object";
 import { readonly_set } from "@xeho91/lib-snippet/set";
 import { Range } from "@xeho91/lib-struct/range";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
-
-import { Identifier } from "@xeho91/lib-css/identifier";
 import { calculateClamp } from "utopia-core";
+import * as v from "valibot";
+
 import { FLUID_CONFIG, type FluidClamp } from "#fluid";
 import { DesignToken } from "#token";
 
@@ -599,6 +600,12 @@ export class Grid {
 	 * Available design token variants for the grid width.
 	 */
 	public static readonly VARIANTS = readonly_set(["default"]);
+
+	public static readonly SCHEMA = v.object({
+		column: v.pipe(v.number(), v.integer()),
+		min: v.pipe(v.number(), v.integer()),
+		max: v.pipe(v.number(), v.integer()),
+	});
 
 	public static [Symbol.iterator](): IterableIterator<GridVariant> {
 		return Grid.VARIANTS[Symbol.iterator]();

@@ -4,7 +4,10 @@
 	"name": "@xeho91/lib-design",
 	"version": "0.0.0",
 	"description": "@xeho91' design tokens.",
-	"keywords": ["design", "tokens"],
+	"keywords": [
+		"design",
+		"tokens"
+	],
 	"license": "MIT",
 	"author": {
 		"name": "Mateusz Kadlubowski",
@@ -21,12 +24,20 @@
 	"engines": {
 		"node": ">=22"
 	},
-	"files": ["src/"],
+	"files": [
+		"cli/",
+		"src/"
+	],
+	"bin": {
+		"design": "./cli/mod.ts"
+	},
 	"imports": {
-		"#*": "./src/*.ts"
+		"#*": "./src/*.ts",
+		"#cli/*": "./cli/*.ts"
 	},
 	"exports": {
-		"./*": "./src/*.ts"
+		"./*": "./src/*.ts",
+		"./cli": "./cli/mod.ts"
 	},
 	"scripts": {
 		"clean": "pnpm run \"/^clean:.*/\" ",
@@ -54,6 +65,7 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/lib-design\" "
 	},
 	"dependencies": {
+		"@radix-ui/colors": "3.0.0",
 		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-error": "workspace:*",
 		"@xeho91/lib-snippet": "workspace:*",
@@ -61,7 +73,8 @@
 		"@xeho91/lib-type": "workspace:*",
 		"culori": "4.0.1",
 		"rxjs": "catalog:",
-		"utopia-core": "1.3.0"
+		"utopia-core": "1.3.0",
+		"valibot": "0.35.0"
 	},
 	"peerDependencies": {
 		"@total-typescript/tsconfig": "catalog:",
@@ -69,9 +82,10 @@
 		"typescript": "catalog:"
 	},
 	"devDependencies": {
-		"@radix-ui/colors": "3.0.0",
 		"@types/culori": "2.1.0",
 		"@xeho91/lib-logger": "workspace:*",
-		"handlebars": "4.7.8"
+		"handlebars": "4.7.8",
+		"listr2": "8.2.4",
+		"sade": "1.8.1"
 	}
 }

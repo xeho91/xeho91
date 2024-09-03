@@ -4,7 +4,11 @@
 	"name": "@xeho91/lib-brand",
 	"version": "0.0.0",
 	"description": "@xeho91' personal brand assets.",
-	"keywords": ["brand", "logo", "avatar"],
+	"keywords": [
+		"brand",
+		"logo",
+		"avatar"
+	],
 	"license": "MIT",
 	"author": {
 		"name": "Mateusz Kadlubowski",
@@ -21,7 +25,9 @@
 	"engines": {
 		"node": ">=22"
 	},
-	"files": ["src/"],
+	"files": [
+		"src/"
+	],
 	"imports": {
 		"#*": "./src/*.ts"
 	},
