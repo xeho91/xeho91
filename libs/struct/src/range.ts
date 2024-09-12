@@ -58,19 +58,13 @@ export class Range<TMin extends number = number, TMax extends number = number>
 		this.#step = value;
 	}
 
-	public [Symbol.iterator]() {
+	public *[Symbol.iterator]() {
 		const { min, max, step } = this;
-		let value = min as number;
-		return {
-			next: () => {
-				if (value <= max) {
-					const result = { value, done: false } as const;
-					value += step;
-					return result;
-				}
-				return { value, done: true } as const;
-			},
-		};
+		let current = min as number;
+		while (current <= max) {
+			yield current;
+			current += step;
+		}
 	}
 
 	/**
@@ -170,7 +164,7 @@ if (import.meta.vitest) {
 			});
 		});
 
-		describe("[Symbol.iterator]()", () => {
+		describe("*[Symbol.iterator]()", () => {
 			it("iterates correctly from min to max, based on default step", ({ expect }) => {
 				const range = new Range(0, 100);
 				let current_value = range.min;
@@ -193,6 +187,12 @@ if (import.meta.vitest) {
 					current_value += range.step;
 				}
 				expect(values.length).toBe(21);
+			});
+
+			it("creating iterator from range works", ({ expect }) => {
+				const range = new Range(0, 100, 5);
+				const summary = Iterator.from(range).reduce((current, accumulator) => accumulator + current, 0);
+				expect(summary).toBe(1050);
 			});
 		});
 
