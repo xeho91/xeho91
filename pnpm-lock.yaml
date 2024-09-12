@@ -37,8 +37,8 @@ catalogs:
       specifier: 4.0.1
       version: 4.0.1
     typescript:
-      specifier: 5.5.4
-      version: 5.5.4
+      specifier: 5.6.2
+      version: 5.6.2
     typescript-svelte-plugin:
       specifier: 0.3.40
       version: 0.3.40
@@ -79,16 +79,16 @@ importers:
         version: 14.2.3
       svelte-check:
         specifier: 'catalog:'
-        version: 4.0.1(picomatch@4.0.2)(svelte@5.0.0-next.218)(typescript@5.5.4)
+        version: 4.0.1(picomatch@4.0.2)(svelte@5.0.0-next.218)(typescript@5.6.2)
       typedoc:
         specifier: 0.26.6
-        version: 0.26.6(typescript@5.5.4)
+        version: 0.26.6(typescript@5.6.2)
       typedoc-plugin-coverage:
         specifier: 3.3.0
-        version: 3.3.0(typedoc@0.26.6(typescript@5.5.4))
+        version: 3.3.0(typedoc@0.26.6(typescript@5.6.2))
       typedoc-plugin-mdn-links:
         specifier: 3.2.11
-        version: 3.2.11(typedoc@0.26.6(typescript@5.5.4))
+        version: 3.2.11(typedoc@0.26.6(typescript@5.6.2))
       vite:
         specifier: 5.4.2
         version: 5.4.2(@types/node@22.5.2)(lightningcss@1.26.0)
@@ -144,7 +144,7 @@ importers:
         version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)
       '@storybook/svelte-vite':
         specifier: 8.2.9
-        version: 8.2.9(@babel/core@7.25.2)(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0)))(postcss@8.4.44)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))
+        version: 8.2.9(@babel/core@7.25.2)(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0)))(postcss@8.4.44)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(typescript@5.6.2)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))
       '@sveltejs/vite-plugin-svelte':
         specifier: 'catalog:'
         version: 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))
@@ -168,13 +168,13 @@ importers:
         version: 5.0.0-next.218
       svelte-check:
         specifier: 'catalog:'
-        version: 4.0.1(picomatch@4.0.2)(svelte@5.0.0-next.218)(typescript@5.5.4)
+        version: 4.0.1(picomatch@4.0.2)(svelte@5.0.0-next.218)(typescript@5.6.2)
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
       typescript-svelte-plugin:
         specifier: 'catalog:'
-        version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.5.4)
+        version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.6.2)
       unocss:
         specifier: 'catalog:'
         version: 0.62.3(postcss@8.4.44)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))
@@ -233,7 +233,7 @@ importers:
         version: 5.0.0-next.218
       typescript-svelte-plugin:
         specifier: 'catalog:'
-        version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.5.4)
+        version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.6.2)
       unocss:
         specifier: 'catalog:'
         version: 0.62.3(postcss@8.4.44)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))
@@ -260,7 +260,7 @@ importers:
         version: link:../snippet
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
 
   libs/brand:
     dependencies:
@@ -305,7 +305,7 @@ importers:
         version: 4.0.4
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
     devDependencies:
       '@storybook/addon-svelte-csf':
         specifier: 'catalog:'
@@ -315,7 +315,7 @@ importers:
         version: 5.0.0-next.218
       typescript-svelte-plugin:
         specifier: 'catalog:'
-        version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.5.4)
+        version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.6.2)
 
   libs/config:
     dependencies:
@@ -339,10 +339,10 @@ importers:
         version: 0.61.9
       svelte-preprocess:
         specifier: 6.0.2
-        version: 6.0.2(@babel/core@7.25.2)(postcss@8.4.44)(svelte@5.0.0-next.218)(typescript@5.5.4)
+        version: 6.0.2(@babel/core@7.25.2)(postcss@8.4.44)(svelte@5.0.0-next.218)(typescript@5.6.2)
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
       unocss:
         specifier: 'catalog:'
         version: 0.62.3(postcss@8.4.44)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))
@@ -381,7 +381,7 @@ importers:
         version: 7.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
 
   libs/design:
     dependencies:
@@ -414,7 +414,7 @@ importers:
         version: 7.8.1
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
       utopia-core:
         specifier: 1.3.0
         version: 1.3.0
@@ -445,7 +445,7 @@ importers:
         version: link:../type
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
 
   libs/feature:
     dependencies:
@@ -478,7 +478,7 @@ importers:
         version: 2.1.1
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
       unocss:
         specifier: 'catalog:'
         version: 0.62.3(postcss@8.4.44)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))
@@ -488,7 +488,7 @@ importers:
         version: 5.0.0-next.218
       typescript-svelte-plugin:
         specifier: 'catalog:'
-        version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.5.4)
+        version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.6.2)
 
   libs/geometry:
     dependencies:
@@ -503,7 +503,7 @@ importers:
         version: link:../type
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
       valibot:
         specifier: 0.35.0
         version: 0.35.0
@@ -530,7 +530,7 @@ importers:
         version: 4.20.1
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
 
   libs/monorepo:
     dependencies:
@@ -551,7 +551,7 @@ importers:
         version: 7.0.0
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
     devDependencies:
       handlebars:
         specifier: 4.7.8
@@ -573,7 +573,7 @@ importers:
         version: link:../type
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
 
   libs/storybook:
     dependencies:
@@ -621,13 +621,13 @@ importers:
         version: 5.0.0-next.218
       svelte-check:
         specifier: 'catalog:'
-        version: 4.0.1(picomatch@4.0.2)(svelte@5.0.0-next.218)(typescript@5.5.4)
+        version: 4.0.1(picomatch@4.0.2)(svelte@5.0.0-next.218)(typescript@5.6.2)
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
       typescript-svelte-plugin:
         specifier: 'catalog:'
-        version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.5.4)
+        version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.6.2)
 
   libs/struct:
     dependencies:
@@ -642,7 +642,7 @@ importers:
         version: link:../type
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
       valibot:
         specifier: 0.35.0
         version: 0.35.0
@@ -663,7 +663,7 @@ importers:
         version: 4.20.1
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
 
   libs/ui:
     dependencies:
@@ -708,10 +708,10 @@ importers:
         version: 5.0.0-next.218
       typescript:
         specifier: 'catalog:'
-        version: 5.5.4
+        version: 5.6.2
       typescript-svelte-plugin:
         specifier: 'catalog:'
-        version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.5.4)
+        version: 0.3.40(svelte@5.0.0-next.218)(typescript@5.6.2)
     devDependencies:
       '@storybook/addon-actions':
         specifier: 8.2.9
@@ -5262,8 +5262,8 @@ packages:
   typescript-svelte-plugin@0.3.40:
     resolution: {integrity: sha512-/5k/DktoxpiUp4QDRVODCYenb91sD+z4Qt4nHk2ycCAk6dUaBvlqfOdd8TRXWb+xUBWov12HsgfV68tLeI2V7g==}
 
-  typescript@5.5.4:
-    resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
+  typescript@5.6.2:
+    resolution: {integrity: sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -7395,7 +7395,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@storybook/builder-vite@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))':
+  '@storybook/builder-vite@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.6.2)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))':
     dependencies:
       '@storybook/csf-plugin': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@types/find-cache-dir': 3.2.1
@@ -7409,7 +7409,7 @@ snapshots:
       ts-dedent: 2.2.0
       vite: 5.4.2(@types/node@22.5.2)(lightningcss@1.26.0)
     optionalDependencies:
-      typescript: 5.5.4
+      typescript: 5.6.2
     transitivePeerDependencies:
       - supports-color
 
@@ -7527,15 +7527,15 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       storybook: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
 
-  '@storybook/svelte-vite@8.2.9(@babel/core@7.25.2)(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0)))(postcss@8.4.44)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))':
+  '@storybook/svelte-vite@8.2.9(@babel/core@7.25.2)(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0)))(postcss@8.4.44)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)(typescript@5.6.2)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))':
     dependencies:
-      '@storybook/builder-vite': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))
+      '@storybook/builder-vite': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.6.2)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))
       '@storybook/svelte': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(svelte@5.0.0-next.218)
       '@sveltejs/vite-plugin-svelte': 4.0.0-next.6(svelte@5.0.0-next.218)(vite@5.4.2(@types/node@22.5.2)(lightningcss@1.26.0))
       magic-string: 0.30.11
       storybook: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
       svelte: 5.0.0-next.218
-      svelte-preprocess: 5.1.4(@babel/core@7.25.2)(postcss@8.4.44)(svelte@5.0.0-next.218)(typescript@5.5.4)
+      svelte-preprocess: 5.1.4(@babel/core@7.25.2)(postcss@8.4.44)(svelte@5.0.0-next.218)(typescript@5.6.2)
       sveltedoc-parser: 4.2.1
       ts-dedent: 2.2.0
       vite: 5.4.2(@types/node@22.5.2)(lightningcss@1.26.0)
@@ -10773,7 +10773,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@4.0.1(picomatch@4.0.2)(svelte@5.0.0-next.218)(typescript@5.5.4):
+  svelte-check@4.0.1(picomatch@4.0.2)(svelte@5.0.0-next.218)(typescript@5.6.2):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 3.6.0
@@ -10781,11 +10781,11 @@ snapshots:
       picocolors: 1.0.1
       sade: 1.8.1
       svelte: 5.0.0-next.218
-      typescript: 5.5.4
+      typescript: 5.6.2
     transitivePeerDependencies:
       - picomatch
 
-  svelte-preprocess@5.1.4(@babel/core@7.25.2)(postcss@8.4.44)(svelte@5.0.0-next.218)(typescript@5.5.4):
+  svelte-preprocess@5.1.4(@babel/core@7.25.2)(postcss@8.4.44)(svelte@5.0.0-next.218)(typescript@5.6.2):
     dependencies:
       '@types/pug': 2.0.10
       detect-indent: 6.1.0
@@ -10796,22 +10796,22 @@ snapshots:
     optionalDependencies:
       '@babel/core': 7.25.2
       postcss: 8.4.44
-      typescript: 5.5.4
+      typescript: 5.6.2
 
-  svelte-preprocess@6.0.2(@babel/core@7.25.2)(postcss@8.4.44)(svelte@5.0.0-next.218)(typescript@5.5.4):
+  svelte-preprocess@6.0.2(@babel/core@7.25.2)(postcss@8.4.44)(svelte@5.0.0-next.218)(typescript@5.6.2):
     dependencies:
       svelte: 5.0.0-next.218
     optionalDependencies:
       '@babel/core': 7.25.2
       postcss: 8.4.44
-      typescript: 5.5.4
+      typescript: 5.6.2
 
-  svelte2tsx@0.7.15(svelte@5.0.0-next.218)(typescript@5.5.4):
+  svelte2tsx@0.7.15(svelte@5.0.0-next.218)(typescript@5.6.2):
     dependencies:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
       svelte: 5.0.0-next.218
-      typescript: 5.5.4
+      typescript: 5.6.2
 
   svelte@5.0.0-next.218:
     dependencies:
@@ -10991,35 +10991,35 @@ snapshots:
       media-typer: 0.3.0
       mime-types: 2.1.35
 
-  typedoc-plugin-coverage@3.3.0(typedoc@0.26.6(typescript@5.5.4)):
+  typedoc-plugin-coverage@3.3.0(typedoc@0.26.6(typescript@5.6.2)):
     dependencies:
-      typedoc: 0.26.6(typescript@5.5.4)
+      typedoc: 0.26.6(typescript@5.6.2)
     optional: true
 
-  typedoc-plugin-mdn-links@3.2.11(typedoc@0.26.6(typescript@5.5.4)):
+  typedoc-plugin-mdn-links@3.2.11(typedoc@0.26.6(typescript@5.6.2)):
     dependencies:
-      typedoc: 0.26.6(typescript@5.5.4)
+      typedoc: 0.26.6(typescript@5.6.2)
     optional: true
 
-  typedoc@0.26.6(typescript@5.5.4):
+  typedoc@0.26.6(typescript@5.6.2):
     dependencies:
       lunr: 2.3.9
       markdown-it: 14.1.0
       minimatch: 9.0.5
       shiki: 1.16.1
-      typescript: 5.5.4
+      typescript: 5.6.2
       yaml: 2.5.0
     optional: true
 
-  typescript-svelte-plugin@0.3.40(svelte@5.0.0-next.218)(typescript@5.5.4):
+  typescript-svelte-plugin@0.3.40(svelte@5.0.0-next.218)(typescript@5.6.2):
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
-      svelte2tsx: 0.7.15(svelte@5.0.0-next.218)(typescript@5.5.4)
+      svelte2tsx: 0.7.15(svelte@5.0.0-next.218)(typescript@5.6.2)
     transitivePeerDependencies:
       - svelte
       - typescript
 
-  typescript@5.5.4: {}
+  typescript@5.6.2: {}
 
   uc.micro@2.1.0:
     optional: true
