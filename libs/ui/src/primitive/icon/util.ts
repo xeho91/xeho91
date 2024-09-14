@@ -1,6 +1,7 @@
 import type { IterableElement } from "@xeho91/lib-type/iterable";
 
 export const ICONS_MAP = new Map([
+	["contact", "paper-plane-tilt"],
 	["copy", "copy-simple"],
 	["check", "check-fat"],
 	["close", "x"],
@@ -9,6 +10,7 @@ export const ICONS_MAP = new Map([
 	["error", "warning-octagon"],
 	["github", "github-logo"],
 	["heart", "heart"],
+	["home", "house-line"],
 	["info", "info"],
 	["legal", "scales"],
 	["linkedin", "linkedin-logo"],
@@ -18,6 +20,7 @@ export const ICONS_MAP = new Map([
 	["moon", "moon"],
 	["monitor", "monitor"],
 	["placeholder", "placeholder"],
+	["user", "user-circle"],
 	["settings", "gear"],
 	["shield", "shield-star"],
 	["success", "check-circle"],

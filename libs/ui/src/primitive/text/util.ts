@@ -1,8 +1,19 @@
 import { Color } from "@xeho91/lib-design/color";
-import type { FontFamilyName } from "@xeho91/lib-design/font/family";
-import type { FontWeightKey } from "@xeho91/lib-design/font/weight";
 import { exclude_set, readonly_set } from "@xeho91/lib-snippet/set";
 import type { IterableElement } from "@xeho91/lib-type/iterable";
+
+export const TEXT_WEIGHTS = readonly_set([
+	"thin",
+	"extra-light",
+	"light",
+	"regular",
+	"medium",
+	"semi-bold",
+	"bold",
+	"extra-bold",
+	"black",
+]);
+export type TextWeight = IterableElement<typeof TEXT_WEIGHTS>;
 
 export const TEXT_HTML_TAGS = readonly_set([
 	"code",
@@ -21,5 +32,3 @@ export type TextHTMLTagsMap = Pick<HTMLElementTagNameMap, TextHTMLTag>;
 
 export const TEXT_COLORS = exclude_set(Color.NAMES, []);
 export type TextColor = IterableElement<typeof TEXT_COLORS>;
-
-export type TextWeight<TFamily extends FontFamilyName> = FontWeightKey<TFamily>;

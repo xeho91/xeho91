@@ -1,4 +1,4 @@
-<script lang="ts" generics="TTag extends TextHTMLTag = TextHTMLTag, TFamily extends FontFamilyName = FontFamilyName, TWeight extends TextWeight<TFamily> = TextWeight<TFamily>">
+<script lang="ts" generics="TTag extends TextHTMLTag = TextHTMLTag">
 import { Color, type ColorType } from "@xeho91/lib-design/color";
 import { Elevation, type ElevationLevel } from "@xeho91/lib-design/elevation";
 import { Font } from "@xeho91/lib-design/font";
@@ -6,6 +6,7 @@ import type { FontFamilyName } from "@xeho91/lib-design/font/family";
 import type { FontSizeKey } from "@xeho91/lib-design/font/size";
 import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+import { noop } from "@xeho91/lib-snippet/function";
 import type { Properties } from "csstype";
 import type { HTMLAttributes } from "svelte/elements";
 import type { TransitionConfig } from "svelte/transition";
@@ -35,7 +36,7 @@ interface Props
 	/**
 	 * TODO: Add desc
 	 */
-	family?: TFamily | undefined;
+	family?: FontFamilyName | undefined;
 	/**
 	 * TODO: Add desc
 	 */
@@ -43,7 +44,7 @@ interface Props
 	/**
 	 * TODO: Add desc
 	 */
-	weight?: TWeight | undefined;
+	weight?: TextWeight | undefined;
 	/**
 	 * TODO: Add desc
 	 */
@@ -75,8 +76,6 @@ interface Props
 	out?: (node: Element) => TransitionConfig;
 }
 
-const noop = () => ({});
-
 const {
 	children,
 	class: class_,
@@ -104,9 +103,6 @@ const {
 	...rest_props
 }: Props = $props();
 
-const _family = $derived(family && Font.family.get(family));
-// @ts-expect-error: FIXME: I don't know how to satisfy this one
-const _weight = $derived(weight && _family?.weight.get(weight));
 const _selection_color = $derived.by(() => {
 	if (color) {
 		const type = "blend";
@@ -121,14 +117,25 @@ const _selection_color = $derived.by(() => {
 	{...rest_props}
 	this={tag}
 	style:position-anchor={anchor?.toString()}
+
 	class:text-start={align === "start"}
 	class:text-center={align === "center"}
 	class:text-end={align === "end"}
+
+	class:font-thin={weight === "thin"}
+	class:font-extralight={weight === "extra-light"}
+	class:font-light={weight === "light"}
+	class:font-normal={weight === "regular"}
+	class:font-medium={weight === "medium"}
+	class:font-semibold={weight === "semi-bold"}
+	class:font-bold={weight === "bold"}
+	class:font-extrabold={weight === "extra-bold"}
+	class:font-black={weight === "black"}
+
 	class={merge_classes(
 		"text",
 		// Typography
-		_family?.class(),
-		_weight?.class(),
+		family && Font.family.get(family).class(),
 		size && Font.size.get(size).class(),
 		color && Color.class("text"),
 		color && Color.get(color, mode, contrasted ? 12 : 11).class("text"),
