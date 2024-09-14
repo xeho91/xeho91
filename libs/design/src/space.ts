@@ -58,7 +58,8 @@ export class Space<TSize extends SpaceSize = SpaceSize, TValue extends Range = R
 
 	public static get = <TSize extends SpaceSize>(size: TSize): Space<TSize, (typeof Space.VALUE)[TSize]> => {
 		const cached = Space.CONSTRUCTED.get(size);
-		if (cached) return cached as Space<TSize, (typeof Space.VALUE)[TSize]>;
+		// @ts-expect-error Not worth it to use assertion
+		if (cached) return cached;
 		return new Space(size, Space.VALUE[size]);
 	};
 

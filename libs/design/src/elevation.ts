@@ -107,7 +107,8 @@ export class Elevation<
 		level: TLevel,
 	): Elevation<TLevel, (typeof Elevation.VALUE)[TLevel]> => {
 		const cached = Elevation.CONSTRUCTED.get(level);
-		if (cached) return cached as Elevation<TLevel, (typeof Elevation.VALUE)[TLevel]>;
+		// @ts-expect-error Not worth it to use assertion
+		if (cached) return cached;
 		return new Elevation(level, Elevation.VALUE[level]);
 	};
 
