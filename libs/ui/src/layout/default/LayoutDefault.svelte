@@ -1,7 +1,6 @@
 <script lang="ts">
 import { Color } from "@xeho91/lib-design/color";
 import { Grid } from "@xeho91/lib-design/grid";
-import { Space } from "@xeho91/lib-design/space";
 import type { WithChildren } from "@xeho91/lib-feature/component";
 import { merge_classes } from "@xeho91/lib-feature/css";
 import { type Snippet, onDestroy, onMount, tick } from "svelte";
@@ -72,17 +71,6 @@ onDestroy(async () => {
 	@layer component {
 		:global(body:has(.layout-default)) {
 			padding-inline: var(--grid-gutter-default);
-		}
-	}
-
-	:global(.sb-show-main.sb-main-fullscreen) {
-		display: revert-layer;
-		padding: revert-layer;
-	}
-
-	@layer override {
-		:global(#storybook-root) {
-			display: contents;
 		}
 	}
 </style>
