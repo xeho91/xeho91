@@ -205,7 +205,8 @@ export class Color<
 		const category = Color.get_category_from_name(name);
 		const variant = this.#create_variant(category, name, type, step);
 		const cached = DesignToken.CONSTRUCTED.get(`${Color.NAME}-${variant}`);
-		if (cached) return cached as Color<ColorCategoryFromName<TName>, TName, TType, TStep>;
+		// @ts-expect-error Not worth it to use assertion
+		if (cached) return cached;
 		return new Color({ category, name, type, step });
 	};
 

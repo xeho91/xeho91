@@ -71,16 +71,24 @@ export const classes: Action<Element, Array<ClassInput | ClassInput[]>> = (node,
 	};
 };
 
+type Falsy = null | undefined | false;
+type StyleValue = number | string | Display;
+
 export function merge_styles(
-	...styles: Array<[PropertyName | Reference, number | string | Display] | null | undefined | false>
+	...styles: Array<[PropertyName | Reference, StyleValue | Falsy] | string | Falsy>
 ): string {
 	let results = "";
 	for (const style of styles) {
-		if (style) {
-			const [property, value] = style;
+		if (!style) continue;
+		if (typeof style === "string") {
 			if (results) results += ";";
-			results += `${property}:${value}`;
+			results += style;
+			continue;
 		}
+		const [property, value] = style;
+		if (!value && typeof value !== "number") continue;
+		if (results) results += ";";
+		results += `${property}:${value}`;
 	}
 	return results;
 }

@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
 import { defineMeta } from "@storybook/addon-svelte-csf";
 import { Space } from "@xeho91/lib-design/space";
+import { readonly_set } from "@xeho91/lib-snippet/set";
 import { create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
 import { SHARED_META } from "@xeho91/lib-storybook/meta";
 import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
@@ -9,8 +10,9 @@ import { VariantsGroup } from "@xeho91/lib-storybook/variants-group";
 import Sample from "./Sample.svelte";
 import Stack from "./Stack.svelte";
 
-import { STACK_DIRECTIONS, STACK_HTML_TAGS } from "./util";
+import { STACK_HTML_TAGS } from "./util";
 
+const directions = readonly_set(["column", "column-reverse", "row", "row-reverse"]);
 const align_items = [
 	//
 	"center",
@@ -51,7 +53,7 @@ const { Story } = defineMeta({
 		tag: create_control_from_iterable(STACK_HTML_TAGS, {
 			summary: "StackHTMLTag",
 		}),
-		direction: create_control_from_iterable(STACK_DIRECTIONS, {
+		direction: create_control_from_iterable(directions, {
 			summary: "StackDirection",
 		}),
 		align_items: create_control_from_iterable(align_items),
@@ -95,7 +97,7 @@ const { Story } = defineMeta({
 	parameters={PARAMETERS.variants}
 	tags={["!dev"]}
 >
-	<VariantsGroup prop="direction" values={STACK_DIRECTIONS}>
+	<VariantsGroup prop="direction" values={directions}>
 		{#snippet children({ direction })}
 			<Stack {direction}>
 				<Sample />

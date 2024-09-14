@@ -53,7 +53,8 @@ export class Stroke<TSize extends StrokeSize = StrokeSize, TValue extends Dimens
 
 	public static get = <TSize extends StrokeSize>(size: TSize): Stroke<TSize, (typeof Stroke.VALUE)[TSize]> => {
 		const cached = DesignToken.CONSTRUCTED.get(`${Stroke.NAME}-${size}`);
-		if (cached) return cached as Stroke<TSize, (typeof Stroke.VALUE)[TSize]>;
+		// @ts-expect-error Not worth it to use assertion
+		if (cached) return cached;
 		return new Stroke(size, Stroke.VALUE[size]);
 	};
 

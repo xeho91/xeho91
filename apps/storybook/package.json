@@ -37,6 +37,7 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/app-storybook\" "
 	},
 	"dependencies": {
+		"@storybook/sveltekit": "^8.3.0",
 		"@xeho91/lib-css": "workspace:*",
 		"@xeho91/lib-design": "workspace:*",
 		"@xeho91/lib-feature": "workspace:*",

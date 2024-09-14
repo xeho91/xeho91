@@ -18,6 +18,7 @@ export type JobTitle = (typeof JOB_TITLES)[number];
 <script lang="ts">
 	import { merge_classes, type WithClass } from "@xeho91/lib-feature/css";
 	import { typewriter } from "@xeho91/lib-feature/transition";
+	import { onMount, tick } from "svelte";
 
 	import { Code } from "#semantic/code/mod";
 
@@ -25,14 +26,13 @@ export type JobTitle = (typeof JOB_TITLES)[number];
 
 	let { class: class_ }: Props = $props();
 
-	let finished = $state(false);
+	let is_finished = $state(true);
+	let is_mounted = $state(false);
 	let current_job_title_index = $state(0);
 	let job_title = $derived(JOB_TITLES[current_job_title_index] as JobTitle);
 
 	function handle_intro_end() {
-		setTimeout(() => {
-			finished = true;
-		}, 1000);
+		is_finished = true;
 	}
 
 	function handle_outro_end() {
@@ -41,19 +41,31 @@ export type JobTitle = (typeof JOB_TITLES)[number];
 		} else {
 			current_job_title_index++;
 		}
-		finished = false;
+		is_finished = false;
 	}
+
+	onMount(async () => {
+		await tick();
+		is_mounted = true;
+	});
 </script>
 
-{#if !finished}
-	<Code color="accent" class={merge_classes("code-job-title", class_)}>
+<Code color="accent" class={merge_classes("code-job-title", class_)}>
+	{#if !is_mounted}
+		<span
+			out:typewriter|global={{ delay: 5_000, speed: 2 }}
+			onoutroend={handle_outro_end}
+		>
+			{job_title}
+		</span>
+	{:else if !is_finished}
 		<span
 			in:typewriter|global={{ speed: 1 }}
-			out:typewriter|global={{ speed: 2 }}
+			out:typewriter|global={{ delay: 2_000, speed: 2 }}
 			onintroend={handle_intro_end}
 			onoutroend={handle_outro_end}
 		>
 			{job_title}
 		</span>
-	</Code>
-{/if}
+	{/if}
+</Code>

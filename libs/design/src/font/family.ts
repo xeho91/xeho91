@@ -56,7 +56,8 @@ export class FontFamily<
 		name: TName,
 	): FontFamily<TName, (typeof FontFamily.VALUE)[TName]> => {
 		const cached = FontFamily.CONSTRUCTED.get(name);
-		if (cached) return cached as FontFamily<TName, (typeof FontFamily.VALUE)[TName]>;
+		// @ts-expect-error Not worth it to use assertion
+		if (cached) return cached;
 		return new FontFamily(name, FontFamily.VALUE[name]);
 	};
 

@@ -57,7 +57,8 @@ export class Radius<TSize extends RadiusSize = RadiusSize, TValue extends Dimens
 
 	public static get = <TSize extends RadiusSize>(size: TSize): Radius<TSize, (typeof Radius.VALUE)[TSize]> => {
 		const cached = Radius.CONSTRUCTED.get(size);
-		if (cached) return cached as Radius<TSize, (typeof Radius.VALUE)[TSize]>;
+		// @ts-expect-error Not worth it to use assertion
+		if (cached) return cached;
 		return new Radius(size, Radius.VALUE[size]);
 	};
 

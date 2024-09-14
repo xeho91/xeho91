@@ -60,7 +60,8 @@ export class FontSize<TRawKey extends FontSizeKey = FontSizeKey, TValue extends 
 
 	public static get = <TKey extends FontSizeKey>(key: TKey): FontSize<TKey, (typeof FontSize.VALUE)[TKey]> => {
 		const cached = FontSize.CONSTRUCTED.get(key);
-		if (cached) return cached as FontSize<TKey, (typeof FontSize.VALUE)[TKey]>;
+		// @ts-expect-error Not worth it to use assertion
+		if (cached) return cached;
 		return new FontSize(key, FontSize.VALUE[key]);
 	};
 

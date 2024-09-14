@@ -31,7 +31,13 @@ export class GridMin<
 
 	public static default = () => GridMin.get(Grid.DEFAULT);
 
-	public static get = <TKey extends GridVariant>(key: TKey) => new GridMin(key, GridMin.VALUE[key]);
+	public static get = <TVariant extends GridVariant>(
+		variant: TVariant,
+	): GridMin<TVariant, (typeof GridMin.VALUE)[TVariant]> => {
+		const cached = GridMin.CONSTRUCTED.get(variant);
+		if (cached) return cached as GridMin<TVariant, (typeof GridMin.VALUE)[TVariant]>;
+		return new GridMin(variant, GridMin.VALUE[variant]);
+	};
 
 	private constructor(variant: TVariant, value: TValue) {
 		super({ name: "grid-min", variant, value });
@@ -39,7 +45,7 @@ export class GridMin<
 
 	public create_global_ruleset(): Ruleset {
 		const { key, reference, value } = this;
-		const from_map = DesignToken.GLOBAL_RULESETS.get(key);
+		const from_map = GridMin.GLOBAL_RULESETS.get(key);
 		if (from_map) return from_map;
 		const selector = Selector.pseudo.class("root");
 		const declaration = new Declaration(reference.to_property(), value.to_value());
@@ -217,7 +223,14 @@ export class GridMax<
 
 	public static default = () => GridMax.get(Grid.DEFAULT);
 
-	public static get = <TKey extends GridVariant>(key: TKey) => new GridMax(key, GridMax.VALUE[key]);
+	public static get = <TVariant extends GridVariant>(
+		variant: TVariant,
+	): GridMax<TVariant, (typeof GridMax.VALUE)[TVariant]> => {
+		const cached = GridMax.CONSTRUCTED.get(variant);
+		// @ts-expect-error Not worth it to use assertion
+		if (cached) return cached;
+		return new GridMax(variant, GridMax.VALUE[variant]);
+	};
 
 	private constructor(variant: TVariant, value: TValue) {
 		super({ name: "grid-max", variant, value });
@@ -225,7 +238,7 @@ export class GridMax<
 
 	public create_global_ruleset(): Ruleset {
 		const { key, reference, value } = this;
-		const from_map = DesignToken.GLOBAL_RULESETS.get(key);
+		const from_map = GridMax.GLOBAL_RULESETS.get(key);
 		if (from_map) return from_map;
 		const selector = Selector.pseudo.class("root");
 		const declaration = new Declaration(reference.to_property(), value.to_value());
@@ -393,23 +406,32 @@ if (import.meta.vitest) {
 
 export class GridGutter<
 	TVariant extends GridVariant = GridVariant,
-	const TValue extends [GridMin, GridMax] = [GridMin, GridMax],
+	const TValue extends readonly [number, number] = readonly [number, number],
 > extends DesignToken<"grid-gutter", TVariant, TValue> {
-	static readonly #VALUE = [18, 40] as const;
+	static readonly VALUE = readonly_object({
+		default: [18, 40],
+	});
 
 	public static readonly DEFAULT = "default" satisfies GridVariant;
 
 	public static default = () => GridGutter.get(Grid.DEFAULT);
 
-	public static get = <TKey extends GridVariant>(key: TKey) =>
-		new GridGutter(key, [GridMin.get(key), GridMax.get(key)]);
+	public static get = <TVariant extends GridVariant>(
+		variant: TVariant,
+	): GridGutter<TVariant, (typeof GridGutter.VALUE)[TVariant]> => {
+		const cached = GridGutter.CONSTRUCTED.get(variant);
+		// @ts-expect-error Not worth typing
+		if (cached) return cached;
+		return new GridGutter(variant, GridGutter.VALUE[variant]);
+	};
 
 	constructor(variant: TVariant, value: TValue) {
 		super({ name: "grid-gutter", variant, value });
 	}
 
 	get clamp(): FluidClamp {
-		const [minSize, maxSize] = GridGutter.#VALUE;
+		const { variant } = this;
+		const [minSize, maxSize] = GridGutter.VALUE[variant];
 		return calculateClamp({
 			...FLUID_CONFIG,
 			minSize,
@@ -473,9 +495,11 @@ if (import.meta.vitest) {
 				for (const variant of Grid) {
 					const instance = GridGutter.get(variant);
 					expect(instance).toBeInstanceOf(GridGutter);
-					expectTypeOf(instance).toMatchTypeOf<GridGutter<GridVariant, [GridMin, GridMax]>>();
+					expectTypeOf(instance).toMatchTypeOf<GridGutter<GridVariant, readonly [number, number]>>();
 				}
-				expectTypeOf(GridGutter.get("default")).toMatchTypeOf<GridGutter<"default", [GridMin, GridMax]>>();
+				expectTypeOf(GridGutter.get("default")).toMatchTypeOf<
+					GridGutter<"default", readonly [number, number]>
+				>();
 			});
 
 			it("it got cached in the CONSTRUCTED", ({ expect }) => {

@@ -45,7 +45,7 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "3.0.4",
-		"@sveltejs/kit": "2.5.22",
+		"@sveltejs/kit": "catalog:",
 		"@sveltejs/vite-plugin-svelte": "catalog:",
 		"@total-typescript/tsconfig": "catalog:",
 		"@xeho91/lib-asset": "workspace:*",
