@@ -15,7 +15,7 @@ const icons_map = {
 } as const satisfies Record<AppColorScheme, IconName>;
 const attribute_name = "data-color-scheme";
 const default_: AppColorScheme =
-	(window?.localStorage.getItem(attribute_name) as AppColorScheme | undefined) ?? "system";
+	(globalThis?.window?.localStorage.getItem(attribute_name) as AppColorScheme | undefined) ?? "system";
 
 function handle_change(value: AppColorScheme) {
 	window.document.documentElement.setAttribute("data-color-scheme", value);
