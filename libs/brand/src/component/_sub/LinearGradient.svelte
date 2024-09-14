@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-	export const GRADIENT_COLORS = readonly_object({
-		light: new ColorGradient(PRIMARY_OPAQUE_9_LIGHT, ACCENT_OPAQUE_9_LIGHT),
-		dark: new ColorGradient(PRIMARY_OPAQUE_9_DARK, ACCENT_OPAQUE_9_DARK),
-	});
-	export const GRADIENT_ROTATE = 90;
-	export const GRADIENT_STOPS = new Range(1, 5, 1);
+export const GRADIENT_COLORS = readonly_object({
+	light: new ColorGradient(PRIMARY_OPAQUE_9_LIGHT, ACCENT_OPAQUE_9_LIGHT),
+	dark: new ColorGradient(PRIMARY_OPAQUE_9_DARK, ACCENT_OPAQUE_9_DARK),
+});
+export const GRADIENT_ROTATE = 90;
+export const GRADIENT_STOPS = new Range(1, 5, 1);
 </script>
 
 <script lang="ts">
