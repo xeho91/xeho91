@@ -1,17 +1,24 @@
 <script context="module" lang="ts">
-export const GRADIENT_COLORS = readonly_object({
-	light: new ColorGradient(Color.get("primary", "opaque", 9).light, Color.get("accent", "opaque", 9).light),
-	dark: new ColorGradient(Color.get("primary", "opaque", 9).dark, Color.get("accent", "opaque", 9).dark),
-});
-export const GRADIENT_ROTATE = 90;
-export const GRADIENT_STOPS = new Range(1, 5, 1);
+	export const GRADIENT_COLORS = readonly_object({
+		light: new ColorGradient(PRIMARY_OPAQUE_9_LIGHT, ACCENT_OPAQUE_9_LIGHT),
+		dark: new ColorGradient(PRIMARY_OPAQUE_9_DARK, ACCENT_OPAQUE_9_DARK),
+	});
+	export const GRADIENT_ROTATE = 90;
+	export const GRADIENT_STOPS = new Range(1, 5, 1);
 </script>
 
 <script lang="ts">
 	import { LightDark } from "@xeho91/lib-css/function/light-dark";
 	import { Reference } from "@xeho91/lib-css/reference";
-	import { Color } from "@xeho91/lib-design/color";
 	import { ColorGradient } from "@xeho91/lib-design/color/gradient";
+	import {
+		PRIMARY_OPAQUE_9_LIGHT,
+		PRIMARY_OPAQUE_9_DARK,
+	} from "@xeho91/lib-design/color/palette/brand/primary";
+	import {
+		ACCENT_OPAQUE_9_LIGHT,
+		ACCENT_OPAQUE_9_DARK,
+	} from "@xeho91/lib-design/color/palette/brand/accent";
 	import { merge_styles } from "@xeho91/lib-feature/css";
 	import { Range } from "@xeho91/lib-struct/range";
 	import { readonly_object } from "@xeho91/lib-snippet/object";
