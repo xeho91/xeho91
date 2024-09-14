@@ -8,18 +8,19 @@ import { AtLayer } from "@xeho91/lib-css/at-rule/layer";
 import { Reference } from "@xeho91/lib-css/reference";
 import { Color } from "@xeho91/lib-design/color";
 import { Font } from "@xeho91/lib-design/font";
+import { onMount } from "svelte";
 
 import LayerStyles from "./LayerStyles.svelte";
 
-import { state_css } from "./state.svelte";
+import { STATE_CSS } from "./state.svelte";
 import { classes } from "./util";
 
 const radial_color = Color.get("secondary", "blend", 2);
 
-$effect(() => {
+onMount(() => {
 	for (const scheme of Color.SCHEMES) {
 		window.document.body.style.setProperty(
-			new Reference(`--radial-gradient-color-${scheme}`).toString(),
+			new Reference(`radial-gradient-color-${scheme}`).toString(),
 			radial_color[scheme].atomized_oklch.toString(),
 		);
 	}
@@ -27,9 +28,9 @@ $effect(() => {
 </script>
 
 <svelte:head>
-	{#if state_css.at_properties.size > 0}
+	{#if STATE_CSS.at_properties.size > 0}
 		<svelte:element this={"style"} id="custom-properties">
-			{#each state_css.at_properties.values() as at_property}
+			{#each STATE_CSS.at_properties.values() as at_property}
 				{at_property.toString()}
 			{/each}
 		</svelte:element>

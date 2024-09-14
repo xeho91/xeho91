@@ -34,26 +34,32 @@ class State {
 			});
 		}
 	}
+
+	constructor() {
+		AtProperty.on("construct").subscribe({
+			next: (p) => STATE_CSS.add_at_property(p),
+		});
+		DesignToken.on("construct").subscribe({
+			next: (token) => {
+				token.create_global_ruleset();
+			},
+		});
+		DesignToken.on("create-global-ruleset").subscribe({
+			next: ([_variant, ruleset]) => {
+				STATE_CSS.add_ruleset("token", ruleset);
+			},
+		});
+		DesignToken.on("create-property-ruleset").subscribe({
+			next: ([_selector, ruleset]) => {
+				STATE_CSS.add_ruleset("base", ruleset);
+			},
+		});
+		DesignToken.on("create-class-ruleset").subscribe({
+			next: ([_selector, ruleset]) => {
+				STATE_CSS.add_ruleset("token", ruleset);
+			},
+		});
+	}
 }
 
-export const state_css = new State();
-
-AtProperty.on("construct").subscribe({
-	next: (p) => state_css.add_at_property(p),
-});
-
-DesignToken.on("construct").subscribe({
-	next: (token) => token.create_global_ruleset(),
-});
-
-DesignToken.on("create-global-ruleset").subscribe({
-	next: ([_variant, ruleset]) => state_css.add_ruleset("token", ruleset),
-});
-
-DesignToken.on("create-property-ruleset").subscribe({
-	next: ([_selector, ruleset]) => state_css.add_ruleset("base", ruleset),
-});
-
-DesignToken.on("create-class-ruleset").subscribe({
-	next: ([_selector, ruleset]) => state_css.add_ruleset("token", ruleset),
-});
+export const STATE_CSS = new State();
