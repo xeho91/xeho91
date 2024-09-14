@@ -3,7 +3,7 @@ import { AtLayer, type AtLayerName } from "@xeho91/lib-css/at-rule/layer";
 import { Block } from "@xeho91/lib-css/block";
 import type { Ruleset } from "@xeho91/lib-css/ruleset";
 
-import { state_css } from "./state.svelte";
+import { STATE_CSS } from "./state.svelte";
 
 interface Props {
 	name: AtLayerName;
@@ -11,7 +11,7 @@ interface Props {
 
 let { name }: Props = $props();
 
-const rulesets = $derived(state_css[name]);
+const rulesets = $derived(STATE_CSS[name]);
 const block = $derived(new Block<Ruleset[]>(...(rulesets ?? [])));
 const at_layer = $derived(new AtLayer({ name, block }));
 </script>

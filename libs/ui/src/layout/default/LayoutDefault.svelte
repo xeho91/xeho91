@@ -1,23 +1,30 @@
 <script lang="ts">
 import { Color } from "@xeho91/lib-design/color";
+import { Grid } from "@xeho91/lib-design/grid";
 import type { WithChildren } from "@xeho91/lib-feature/component";
 import { merge_classes } from "@xeho91/lib-feature/css";
+import { type Snippet, onDestroy, onMount, tick } from "svelte";
 
 import Container from "./Container.svelte";
 import Footer from "./Footer.svelte";
 import Header from "./Header.svelte";
 import Main from "./Main.svelte";
 
-import { LAYOUT_DEFAULT_GRID_GUTTER } from "./util";
+interface Props extends WithChildren {
+	nav: Snippet<[string]>;
+}
 
-interface Props extends WithChildren {}
+let { children, nav }: Props = $props();
 
-let { children }: Props = $props();
+let is_mounted = $state(false);
 
-let rendered = $state(false);
-
-$effect(() => {
-	rendered = true;
+onMount(async () => {
+	await tick();
+	is_mounted = true;
+});
+onDestroy(async () => {
+	is_mounted = false;
+	await tick();
 });
 </script>
 
@@ -25,47 +32,45 @@ $effect(() => {
 	{#each Color.SCHEMES as scheme}
 		<meta
 			name="theme-color"
-			content={Color.get("secondary", "opaque", 9)[scheme].oklch.toString()}
+			content={Color.get("secondary", "opaque", 9)[
+				scheme
+			].oklch.toString()}
 			media={`(prefers-color-scheme: ${scheme})`}
 		/>
 	{/each}
 </svelte:head>
 
 <Container>
-	{#if rendered}
+	{#if is_mounted}
+		{@const gutter = Grid.gutter.get("default")}
 		<Header
 			class={merge_classes(
-				LAYOUT_DEFAULT_GRID_GUTTER.class("margin-block-start"),
-				LAYOUT_DEFAULT_GRID_GUTTER.class("scroll-margin-block-start"),
-				"row-start-1"
+				gutter.class("margin-block-start"),
+				gutter.class("scroll-margin-block-start"),
+				"row-start-1",
 			)}
 		/>
+		{@render nav(merge_classes(
+			"z-10 row-start-3",
+			"sticky",
+		))}
 		<Main
-			class={merge_classes("row-start-2")}
+			class={merge_classes(
+				"row-start-2"
+			)}
 		>
 			{@render children()}
 		</Main>
 		<Footer
-			class={merge_classes("row-start-3")}
+			class={merge_classes("row-start-4")}
 		/>
 	{/if}
 </Container>
 
 <style>
-@layer component {
-	:global(body:has(.layout-default)) {
-		padding-inline: var(--grid-gutter-default);
+	@layer component {
+		:global(body:has(.layout-default)) {
+			padding-inline: var(--grid-gutter-default);
+		}
 	}
-}
-
-:global(.sb-show-main.sb-main-fullscreen) {
-	display: revert-layer;
-	padding: revert-layer;
-}
-
-@layer override {
-	:global(#storybook-root) {
-		display: contents;
-	}
-}
 </style>

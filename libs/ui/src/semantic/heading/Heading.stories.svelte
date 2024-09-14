@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-import { defineMeta } from "@storybook/addon-svelte-csf";
+import { defineMeta, setTemplate } from "@storybook/addon-svelte-csf";
 import { Elevation } from "@xeho91/lib-design/elevation";
 import { Font } from "@xeho91/lib-design/font";
 import { pick } from "@xeho91/lib-snippet/object";
@@ -33,6 +33,14 @@ const { Story } = defineMeta({
 	},
 });
 </script>
+
+<script>
+setTemplate(template);
+</script>
+
+{#snippet template(args)}
+	<Heading {...args}>{args.children}</Heading>
+{/snippet}
 
 <Story
 	name="Playground"

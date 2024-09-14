@@ -7,14 +7,10 @@ import { Radius } from "@xeho91/lib-design/radius";
 import { Space } from "@xeho91/lib-design/space";
 import { Stroke } from "@xeho91/lib-design/stroke";
 import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+import { scroll } from "@xeho91/lib-feature/scroll";
 import { fade } from "svelte/transition";
 
-import {
-	//
-	LAYOUT_DEFAULT_FADE,
-	LAYOUT_DEFAULT_GRID_GUTTER,
-	LAYOUT_DEFAULT_HEADER_MAIN_HEIGHT_REFERENCE,
-} from "./util";
+import { LAYOUT_DEFAULT_FADE, LAYOUT_DEFAULT_HEADER_MAIN_HEIGHT_REFERENCE } from "./util";
 
 import { ButtonAppSettings } from "#organism/app-settings/mod";
 import { Container } from "#primitive/container/mod";
@@ -29,16 +25,14 @@ let {
 
 let element = $state<HTMLElement>();
 let border_box_size = $state<ResizeObserverSize[]>();
-let height = $derived(border_box_size?.[0]?.blockSize);
+let height = $derived(border_box_size?.[0]?.blockSize ?? 0);
 let parent = $derived(element?.parentNode as HTMLElement);
 
 $effect(() => {
-	if (height) {
-		parent?.style.setProperty(
-			LAYOUT_DEFAULT_HEADER_MAIN_HEIGHT_REFERENCE.toString(),
-			new Dimension(height, "px").toString(),
-		);
-	}
+	parent?.style.setProperty(
+		LAYOUT_DEFAULT_HEADER_MAIN_HEIGHT_REFERENCE.toString(),
+		new Dimension(height, "px").toString(),
+	);
 });
 </script>
 
@@ -47,9 +41,13 @@ $effect(() => {
 	name="header-main"
 	bind:element
 	bind:border_box_size
-	grid
+	box="grid"
 	class={merge_classes(
 		"header-main",
+		scroll.direction === "down" &&
+			!scroll.is_at_top &&
+			!scroll.is_at_bottom &&
+			"translate-y-[-100%]",
 		// Layout
 		"sticky z-10",
 		"h-fit",
@@ -109,10 +107,12 @@ $effect(() => {
 <style>
 	@layer component {
 		:global(.header-main) {
+			view-transition-name: header-main;
+
 			grid-template-columns: subgrid;
 
 			transition-duration: var(--transition-dur);
-			transition-property: box-shadow;
+			transition-property: box-shadow, transform;
 			transition-timing-function: var(--transition-fn);
 		}
 	}

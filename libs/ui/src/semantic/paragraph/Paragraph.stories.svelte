@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-import { defineMeta } from "@storybook/addon-svelte-csf";
+import { defineMeta, setTemplate } from "@storybook/addon-svelte-csf";
 import { Elevation } from "@xeho91/lib-design/elevation";
 import { Font } from "@xeho91/lib-design/font";
 import { pick } from "@xeho91/lib-snippet/object";
@@ -34,6 +34,14 @@ const { Story } = defineMeta({
 });
 </script>
 
+<script>
+setTemplate(template);
+</script>
+
+{#snippet template(args)}
+	<Paragraph {...args}>{args.children}</Paragraph>
+{/snippet}
+
 <Story
 	name="Playground"
 	parameters={PARAMETERS.playground}
@@ -53,7 +61,7 @@ const { Story } = defineMeta({
 >
 	<VariantsGroup prop="color" values={TEXT_COLORS}>
 		{#snippet children({ color })}
-			<Paragraph {color}>Paragraph content</Paragraph>
+			<Paragraph {color}>Paragraph</Paragraph>
 		{/snippet}
 	</VariantsGroup>
 </Story>
@@ -65,7 +73,7 @@ const { Story } = defineMeta({
 >
 	<VariantsGroup prop="weight" values={Font.weight.keys("mono")}>
 		{#snippet children({ weight })}
-			<Paragraph {weight}>Paragraph content</Paragraph>
+			<Paragraph {weight}>Paragraph</Paragraph>
 		{/snippet}
 	</VariantsGroup>
 </Story>
@@ -78,7 +86,7 @@ const { Story } = defineMeta({
 >
 	<VariantsGroup prop="size" values={Font.size.KEYS}>
 		{#snippet children({ size })}
-			<Paragraph {size}>Paragraph content</Paragraph>
+			<Paragraph {size}>Paragraph</Paragraph>
 		{/snippet}
 	</VariantsGroup>
 </Story>
@@ -107,7 +115,7 @@ const { Story } = defineMeta({
 >
 	<VariantsGroup prop="shadow" values={Elevation.LEVELS}>
 		{#snippet children({ shadow })}
-			<Paragraph {shadow}>Paragraph content</Paragraph>
+			<Paragraph {shadow}>Paragraph</Paragraph>
 		{/snippet}
 	</VariantsGroup>
 </Story>
@@ -119,7 +127,7 @@ const { Story } = defineMeta({
 >
 	<VariantsGroup prop="uppercased" values={[false, true]}>
 		{#snippet children({ uppercased })}
-			<Paragraph {uppercased}>Paragraph content</Paragraph>
+			<Paragraph {uppercased}>Paragraph</Paragraph>
 		{/snippet}
 	</VariantsGroup>
 </Story>
@@ -131,7 +139,7 @@ const { Story } = defineMeta({
 >
 	<VariantsGroup prop="loading" values={[false, true]}>
 		{#snippet children({ loading })}
-			<Paragraph {loading} class="min-w-[4ch]">Paragraph content</Paragraph>
+			<Paragraph {loading} class="min-w-[4ch]">Paragraph</Paragraph>
 		{/snippet}
 	</VariantsGroup>
 </Story>

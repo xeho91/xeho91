@@ -13,14 +13,13 @@ let { class: class_ }: Props = $props();
 
 <Section
 	id="self-intro"
+	align_content="center"
 	width="full-grid"
 	gutter="default"
-	align_content="center"
-	justify_content="center"
 	class={merge_classes(
 		//
 		"section-self-intro",
-		"cols-span-full",
+		"cols-span-full grid-rows-[min-content] auto-rows-max",
 		class_,
 	)}
 >
@@ -35,11 +34,17 @@ let { class: class_ }: Props = $props();
 <style>
 	@layer component {
 		:global(.section-self-intro) {
-			@container layout (width <= 768px) {
-				grid-template-rows: 1fr auto auto 3fr;
-			}
+			/*. */
 
 			:global(> .self-intro) {
+				@container layout (width <= 420px) {
+					grid-column: 1 / -1;
+					grid-row-start: 1;
+				}
+				@container layout (width > 420px) and (width <= 768px) {
+					grid-column: 3 / 10;
+					grid-row-start: 1;
+				}
 				@container layout (width > 768px) {
 					position: absolute;
 					position-anchor: var(--position-anchor);
@@ -49,10 +54,6 @@ let { class: class_ }: Props = $props();
 					align-self: anchor-center;
 					margin-inline-start: var(--grid-gutter-default);
 				}
-				@container layout (width <= 768px) {
-					grid-column: 1 / -1;
-					grid-row-start: 2;
-				}
 			}
 			:global(.photo-and-avatar .photo) {
 				@container layout (width > 768px) {
@@ -60,14 +61,16 @@ let { class: class_ }: Props = $props();
 				}
 				@container layout (width <= 768px) {
 					grid-column: 1 / -1;
-					grid-row-start: 3;
+					grid-row-start: 2;
 					justify-self: center;
 				}
 			}
 			:global(> .list-social-channels) {
-				@container layout (width <= 768px) {
-					grid-row-start: 4;
-					align-self: center;
+				@container layout (width < 425px) {
+					grid-row-start: 6;
+				}
+				@container layout (width >= 425px) {
+					grid-row-start: 5;
 				}
 			}
 		}

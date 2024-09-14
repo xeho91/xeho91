@@ -39,9 +39,9 @@
 		"test": "vitest run --passWithNoTests --workspace \"../../vitest.workspace.ts\" --project \"@xeho91/app-website\" "
 	},
 	"dependencies": {
-		"@fontsource-variable/fraunces": "5.0.21",
-		"@fontsource-variable/jetbrains-mono": "5.0.21",
-		"@fontsource-variable/work-sans": "5.0.19"
+		"@fontsource-variable/fraunces": "5.1.0",
+		"@fontsource-variable/jetbrains-mono": "5.1.0",
+		"@fontsource-variable/work-sans": "5.1.0"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "3.0.4",
@@ -54,7 +54,7 @@
 		"@xeho91/lib-design": "workspace:*",
 		"@xeho91/lib-feature": "workspace:*",
 		"@xeho91/lib-ui": "workspace:*",
-		"lightningcss": "1.26.0",
+		"lightningcss": "1.27.0",
 		"svelte": "catalog:",
 		"typescript-svelte-plugin": "catalog:",
 		"unocss": "catalog:"

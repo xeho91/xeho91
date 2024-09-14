@@ -73,18 +73,19 @@ $effect(() => {
 			</Text>
 		</ToggleOption>
 	{/each}
-		<span
-			style:position-anchor={anchor.toString()}
-			class={merge_classes(
-				"indicator",
-				"absolute z-100",
-				"size-[1ch]",
-				Color.class("background"),
-				Color.get(color, "opaque", 11).class("background"),
-				Radius.get("circle").class(),
-				"pointer-events-none",
-			)}
-		></span>
+
+	<span
+		style:position-anchor={anchor.toString()}
+		class={merge_classes(
+			"indicator",
+			"absolute z-100",
+			"size-[1ch]",
+			Color.class("background"),
+			Color.get(color, "opaque", 11).class("background"),
+			Radius.get("circle").class(),
+			"pointer-events-none",
+		)}
+	></span>
 </Stack>
 
 
