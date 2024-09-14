@@ -54,15 +54,19 @@ function handle_current_link_click(event: MouseEvent) {
 	tag="nav"
 	name="nav-app"
 	box="grid"
+	template_columns="subgrid"
+	height="fit"
 	padding_x="xs"
 	padding_y="2xs"
+	border="solid"
+	stroke="xs"
+	radius="xl"
+	shadow="2"
 	style={merge_styles([
 		"inset-block-end",
 		`calc(-1 * ${Space.get("2xs").var})`,
 	])}
-	template_columns="subgrid"
 	class={merge_classes(
-		"h-fit",
 		scroll.direction === "up" &&
 			!scroll.is_at_bottom &&
 			!scroll.is_at_top &&
@@ -72,16 +76,11 @@ function handle_current_link_click(event: MouseEvent) {
 		Color.get("secondary", "blend", 3).class("background"),
 		"backdrop-blur-lg",
 		// Border
-		Stroke.get("xs").class(),
-		Radius.get("xl").class(),
 		Color.class("border"),
 		Color.get("secondary", "blend", 6).class("border"),
-		// Elevation
-		Elevation.class("box-shadow"),
-		Elevation.get(2).class("box-shadow"),
+		// Shadow
 		Elevation.get(1).class("box-shadow", { pseudo_class: "hover" }),
 		Elevation.get(1).class("box-shadow", { pseudo_class: "focus-within" }),
-		Color.class("box-shadow"),
 		Color.get("secondary", "blend", 1).class("box-shadow"),
 		class_,
 	)}

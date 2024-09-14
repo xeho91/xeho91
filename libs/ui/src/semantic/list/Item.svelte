@@ -1,11 +1,11 @@
-<script lang="ts">
+<script lang="ts" generics="TBlock extends ContainerBox = 'block'">
 import type { ComponentProps } from "svelte";
 import type { HTMLLiAttributes } from "svelte/elements";
 
-import { Container } from "#primitive/container/mod";
+import { Container, type ContainerBox } from "#primitive/container/mod";
 
-type ContainerProps = Omit<ComponentProps<Container>, "name" | "tag">;
-interface Props extends ContainerProps, Pick<HTMLLiAttributes, "value"> {}
+type ContainerProps = Omit<ComponentProps<Container<"li", TBlock>>, "name" | "tag">;
+type Props = ContainerProps & Pick<HTMLLiAttributes, "value">;
 
 let {
 	//

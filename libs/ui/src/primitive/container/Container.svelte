@@ -1,13 +1,11 @@
-<script lang="ts" context="module">
-export type ContainerBox = "block" | "flex" | "grid";
-</script>
-
 <script lang="ts" generics="TTag extends BoxHTMLTag = 'div', TTBox extends ContainerBox = 'block'">
 import { merge_classes, merge_styles } from "@xeho91/lib-feature/css";
 import type { Properties } from "csstype";
 import type { ComponentProps } from "svelte";
 
-import { Box, FlexBox, GridBox, type BoxHTMLTag } from "#primitive/box/mod";
+import type { ContainerBox } from "./util";
+
+import { Box, type BoxHTMLTag, FlexBox, GridBox } from "#primitive/box/mod";
 
 type NormalBoxProps = ComponentProps<typeof Box<TTag>>;
 type FlexBoxProps = ComponentProps<typeof FlexBox<TTag>>;
@@ -44,11 +42,7 @@ const classes = merge_classes(
 	name,
 	class_,
 );
-const styles = merge_styles(
-	style,
-	["container-name", name],
-	["container-type", type],
-);
+const styles = merge_styles(style, ["container-name", name], ["container-type", type]);
 </script>
 
 {#if box === "block"}

@@ -25,17 +25,15 @@ let {
 <Container
 	tag="footer"
 	name="footer-main"
-	grid
+	box="grid"
+	template_columns="subgrid"
+	border="solid"
 	style={merge_styles([
 		"margin-inline",
 		`calc(-50lvw - (${Grid.max.get("default").var} / 2))`,
 	])}
 	class={merge_classes(
-		//
 		"footer-main",
-		"grid-cols-subgrid",
-		// "relative inset-x-1/2",
-		// "w-[100dvw] mx-[-50dvw] h-fit",
 		"snap-end",
 		Grid.gutter.get("default").class("padding-block"),
 		"self-end col-span-full",
@@ -45,7 +43,6 @@ let {
 		// Border
 		Color.class("border-top"),
 		Color.get("secondary", "blend", 6).class("border-top"),
-		"border-solid",
 		Stroke.get("s").class("top"),
 		Radius.get("xl").class("start-start"),
 		Radius.get("xl").class("start-end"),

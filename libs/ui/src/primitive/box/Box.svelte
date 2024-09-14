@@ -1,5 +1,9 @@
 <script lang="ts" generics="TTag extends BoxHTMLTag = 'div'">
+import { Color } from "@xeho91/lib-design/color";
+import { Elevation, type ElevationLevel } from "@xeho91/lib-design/elevation";
+import { Radius, type RadiusSize } from "@xeho91/lib-design/radius";
 import { Space, type SpaceSize } from "@xeho91/lib-design/space";
+import { Stroke, type StrokeSize } from "@xeho91/lib-design/stroke";
 import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import { noop } from "@xeho91/lib-snippet/function";
@@ -18,26 +22,35 @@ interface Props extends WithAnchor, WithChildren, WithClass, Attributes {
 	align_content?: Properties["alignContent"];
 	align_items?: Properties["alignItems"];
 	justify_content?: Properties["justifyContent"];
+	// Dimensions
+	width?: "fit" | "full";
+	height?: "fit" | "full";
 	// Gaps
-	gap?: SpaceSize | undefined;
-	gap_column?: SpaceSize | undefined;
-	gap_row?: SpaceSize | undefined;
+	gap?: SpaceSize;
+	gap_column?: SpaceSize;
+	gap_row?: SpaceSize;
 	// Paddings
-	padding?: SpaceSize | undefined;
-	padding_x?: SpaceSize | undefined;
-	padding_x_start?: SpaceSize | undefined;
-	padding_x_end?: SpaceSize | undefined;
-	padding_y?: SpaceSize | undefined;
-	padding_y_start?: SpaceSize | undefined;
-	padding_y_end?: SpaceSize | undefined;
+	padding?: SpaceSize;
+	padding_x?: SpaceSize;
+	padding_x_start?: SpaceSize;
+	padding_x_end?: SpaceSize;
+	padding_y?: SpaceSize;
+	padding_y_start?: SpaceSize;
+	padding_y_end?: SpaceSize;
 	// Margins
-	margin?: SpaceSize | undefined;
-	margin_x?: SpaceSize | undefined;
-	margin_x_start?: SpaceSize | undefined;
-	margin_x_end?: SpaceSize | undefined;
-	margin_y?: SpaceSize | undefined;
-	margin_y_start?: SpaceSize | undefined;
-	margin_y_end?: SpaceSize | undefined;
+	margin?: SpaceSize;
+	margin_x?: SpaceSize;
+	margin_x_start?: SpaceSize;
+	margin_x_end?: SpaceSize;
+	margin_y?: SpaceSize;
+	margin_y_start?: SpaceSize;
+	margin_y_end?: SpaceSize;
+	// Border
+	border?: Properties["borderStyle"];
+	radius?: RadiusSize;
+	stroke?: StrokeSize;
+	// Design
+	shadow?: ElevationLevel;
 	// Transitions
 	in?: (node: Element) => TransitionConfig;
 	out?: (node: Element) => TransitionConfig;
@@ -57,6 +70,9 @@ let {
 	align_content,
 	align_items,
 	justify_content,
+	// Dimensions
+	width,
+	height,
 	// Gaps
 	gap,
 	gap_column,
@@ -77,6 +93,12 @@ let {
 	margin_y,
 	margin_y_start,
 	margin_y_end,
+	// Border
+	border,
+	radius,
+	stroke,
+	// Design
+	shadow,
 	// Transitions
 	in: in_ = noop,
 	out = noop,
@@ -95,6 +117,11 @@ let {
 
 	style:anchor-name={anchor_name?.toString()}
 	style:position-anchor={anchor?.toString()}
+
+	class:w-fit={width === "fit"}
+    class:w-full={width === "full"}
+    class:h-fit={height === "fit"}
+    class:h-full={height === "full"}
 
 	class:content-normal={align_content === "normal"}
 	class:content-start={align_content === "start"}
@@ -123,6 +150,8 @@ let {
 	class:justify-evenly={justify_content === "space-evenly"}
 	class:justify-stretch={justify_content === "stretch"}
 
+	class:border-solid={border === "solid"}
+	class:border-dashed={border === "dashed"}
 
 	class={merge_classes(
 		"box",
@@ -146,10 +175,17 @@ let {
 		margin_y && Space.get(margin_y).class("margin-block"),
 		margin_y_start && Space.get(margin_y_start).class("margin-block-start"),
 		margin_y_end && Space.get(margin_y_end).class("margin-block-end"),
+		// Border
+		radius && Radius.get(radius).class(),
+		stroke && Stroke.get(stroke).class(),
+		// Design
+		shadow && Elevation.class("box-shadow"),
+		shadow && Elevation.get(shadow).class("box-shadow"),
+		shadow && Color.class("box-shadow"),
 		class_,
 	)}
-	in:in_
-	out:out
+	in:in_|global
+	out:out|global
 >
 	{@render children()}
 </svelte:element>

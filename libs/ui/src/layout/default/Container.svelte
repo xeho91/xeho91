@@ -2,8 +2,8 @@
 import { Grid } from "@xeho91/lib-design/grid";
 import type { WithChildren } from "@xeho91/lib-feature/component";
 import { type WithClass, merge_classes } from "@xeho91/lib-feature/css";
-
 import { onDestroy, onMount } from "svelte";
+
 import { Container } from "#primitive/container/mod";
 
 interface Props extends WithChildren, WithClass {}
@@ -24,11 +24,11 @@ onDestroy(() => {
 	name="layout"
 	type="inline-size"
 	box="grid"
+	width="full"
 	class={merge_classes(
 		"layout-default",
 		"justify-self-center",
 		Grid.min.get("default").class("min-width"),
-		"w-full",
 		Grid.max.get("default").class("max-width"),
 		"grid-cols-12 auto-cols-fr",
 		Grid.gutter.get("default").class("gap"),
