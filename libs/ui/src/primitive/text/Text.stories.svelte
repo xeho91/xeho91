@@ -59,7 +59,7 @@ const { Story } = defineMeta({
 	tags={["!autodocs", "!dev"]}
 >
 	{#snippet children(args)}
-		<Text {...args}>Text</Text>
+		<Text {...args}>{args.children}</Text>
 	{/snippet}
 </Story>
 
