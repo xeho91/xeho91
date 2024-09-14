@@ -17,21 +17,27 @@ interface Props extends BoxProps {
 }
 
 let {
-	//
-	class: class_,
-	children,
 	flow,
 	columns,
 	rows,
 	template_columns,
 	template_rows,
+	// Shared
+	class: class_,
+	children,
+	element = $bindable(),
+	border_box_size = $bindable(),
+	style,
 	...rest_props
 }: Props = $props();
 </script>
 
 <Box
 	{...rest_props}
+	bind:element
+	bind:border_box_size
 	style={merge_styles(
+		style,
 		["grid-template-columns", template_columns],
 		["grid-template-rows", template_rows],
 	)}

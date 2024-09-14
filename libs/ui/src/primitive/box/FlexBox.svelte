@@ -13,16 +13,20 @@ type Props = BoxProps & {
 };
 
 let {
-	//
+	direction,
+	// Shared
 	class: class_,
 	children,
-	direction,
+	element = $bindable(),
+	border_box_size = $bindable(),
 	...rest_props
 }: Props = $props();
 </script>
 
 <Box
 	{...rest_props}
+	bind:element
+	bind:border_box_size
 	class={merge_classes(
 		"flex",
 		direction === "column" && "flex-col",

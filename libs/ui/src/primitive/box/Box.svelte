@@ -49,6 +49,7 @@ let {
 	border_box_size = $bindable(),
 	children,
 	class: class_,
+	style,
 	//
 	anchor,
 	anchor_name,
@@ -90,6 +91,8 @@ let {
 	bind:this={element}
 	bind:borderBoxSize={border_box_size}
 
+	{style}
+
 	style:anchor-name={anchor_name?.toString()}
 	style:position-anchor={anchor?.toString()}
 
@@ -119,6 +122,7 @@ let {
 	class:justify-between={justify_content === "space-between"}
 	class:justify-evenly={justify_content === "space-evenly"}
 	class:justify-stretch={justify_content === "stretch"}
+
 
 	class={merge_classes(
 		"box",
