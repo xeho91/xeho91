@@ -57,10 +57,6 @@ export class AtLayer<TName extends AtLayerName = AtLayerName, TBlock extends Blo
 				block: null,
 			};
 		}
-
-		public [Symbol.iterator](): IterableIterator<AtLayerName> {
-			return AtLayer.NAMES[Symbol.iterator]();
-		}
 	})();
 
 	public static [Symbol.iterator](): IterableIterator<AtLayerName> {
