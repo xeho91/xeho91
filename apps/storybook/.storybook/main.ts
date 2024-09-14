@@ -31,7 +31,7 @@ const config = (async (): Promise<StorybookConfig> => {
 			autodocs: true,
 		},
 		framework: {
-			name: "@storybook/svelte-vite",
+			name: "@storybook/sveltekit",
 			options: {},
 		},
 		stories: [
