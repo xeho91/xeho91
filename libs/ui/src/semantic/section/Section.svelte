@@ -1,17 +1,16 @@
 <script lang="ts">
 import { Dimension } from "@xeho91/lib-css/value/dimension";
 import { Grid, type GridVariant } from "@xeho91/lib-design/grid";
-import { type WithAnchor, merge_classes, merge_styles } from "@xeho91/lib-feature/css";
+import { merge_classes, merge_styles } from "@xeho91/lib-feature/css";
 import type { ComponentProps } from "svelte";
 
 import type { SectionHeight, SectionWidth } from "./util";
 
+import { LAYOUT_DEFAULT_MAIN_MIN_HEIGHT } from "#layout/default/util";
 import { Container } from "#primitive/container/mod";
 
-import { LAYOUT_DEFAULT_GRID_GUTTER, LAYOUT_DEFAULT_MAIN_MIN_HEIGHT } from "#layout/default/util";
-
-type ContainerProps = Omit<ComponentProps<Container>, "grid" | "name" | "tag" | "id">;
-interface Props extends WithAnchor, ContainerProps {
+type ContainerProps = Omit<ComponentProps<Container<"section", "grid">>, "name" | "tag" | "id">;
+interface Props extends ContainerProps {
 	id: string;
 	width?: SectionWidth;
 	height?: SectionHeight;
@@ -36,7 +35,7 @@ let is_full_srreen = width === "full-screen";
 	{...rest_props}
 	tag="section"
 	name="section"
-	grid
+	box="grid"
 	style={merge_styles(
 		height === "full-main" && ["height", LAYOUT_DEFAULT_MAIN_MIN_HEIGHT.to_var(new Dimension(100,"lvh").to_value())],
 		is_full_srreen && ["margin-inline", `calc(-50lvw - (${Grid.max.get("default").var} / 2))`],
@@ -44,21 +43,13 @@ let is_full_srreen = width === "full-screen";
 	class={merge_classes(
 		//
 		"section",
-		"grid",
+		"grid grid-cols-subgrid",
 		{
 			"col-span-full": is_full_srreen || is_full_grid,
 		},
-		gutter === "default" && LAYOUT_DEFAULT_GRID_GUTTER.class("gap"),
+		gutter === "default" && Grid.gutter.get("default").class("gap"),
 		class_
 	)}
 >
 	{@render children()}
 </Container>
-
-<style>
-@layer component {
-	:global(.section) {
-		grid-template-columns: subgrid;
-	}
-}
-</style>
