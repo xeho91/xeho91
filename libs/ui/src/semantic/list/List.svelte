@@ -1,26 +1,23 @@
-<script lang="ts" generics="TOrdered extends boolean = false">
+<script lang="ts" context="module">
+export type ListHTMLTag = "ol" | "ul";
+</script>
+
+<script lang="ts" generics="TTag extends ListHTMLTag = 'ul', TUseGrid extends boolean = false">
 import { merge_classes } from "@xeho91/lib-feature/css";
 import type { ComponentProps } from "svelte";
 
 import { Stack } from "#primitive/stack/mod";
 
-type StackTag = TOrdered extends true ? "ol" : "ul";
-// TODO: Use `HTMLOLAttributes`
-type StackProps = Omit<ComponentProps<Stack<StackTag>>, "tag">;
-
-interface Props extends StackProps {
-	ordered?: TOrdered;
-}
+type StackProps = ComponentProps<Stack<TTag, TUseGrid>>;
+type Props = StackProps & {};
 
 let {
 	//
 	children,
 	class: class_,
-	ordered = false as TOrdered,
+	tag = "ul" as TTag,
 	...rest_props
 }: Props = $props();
-
-const tag = (ordered ? "ol" : "ul") as StackTag;
 </script>
 
 <Stack
@@ -28,7 +25,6 @@ const tag = (ordered ? "ol" : "ul") as StackTag;
 	{tag}
 	class={merge_classes(
 		"list",
-		ordered && "ordered",
 		class_
 	)}
 >
