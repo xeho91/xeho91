@@ -43,7 +43,6 @@
 		"@sveltejs/vite-plugin-svelte": "catalog:",
 		"@unocss/extractor-svelte": "0.61.9",
 		"@unocss/reset": "0.61.9",
-		"svelte-preprocess": "6.0.2",
 		"unocss": "catalog:"
 	},
 	"peerDependencies": {
