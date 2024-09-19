@@ -15,8 +15,8 @@ import { Code } from "#semantic/code/mod";
 
 const { Story } = defineMeta({
 	...SHARED_META,
+	title: "Primitive/Text",
 	component: Text,
-	tags: ["autodocs"],
 	args: {
 		children: "Text",
 	},

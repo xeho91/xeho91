@@ -7,7 +7,7 @@ import { SvelteURL } from "svelte/reactivity";
 
 import NavApp from "./NavApp.svelte";
 
-import { Container } from "#layout/default/mod";
+import { Root } from "#layout/default/mod";
 
 let current = $state(new SvelteURL(window.location.toString()));
 
@@ -20,7 +20,7 @@ const { Story } = defineMeta({
 	decorators: [
 		() => ({
 			// @ts-expect-error FIXME: Need to fix addon
-			Component: Container,
+			Component: Root,
 		}),
 	],
 	parameters: {
@@ -41,7 +41,7 @@ const { Story } = defineMeta({
 </script>
 
 <Story
-	name="Preview"
+	name="Playground"
 	args={{
 		current,
 		links: [

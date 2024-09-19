@@ -5,10 +5,10 @@ import type { WithChildren } from "@xeho91/lib-feature/component";
 import { merge_classes } from "@xeho91/lib-feature/css";
 import { type Snippet, onDestroy, onMount, tick } from "svelte";
 
-import Container from "./Container.svelte";
 import Footer from "./Footer.svelte";
 import Header from "./Header.svelte";
 import Main from "./Main.svelte";
+import Root from "./Root.svelte";
 
 interface Props extends WithChildren {
 	nav: Snippet<[string]>;
@@ -40,7 +40,7 @@ onDestroy(async () => {
 	{/each}
 </svelte:head>
 
-<Container>
+<Root>
 	{#if is_mounted}
 		{@const gutter = Grid.gutter.get("default")}
 		<Header
@@ -65,7 +65,7 @@ onDestroy(async () => {
 			class={merge_classes("row-start-4")}
 		/>
 	{/if}
-</Container>
+</Root>
 
 <style>
 	@layer component {

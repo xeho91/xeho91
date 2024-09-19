@@ -10,12 +10,13 @@ import Section from "./Section.svelte";
 
 import { SECTION_HEIGHT, SECTION_WIDTH } from "./util";
 
-import { Container } from "#layout/default/mod";
+import { Root } from "#layout/default/mod";
 import { Code } from "#semantic/code/mod";
 import { Paragraph } from "#semantic/paragraph/mod";
 
 const { Story } = defineMeta({
 	...SHARED_META,
+	title: "Semantic/Section",
 	component: Section,
 	args: {
 		id: "example",
@@ -28,7 +29,7 @@ const { Story } = defineMeta({
 	},
 	decorators: [
 		// @ts-expect-error FIXME: Need to fix addon types
-		() => ({ Component: Container }),
+		() => ({ Component: Root }),
 	],
 	parameters: {
 		layout: "fullscreen",

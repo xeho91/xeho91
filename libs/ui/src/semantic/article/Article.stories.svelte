@@ -5,9 +5,18 @@ import { PARAMETERS } from "@xeho91/lib-storybook/parameters";
 
 import Article from "./Article.svelte";
 
+import { Root } from "#layout/default/mod";
+
 const { Story } = defineMeta({
 	...SHARED_META,
+	title: "Semantic/Article",
 	component: Article,
+	decorators: [
+		() => ({
+			// @ts-expect-error FIXME: Need to fix addon
+			Component: Root,
+		}),
+	],
 	argTypes: {},
 	parameters: {
 		layout: "centered",
@@ -18,7 +27,5 @@ const { Story } = defineMeta({
 <Story
 	name="Playground"
 	parameters={PARAMETERS.playground}
-	tags={["!autodocs", "!dev"]}
+	tags={["autodocs", "!dev"]}
 />
-
-<Story name="Default" parameters={PARAMETERS.default} tags={["!dev"]} />

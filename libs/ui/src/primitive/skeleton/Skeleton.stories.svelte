@@ -11,6 +11,7 @@ import Skeleton from "./Skeleton.svelte";
 
 const { Story } = defineMeta({
 	...SHARED_META,
+	title: "Primitive/Skeleton",
 	component: Skeleton,
 	argTypes: {
 		color: create_control_from_iterable(SKELETON_COLORS, {

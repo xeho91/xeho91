@@ -48,6 +48,7 @@ const margin_props = [
 
 const { Story } = defineMeta({
 	...SHARED_META,
+	title: "Primitive/Stack",
 	component: Stack,
 	argTypes: {
 		tag: create_control_from_iterable(STACK_HTML_TAGS, {

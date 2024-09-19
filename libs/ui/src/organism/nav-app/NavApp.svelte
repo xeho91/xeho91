@@ -88,7 +88,7 @@ function handle_current_link_click(event: MouseEvent) {
 >
 	{@const position_anchor = new Reference("nav-app-current")}
 	<span
-		style:position-anchor={anchor.toString()}
+		style:position-anchor={position_anchor.toString()}
 		class={merge_classes(
 			//
 			"indicator",
@@ -119,7 +119,7 @@ function handle_current_link_click(event: MouseEvent) {
 					href={link.href}
 					onclick={is_current ? handle_current_link_click : undefined}
 					style:anchor-name={is_current
-						? anchor.toString()
+						? position_anchor.toString()
 						: undefined}
 					class={merge_classes(
 						"flex flex-col items-center",

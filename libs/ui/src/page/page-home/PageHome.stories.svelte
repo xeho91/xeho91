@@ -9,6 +9,7 @@ import { LayoutDefault } from "#layout/default/mod";
 
 const { Story } = defineMeta({
 	...SHARED_META,
+	title: "Page/PageHome",
 	component: PageHome,
 	parameters: {
 		layout: "fullscreen",
@@ -19,7 +20,7 @@ const { Story } = defineMeta({
 </script>
 
 <Story
-	name="Default"
+	name="Preview"
 	parameters={PARAMETERS.default}
 	tags={["!autodocs", "dev"]}
 />

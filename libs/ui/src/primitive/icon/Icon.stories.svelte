@@ -11,6 +11,7 @@ import { ICONS_MAP } from "./util";
 
 const { Story } = defineMeta({
 	...SHARED_META,
+	title: "Primitive/Icon",
 	component: Icon,
 	args: {
 		name: "heart",
