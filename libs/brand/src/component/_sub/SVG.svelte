@@ -1,5 +1,5 @@
 <script lang="ts" generics="TWidth extends number = number, THeight extends number = number">
-import type { WithAnchor, WithClass } from "@xeho91/lib-feature/css";
+import type { WithClass, WithPositionAnchor } from "@xeho91/lib-feature/css";
 import type { Rectangle } from "@xeho91/lib-geometry/two-dimension/rectangle";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
@@ -7,7 +7,7 @@ import type { HTMLAttributes } from "svelte/elements";
 import type { BrandAssetTheme } from "#design";
 import { set_id } from "#id";
 
-interface Props extends WithAnchor, WithClass, Omit<HTMLAttributes<SVGElement>, "class"> {
+interface Props extends WithPositionAnchor, WithClass, Omit<HTMLAttributes<SVGElement>, "class"> {
 	children: Snippet;
 	// Meta
 	id: string;

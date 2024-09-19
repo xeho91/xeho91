@@ -5,7 +5,7 @@ import { Font } from "@xeho91/lib-design/font";
 import type { FontFamilyName } from "@xeho91/lib-design/font/family";
 import type { FontSizeKey } from "@xeho91/lib-design/font/size";
 import type { WithChildren } from "@xeho91/lib-feature/component";
-import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+import { type WithClass, type WithPositionAnchor, merge_classes } from "@xeho91/lib-feature/css";
 import { noop } from "@xeho91/lib-snippet/function";
 import type { Properties } from "csstype";
 import type { HTMLAttributes } from "svelte/elements";
@@ -16,7 +16,7 @@ import type { TextColor, TextHTMLTag, TextWeight } from "./util";
 import { Skeleton, set_skeleton_color } from "#primitive/skeleton/mod";
 
 interface Props
-	extends WithAnchor,
+	extends WithPositionAnchor,
 		WithChildren,
 		WithClass,
 		Omit<HTMLAttributes<HTMLElementTagNameMap[TextHTMLTag]>, "children" | "class"> {
@@ -80,7 +80,8 @@ const {
 	children,
 	class: class_,
 	tag = "span" as TTag,
-	anchor,
+	anchor_name,
+	position_anchor,
 	color,
 	mode = "opaque",
 	family,
@@ -116,7 +117,9 @@ const _selection_color = $derived.by(() => {
 <svelte:element
 	{...rest_props}
 	this={tag}
-	style:position-anchor={anchor?.toString()}
+
+	style:anchor-name={anchor_name?.toString()}
+	style:position-anchor={position_anchor?.toString()}
 
 	class:text-start={align === "start"}
 	class:text-center={align === "center"}
@@ -131,6 +134,10 @@ const _selection_color = $derived.by(() => {
 	class:font-bold={weight === "bold"}
 	class:font-extrabold={weight === "extra-bold"}
 	class:font-black={weight === "black"}
+
+	class:truncate={truncated}
+	class:uppercase={uppercased}
+	class:whitespace-nowrap={nowrap}
 
 	class={merge_classes(
 		"text",
@@ -149,11 +156,10 @@ const _selection_color = $derived.by(() => {
 		shadow && color && Color.get(color, "blend", 9).class("text-shadow"),
 		class_,
 	)}
-	class:truncate={truncated}
-	class:uppercase={uppercased}
-	class:whitespace-nowrap={nowrap}
+
 	in:in_
 	out:out_
+
 	onintrostart={onintrostart}
 	onintroend={onintroend}
 	onoutrostart={onoutrostart}

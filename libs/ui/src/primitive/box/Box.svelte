@@ -5,7 +5,7 @@ import { Radius, type RadiusSize } from "@xeho91/lib-design/radius";
 import { Space, type SpaceSize } from "@xeho91/lib-design/space";
 import { Stroke, type StrokeSize } from "@xeho91/lib-design/stroke";
 import type { WithChildren } from "@xeho91/lib-feature/component";
-import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+import { type WithClass, type WithPositionAnchor, merge_classes } from "@xeho91/lib-feature/css";
 import { noop } from "@xeho91/lib-snippet/function";
 import type { Properties } from "csstype";
 import type { HTMLAttributes } from "svelte/elements";
@@ -14,7 +14,7 @@ import type { TransitionConfig } from "svelte/transition";
 import type { BoxHTMLTag } from "./util";
 
 type Attributes = Omit<HTMLAttributes<HTMLElement>, "children" | "class">;
-interface Props extends WithAnchor, WithChildren, WithClass, Attributes {
+interface Props extends WithPositionAnchor, WithChildren, WithClass, Attributes {
 	tag?: TTag;
 	element?: HTMLElement;
 	border_box_size?: ResizeObserverSize[];
@@ -64,7 +64,7 @@ let {
 	class: class_,
 	style,
 	//
-	anchor,
+	position_anchor,
 	anchor_name,
 	// Layout
 	align_content,
@@ -116,7 +116,7 @@ let {
 	{style}
 
 	style:anchor-name={anchor_name?.toString()}
-	style:position-anchor={anchor?.toString()}
+	style:position-anchor={position_anchor?.toString()}
 
 	class:w-fit={width === "fit"}
     class:w-full={width === "full"}

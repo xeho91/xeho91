@@ -11,7 +11,7 @@ import { type ToggleGroupColor, type ToggleGroupEntry, ToggleGroupState, type To
 
 interface Props extends HTMLInputAttributes {
 	children: Snippet;
-	anchor: Reference;
+	anchor_name: Reference;
 	color: ToggleGroupColor;
 	name: string;
 	entry: ToggleGroupEntry;
@@ -22,7 +22,7 @@ interface Props extends HTMLInputAttributes {
 const {
 	//
 	children,
-	anchor,
+	anchor_name,
 	color,
 	entry,
 	name,
@@ -44,7 +44,7 @@ function handle_click() {
 </script>
 
 <label
-	style:--anchor-name={anchor.toString()}
+	style:--anchor-name={anchor_name.toString()}
 	title={entry.label}
 	class={merge_classes(
 		"toggle-option",

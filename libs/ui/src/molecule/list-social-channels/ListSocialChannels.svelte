@@ -26,8 +26,8 @@ const color = "accent";
 	)}
 >
 	{#each object_entries(SOCIAL_CHANNELS) as [name, data]}
-		{@const anchor = new Reference(`icon-${name}`)}
-		<Item anchor_name={anchor}>
+		{@const position_anchor = new Reference(`icon-${name}`)}
+		<Item anchor_name={position_anchor}>
 			<Text
 				{color}
 				size="3xl"
@@ -65,7 +65,7 @@ const color = "accent";
 					/>
 					<Text
 						size="s"
-						{anchor}
+						{position_anchor}
 						{color}
 						class={merge_classes(
 							"link-title",

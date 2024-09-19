@@ -2,10 +2,10 @@
 import { Color } from "@xeho91/lib-design/color";
 import { Grid, type GridVariant } from "@xeho91/lib-design/grid";
 import type { WithOptionalChildren } from "@xeho91/lib-feature/component";
-import { type WithAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
+import { type WithPositionAnchor, type WithClass, merge_classes } from "@xeho91/lib-feature/css";
 import { Code } from "@xeho91/lib-ui/semantic/code";
 
-interface Props extends WithAnchor, WithOptionalChildren, WithClass {
+interface Props extends WithPositionAnchor, WithOptionalChildren, WithClass {
 	variant: GridVariant;
 }
 

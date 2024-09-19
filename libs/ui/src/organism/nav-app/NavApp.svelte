@@ -86,7 +86,7 @@ function handle_current_link_click(event: MouseEvent) {
 	)}
 	in={(node) => fade(node, { ...LAYOUT_DEFAULT_FADE, delay: 200 })}
 >
-	{@const anchor = new Reference("nav-app-current")}
+	{@const position_anchor = new Reference("nav-app-current")}
 	<span
 		style:position-anchor={anchor.toString()}
 		class={merge_classes(

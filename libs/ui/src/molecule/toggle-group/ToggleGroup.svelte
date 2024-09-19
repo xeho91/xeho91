@@ -37,7 +37,7 @@ let {
 }: Props = $props();
 
 const state = new ToggleGroupState(default_ as TValue);
-const anchor = new Reference(`toggle-group-${name}`);
+const position_anchor = new Reference(`toggle-group-${name}`);
 
 $effect(() => {
 	if (onchange) onchange(state.selected);
@@ -67,7 +67,7 @@ $effect(() => {
 	)}
 >
 	{#each entries as entry}
-		<ToggleOption {anchor} {resettable} {color} {name} {entry} {state}>
+		<ToggleOption anchor_name={position_anchor} {resettable} {color} {name} {entry} {state}>
 			<Text {color}>
 				{@render children(entry.value, state)}
 			</Text>
@@ -75,7 +75,7 @@ $effect(() => {
 	{/each}
 
 	<span
-		style:position-anchor={anchor.toString()}
+		style:position-anchor={position_anchor.toString()}
 		class={merge_classes(
 			"indicator",
 			"absolute z-100",

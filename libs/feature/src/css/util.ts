@@ -109,16 +109,11 @@ if (import.meta.vitest) {
 	});
 }
 
-export interface WithAnchor {
-	anchor_name?: Reference;
-	anchor?: Reference;
-}
-
 export interface WithClass {
 	class?: ReturnType<typeof merge_classes>;
 }
 
-export interface WithAnchor {
+export interface WithPositionAnchor {
 	anchor_name?: Reference;
-	anchor?: Reference;
+	position_anchor?: Reference;
 }

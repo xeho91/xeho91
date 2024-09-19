@@ -1,4 +1,4 @@
-import type { WithAnchor, WithClass } from "@xeho91/lib-feature/css";
+import type { WithClass, WithPositionAnchor } from "@xeho91/lib-feature/css";
 import { create_control_from_boolean, create_control_from_iterable } from "@xeho91/lib-storybook/arg-type";
 import type { ComponentProps } from "svelte";
 
@@ -9,7 +9,7 @@ import { BrandAssetTheme, type BrandAssetThemeName } from "#design";
 export const DEFAULT_ANIMATED = false;
 export const DEFAULT_BACKGROUNDED = false;
 
-export interface SharedProps extends WithAnchor, WithClass {
+export interface SharedProps extends WithPositionAnchor, WithClass {
 	/**
 	 * Color **theme** for the foreground _(logomark and frame)_
 	 */

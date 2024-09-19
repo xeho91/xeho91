@@ -40,12 +40,13 @@ let element = $state<HTMLButtonElement>();
 
 let has_icon_only = $derived(element?.innerText.length === 0);
 
-const anchor_name_reference = rest_props.popovertarget ? new Reference(rest_props.popovertarget) : undefined;
+const position_anchor_name_reference = rest_props.popovertarget ? new Reference(rest_props.popovertarget) : undefined;
 </script>
 
 <button
 	bind:this={element}
 	{...rest_props}
+	style:anchor-name={position_anchor_name_reference?.toString()}
 	class={merge_classes(
 		"button",
 		color,
@@ -66,7 +67,6 @@ const anchor_name_reference = rest_props.popovertarget ? new Reference(rest_prop
 		Elevation.get(1).class("box-shadow", { pseudo_class: "focus" }),
 		class_,
 	)}
-	style:anchor-name={anchor_name_reference?.toString()}
 >
 	<Text
 		color={set_button_text_color(variant, color)}
