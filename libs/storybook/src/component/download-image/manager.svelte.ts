@@ -1,4 +1,4 @@
-import { not_found } from "@xeho91/lib-error/not_found";
+import { not_found } from "@xeho91/lib-error/not-found";
 import { unreachable } from "@xeho91/lib-error/unreachable";
 import { unrecognized } from "@xeho91/lib-error/unrecognized";
 import { Rectangle } from "@xeho91/lib-geometry/two-dimension/rectangle";
